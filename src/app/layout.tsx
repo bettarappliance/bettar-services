@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bettar Services - Home Improvement & Appliance Services",
   description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+  icons: {
+    icon: '/bettarlogo.png',
+    shortcut: '/bettarlogo.png',
+    apple: '/bettarlogo.png',
+  },
 };
 
 export default function RootLayout({
