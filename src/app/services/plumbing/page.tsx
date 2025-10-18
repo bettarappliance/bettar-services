@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import RequestServiceModal from "../../../components/RequestServiceModal";
-import JobberRequestEmbed from "../../../components/JobberRequestEmbed";
 
 export default function Plumbing() {
   // Modal state

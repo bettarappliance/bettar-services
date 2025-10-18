@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../../components/RequestServiceModal";
-import JobberRequestEmbed from "../../components/JobberRequestEmbed";
 
 export default function About() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
