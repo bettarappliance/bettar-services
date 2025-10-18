@@ -1,5 +1,15 @@
 import { NextResponse } from "next/server";
 
+type Review = {
+  author_name: string;
+  profile_photo_url?: string;
+  rating: number;
+  text: string;
+  relative_time_description?: string;
+  author_url?: string;
+  time: number;
+};
+
 const FIELDS = [
   "name",
   "rating",
@@ -38,22 +48,22 @@ export async function GET() {
   }
 
   const place = data.result || {};
-  const all = Array.isArray(place.reviews) ? place.reviews : [];
+          const all = Array.isArray(place.reviews) ? place.reviews : [];
 
-  console.log("Raw reviews from API:", all.length);
-  console.log("All ratings:", all.map((r: any) => r.rating));
+          console.log("Raw reviews from API:", all.length);
+          console.log("All ratings:", all.map((r: Review) => r.rating));
 
-  // Filter: only 4★ and 5★
-  const filtered = all.filter((r: any) => Number(r.rating) >= 4);
+          // Filter: only 4★ and 5★
+          const filtered = all.filter((r: Review) => Number(r.rating) >= 4);
 
-  console.log("Filtered 4-5 star reviews:", filtered.length);
-  console.log("Filtered ratings:", filtered.map((r: any) => r.rating));
+          console.log("Filtered 4-5 star reviews:", filtered.length);
+          console.log("Filtered ratings:", filtered.map((r: Review) => r.rating));
 
-  // Sort by newest first
-  filtered.sort((a: any, b: any) => Number(b.time) - Number(a.time));
+          // Sort by newest first
+          filtered.sort((a: Review, b: Review) => Number(b.time) - Number(a.time));
 
-  // Return all filtered reviews (no limit)
-  const reviews = filtered.map((r: any) => ({
+          // Return all filtered reviews (no limit)
+          const reviews = filtered.map((r: Review) => ({
     author_name: r.author_name,
     profile_photo_url: r.profile_photo_url,
     rating: r.rating,

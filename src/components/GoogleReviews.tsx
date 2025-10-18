@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type Review = {
@@ -61,9 +62,9 @@ export default function GoogleReviews() {
     });
   };
 
-  const goToReview = (index: number) => {
-    setCurrentReviewIndex(index);
-  };
+  // const goToReview = (index: number) => {
+  //   setCurrentReviewIndex(index);
+  // };
 
   // Show loading state
   if (state.reviews.length === 0 && !state.error) {
@@ -130,9 +131,11 @@ export default function GoogleReviews() {
                 <div className="mt-auto flex items-center">
                   <div className="h-10 w-10 rounded-full bg-[#1e3a8a] flex items-center justify-center mr-3">
                     {review.profile_photo_url ? (
-                      <img
+                      <Image
                         src={review.profile_photo_url}
                         alt={review.author_name}
+                        width={40}
+                        height={40}
                         className="h-10 w-10 rounded-full object-cover"
                       />
                     ) : (
@@ -154,7 +157,7 @@ export default function GoogleReviews() {
               <div className="text-center flex-1 flex flex-col justify-between">
                 {/* Business Icon */}
                 <div className="w-16 h-16 bg-[#002D72] rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <img src="/bettarlogo.png" alt="Bettar Logo" width={40} height={40} />
+                  <Image src="/bettarlogo.png" alt="Bettar Logo" width={40} height={40} />
                 </div>
                 
                 {/* Business Name */}

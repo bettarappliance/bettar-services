@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
-import JobberRequestEmbed from "../components/JobberRequestEmbed";
 
 export default function Home() {
   // Carousel state
@@ -73,7 +73,7 @@ export default function Home() {
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-gray-300 transition-colors">Home</a>
+            <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
             <a href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</a>
             <div className="relative group">
               <a href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
@@ -687,7 +687,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4 text-[#002D72]">Request service and consultation</h3>
               <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Tell us what you need — You can fill out our <a href="#contact" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <span className="text-[#002D72] font-bold">301-949-2500</span>, and we'll take care of the rest.
+                Tell us what you need — You can fill out our <a href="#contact" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <span className="text-[#002D72] font-bold">301-949-2500</span>, and we&apos;ll take care of the rest.
               </p>
               
               {/* Connecting line to next step */}
@@ -701,7 +701,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4 text-[#002D72]">We Schedule & Assess</h3>
               <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Our team will get in touch to confirm your request and schedule a convenient time for a site visit. We'll assess the work, discuss your needs, and provide a clear and transparent quote.
+                Our team will get in touch to confirm your request and schedule a convenient time for a site visit. We&apos;ll assess the work, discuss your needs, and provide a clear and transparent quote.
               </p>
               
               {/* Connecting line to next step */}
@@ -1039,7 +1039,7 @@ export default function Home() {
                   <div>
                     <h3 className="font-bold text-2xl mb-2">A Rich History</h3>
                     <p className="text-gray-200 text-sm leading-relaxed">
-                      Our longevity is a testament to our reliability and consistent customer satisfaction. We've adapted and grown with the times, but our core values remain unchanged.
+                      Our longevity is a testament to our reliability and consistent customer satisfaction. We&apos;ve adapted and grown with the times, but our core values remain unchanged.
                     </p>
                   </div>
                 </div>
@@ -1054,7 +1054,7 @@ export default function Home() {
                   <div>
                     <h3 className="font-bold text-lg mb-2">Family-Owned & Operated</h3>
                     <p className="text-gray-200 text-sm leading-relaxed">
-                      Experience the personalized, one-on-one service you won't find with larger corporations. We're your neighbors, deeply invested in our community.
+                      Experience the personalized, one-on-one service you won&apos;t find with larger corporations. We&apos;re your neighbors, deeply invested in our community.
                     </p>
                   </div>
                 </div>
@@ -1185,7 +1185,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="text-[#6B7280] leading-relaxed transition-all duration-300 overflow-hidden max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100">
-                  We're family-owned, fully insured, and have been serving the community since 1945 with quality workmanship and trustworthy service.
+                  We&apos;re family-owned, fully insured, and have been serving the community since 1945 with quality workmanship and trustworthy service.
                 </div>
               </div>
 
@@ -1539,7 +1539,7 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="/" className="block hover:text-gray-300 transition-colors">Home</a>
+                <Link href="/" className="block hover:text-gray-300 transition-colors">Home</Link>
                 <a href="/services" className="block hover:text-gray-300 transition-colors">Services</a>
                 <a href="/appliances" className="block hover:text-gray-300 transition-colors">Appliances</a>
                 <a href="/request-service" className="block hover:text-gray-300 transition-colors">Request Service</a>

@@ -20,7 +20,7 @@ export default function JobberRequestEmbed() {
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             Fill out the form below and our team will reach out to confirm your booking. 
-            We're here to help with all your home service needs.
+            We&apos;re here to help with all your home service needs.
           </p>
         </div>
       </section>

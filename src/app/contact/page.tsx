@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import RequestServiceModal from "../../components/RequestServiceModal";
 
@@ -26,7 +27,7 @@ export default function Contact() {
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-gray-300 transition-colors">Home</a>
+            <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
             <a href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</a>
             <div className="relative group">
               <a href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
@@ -308,7 +309,7 @@ export default function Contact() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="/" className="block hover:text-gray-300 transition-colors">Home</a>
+                <Link href="/" className="block hover:text-gray-300 transition-colors">Home</Link>
                 <a href="/services" className="block hover:text-gray-300 transition-colors">Services</a>
                 <a href="/appliances" className="block hover:text-gray-300 transition-colors">Appliances</a>
               </div>
