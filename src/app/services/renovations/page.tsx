@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import RequestServiceModal from "../../../components/RequestServiceModal";
 
@@ -26,7 +27,7 @@ export default function Renovations() {
           
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-white hover:text-gray-300 transition-colors">Home</a>
+            <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
             <a href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</a>
             <div className="relative group">
               <a href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
@@ -93,7 +94,7 @@ export default function Renovations() {
                 Complete Renovation Services
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Whether you're looking to update a single room or transform your entire home, our experienced team delivers exceptional results that exceed your expectations.
+                Whether you&apos;re looking to update a single room or transform your entire home, our experienced team delivers exceptional results that exceed your expectations.
               </p>
               
               <div className="space-y-4">
@@ -255,7 +256,7 @@ export default function Renovations() {
             Ready to Transform Your Home?
           </h2>
           <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Let's discuss your renovation project and bring your vision to life with expert craftsmanship and personalized service.
+            Let&apos;s discuss your renovation project and bring your vision to life with expert craftsmanship and personalized service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
@@ -342,7 +343,7 @@ export default function Renovations() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <div className="space-y-2">
-                <a href="/" className="block hover:text-gray-300 transition-colors">Home</a>
+                <Link href="/" className="block hover:text-gray-300 transition-colors">Home</Link>
                 <a href="/services" className="block hover:text-gray-300 transition-colors">Services</a>
                 <a href="/appliances" className="block hover:text-gray-300 transition-colors">Appliances</a>
               </div>
