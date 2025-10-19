@@ -25,7 +25,7 @@ export default function JobberRequestEmbed() {
         </div>
       </section>
       
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-[#F4F7FF]">
         <link
           rel="stylesheet"
           href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css"
