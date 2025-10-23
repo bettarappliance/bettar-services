@@ -254,10 +254,6 @@ export default function Home() {
             <h1 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
               Your Needs
             </h1>
-            <p className="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
-              Professional handyman services in Kensington, Bethesda, Chevy Chase, and Northwest DC. 
-              Commercial handyman services available for businesses in Bethesda and surrounding areas.
-            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -334,7 +330,7 @@ export default function Home() {
               <div className="p-6 pt-10 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional handyman services.
+                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services.
                 </p>
                 <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
               </div>
