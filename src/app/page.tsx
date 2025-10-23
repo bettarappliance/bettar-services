@@ -14,6 +14,100 @@ export default function Home() {
   
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Bettar Services",
+    "description": "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+    "url": "https://bettarservices.com",
+    "telephone": "301-949-2500",
+    "email": "Info@bettarappliance.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "10503 Wheatley St",
+      "addressLocality": "Kensington",
+      "addressRegion": "MD",
+      "postalCode": "20895",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "39.0254",
+      "longitude": "-77.0744"
+    },
+    "openingHours": "Mo-Fr 08:00-17:00",
+    "foundingDate": "1945",
+    "areaServed": [
+      "Kensington, MD",
+      "Bethesda, MD", 
+      "Chevy Chase, MD",
+      "Washington, DC",
+      "Northwest DC"
+    ],
+    "alternateName": "Bettar Appliance",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.0254",
+        "longitude": "-77.0744"
+      },
+      "geoRadius": "25000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Home Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Renovations and Remodeling",
+            "description": "Transform your home with our expert renovation and remodeling services. From kitchen makeovers to bathroom upgrades, we bring your vision to life with quality craftsmanship and attention to detail."
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Plumbing and Heating",
+            "description": "Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home's comfort and safety."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Handyman Repair and Services",
+            "description": "From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Commercial Handyman Services",
+            "description": "Professional commercial handyman services for businesses in Bethesda, Kensington, and surrounding areas. Commercial maintenance, repairs, and installations."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Appliance Sales and Services", 
+            "description": "Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage."
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1448"
+    }
+  };
   const historyImages = [
     "/history/2025-05-07 (1).jpg",
     "/history/2025-05-07 (2).jpg",
@@ -58,6 +152,13 @@ export default function Home() {
   };
   return (
     <div className="min-h-screen bg-white">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -148,21 +249,25 @@ export default function Home() {
       <section className="py-20 bg-[#FFFFFF]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-4 text-black">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-black">
               Services That Fit
-            </h2>
-            <h2 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
+            </h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
               Your Needs
-            </h2>
+            </h1>
+            <p className="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
+              Professional handyman services in Kensington, Bethesda, Chevy Chase, and Northwest DC. 
+              Commercial handyman services available for businesses in Bethesda and surrounding areas.
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {/* Service Card 1 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
               <div className="h-48 relative">
-            <Image
+                <Image
                   src="/renovations.jpg"
-                  alt="Renovations and Remodeling"
+                  alt="Professional kitchen renovation and remodeling services in Kensington MD - modern kitchen design with island and stainless steel appliances"
                   fill
                   className="object-cover"
                 />
@@ -175,21 +280,21 @@ export default function Home() {
                   </svg>
                 </div>
               </div>
-              <div className="p-6 pt-10">
-                <h3 className="text-xl font-bold text-[#002D72] mb-3">Renovations and Remodeling</h3>
-                <p className="text-gray-600 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus massa eget dolor auctor, euismod hendrerit tellus placerat.
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Renovations and Remodeling</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  Transform your home with our expert renovation and remodeling services. From kitchen makeovers to bathroom upgrades, we bring your vision to life with quality craftsmanship and attention to detail.
                 </p>
-                <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block">View Service →</a>
+                <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
               </div>
             </div>
 
             {/* Service Card 2 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
               <div className="h-48 relative">
                 <Image
                   src="/plumbing.jpeg"
-                  alt="Plumbing and Heating"
+                  alt="Professional plumbing and heating repair services in Kensington MD - skilled technician working on pipe installation and maintenance"
                   fill
                   className="object-cover"
                 />
@@ -201,21 +306,21 @@ export default function Home() {
                   <path fill="#ffffff" d="M541.4 162.6C549 155 561.7 156.9 565.5 166.9C572.3 184.6 576 203.9 576 224C576 312.4 504.4 384 416 384C398.5 384 381.6 381.2 365.8 376L178.9 562.9C150.8 591 105.2 591 77.1 562.9C49 534.8 49 489.2 77.1 461.1L264 274.2C258.8 258.4 256 241.6 256 224C256 135.6 327.6 64 416 64C436.1 64 455.4 67.7 473.1 74.5C483.1 78.3 484.9 91 477.4 98.6L388.7 187.3C385.7 190.3 384 194.4 384 198.6L384 240C384 248.8 391.2 256 400 256L441.4 256C445.6 256 449.7 254.3 452.7 251.3L541.4 162.6z"/></svg>
                 </div>
               </div>
-              <div className="p-6 pt-10">
-                <h3 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h3>
-                <p className="text-gray-600 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus massa eget dolor auctor, euismod hendrerit tellus placerat.
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home's comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
                 </p>
-                <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block">View Service →</a>
+                <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
               </div>
             </div>
 
             {/* Service Card 3 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
               <div className="h-48 relative">
                 <Image
                   src="/handyman.jpg"
-                  alt="Handyman Repair and Services"
+                  alt="Professional handyman repair and maintenance services in Kensington MD - skilled craftsman with tools and safety equipment"
                   fill
                   className="object-cover"
                 />
@@ -227,12 +332,12 @@ export default function Home() {
                   <path fill="#ffffff" d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z"/></svg>
                 </div>
               </div>
-              <div className="p-6 pt-10">
-                <h3 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h3>
-                <p className="text-gray-600 mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus massa eget dolor auctor, euismod hendrerit tellus placerat.
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional handyman services.
                 </p>
-                <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block">View Service →</a>
+                <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
               </div>
             </div>
           </div>
@@ -259,7 +364,7 @@ export default function Home() {
                 <div className="h-full flex flex-col justify-between">
                   <div>
                       <div className="flex items-center space-x-3 mb-4">
-                        <Image
+            <Image
                           src="/bettarlogo.png"
                           alt="Bettar Logo"
                           width={40}
@@ -273,10 +378,10 @@ export default function Home() {
                     </h2>
                     <div className="space-y-4 mb-8">
                       <p className="text-white text-lg leading-relaxed">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage. Bettar appliance sales and service since 1945.
                       </p>
                       <p className="text-white text-lg leading-relaxed">
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+                        Our experienced technicians provide expert installation, maintenance, and repair services for all major appliance brands. We're committed to keeping your appliances running efficiently for years to come. Trust Bettar for all your appliance needs in Kensington, MD.
                       </p>
                     </div>
                   </div>
@@ -633,7 +738,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4 text-[#002D72]">Request service and consultation</h3>
               <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Tell us what you need — You can fill out our <a href="#contact" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <span className="text-[#002D72] font-bold">301-949-2500</span>, and we&apos;ll take care of the rest.
+                Tell us what you need — You can fill out our <a href="/request-service" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <span className="text-[#002D72] font-bold">301-949-2500</span>, and we&apos;ll take care of the rest.
               </p>
               
               {/* Connecting line to next step */}

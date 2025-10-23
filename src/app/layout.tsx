@@ -17,7 +17,25 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Bettar Services - Home Improvement & Appliance Services",
-  description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+  description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945. Expert contractors for kitchen remodeling, bathroom renovation, plumbing repairs, heating services, and appliance sales. Serving Bethesda, Chevy Chase, and Northwest DC.",
+  keywords: "home improvement, renovation, plumbing, heating, handyman, appliance repair, appliance sales, kitchen remodeling, bathroom renovation, home services, Kensington MD, Bethesda, Chevy Chase, Washington DC",
+  authors: [{ name: "Bettar Services" }],
+  creator: "Bettar Services",
+  publisher: "Bettar Services",
+  robots: "index, follow",
+  openGraph: {
+    title: "Bettar Services - Home Improvement & Appliance Services",
+    description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+    url: "https://bettarservices.com",
+    siteName: "Bettar Services",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bettar Services - Home Improvement & Appliance Services",
+    description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+  },
   icons: {
     icon: '/bettarlogo.ico',
     shortcut: '/bettarlogo.ico',
