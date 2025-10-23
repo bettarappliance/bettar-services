@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
+import ContactForm from "../components/ContactForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -1428,89 +1429,11 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                </div>
+              </div>
 
               {/* Right Column - Contact Form */}
               <div className="bg-white p-12">
-                <form className="space-y-6">
-                  {/* Name Fields */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">First Name</label>
-                      <input 
-                        type="text" 
-                        placeholder="Enter your first name"
-                        className="w-full px-0 py-3 border-0 border-b border-[#D1D5DB] focus:ring-0 focus:border-[#002D72] focus:outline-none text-[#111827]" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">Last Name</label>
-                      <input 
-                        type="text" 
-                        placeholder="Enter your last name"
-                        className="w-full px-0 py-3 border-0 border-b border-[#D1D5DB] focus:ring-0 focus:border-[#002D72] focus:outline-none text-[#111827]" 
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Email and Phone */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">Email</label>
-                      <input 
-                        type="email" 
-                        placeholder="Enter your email"
-                        className="w-full px-0 py-3 border-0 border-b border-[#D1D5DB] focus:ring-0 focus:border-[#002D72] focus:outline-none text-[#111827]" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-[#111827] mb-2">Phone Number</label>
-                      <input 
-                        type="tel" 
-                        placeholder="Enter your phone number"
-                        className="w-full px-0 py-3 border-0 border-b border-[#D1D5DB] focus:ring-0 focus:border-[#002D72] focus:outline-none text-[#111827]" 
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Subject Selection */}
-                  <div>
-                    <h4 className="text-lg font-semibold text-[#111827] mb-4">Select Subject?</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      <label className="flex items-center">
-                        <input type="radio" name="subject" value="renovations" defaultChecked className="w-4 h-4 text-[#002D72] border-gray-300 focus:ring-[#002D72]" />
-                        <span className="ml-3 text-[#111827]">Renovations & Remodeling</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="radio" name="subject" value="plumbing" className="w-4 h-4 text-[#002D72] border-gray-300 focus:ring-[#002D72]" />
-                        <span className="ml-3 text-[#111827]">Plumbing & Heating</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="radio" name="subject" value="handyman" className="w-4 h-4 text-[#002D72] border-gray-300 focus:ring-[#002D72]" />
-                        <span className="ml-3 text-[#111827]">Handyman Services</span>
-                      </label>
-                      <label className="flex items-center">
-                        <input type="radio" name="subject" value="appliance" className="w-4 h-4 text-[#002D72] border-gray-300 focus:ring-[#002D72]" />
-                        <span className="ml-3 text-[#111827]">Appliance Sale and Service</span>
-                      </label>
-                    </div>
-                  </div>
-                  
-                  {/* Message */}
-                  <div>
-                    <label className="block text-sm font-medium text-[#111827] mb-2">Message</label>
-                    <textarea 
-                      rows={4} 
-                      placeholder="Write your message..."
-                      className="w-full px-0 py-3 border-0 border-b border-[#D1D5DB] focus:ring-0 focus:border-[#002D72] focus:outline-none text-[#111827] resize-none"
-                    ></textarea>
-                  </div>
-                  
-                  {/* Submit Button */}
-                  <button type="submit" className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-[10px] transition-colors">
-                    Send Message
-                  </button>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>

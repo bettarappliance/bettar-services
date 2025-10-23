@@ -2,6 +2,21 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+// Client-side only component to prevent hydration issues
+function ClientOnly({ children }: { children: React.ReactNode }) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
+  return <>{children}</>;
+}
+
 type Review = {
   author_name: string;
   profile_photo_url?: string;
@@ -13,7 +28,7 @@ type Review = {
 
 // No fallback reviews - use only real Google Reviews API data
 
-export default function GoogleReviews() {
+function GoogleReviewsContent() {
   const [state, setState] = useState<{
     business?: string;
     rating?: number;
@@ -99,7 +114,7 @@ export default function GoogleReviews() {
   }
 
   return (
-    <section className="py-20 bg-[#F0F5FF]">
+    <section className="py-20 bg-[#F0F5FF]" suppressHydrationWarning={true}>
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-5xl md:text-6xl font-bold text-center text-[#dc2626] mb-16">
           What Our Customers Say
@@ -247,5 +262,13 @@ export default function GoogleReviews() {
         </p>
       )}
     </section>
+  );
+}
+
+export default function GoogleReviews() {
+  return (
+    <ClientOnly>
+      <GoogleReviewsContent />
+    </ClientOnly>
   );
 }
