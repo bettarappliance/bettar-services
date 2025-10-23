@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
@@ -309,7 +308,7 @@ export default function Home() {
               <div className="p-6 pt-10 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h2>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home's comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
+                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
                 </p>
                 <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
               </div>
@@ -381,7 +380,7 @@ export default function Home() {
                         Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage. Bettar appliance sales and service since 1945.
                       </p>
                       <p className="text-white text-lg leading-relaxed">
-                        Our experienced technicians provide expert installation, maintenance, and repair services for all major appliance brands. We're committed to keeping your appliances running efficiently for years to come. Trust Bettar for all your appliance needs in Kensington, MD.
+                        Our experienced technicians provide expert installation, maintenance, and repair services for all major appliance brands. We&apos;re committed to keeping your appliances running efficiently for years to come. Trust Bettar for all your appliance needs in Kensington, MD.
                       </p>
                     </div>
                   </div>
