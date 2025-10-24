@@ -19,10 +19,27 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Only redirect specific old paths that don't exist
+      // Redirect old maintenance paths
+      {
+        source: '/Maintenance',
+        destination: '/services/handyman',
+        permanent: true,
+      },
       {
         source: '/Maintenance/Service',
         destination: '/services/handyman',
+        permanent: true,
+      },
+      {
+        source: '/maintenance',
+        destination: '/services/handyman',
+        permanent: true,
+      },
+      
+      // Redirect old plumbing paths
+      {
+        source: '/Plumbing',
+        destination: '/services/plumbing',
         permanent: true,
       },
       {
@@ -30,6 +47,13 @@ const nextConfig: NextConfig = {
         destination: '/services/plumbing',
         permanent: true,
       },
+      {
+        source: '/plumbing',
+        destination: '/services/plumbing',
+        permanent: true,
+      },
+      
+      // Redirect old contact paths
       {
         source: '/Contact/SendInquiry.aspx',
         destination: '/contact',

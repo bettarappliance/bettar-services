@@ -37,11 +37,14 @@ export default function ContactForm() {
 
     try {
       // EmailJS configuration
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id_here';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
+
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey });
 
       if (!serviceId || !templateId || !publicKey) {
+        console.error('Missing EmailJS environment variables');
         throw new Error('EmailJS configuration is missing. Please check your environment variables.');
       }
 
@@ -54,7 +57,9 @@ export default function ContactForm() {
         to_email: 'info@bettarappliance.com' // Your business email
       };
 
+      console.log('Sending email with params:', templateParams);
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('EmailJS result:', result);
       
       if (result.status === 200) {
         setSubmitStatus('success');
