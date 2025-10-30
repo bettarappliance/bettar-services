@@ -109,6 +109,7 @@ export default function Home() {
     }
   };
   const historyImages = [
+    "/history/image.jpg",
     "/history/2025-05-07 (1).jpg",
     "/history/2025-05-07 (2).jpg",
     "/history/2025-05-07 (3).jpg",

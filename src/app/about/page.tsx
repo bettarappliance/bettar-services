@@ -12,7 +12,7 @@ export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const historyImages = [
-    "/history/image (1).jpg",
+    "/history/image.jpg",
     "/history/2025-05-07 (1).jpg",
     "/history/2025-05-07 (2).jpg",
     "/history/2025-05-07 (3).jpg",
