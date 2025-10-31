@@ -181,7 +181,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 w-full">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl font-bold text-black mb-4 leading-tight">
-                Need <span className="text-[#dc2626]">appliance repair</span> or <span className="text-[#dc2626]">handyman services</span>? <span className="text-[#1e3a8a]">Bettar</span> is here for you!
+                Need <span className="text-[#dc2626]">appliance repair</span> or <span className="text-[#dc2626]">handyman services</span>? Bettar call <span className="text-[#1e3a8a]">Bettar</span>!
               </h1>
               
               <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
@@ -240,155 +240,6 @@ export default function Home() {
               <div className="text-center">
                 <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">100%</div>
                 <div className="text-gray-700 font-medium">GUARANTEED</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 bg-[#FFFFFF]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-black">
-              Services That Fit
-            </h1>
-            <h1 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
-              Your Needs
-            </h1>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Service Card 1 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              <div className="h-48 relative">
-                <Image
-                  src="/renovations.jpg"
-                  alt="Professional kitchen renovation and remodeling services in Kensington MD - modern kitchen design with island and stainless steel appliances"
-                  fill
-                  className="object-cover"
-                />
-                {/* Blue overlay */}
-                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
-                {/* Overlapping icon circle */}
-                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                </div>
-              </div>
-              <div className="p-6 pt-10 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold text-[#002D72] mb-3">Renovations and Remodeling</h2>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  Transform your home with our expert renovation and remodeling services. From kitchen makeovers to bathroom upgrades, we bring your vision to life with quality craftsmanship and attention to detail.
-                </p>
-                <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
-              </div>
-            </div>
-
-            {/* Service Card 2 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              <div className="h-48 relative">
-                <Image
-                  src="/plumbing.jpeg"
-                  alt="Professional plumbing and heating repair services in Kensington MD - skilled technician working on pipe installation and maintenance"
-                  fill
-                  className="object-cover"
-                />
-                {/* Blue overlay */}
-                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
-                {/* Overlapping icon circle */}
-                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                  <path fill="#ffffff" d="M541.4 162.6C549 155 561.7 156.9 565.5 166.9C572.3 184.6 576 203.9 576 224C576 312.4 504.4 384 416 384C398.5 384 381.6 381.2 365.8 376L178.9 562.9C150.8 591 105.2 591 77.1 562.9C49 534.8 49 489.2 77.1 461.1L264 274.2C258.8 258.4 256 241.6 256 224C256 135.6 327.6 64 416 64C436.1 64 455.4 67.7 473.1 74.5C483.1 78.3 484.9 91 477.4 98.6L388.7 187.3C385.7 190.3 384 194.4 384 198.6L384 240C384 248.8 391.2 256 400 256L441.4 256C445.6 256 449.7 254.3 452.7 251.3L541.4 162.6z"/></svg>
-                </div>
-              </div>
-              <div className="p-6 pt-10 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h2>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
-                </p>
-                <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
-              </div>
-            </div>
-
-            {/* Service Card 3 */}
-            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              <div className="h-48 relative">
-                <Image
-                  src="/handyman.jpg"
-                  alt="Professional handyman repair and maintenance services in Kensington MD - skilled craftsman with tools and safety equipment"
-                  fill
-                  className="object-cover"
-                />
-                {/* Blue overlay */}
-                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
-                {/* Overlapping icon circle */}
-                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
-                  <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                  <path fill="#ffffff" d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z"/></svg>
-                </div>
-              </div>
-              <div className="p-6 pt-10 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
-                <p className="text-gray-600 mb-4 flex-grow">
-                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services.
-                </p>
-                <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Appliance Sales Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-            <div className="grid md:grid-cols-2">
-              {/* Left Side - Appliances Image */}
-              <div className="h-96 md:h-auto relative">
-                <Image
-                  src="/appliances.jpg"
-                  alt="Bettar Appliance Sales and Services"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Right Side - Content Card */}
-              <div className="bg-[#002D72] p-10 md:p-16 text-white">
-                <div className="h-full flex flex-col justify-between">
-                  <div>
-                      <div className="flex items-center space-x-3 mb-4">
-            <Image
-                          src="/bettarlogo.png"
-                          alt="Bettar Logo"
-                          width={40}
-                          height={40}
-                          className="w-10 h-10"
-                        />
-                        <span className="text-[#E0E0E0] text-1xl font-medium tracking-[2px] uppercase">BETTAR APPLIANCE</span>
-                      </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                      Sales and Services
-                    </h2>
-                    <div className="space-y-4 mb-8">
-                      <p className="text-white text-lg leading-relaxed">
-                        Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage. Bettar appliance sales and service since 1945.
-                      </p>
-                      <p className="text-white text-lg leading-relaxed">
-                        Our experienced technicians provide expert installation, maintenance, and repair services for all major appliance brands. We&apos;re committed to keeping your appliances running efficiently for years to come. Trust Bettar for all your appliance needs in Kensington, MD.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end md:justify-end">
-                    <a href="/appliances" className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-bold text-lg">
-                      Shop Now
-                    </a>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -713,6 +564,155 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Appliance Sales Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="grid md:grid-cols-2">
+              {/* Left Side - Appliances Image */}
+              <div className="h-96 md:h-auto relative">
+                <Image
+                  src="/appliances.jpg"
+                  alt="Bettar Appliance Sales and Services"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Right Side - Content Card */}
+              <div className="bg-[#002D72] p-10 md:p-16 text-white">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                      <div className="flex items-center space-x-3 mb-4">
+            <Image
+                          src="/bettarlogo.png"
+                          alt="Bettar Logo"
+                          width={40}
+                          height={40}
+                          className="w-10 h-10"
+                        />
+                        <span className="text-[#E0E0E0] text-1xl font-medium tracking-[2px] uppercase">BETTAR APPLIANCE</span>
+                      </div>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                      Sales and Services
+                    </h2>
+                    <div className="space-y-4 mb-8">
+                      <p className="text-white text-lg leading-relaxed">
+                        Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage. Bettar appliance sales and service since 1945.
+                      </p>
+                      <p className="text-white text-lg leading-relaxed">
+                        Our experienced technicians provide expert installation, maintenance, and repair services for all major appliance brands. We&apos;re committed to keeping your appliances running efficiently for years to come. Trust Bettar for all your appliance needs in Kensington, MD.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-end md:justify-end">
+                    <a href="/appliances" className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-bold text-lg">
+                      Shop Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-[#FFFFFF]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-black">
+              Services That Fit
+            </h1>
+            <h1 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
+              Your Needs
+            </h1>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Service Card 1 */}
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+              <div className="h-48 relative">
+                <Image
+                  src="/renovations.jpg"
+                  alt="Professional kitchen renovation and remodeling services in Kensington MD - modern kitchen design with island and stainless steel appliances"
+                  fill
+                  className="object-cover"
+                />
+                {/* Blue overlay */}
+                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
+                {/* Overlapping icon circle */}
+                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+              </div>
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Renovations and Remodeling</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  Transform your home with our expert renovation and remodeling services. From kitchen makeovers to bathroom upgrades, we bring your vision to life with quality craftsmanship and attention to detail.
+                </p>
+                <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+              </div>
+            </div>
+
+            {/* Service Card 2 */}
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+              <div className="h-48 relative">
+                <Image
+                  src="/plumbing.jpeg"
+                  alt="Professional plumbing and heating repair services in Kensington MD - skilled technician working on pipe installation and maintenance"
+                  fill
+                  className="object-cover"
+                />
+                {/* Blue overlay */}
+                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
+                {/* Overlapping icon circle */}
+                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path fill="#ffffff" d="M541.4 162.6C549 155 561.7 156.9 565.5 166.9C572.3 184.6 576 203.9 576 224C576 312.4 504.4 384 416 384C398.5 384 381.6 381.2 365.8 376L178.9 562.9C150.8 591 105.2 591 77.1 562.9C49 534.8 49 489.2 77.1 461.1L264 274.2C258.8 258.4 256 241.6 256 224C256 135.6 327.6 64 416 64C436.1 64 455.4 67.7 473.1 74.5C483.1 78.3 484.9 91 477.4 98.6L388.7 187.3C385.7 190.3 384 194.4 384 198.6L384 240C384 248.8 391.2 256 400 256L441.4 256C445.6 256 449.7 254.3 452.7 251.3L541.4 162.6z"/></svg>
+                </div>
+              </div>
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
+                </p>
+                <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+              </div>
+            </div>
+
+            {/* Service Card 3 */}
+            <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+              <div className="h-48 relative">
+                <Image
+                  src="/handyman.jpg"
+                  alt="Professional handyman repair and maintenance services in Kensington MD - skilled craftsman with tools and safety equipment"
+                  fill
+                  className="object-cover"
+                />
+                {/* Blue overlay */}
+                <div className="absolute inset-0 bg-[rgba(0,45,114,0.3)]"></div>
+                {/* Overlapping icon circle */}
+                <div className="absolute -bottom-6 left-6 w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path fill="#ffffff" d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z"/></svg>
+                </div>
+              </div>
+              <div className="p-6 pt-10 flex flex-col flex-grow">
+                <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
+                <p className="text-gray-600 mb-4 flex-grow">
+                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services.
+                </p>
+                <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How BETTAR Works Section */}
       <section className="py-20 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-6">
@@ -833,7 +833,7 @@ export default function Home() {
               </div>
               
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-                We work for you since <span className="text-[#D32F2F]">1945.</span>
+                We have worked for you since <span className="text-[#D32F2F]">1945.</span>
               </h2>
               
               <div className="w-16 h-px bg-gray-300 mb-6"></div>
