@@ -25,7 +25,7 @@ export default function Header() {
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
-          <Link href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</Link>
+          <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors">Appliances</Link>
           <div className="relative group">
             <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
               Services
@@ -51,7 +51,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors">Appliances</Link>
+          <Link href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</Link>
           <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">Contact Us</Link>
         </nav>
 

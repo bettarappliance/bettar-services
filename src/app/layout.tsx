@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   creator: "Bettar Services",
   publisher: "Bettar Services",
   robots: "index, follow",
+  alternates: {
+    canonical: "https://bettarservices.com",
+  },
   openGraph: {
     title: "Bettar Services - Home Improvement & Appliance Services",
     description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
