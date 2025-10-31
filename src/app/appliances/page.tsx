@@ -21,10 +21,10 @@ export default function Appliances() {
               Appliances Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Expert <span className="text-[#002D72]">Appliance</span> Services
+              <span className="text-[#002D72]">Bettar Appliance</span> - Sales, Repair & Installation
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional appliance repair, sales, and maintenance services. We service all major brands and offer same-day service.
+              Bettar Appliances offers professional appliance sales, repair, and installation services in Kensington, MD. Your trusted Bettar Appliance source since 1945. We service all major brands and offer same-day service.
             </p>
           </div>
         </div>

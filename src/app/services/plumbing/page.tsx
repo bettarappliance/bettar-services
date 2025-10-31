@@ -21,10 +21,10 @@ export default function Plumbing() {
               Plumbing & Heating
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Professional <span className="text-[#002D72]">Plumbing</span> Services
+              Water Heater Service & <span className="text-[#002D72]">Heating Services</span> in Kensington MD
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Expert plumbing and heating solutions to keep your home comfortable and your systems running efficiently.
+              Professional water heater service and heating services in Kensington, MD. Expert plumbing and heating solutions to keep your home comfortable and your systems running efficiently.
             </p>
           </div>
         </div>
@@ -36,10 +36,10 @@ export default function Plumbing() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Complete Plumbing Solutions
+                Water Heater Service & Heating Services in Kensington
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                From emergency repairs to complete system installations, our licensed plumbers provide reliable service you can trust.
+                From emergency repairs to complete system installations, our licensed plumbers provide reliable water heater service and heating services throughout Kensington, MD, Bethesda, and the surrounding areas.
               </p>
               
               <div className="space-y-4">

@@ -21,10 +21,10 @@ export default function Handyman() {
               Handyman Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Complete <span className="text-[#002D72]">Handyman</span> Solutions
+              Handyman Services in <span className="text-[#002D72]">Kensington MD</span> & <span className="text-[#002D72]">Bethesda</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From small repairs to major projects, our skilled handymen handle all your home maintenance and improvement needs.
+              Expert handyman services in Kensington, MD and Bethesda. From small repairs to major projects, our skilled handymen handle all your home maintenance and improvement needs.
             </p>
           </div>
         </div>
@@ -36,10 +36,10 @@ export default function Handyman() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Handyman Services
+                Local Handyman Services in Bethesda & Kensington
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                No job too big or too small. Our experienced handymen provide reliable service for all your home repair and maintenance needs.
+                No job too big or too small. Our experienced handymen provide reliable service for all your home repair and maintenance needs throughout Kensington, MD, Bethesda, Chevy Chase, and Northwest DC.
               </p>
               
               <div className="space-y-4">
