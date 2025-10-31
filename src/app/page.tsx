@@ -181,7 +181,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6 w-full">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-6xl font-bold text-black mb-4 leading-tight">
-                Need <span className="text-[#dc2626]">appliance repair</span> or <span className="text-[#dc2626]">handyman services</span>? Bettar call <span className="text-[#1e3a8a]">Bettar</span>!
+                From <span className="text-[#dc2626]">Appliances </span> to <span className="text-[#dc2626]">Repairs</span> — Better call <span className="text-[#1e3a8a]">Bettar</span>!
               </h1>
               
               <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
