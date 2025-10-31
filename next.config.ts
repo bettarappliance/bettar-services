@@ -52,6 +52,13 @@ const nextConfig: NextConfig = {
         destination: '/services/plumbing',
         permanent: true,
       },
+      // Note: /Plumbing → /services/plumbing is handled by middleware (case-sensitive redirect)
+      // Redirect /Plumbing/* subpaths (like /Plumbing/About)
+      {
+        source: '/Plumbing/:path+',
+        destination: '/services/plumbing',
+        permanent: true,
+      },
       
       // Redirect old contact paths - be very specific to avoid loops
       {
@@ -64,11 +71,25 @@ const nextConfig: NextConfig = {
         destination: '/contact',
         permanent: true,
       },
-      // Note: Redirects for /Services, /Appliances, and /Contact are disabled
-      // because Next.js redirects appear to be case-insensitive, causing loops.
-      // Old URLs will show 404, but this is better than breaking the actual pages.
+      // Redirect old Services subpaths (specific paths to avoid conflicts)
+      // Note: /Services → /services is handled by middleware (case-sensitive redirect)
+      {
+        source: '/Services/Sales.aspx',
+        destination: '/appliances',
+        permanent: true,
+      },
+      {
+        source: '/Services/PropertyManagement.aspx',
+        destination: '/services',
+        permanent: true,
+      },
+      // Redirect other /Services/* subpaths
+      {
+        source: '/Services/:path+',
+        destination: '/services',
+        permanent: true,
+      },
       
-      // TODO: Implement case-sensitive redirects using middleware if needed
       // Only redirect if there's a subpath after Appliances (like /Appliances/About)
       {
         source: '/Appliances/:path+',
@@ -116,6 +137,42 @@ const nextConfig: NextConfig = {
       {
         source: '/About/:path+',
         destination: '/about',
+        permanent: true,
+      },
+      
+      // Redirect old Kitchen paths
+      {
+        source: '/Kitchen/Service/KitchenServiceRequest.aspx',
+        destination: '/request-service',
+        permanent: true,
+      },
+      {
+        source: '/Kitchen/Service/:path*',
+        destination: '/request-service',
+        permanent: true,
+      },
+      {
+        source: '/Kitchen/:path*',
+        destination: '/services/renovations',
+        permanent: true,
+      },
+      
+      // Redirect malformed tracking URLs (old email links with query parameters)
+      // These are old tracking links that should redirect to home page
+      // Match URLs with E= and T= query parameters (common in old email tracking)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'query',
+            key: 'E',
+          },
+          {
+            type: 'query',
+            key: 'T',
+          },
+        ],
+        destination: '/',
         permanent: true,
       },
     ];

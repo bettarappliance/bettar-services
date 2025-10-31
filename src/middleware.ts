@@ -42,6 +42,7 @@ export function middleware(request: NextRequest) {
     '/Appliances': '/appliances',
     '/Contact': '/contact',
     '/About': '/about',
+    '/Kitchen': '/services/renovations',
   };
 
   // Check if pathname matches any capitalized redirect (case-sensitive check)
