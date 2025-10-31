@@ -27,15 +27,17 @@ export default function Header() {
           <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
           <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors">Appliances</Link>
           <div className="relative group">
-            <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
-              Services
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center">
+              <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
+                Services
+              </Link>
+              <svg className="w-4 h-4 ml-1 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </Link>
-            {/* Dropdown Menu */}
-            <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div className="py-2">
+            </div>
+            {/* Dropdown Menu - shows on hover and stays open when hovering over menu items */}
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-white rounded-lg shadow-lg py-2">
                 <Link href="/services/renovations" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
                   Renovations and Remodeling
                 </Link>

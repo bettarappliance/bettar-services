@@ -19,14 +19,30 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // Redirect old maintenance paths
+      // Redirect old maintenance paths (order matters - specific before wildcard)
+      // Note: /Maintenance → /services/handyman is handled by middleware (case-sensitive redirect)
       {
-        source: '/Maintenance',
-        destination: '/services/handyman',
+        source: '/Maintenance/Service/:path*',
+        destination: '/request-service',
+        permanent: true,
+      },
+      {
+        source: '/Maintenance/Contact/:path*',
+        destination: '/contact',
         permanent: true,
       },
       {
         source: '/Maintenance/Service',
+        destination: '/services/handyman',
+        permanent: true,
+      },
+      {
+        source: '/Maintenance/:path+',
+        destination: '/services/handyman',
+        permanent: true,
+      },
+      {
+        source: '/Maintenance',
         destination: '/services/handyman',
         permanent: true,
       },
@@ -36,26 +52,25 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       
-      // Redirect old plumbing paths
-      {
-        source: '/Plumbing',
-        destination: '/services/plumbing',
-        permanent: true,
-      },
+      // Redirect old plumbing paths (order matters - specific before wildcard)
+      // Note: /Plumbing → /services/plumbing is handled by middleware (case-sensitive redirect)
       {
         source: '/Plumbing/Service',
         destination: '/services/plumbing',
         permanent: true,
       },
       {
-        source: '/plumbing',
+        source: '/Plumbing/:path+',
         destination: '/services/plumbing',
         permanent: true,
       },
-      // Note: /Plumbing → /services/plumbing is handled by middleware (case-sensitive redirect)
-      // Redirect /Plumbing/* subpaths (like /Plumbing/About)
       {
-        source: '/Plumbing/:path+',
+        source: '/Plumbing',
+        destination: '/services/plumbing',
+        permanent: true,
+      },
+      {
+        source: '/plumbing',
         destination: '/services/plumbing',
         permanent: true,
       },
@@ -73,6 +88,7 @@ const nextConfig: NextConfig = {
       },
       // Redirect old Services subpaths (specific paths to avoid conflicts)
       // Note: /Services → /services is handled by middleware (case-sensitive redirect)
+      // These redirects ONLY match capitalized /Services/* to avoid conflicts with /services/*
       {
         source: '/Services/Sales.aspx',
         destination: '/appliances',
@@ -83,12 +99,10 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
-      // Redirect other /Services/* subpaths
-      {
-        source: '/Services/:path+',
-        destination: '/services',
-        permanent: true,
-      },
+      // IMPORTANT: Only redirect if path matches /Services/* (capital S) - NOT /services/*
+      // Use has condition to ensure we only redirect actual old URLs
+      // Note: Next.js redirects are case-insensitive, so we can't use :path+ here
+      // Instead, handle specific old /Services/* paths individually
       
       // Only redirect if there's a subpath after Appliances (like /Appliances/About)
       {
@@ -97,22 +111,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       
-      // Redirect old maintenance paths (order matters - more specific first)
-      {
-        source: '/Maintenance/Service/:path*',
-        destination: '/request-service',
-        permanent: true,
-      },
-      {
-        source: '/Maintenance/Contact/:path*',
-        destination: '/contact',
-        permanent: true,
-      },
-      {
-        source: '/Maintenance/:path*',
-        destination: '/services/handyman',
-        permanent: true,
-      },
       
       // Redirect old UserAccount paths (old registration/login pages)
       {
@@ -140,7 +138,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       
-      // Redirect old Kitchen paths
+      // Redirect old Kitchen/Renovations paths (order matters - specific before wildcard)
+      // Note: /Kitchen → /services/renovations is handled by middleware (case-sensitive redirect)
       {
         source: '/Kitchen/Service/KitchenServiceRequest.aspx',
         destination: '/request-service',
@@ -152,7 +151,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/Kitchen/:path*',
+        source: '/Kitchen/:path+',
+        destination: '/services/renovations',
+        permanent: true,
+      },
+      // Also handle Renovations (plural) variations
+      {
+        source: '/Renovations/:path+',
+        destination: '/services/renovations',
+        permanent: true,
+      },
+      {
+        source: '/Renovation/:path+',
         destination: '/services/renovations',
         permanent: true,
       },

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
@@ -654,7 +655,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4 flex-grow">
                   Transform your home with our expert renovation and remodeling services. From kitchen makeovers to bathroom upgrades, we bring your vision to life with quality craftsmanship and attention to detail.
                 </p>
-                <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+                <Link href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</Link>
               </div>
             </div>
 
@@ -680,7 +681,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4 flex-grow">
                   Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
                 </p>
-                <a href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+                <Link href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</Link>
               </div>
             </div>
 
@@ -706,7 +707,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4 flex-grow">
                   From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services.
                 </p>
-                <a href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</a>
+                <Link href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</Link>
               </div>
             </div>
           </div>
