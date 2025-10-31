@@ -16,20 +16,10 @@ export function middleware(request: NextRequest) {
   
   const isProduction = !isDevelopment && (hostname === 'bettarservices.com' || hostname?.endsWith('.bettarservices.com'));
 
-  // Canonical domain: bettarservices.com (non-www)
-  const canonicalHost = 'bettarservices.com';
-
   // Only apply production redirects in production
+  // Note: www → non-www redirects should be handled at DNS/Vercel level to avoid loops
   if (isProduction) {
-    // 1. Redirect www to non-www (if www is present)
-    if (hostname && hostname.startsWith('www.')) {
-      const url = request.nextUrl.clone();
-      url.hostname = canonicalHost;
-      url.protocol = 'https:';
-      return NextResponse.redirect(url, 301); // Permanent redirect
-    }
-
-    // 2. Redirect HTTP to HTTPS
+    // Redirect HTTP to HTTPS (but not www → non-www, handled by Vercel)
     if (protocol === 'http:') {
       const url = request.nextUrl.clone();
       url.protocol = 'https:';
