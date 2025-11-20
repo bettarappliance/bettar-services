@@ -587,14 +587,11 @@ export default function Home() {
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-6">
               {/* Refrigerators */}
               <Link href="/appliances#refrigerators" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/ref/fri2.2.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/ref/fri2.jpg"
                     alt="Refrigerators"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Refrigerators</span>
@@ -602,14 +599,11 @@ export default function Home() {
 
               {/* Dishwasher */}
               <Link href="/appliances#dishwasher" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/dishwasher/kitchenaid1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/dishwasher/kitchenaid1.jpg"
                     alt="Dishwasher"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Dishwasher</span>
@@ -617,14 +611,11 @@ export default function Home() {
 
               {/* Range */}
               <Link href="/appliances#range" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/range/kitchenaid1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/range/kitchenaid1.jpg"
                     alt="Range"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Range</span>
@@ -632,14 +623,11 @@ export default function Home() {
 
               {/* Cooktops */}
               <Link href="/appliances#cooktops" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/cooktop/maytag1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/cooktop/maytag1.jpg"
                     alt="Cooktops"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Cooktops</span>
@@ -647,14 +635,11 @@ export default function Home() {
 
               {/* Microwave */}
               <Link href="/appliances#microwave" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/microwave/ge1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/microwave/ge1.jpg"
                     alt="Microwave"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Microwave</span>
@@ -662,14 +647,11 @@ export default function Home() {
 
               {/* Washers */}
               <Link href="/appliances#washers" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/washers/ge1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/washers/ge1.jpg"
                     alt="Washers"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Washers</span>
@@ -677,14 +659,11 @@ export default function Home() {
 
               {/* Clothes Dryer */}
               <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  <Image
-                    src="/appliances/dryer/maytag1.jpg"
+                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                  <img
+                    src="/appliances-images/dryer/maytag1.jpg"
                     alt="Clothes Dryer"
-                    width={128}
-                    height={128}
-                    className="object-cover w-full h-full rounded-full"
-                    unoptimized
+                    className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
                 <span className="text-gray-800 font-medium text-center text-sm">Clothes Dryer</span>
