@@ -565,6 +565,134 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Shop From Top Categories Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                Shop From <span className="text-[#002D72]">Top Categories</span>
+              </h2>
+              <div className="h-1 w-32 bg-[#002D72] mt-2"></div>
+            </div>
+            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-lg mt-4 md:mt-0 flex items-center group">
+              View All
+              <svg className="w-5 h-5 ml-2 text-[#002D72] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+          
+          {/* Categories Grid - Responsive Grid */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-6">
+              {/* Refrigerators */}
+              <Link href="/appliances#refrigerators" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/ref/fri2.2.jpg"
+                    alt="Refrigerators"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Refrigerators</span>
+              </Link>
+
+              {/* Dishwasher */}
+              <Link href="/appliances#dishwasher" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/dishwasher/kitchenaid1.jpg"
+                    alt="Dishwasher"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Dishwasher</span>
+              </Link>
+
+              {/* Range */}
+              <Link href="/appliances#range" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/range/kitchenaid1.jpg"
+                    alt="Range"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Range</span>
+              </Link>
+
+              {/* Cooktops */}
+              <Link href="/appliances#cooktops" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/cooktop/maytag1.jpg"
+                    alt="Cooktops"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Cooktops</span>
+              </Link>
+
+              {/* Microwave */}
+              <Link href="/appliances#microwave" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/microwave/ge1.jpg"
+                    alt="Microwave"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Microwave</span>
+              </Link>
+
+              {/* Washers */}
+              <Link href="/appliances#washers" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/washers/ge1.jpg"
+                    alt="Washers"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Washers</span>
+              </Link>
+
+              {/* Clothes Dryer */}
+              <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
+                <div className="w-32 h-32 rounded-full bg-gray-100 border-2 border-gray-300 flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  <Image
+                    src="/appliances/dryer/maytag1.jpg"
+                    alt="Clothes Dryer"
+                    width={128}
+                    height={128}
+                    className="object-cover w-full h-full rounded-full"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-gray-800 font-medium text-center text-sm">Clothes Dryer</span>
+              </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Appliance Sales Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">

@@ -9,6 +9,7 @@ interface FormData {
   phone: string;
   service: string;
   message: string;
+  website: string; // honeypot
 }
 
 export default function ContactForm() {
@@ -17,12 +18,15 @@ export default function ContactForm() {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
+    website: '' // honeypot
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -35,8 +39,35 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    // Honeypot: if this has any value, it's likely a bot
+    if (formData.website && formData.website.trim() !== '') {
+      console.log('Spam detected via honeypot, not sending.');
+      setIsSubmitting(false);
+      setSubmitStatus('success'); // optional: pretend success
+      return;
+    }
+
+    // Basic validation
+    if (!formData.name.trim()) {
+      alert('Please enter your full name.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      alert('Please enter a valid email address.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.message.trim() || formData.message.trim().length < 5) {
+      alert('Please enter a brief message.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // EmailJS configuration
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id_here';
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
@@ -54,13 +85,13 @@ export default function ContactForm() {
         phone: formData.phone,
         service: formData.service,
         message: formData.message,
-        to_email: 'info@bettarappliance.com' // Your business email
+        to_email: 'info@bettarappliance.com'
       };
 
       console.log('Sending email with params:', templateParams);
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
       console.log('EmailJS result:', result);
-      
+
       if (result.status === 200) {
         setSubmitStatus('success');
         setFormData({
@@ -68,7 +99,8 @@ export default function ContactForm() {
           email: '',
           phone: '',
           service: '',
-          message: ''
+          message: '',
+          website: ''
         });
       } else {
         throw new Error('Email sending failed');
@@ -83,7 +115,6 @@ export default function ContactForm() {
 
   return (
     <div suppressHydrationWarning={true}>
-
       {submitStatus === 'success' && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
           ✅ Thank you! We&apos;ve received your message and will get back to you soon.
@@ -97,6 +128,17 @@ export default function ContactForm() {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Honeypot field */}
+        <input
+          type="text"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+          style={{ display: 'none' }}
+          autoComplete="off"
+          tabIndex={-1}
+        />
+
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">

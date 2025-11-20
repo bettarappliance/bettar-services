@@ -8,7 +8,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#002D72] text-white py-4 px-6">
+    <header className="sticky top-0 z-50 bg-[#002D72] text-white py-4 px-6 shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
@@ -25,7 +25,57 @@ export default function Header() {
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link href="/" className="text-white hover:text-gray-300 transition-colors">Home</Link>
-          <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors">Appliances</Link>
+          <div className="relative group">
+            <div className="flex items-center">
+              <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors flex items-center">
+                Appliances
+              </Link>
+              <svg className="w-4 h-4 ml-1 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            {/* Dropdown Menu - shows on hover and stays open when hovering over menu items */}
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-white rounded-lg shadow-lg py-2">
+                <Link href="/appliances#refrigerators" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Refrigerators
+                </Link>
+                <Link href="/appliances#ice-maker" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Ice Maker
+                </Link>
+                <Link href="/appliances#dishwasher" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Dishwasher
+                </Link>
+                <Link href="/appliances#garbage-disposer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Garbage Disposer
+                </Link>
+                <Link href="/appliances#trash-compactor" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Trash Compactor
+                </Link>
+                <Link href="/appliances#range" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Range
+                </Link>
+                <Link href="/appliances#cooktops" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Cooktops
+                </Link>
+                <Link href="/appliances#microwave" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Microwave
+                </Link>
+                <Link href="/appliances#washers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Washers
+                </Link>
+                <Link href="/appliances#clothes-dryer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Clothes Dryer
+                </Link>
+                <Link href="/appliances#washer-dryer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Washer-Dryer
+                </Link>
+                <Link href="/appliances#parts-accessories" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">
+                  Parts & Accessories
+                </Link>
+              </div>
+            </div>
+          </div>
           <div className="relative group">
             <div className="flex items-center">
               <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center">
