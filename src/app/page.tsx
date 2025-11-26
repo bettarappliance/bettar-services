@@ -786,9 +786,9 @@ export default function Home() {
               <div className="p-6 pt-10 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold text-[#002D72] mb-3">Plumbing and Heating</h2>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas.
+                  Keep your home comfortable year-round with our professional plumbing and heating services. From emergency repairs to system installations, we ensure your home&apos;s comfort and safety. Expert heating maintenance in Kensington, MD and surrounding areas. Professional plumbing company in Kensington, MD providing water heater service and heating services.
                 </p>
-                <Link href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</Link>
+                <Link href="/services/plumbing" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">Plumbing Company Kensington MD →</Link>
               </div>
             </div>
 
@@ -812,9 +812,9 @@ export default function Home() {
               <div className="p-6 pt-10 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services.
+                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services. Local handyman in Kensington MD and Bethesda handyman services available.
                 </p>
-                <Link href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">View Service →</Link>
+                <Link href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">Handyman Services Kensington MD →</Link>
               </div>
             </div>
           </div>

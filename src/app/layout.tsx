@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bettar Services - Home Improvement & Appliance Services",
-  description: "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945. Expert contractors for kitchen remodeling, bathroom renovation, plumbing repairs, heating services, and appliance sales. Serving Bethesda, Chevy Chase, and Northwest DC.",
-  keywords: "home improvement, renovation, plumbing, heating, handyman, appliance repair, appliance sales, kitchen remodeling, bathroom renovation, home services, Kensington MD, Bethesda, Chevy Chase, Washington DC",
+  title: "Bettar Appliance | Bettar Services - Appliance Sales & Repair | Kensington MD",
+  description: "Bettar Appliance - Your trusted source for appliance sales, repair, and installation in Kensington, MD. Bettar Services provides professional home improvement, plumbing, handyman, and renovation services. Family-owned since 1945. Serving Bethesda, Chevy Chase, and Northwest DC. Call 301-949-2500.",
+  keywords: "bettar appliance, bettar appliances, bettar inc, bettar services, appliance sales, appliance repair, appliance installation, home improvement, renovation, plumbing, heating, handyman, kitchen remodeling, bathroom renovation, Kensington MD, Bethesda, Chevy Chase, Washington DC",
   authors: [{ name: "Bettar Services" }],
   creator: "Bettar Services",
   publisher: "Bettar Services",
