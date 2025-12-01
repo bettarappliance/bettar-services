@@ -1296,6 +1296,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Better Services & Better Appliances Section - Targeting Typo Queries */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              Looking for <span className="text-[#002D72]">Better Services</span>? You Found <span className="text-[#002D72]">Bettar</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              When you search for "better services" or "better appliances," you're looking for quality, reliability, and expertise. That's exactly what Bettar Services delivers. Better services, better appliances, better results - that's the Bettar difference.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-[#F4F7FF] p-8 rounded-lg">
+              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                Better Services - Professional Home Solutions
+              </h3>
+              <p className="text-gray-600 mb-4">
+                When you need better services for your home, Bettar Services provides professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945, we deliver better service through experience, expertise, and commitment to quality.
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Better home repair services</li>
+                <li>• Better plumbing and heating services</li>
+                <li>• Better handyman services</li>
+                <li>• Better renovation and remodeling</li>
+              </ul>
+            </div>
+            
+            <div className="bg-[#F4F7FF] p-8 rounded-lg">
+              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                Better Appliances - Quality & Service
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Looking for better appliances? Bettar Appliances offers quality appliances from top brands with professional installation, repair, and maintenance. Better appliance near me? We're your local appliance store in Kensington, MD, providing better appliance sales and service since 1945.
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Better appliance sales and selection</li>
+                <li>• Better appliance repair service</li>
+                <li>• Better appliance installation</li>
+                <li>• Better appliance near me - local service</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose BETTAR Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -1408,6 +1454,62 @@ export default function Home() {
                 >
                   Request Service
                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Awards & Recognition Section */}
+      <section className="py-20 bg-[#F4F7FF]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              Awards & <span className="text-[#002D72]">Recognition</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto whitespace-nowrap">
+              Our commitment to excellence has been recognized by industry leaders and our valued customers
+            </p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+            {/* Angi Award Badge */}
+            <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <div className="flex flex-col items-center">
+                <Image
+                  src="/angi.png"
+                  alt="Angi Super Service Award 2025"
+                  width={220}
+                  height={220}
+                  className="object-contain mb-4"
+                />
+                <h3 className="text-xl font-bold text-[#002D72] mb-2">
+                  2025 Super Service Award
+                </h3>
+                <p className="text-center text-gray-600 text-sm max-w-xs">
+                  Recognized by Angi for outstanding customer service and quality workmanship
+                </p>
+              </div>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-col gap-6">
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
+                <div className="text-4xl font-bold text-[#002D72] mb-2">80+</div>
+                <p className="text-gray-700 font-medium">Years of Excellence</p>
+                <p className="text-gray-500 text-sm mt-1">Family-owned since 1945</p>
+              </div>
+              
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
+                <div className="text-4xl font-bold text-[#002D72] mb-2">30K+</div>
+                <p className="text-gray-700 font-medium">Satisfied Customers</p>
+                <p className="text-gray-500 text-sm mt-1">Trusted by the community</p>
+              </div>
+              
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
+                <div className="text-4xl font-bold text-[#002D72] mb-2">100%</div>
+                <p className="text-gray-700 font-medium">Fully Insured</p>
+                <p className="text-gray-500 text-sm mt-1">Licensed & bonded</p>
               </div>
             </div>
           </div>

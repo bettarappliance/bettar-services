@@ -76,10 +76,10 @@ export default function Handyman() {
               Handyman Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Handyman Services in <span className="text-[#002D72]">Kensington MD</span> & <span className="text-[#002D72]">Bethesda</span>
+              Handyman <span className="text-[#002D72]">Kensington MD</span> | <span className="text-[#002D72]">Bethesda Handyman</span> | Same-Day Service
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Expert handyman services in Kensington, MD and Bethesda. From small repairs to major projects, our skilled handymen handle all your home maintenance and improvement needs.
+              Professional handyman in Kensington, MD and Bethesda. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Local handyman near you. Licensed & insured. Call 301-949-2500.
             </p>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Handyman Services Kensington MD | Bethesda Handyman | Local Handyman Near Me",
-  description: "Expert handyman services in Kensington, MD and Bethesda. Local handyman for home repairs, furniture assembly, painting, and maintenance. Commercial handyman services available. Same-day service. Call 301-949-2500.",
-  keywords: "handyman kensington md, bethesda handyman services, local handyman bethesda, handyman bethesda, local handyman near me, commercial handyman bethesda, handyman services bethesda, home repair services, furniture assembly, painting services, general repairs, Kensington Maryland, Bethesda Maryland",
+  title: "Handyman Kensington MD | Bethesda Handyman | Local Handyman Services | Same-Day Service",
+  description: "Professional handyman in Kensington, MD and Bethesda. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Local handyman near you. Licensed & insured. Call 301-949-2500 for immediate service.",
+  keywords: "handyman kensington md, handyman bethesda, bethesda handyman, bethesda handyman services, local handyman bethesda, local handyman near me, handyman services bethesda, handyman services bethesda md, commercial handyman bethesda, home repair services, furniture assembly, painting services, general repairs, Kensington Maryland, Bethesda Maryland, handyman services dc, dc home repair services",
   alternates: {
     canonical: "https://bettarservices.com/services/handyman",
   },
