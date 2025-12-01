@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Script from "next/script";
 import RequestServiceModal from "../../components/RequestServiceModal";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -19,8 +20,61 @@ export default function Appliances() {
     console.log("Searching for:", searchQuery);
   };
 
+  // FAQ Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you provide appliance sales and repair services in Kensington, MD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we are a trusted appliance store in Kensington, MD. We provide comprehensive appliance services including appliance sales, appliance repair, appliance installation, and maintenance for all major brands including refrigerators, washers, dryers, dishwashers, ranges, and more throughout Kensington and surrounding areas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of appliances do you service in Kensington, MD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We service all major appliance brands and types in Kensington, MD including refrigerators, washers, dryers, dishwashers, ranges, cooktops, microwaves, garbage disposers, trash compactors, and more. Our certified technicians are experts in diagnosing and repairing a wide range of appliance issues."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer same-day appliance repair service in Kensington, MD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we offer same-day appliance repair service in Kensington, MD for most appliance repairs. We understand the urgency of appliance breakdowns and strive to provide fast and efficient service to get your appliances running again quickly. Call 301-949-2500 to schedule same-day service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do your appliance services cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our appliance sales and repair services cover Kensington, MD, Bethesda, Chevy Chase, Silver Spring, and throughout Montgomery County. We also serve Northwest Washington DC and surrounding communities in the greater DC metropolitan area."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide appliance installation services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide professional appliance installation services in Kensington, MD. When you purchase appliances from Bettar Appliances, we offer expert installation to ensure your new appliances are properly set up and functioning correctly. We also provide installation for appliances purchased elsewhere."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <Script
+        id="appliances-faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -31,10 +85,10 @@ export default function Appliances() {
               Appliances Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              <span className="text-[#002D72]">Bettar Appliance</span> - Sales, Repair & Installation
+              Appliance Store & <span className="text-[#002D72]">Appliance Repair</span> in Kensington MD
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Bettar Appliances offers professional appliance sales, repair, and installation services in Kensington, MD. Your trusted Bettar Appliance source since 1945. We service all major brands and offer same-day service.
+              Professional appliance store in Kensington, MD offering expert appliance sales, repair, and installation services. Your trusted appliance store serving Kensington, Bethesda, and Chevy Chase since 1945. Same-day appliance repair service available.
             </p>
           </div>
         </div>
@@ -387,6 +441,139 @@ export default function Appliances() {
         </div>
       </section>
 
+      {/* Location-Specific Services Section - Minimalist Design */}
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight">
+              Appliance Store & Appliance Services in Kensington, MD
+            </h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
+              Trusted appliance store serving Kensington, MD with expert appliance sales, appliance repair, and appliance installation services.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="border-l-2 border-[#002D72] pl-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                Appliance Store in Kensington, MD
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                As a leading appliance store in Kensington, MD, we provide quality appliances from top brands including Whirlpool, KitchenAid, GE, Maytag, Samsung, and more. Our appliance store offers professional appliance sales with installation and warranty coverage.
+              </p>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Appliance sales Kensington, MD
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Appliance store Kensington, MD
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Refrigerator sales and installation
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Washer and dryer sales
+                </li>
+              </ul>
+            </div>
+            
+            <div className="border-l-2 border-[#002D72] pl-8">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                Appliance Repair in Kensington, MD
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Professional appliance repair in Kensington, MD including refrigerator repair, washer repair, dryer repair, dishwasher repair, and range repair. Our certified technicians provide same-day service for most appliance repairs.
+              </p>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Appliance repair Kensington, MD
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Refrigerator repair Kensington, MD
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Washer repair Kensington, MD
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
+                  Same-day appliance service
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Appliance Services in Kensington Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+                Appliance Services in Kensington, MD
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                From appliance sales to emergency repairs, our certified technicians provide reliable appliance services throughout Kensington, MD, Bethesda, and the surrounding areas.
+              </p>
+              <p className="text-lg text-gray-600 mb-6">
+                We service all major appliance brands and offer same-day service for most appliance repairs. Whether you need refrigerator repair, washer repair, or dishwasher installation, our team is ready to help.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Appliance repair and maintenance</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Appliance sales and installation</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Same-day appliance service</span>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">Emergency appliance repair</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <Image
+                src="/appliances.jpg"
+                alt="Appliance Services in Kensington MD"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="py-20 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-6">
@@ -395,7 +582,7 @@ export default function Appliances() {
               Our <span className="text-[#002D72]">Appliance Services</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive appliance solutions for your home
+              Comprehensive appliance solutions for your home in Kensington, MD
             </p>
           </div>
           
@@ -440,14 +627,69 @@ export default function Appliances() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-[#F4F7FF]">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Do you provide appliance sales and repair services in Kensington, MD?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we are a trusted appliance store in Kensington, MD. We provide comprehensive appliance services including appliance sales, appliance repair, appliance installation, and maintenance for all major brands including refrigerators, washers, dryers, dishwashers, ranges, and more throughout Kensington and surrounding areas.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                What types of appliances do you service in Kensington, MD?
+              </h3>
+              <p className="text-gray-600">
+                We service all major appliance brands and types in Kensington, MD including refrigerators, washers, dryers, dishwashers, ranges, cooktops, microwaves, garbage disposers, trash compactors, and more. Our certified technicians are experts in diagnosing and repairing a wide range of appliance issues.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Do you offer same-day appliance repair service in Kensington, MD?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we offer same-day appliance repair service in Kensington, MD for most appliance repairs. We understand the urgency of appliance breakdowns and strive to provide fast and efficient service to get your appliances running again quickly. Call 301-949-2500 to schedule same-day service.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                What areas do your appliance services cover?
+              </h3>
+              <p className="text-gray-600">
+                Our appliance sales and repair services cover Kensington, MD, Bethesda, Chevy Chase, Silver Spring, and throughout Montgomery County. We also serve Northwest Washington DC and surrounding communities in the greater DC metropolitan area.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Do you provide appliance installation services?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we provide professional appliance installation services in Kensington, MD. When you purchase appliances from Bettar Appliances, we offer expert installation to ensure your new appliances are properly set up and functioning correctly. We also provide installation for appliances purchased elsewhere.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-[#002D72]">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Need Appliance Service?
+            Need Appliance Service in Kensington, MD?
           </h2>
           <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Don&apos;t let appliance problems disrupt your day. Our expert technicians are ready to help with fast, reliable service.
+            Don&apos;t let appliance problems disrupt your day. Our expert technicians are ready to help with fast, reliable appliance repair and service in Kensington, MD.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
