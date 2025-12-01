@@ -17,6 +17,60 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // Prevent indexing of Next.js static assets
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        // Prevent indexing of font files
+        source: '/:path*\\.(woff|woff2|ttf|otf|eot)',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        // Prevent indexing of favicon and icon files
+        source: '/:path*\\.(ico|svg)',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        // Prevent indexing of old UserAccount pages
+        source: '/UserAccount/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        // Prevent indexing of old Maintenance/Service pages
+        source: '/Maintenance/Service/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // Redirect old maintenance paths (order matters - specific before wildcard)
@@ -114,6 +168,11 @@ const nextConfig: NextConfig = {
       
       // Redirect old UserAccount paths (old registration/login pages)
       {
+        source: '/UserAccount/SignIn.aspx',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
         source: '/UserAccount/RegisterUserAccountMember.aspx',
         destination: '/contact',
         permanent: true,
@@ -168,7 +227,7 @@ const nextConfig: NextConfig = {
       },
       
       // Redirect malformed tracking URLs (old email links with query parameters)
-      // These are old tracking links that should redirect to home page
+      // These are old tracking links that should redirect to clean URLs
       // Match URLs with E= and T= query parameters (common in old email tracking)
       {
         source: '/:path*',
