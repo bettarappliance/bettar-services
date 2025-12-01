@@ -161,9 +161,11 @@ export default function Appliances() {
               {/* Refrigerators */}
               <Link href="/appliances#refrigerators" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/ref/fri2.jpg"
                     alt="Refrigerators"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -173,9 +175,11 @@ export default function Appliances() {
               {/* Dishwasher */}
               <Link href="/appliances#dishwasher" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/dishwasher/kitchenaid1.jpg"
                     alt="Dishwasher"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -185,9 +189,11 @@ export default function Appliances() {
               {/* Range */}
               <Link href="/appliances#range" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/range/kitchenaid1.jpg"
                     alt="Range"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -197,9 +203,11 @@ export default function Appliances() {
               {/* Cooktops */}
               <Link href="/appliances#cooktops" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/cooktop/maytag1.jpg"
                     alt="Cooktops"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -209,9 +217,11 @@ export default function Appliances() {
               {/* Microwave */}
               <Link href="/appliances#microwave" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/microwave/ge1.jpg"
                     alt="Microwave"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -221,9 +231,11 @@ export default function Appliances() {
               {/* Washers */}
               <Link href="/appliances#washers" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/washers/ge1.jpg"
                     alt="Washers"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -233,9 +245,11 @@ export default function Appliances() {
               {/* Clothes Dryer */}
               <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <img
+                  <Image
                     src="/appliances-images/dryer/maytag1.jpg"
                     alt="Clothes Dryer"
+                    width={96}
+                    height={96}
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
@@ -269,9 +283,11 @@ export default function Appliances() {
                   10% OFF
                 </div>
                 <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <img
+                  <Image
                     src="/appliances-images/ref/fri2.jpg"
                     alt="Refrigerator Deal"
+                    width={200}
+                    height={192}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -293,9 +309,11 @@ export default function Appliances() {
                   13% OFF
                 </div>
                 <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <img
+                  <Image
                     src="/appliances-images/dishwasher/kitchenaid1.jpg"
                     alt="Dishwasher Deal"
+                    width={200}
+                    height={192}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -317,9 +335,11 @@ export default function Appliances() {
                   26% OFF
                 </div>
                 <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <img
+                  <Image
                     src="/appliances-images/range/kitchenaid1.jpg"
                     alt="Range Deal"
+                    width={200}
+                    height={192}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -341,9 +361,11 @@ export default function Appliances() {
                   15% OFF
                 </div>
                 <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <img
+                  <Image
                     src="/appliances-images/washers/GTW385ASWWS-1.png"
                     alt="Washer Deal"
+                    width={200}
+                    height={192}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -365,9 +387,11 @@ export default function Appliances() {
                   24% OFF
                 </div>
                 <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <img
+                  <Image
                     src="/appliances-images/dryer/maytag1.png"
                     alt="Dryer Deal"
+                    width={200}
+                    height={192}
                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
