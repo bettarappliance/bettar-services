@@ -122,7 +122,7 @@ export default function AdminPage() {
 
     try {
       // Prepare data for Firestore
-      const applianceData: any = {
+      const applianceData: Record<string, string | number | boolean | string[]> = {
         name: formData.name.trim(),
         brand: formData.brand.trim(),
         category: formData.category.trim(),
@@ -383,7 +383,7 @@ export default function AdminPage() {
 
               {additionalImages.length === 0 ? (
                 <p className="text-sm text-gray-500">
-                  No additional images added. Click "Add Image" to add more images.
+                  No additional images added. Click &quot;Add Image&quot; to add more images.
                 </p>
               ) : (
                 <div className="space-y-3">
