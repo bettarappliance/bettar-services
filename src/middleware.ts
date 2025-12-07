@@ -17,6 +17,16 @@ export function middleware(req: NextRequest) {
     }
   });
 
+  // CRITICAL: Allow /appliances/admin to pass through FIRST (before ANY other logic)
+  // This must be checked before any redirect logic to prevent conflicts
+  const normalizedPath = pathname.toLowerCase();
+  if (normalizedPath === '/appliances/admin' || normalizedPath.startsWith('/appliances/admin/')) {
+    console.log('[Middleware] Allowing /appliances/admin to pass through');
+    return NextResponse.next();
+  }
+  
+  console.log('[Middleware] Processing path:', pathname);
+
   // If we removed tracking parameters, redirect to clean URL
   if (hasTrackingParams) {
     url.search = searchParams.toString();
@@ -49,6 +59,14 @@ export function middleware(req: NextRequest) {
     const res = NextResponse.redirect(redirectUrl, 307);
     res.headers.set('Cache-Control', 'no-store');
     return res;
+  }
+
+  // Redirect old /Appliances/* paths (capitalized, not lowercase)
+  // Only match paths that start with capital 'A' to avoid catching new routes
+  // This will match /Appliances/About but NOT /appliances/admin
+  if (pathname.startsWith('/Appliances/')) {
+    const redirectUrl = new URL('/appliances', req.url);
+    return NextResponse.redirect(redirectUrl, 301);
   }
 
   // Add noindex headers for old UserAccount and Maintenance/Service paths

@@ -2,18 +2,52 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Script from "next/script";
-import RequestServiceModal from "../../components/RequestServiceModal";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ApplianceSidebar from "../../components/ApplianceSidebar";
 
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../lib/firebase";
+import ApplianceRequestModal from "../../components/ApplianceRequestModal";
+
+type BettarAppliance = {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  imageUrl: string;
+  priceFrom: number; // Current price
+  priceOld?: number;
+  discountPercent?: number;
+  shortDescription?: string;
+  // Additional fields from your Firestore
+  capacityKw?: number;
+  inStock?: boolean;
+  roomSize?: string;
+  supplyType?: string; // e.g., "Gas", "Electric"
+  type?: string; // Subcategory or appliance type
+  // Optional recommended fields
+  modelNumber?: string;
+  color?: string;
+  energyRating?: string;
+  warranty?: string;
+  features?: string[];
+  fullDescription?: string;
+  images?: string[]; // Multiple images
+  categorySlug?: string;
+};
+
 export default function Appliances() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // UI state
   const [searchQuery, setSearchQuery] = useState("");
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
+
+  // Firestore state
+  const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
+  const [loadingAppliances, setLoadingAppliances] = useState(true);
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
@@ -21,715 +55,540 @@ export default function Appliances() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle search logic here
+    // nothing extra needed – grid below already reacts to searchQuery
     console.log("Searching for:", searchQuery);
   };
+
+  // Fetch appliances from Firestore
+  useEffect(() => {
+    const fetchAppliances = async () => {
+      try {
+        const ref = collection(db, "appliances");
+        const snap = await getDocs(ref);
+        const items: BettarAppliance[] = snap.docs.map((doc) => {
+          const data = doc.data() as Omit<BettarAppliance, "id">;
+          return { id: doc.id, ...data };
+        });
+        
+        // Sort by discount percentage (highest first)
+        const sortedByDiscount = items.sort((a, b) => {
+          const discountA = a.discountPercent || 0;
+          const discountB = b.discountPercent || 0;
+          return discountB - discountA; // Descending order
+        });
+        
+        setAppliances(sortedByDiscount);
+      } catch (error) {
+        console.error("Error loading appliances from Firestore", error);
+      } finally {
+        setLoadingAppliances(false);
+      }
+    };
+
+    fetchAppliances();
+  }, []);
+
+  const filteredAppliances =
+    searchQuery.trim().length === 0
+      ? appliances
+      : appliances
+          .filter((item) => {
+            const q = searchQuery.toLowerCase().trim();
+            const name = item.name?.toLowerCase() || "";
+            const brand = item.brand?.toLowerCase() || "";
+            const category = item.category?.toLowerCase() || "";
+            const description = item.shortDescription?.toLowerCase() || "";
+            const type = item.type?.toLowerCase() || "";
+            
+            return (
+              name.includes(q) ||
+              brand.includes(q) ||
+              category.includes(q) ||
+              description.includes(q) ||
+              type.includes(q)
+            );
+          })
+          .sort((a, b) => {
+            // Maintain discount sorting even after filtering
+            const discountA = a.discountPercent || 0;
+            const discountB = b.discountPercent || 0;
+            return discountB - discountA;
+          });
 
   // FAQ Schema for SEO
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
+    mainEntity: [
       {
         "@type": "Question",
-        "name": "Do you provide appliance sales and repair services in Kensington, MD?",
-        "acceptedAnswer": {
+        name: "Do you provide appliance sales and repair in Kensington, MD?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Yes, we are a trusted appliance store in Kensington, MD. We provide comprehensive appliance services including appliance sales, appliance repair, appliance installation, and maintenance for all major brands including refrigerators, washers, dryers, dishwashers, ranges, and more throughout Kensington and surrounding areas."
-        }
+          text: "Yes. Bettar Appliance provides appliance sales, delivery, installation, and repair in Kensington and surrounding Maryland suburbs.",
+        },
       },
       {
         "@type": "Question",
-        "name": "What types of appliances do you service in Kensington, MD?",
-        "acceptedAnswer": {
+        name: "Which appliances can you install and service?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "We service all major appliance brands and types in Kensington, MD including refrigerators, washers, dryers, dishwashers, ranges, cooktops, microwaves, garbage disposers, trash compactors, and more. Our certified technicians are experts in diagnosing and repairing a wide range of appliance issues."
-        }
+          text: "We supply and install refrigerators, dishwashers, ranges, cooktops, wall ovens, washers, dryers, microwaves, and more. We can also install customer-supplied units.",
+        },
       },
       {
         "@type": "Question",
-        "name": "Do you offer same-day appliance repair service in Kensington, MD?",
-        "acceptedAnswer": {
+        name: "Do you offer same-day or next-day appliance services?",
+        acceptedAnswer: {
           "@type": "Answer",
-          "text": "Yes, we offer same-day appliance repair service in Kensington, MD for most appliance repairs. We understand the urgency of appliance breakdowns and strive to provide fast and efficient service to get your appliances running again quickly. Call 301-949-2500 to schedule same-day service."
-        }
+          text: "Yes, subject to availability, we can often provide same-day or next-day appointments for urgent appliance repairs and installations.",
+        },
       },
-      {
-        "@type": "Question",
-        "name": "What areas do your appliance services cover?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Our appliance sales and repair services cover Kensington, MD, Bethesda, Chevy Chase, Silver Spring, and throughout Montgomery County. We also serve Northwest Washington DC and surrounding communities in the greater DC metropolitan area."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you provide appliance installation services?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, we provide professional appliance installation services in Kensington, MD. When you purchase appliances from Bettar Appliances, we offer expert installation to ensure your new appliances are properly set up and functioning correctly. We also provide installation for appliances purchased elsewhere."
-        }
-      }
-    ]
+    ],
   };
+
+  // Simple FAQ content for the accordion
+  const faqs = [
+    {
+      question: "Do you provide appliance sales and repair in Kensington, MD?",
+      answer:
+        "Yes. Bettar Appliance serves homeowners in Kensington and nearby areas with sales, installation, and repair for most major household appliances.",
+    },
+    {
+      question: "Which appliance brands do you install?",
+      answer:
+        "We work with a wide range of leading brands including Whirlpool, Maytag, GE, LG, Samsung, Frigidaire, KitchenAid, and more. If you already have a unit, we can install most customer-supplied appliances too.",
+    },
+    {
+      question: "How soon can you come out for a repair or install?",
+      answer:
+        "Appointment availability varies by season, but we aim for same-day or next-day service for urgent issues. Contact us and we’ll give you the earliest available time slot.",
+    },
+    {
+      question: "Do you remove old appliances?",
+      answer:
+        "Yes, we can remove and dispose of your old appliance as part of the new installation, subject to access and safety conditions.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
+      {/* FAQ schema for SEO */}
       <Script
         id="appliances-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 bg-[#F4F7FF]">
+      <section className="py-12 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-              Appliances Services
-            </div>
+          <div className="text-center mb-0">
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              <span className="text-[#002D72]">Appliance Repair Kensington MD</span> | Same-Day Service
+              <span className="text-[#002D72]">
+                Appliance Sales, Repair & Installation Kensington MD
+              </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Appliance repair in Kensington, MD. Same-day appliance repair service for refrigerators, washers, dryers, dishwashers, and ranges. Professional appliance store with sales, installation & repair. Licensed technicians. Call 301-949-2500 for immediate service.
+              Reliable appliance sales, installation, and repair for Kensington
+              homeowners. From fridges and dishwashers to washers and dryers,
+              Bettar Appliance keeps your home running smoothly.
             </p>
-          </div>
-        </div>
-      </section>
 
-      {/* Search Bar Section */}
-      <section className="py-8 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <form onSubmit={handleSearch} className="max-w-3xl mx-auto">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for appliances, brands, or models..."
-                className="w-full px-6 py-4 pl-14 pr-32 text-gray-800 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#002D72] transition-colors text-lg"
-              />
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-                <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
-                type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#002D72] text-white px-6 py-2 rounded-lg hover:bg-[#001f4d] transition-colors font-semibold"
+                onClick={() => setIsApplianceModalOpen(true)}
+                className="px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition shadow-lg hover:shadow-xl"
               >
-                Search
+                Buy Now
+              </button>
+              <button
+                onClick={() => {
+                  const faqSection = document.getElementById("faqs");
+                  if (faqSection) {
+                    faqSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className="px-8 py-3 rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] border-2 border-[#002D72] transition shadow-lg hover:shadow-xl"
+              >
+                View FAQs
               </button>
             </div>
-          </form>
-        </div>
-      </section>
-
-      {/* Main Content with Sidebar */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Left Sidebar - Categories */}
-            <div className="lg:col-span-1">
-              <ApplianceSidebar />
-            </div>
-
-            {/* Right Content Area */}
-            <div className="lg:col-span-3">
-              {/* Shop From Top Categories Section */}
-              <div className="py-16 bg-white">
-                <div className="w-full">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-                Shop From <span className="text-[#002D72]">Top Categories</span>
-              </h2>
-              <div className="h-1 w-32 bg-[#002D72] mt-2"></div>
-            </div>
-            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-lg mt-4 md:mt-0 flex items-center group">
-              View All
-              <svg className="w-5 h-5 ml-2 text-[#002D72] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-          
-          {/* Categories Grid - Responsive Grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-6">
-              {/* Refrigerators */}
-              <Link href="/appliances#refrigerators" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/ref/fri2.jpg"
-                    alt="Refrigerators"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Refrigerators</span>
-              </Link>
-
-              {/* Dishwasher */}
-              <Link href="/appliances#dishwasher" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/dishwasher/kitchenaid1.jpg"
-                    alt="Dishwasher"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Dishwasher</span>
-              </Link>
-
-              {/* Range */}
-              <Link href="/appliances#range" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/range/kitchenaid1.jpg"
-                    alt="Range"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Range</span>
-              </Link>
-
-              {/* Cooktops */}
-              <Link href="/appliances#cooktops" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/cooktop/maytag1.jpg"
-                    alt="Cooktops"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Cooktops</span>
-              </Link>
-
-              {/* Microwave */}
-              <Link href="/appliances#microwave" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/microwave/ge1.jpg"
-                    alt="Microwave"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Microwave</span>
-              </Link>
-
-              {/* Washers */}
-              <Link href="/appliances#washers" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/washers/ge1.jpg"
-                    alt="Washers"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Washers</span>
-              </Link>
-
-              {/* Clothes Dryer */}
-              <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
-                  <Image
-                    src="/appliances-images/dryer/maytag1.jpg"
-                    alt="Clothes Dryer"
-                    width={96}
-                    height={96}
-                    className="w-3/4 h-3/4 object-contain object-center"
-                  />
-                </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Clothes Dryer</span>
-              </Link>
-          </div>
-                </div>
-              </div>
-
-              {/* Best Deals on Appliances Section */}
-              <section className="py-16">
-                <div className="w-full">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-              Grab the best deal on <span className="text-[#002D72]">Appliances</span>
-            </h2>
-            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-lg mt-4 md:mt-0 flex items-center group">
-              View All
-              <svg className="w-5 h-5 ml-2 text-[#002D72] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-          
-          {/* Deals Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {/* Deal 1 - Refrigerator */}
-            <Link href="/appliances#refrigerators" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  10% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/ref/fri2.jpg"
-                    alt="Refrigerator Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">Frigidaire® Garage Ready Top Freezer Refrigerator-18 cu.ft </h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$809</span>
-                  <span className="text-gray-500 line-through text-sm">$899</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $90</p>
-              </div>
-            </Link>
-
-            {/* Deal 2 - Dishwasher */}
-            <Link href="/appliances#dishwasher" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  13% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/dishwasher/kitchenaid1.jpg"
-                    alt="Dishwasher Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">KitchenAid® Third Level Utensil Rack Dishwasher with 30+ Total Wash Jets in PrintShield™ Finish, 47 dBA</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$912</span>
-                  <span className="text-gray-500 line-through text-sm">$1,049</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $137</p>
-              </div>
-            </Link>
-
-            {/* Deal 3 - Range */}
-            <Link href="/appliances#range" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  26% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/range/kitchenaid1.jpg"
-                    alt="Range Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">KitchenAid® Smart Slide-in Gas Range with Convection Cooking Modes and 2-in-1 Burner- 5.0 Cu. Ft. </h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$2,105</span>
-                  <span className="text-gray-500 line-through text-sm">$2,849</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $744</p>
-              </div>
-            </Link>
-
-            {/* Deal 4 - Washer */}
-            <Link href="/appliances#washers" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  15% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/washers/GTW385ASWWS-1.png"
-                    alt="Washer Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">GE® ENERGY STAR 4.8 cu. ft. Capacity Smart Front Load ® Washer with UltraFresh Vent System with OdorBlock™ and Sanitize w/Oxi</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$639</span>
-                  <span className="text-gray-500 line-through text-sm">$749</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $110</p>
-              </div>
-            </Link>
-
-            {/* Deal 5 - Dryer */}
-            <Link href="/appliances#clothes-dryer" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  24% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/dryer/maytag1.png"
-                    alt="Dryer Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">Maytag® Smart Top Load Electric Dryer with Extra Power - 7.4 cu. ft.</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$874</span>
-                  <span className="text-gray-500 line-through text-sm">$1,149</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $275</p>
-              </div>
-            </Link>
-          </div>
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Appliance Sales Section */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-white rounded-[20px] shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-            <div className="grid md:grid-cols-2">
-              {/* Left Side - Appliances Image */}
-              <div className="h-96 md:h-auto relative">
-                <Image
-                  src="/appliances.jpg"
-                  alt="Bettar Appliance Sales and Services"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Right Side - Content Card */}
-              <div className="bg-[#002D72] p-10 md:p-16 text-white">
-                <div className="h-full flex flex-col justify-between">
-                  <div>
-                      <div className="flex items-center space-x-3 mb-4">
-                        <Image
-                          src="/bettarlogo.png"
-                          alt="Bettar Logo"
-                          width={40}
-                          height={40}
-                          className="w-10 h-10"
-                        />
-                        <span className="text-[#E0E0E0] text-1xl font-medium tracking-[2px] uppercase">BETTAR APPLIANCE</span>
-                      </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                      Sales and Services
-                    </h2>
-                    <div className="space-y-4 mb-8">
-                      <p className="text-white text-lg leading-relaxed">
-                        From refrigerators to washing machines, we provide expert repair services for all major appliance brands. Our certified technicians ensure your appliances run efficiently.
-                      </p>
-                      <p className="text-white text-lg leading-relaxed">
-                        We also offer quality appliance sales with professional installation and warranty coverage. Trust Bettar for all your appliance needs.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end md:justify-end">
-                    <button 
-                      onClick={() => setIsModalOpen(true)}
-                      className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-bold text-lg"
-                    >
-                      Shop Now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Location-Specific Services Section - Minimalist Design */}
-      <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight whitespace-nowrap">
-              Appliance Store & Appliance Services in Kensington, MD
-            </h2>
-            <p className="text-lg text-gray-500 mx-auto font-light leading-relaxed whitespace-nowrap">
-              Trusted appliance store serving Kensington, MD with expert appliance sales, appliance repair, and appliance installation services.
+            <p className="mt-4 text-sm text-gray-500">
+              Serving Kensington and surrounding suburbs. Licensed and insured.
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="border-l-2 border-[#002D72] pl-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                Appliance Store in Kensington, MD
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed ">
-                As a leading appliance store in Kensington, MD, we provide quality appliances from top brands including Whirlpool, KitchenAid, GE, Maytag, Samsung, and more. Our appliance store offers professional appliance sales with installation and warranty coverage.
-              </p>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Appliance sales Kensington, MD
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Appliance store Kensington, MD
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Refrigerator sales and installation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Washer and dryer sales
-                </li>
-              </ul>
-            </div>
-            
-            <div className="border-l-2 border-[#002D72] pl-8">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                Appliance Repair in Kensington, MD
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Professional appliance repair in Kensington, MD including refrigerator repair, washer repair, dryer repair, dishwasher repair, and range repair. Our certified technicians provide same-day service for most appliance repairs.
-              </p>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Appliance repair Kensington, MD
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Refrigerator repair Kensington, MD
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Washer repair Kensington, MD
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1.5 h-1.5 bg-[#002D72] rounded-full mr-3"></span>
-                  Same-day appliance service
-                </li>
-              </ul>
-            </div>
+
+
           </div>
         </div>
       </section>
 
-      {/* Appliance Services in Kensington Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-                Appliance Services in Kensington, MD
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                From appliance sales to emergency repairs, our certified technicians provide reliable appliance services throughout Kensington, MD, Bethesda, and the surrounding areas.
-              </p>
-              <p className="text-lg text-gray-600 mb-6">
-                We service all major appliance brands and offer same-day service for most appliance repairs. Whether you need refrigerator repair, washer repair, or dishwasher installation, our team is ready to help.
-              </p>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Appliance repair and maintenance</span>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Appliance sales and installation</span>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Same-day appliance service</span>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-[#002D72] rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-gray-700">Emergency appliance repair</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <Image
-                src="/appliances.jpg"
-                alt="Appliance Services in Kensington MD"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Main content with sidebar */}
+      <main className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">
+        {/* Sidebar */}
+        <aside className="w-full lg:w-64 xl:w-72 flex-shrink-0">
+          <ApplianceSidebar />
+        </aside>
 
-      {/* Services Section */}
-      <section className="py-20 bg-[#F4F7FF]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Our <span className="text-[#002D72]">Appliance Services</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive appliance solutions for your home in Kensington, MD
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="w-16 h-16 bg-[#002D72] rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+        {/* Right column */}
+        <div className="w-full flex-1 space-y-16">
+          {/* Search + intro */}
+          <section>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+                  Find the right appliance for your home
+                </h2>
+                <p className="text-gray-600">
+                  Browse our most popular appliances and current deals. Use the
+                  search bar to filter by brand, category, or model.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-black mb-4">Repair Services</h3>
-              <p className="text-gray-600">
-                Expert repair for all major appliance brands. Same-day service available for most repairs.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="w-16 h-16 bg-[#002D72] rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-black mb-4">Appliance Sales</h3>
-              <p className="text-gray-600">
-                Quality appliances from top brands with professional installation and warranty coverage.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center">
-              <div className="w-16 h-16 bg-[#002D72] rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-black mb-4">Maintenance</h3>
-              <p className="text-gray-600">
-                Regular maintenance services to keep your appliances running efficiently and extend their lifespan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-[#F4F7FF]">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-12 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {faqSchema.mainEntity.map((item, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                >
-                  <h3 className="text-xl font-bold text-[#002D72] pr-4">
-                    {item.name}
-                  </h3>
+              {/* Search bar */}
+              <form
+                onSubmit={handleSearch}
+                className="w-full md:w-96 flex items-center bg-white border-2 border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow focus-within:border-[#002D72]"
+              >
+                <div className="flex items-center px-4 text-gray-400">
                   <svg
-                    className={`w-6 h-6 text-[#002D72] flex-shrink-0 transition-transform ${
-                      openFAQ === index ? 'rotate-180' : ''
-                    }`}
+                    className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
                   </svg>
-                </button>
-                {openFAQ === index && (
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.acceptedAnswer.text}
-                    </p>
-                  </div>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search appliances..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="flex-grow px-2 py-3 text-sm outline-none placeholder:text-gray-500"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="px-3 text-gray-400 hover:text-gray-600 transition"
+                    aria-label="Clear search"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                 )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <button
+                  type="submit"
+                  className="px-6 py-3 bg-[#002D72] text-white text-sm font-semibold hover:bg-[#001a45] transition-colors"
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+          </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-[#002D72]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Need Appliance Service in Kensington, MD?
-          </h2>
-          <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Don&apos;t let appliance problems disrupt your day. Our expert technicians are ready to help with fast, reliable appliance repair and service in Kensington, MD.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/request-service"
-              className="bg-[#D32F2F] text-white px-8 py-4 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold text-lg"
-            >
-              Schedule Service
-            </a>
-            <a 
-              href="tel:301-949-2500"
-              className="bg-white text-[#002D72] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
-            >
-              Call 301-949-2500
-            </a>
+          {/* Top Categories (static – link anchors) */}
+          <section>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              Shop by Appliance Category
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                {
+                  label: "Refrigerators",
+                  href: "/appliances#refrigerators",
+                  image: "/appliances-images/ref/fri2.jpg",
+                },
+                {
+                  label: "Dishwashers",
+                  href: "/appliances#dishwasher",
+                  image: "/appliances-images/dishwasher/kitchenaid1.jpg",
+                },
+                {
+                  label: "Ranges",
+                  href: "/appliances#range",
+                  image: "/appliances-images/range/kitchenaid1.jpg",
+                },
+                {
+                  label: "Washers",
+                  href: "/appliances#clothes-washer",
+                  image: "/appliances-images/washers/GTW385ASWWS-1.png",
+                },
+                {
+                  label: "Dryers",
+                  href: "/appliances#clothes-dryer",
+                  image: "/appliances-images/dryer/maytag1.png",
+                },
+                {
+                  label: "Microwaves",
+                  href: "/appliances#microwave",
+                  image: "/appliances-images/microwave/ge1.jpg",
+                },
+                {
+                  label: "Cooktops",
+                  href: "/appliances#cooktop",
+                  image: "/appliances-images/cooktop/maytag1.jpg",
+                },
+                {
+                  label: "Wall Ovens",
+                  href: "/appliances#wall-oven",
+                  image: "/appliances-images/microwave/ge1.jpg",
+                },
+              ].map((cat) => (
+                <Link
+                  key={cat.label}
+                  href={cat.href}
+                  className="group bg-white border border-gray-200 rounded-xl p-3 flex flex-col items-center gap-3 hover:shadow-md transition"
+                >
+                  <div className="relative w-24 h-24">
+                    <Image
+                      src={cat.image}
+                      alt={cat.label}
+                      fill
+                      className="object-contain group-hover:scale-105 transition-transform duration-200"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-gray-800 group-hover:text-[#002D72] text-center">
+                    {cat.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* Best Deals on Appliances Section (Firestore powered) */}
+          <section className="py-4">
+            <div className="w-full">
+              <div className="mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+                  Grab the best deal on{" "}
+                  <span className="text-[#002D72]">Appliances</span>
+                </h2>
+              </div>
+
+              {loadingAppliances ? (
+                <p className="text-gray-600">Loading appliances…</p>
+              ) : filteredAppliances.length === 0 ? (
+                <p className="text-gray-600">
+                  No appliances match your search right now.
+                </p>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                  {filteredAppliances.map((item) => (
+                    <article
+                      key={item.id}
+                      className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                    >
+                      <div className="relative">
+                        {item.discountPercent && (
+                          <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-xs font-semibold">
+                            {item.discountPercent}% OFF
+                          </div>
+                        )}
+                        <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
+                          <Image
+                            src={item.imageUrl}
+                            alt={item.name}
+                            width={220}
+                            height={192}
+                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                          />
+                          {item.images && item.images.length > 0 && (
+                            <div className="absolute bottom-2 right-2 bg-[#002D72] text-white text-xs px-2 py-1 rounded-full font-semibold">
+                              +{item.images.length} more
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        {item.modelNumber && (
+                          <p className="text-xs text-gray-400 mb-1">
+                            {item.modelNumber}
+                          </p>
+                        )}
+                        <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2">
+                          {item.name}
+                        </h3>
+                        <p className="text-xs text-gray-500 mb-1">
+                          {item.brand} • {item.category}
+                        </p>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-2xl font-bold text-[#002D72]">
+                            ${item.priceFrom.toLocaleString()}
+                          </span>
+                          {item.priceOld && (
+                            <span className="text-gray-500 line-through text-sm">
+                              ${item.priceOld.toLocaleString()}
+                            </span>
+                          )}
+                        </div>
+                        {item.discountPercent && (
+                          <p className="text-green-600 font-medium text-xs">
+                            Save {item.discountPercent}% on this model
+                          </p>
+                        )}
+                        {item.shortDescription && (
+                          <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                            {item.shortDescription}
+                          </p>
+                        )}
+                        {item.inStock === false && (
+                          <p className="text-red-600 font-medium text-xs mt-1">
+                            Out of Stock
+                          </p>
+                        )}
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* Why choose Bettar */}
+          <section>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative h-64 md:h-80">
+                <Image
+                  src="/history/image.jpg"
+                  alt="Bettar Appliance technicians"
+                  fill
+                  className="object-cover rounded-3xl shadow-lg"
+                />
+              </div>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                  Why Kensington homeowners choose Bettar Appliance
+                </h2>
+                <p className="text-gray-600 mb-4">
+                  We’re a local team that treats your home like our own. From
+                  the first call to final cleanup, we focus on clear
+                  communication, punctual arrival, and quality workmanship.
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Licensed and insured appliance technicians</li>
+                  <li>• Honest advice on whether to repair or replace</li>
+                  <li>• Upfront, transparent pricing</li>
+                  <li>• Respectful of your time, floors, and property</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section id="faqs" className="pt-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Appliance FAQs
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Have questions about appliance installations, repairs, or
+              warranties in Kensington? Start here.
+            </p>
+
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <div
+                  key={faq.question}
+                  className="border border-gray-200 rounded-xl overflow-hidden bg-white"
+                >
+                  <button
+                    type="button"
+                    className="w-full flex justify-between items-center px-4 py-3 text-left"
+                    onClick={() => toggleFAQ(index)}
+                  >
+                    <span className="font-medium text-gray-900">
+                      {faq.question}
+                    </span>
+                    <span className="ml-4 text-xl text-gray-500">
+                      {openFAQ === index ? "−" : "+"}
+                    </span>
+                  </button>
+                  {openFAQ === index && (
+                    <div className="px-4 pb-4 text-gray-700 text-sm border-t border-gray-100">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+          {/* Hero Illustration */}
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div className="relative h-80 md:h-96">
+              <Image
+                src="/appliances.jpg"
+                alt="Technician installing a kitchen appliance"
+                fill
+                className="object-cover rounded-3xl shadow-xl"
+              />
+            </div>
+            <div className="space-y-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                Sales, Installations & Repairs – All in One Place
+              </h2>
+              <p className="text-gray-600">
+                Bettar Appliance is your one-stop shop for appliances in
+                Kensington, MD. We help you choose the right unit, deliver it to
+                your home, professionally install it, and keep it maintained for
+                years.
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• New appliance sales with honest recommendations</li>
+                <li>• Professional installation and removal of old units</li>
+                <li>• Same-day and next-day repair options</li>
+                <li>• Local team that respects your home and time</li>
+              </ul>
+            </div>
           </div>
+      {/* Bottom CTA */}
+      <section className="bg-[#002D72] text-white py-10 mt-8">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              Ready to book your appliance service?
+            </h2>
+            <p className="text-sm md:text-base text-[#E0E7FF] max-w-xl">
+              Tell us about your appliance issue or installation and our team
+              will get back to you with the next available time slot.
+            </p>
+          </div>
+          <button
+            onClick={() => setIsApplianceModalOpen(true)}
+            className="px-8 py-3 rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] transition"
+          >
+            Request Service
+          </button>
         </div>
       </section>
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      {/* Appliance Request Modal */}
+      <ApplianceRequestModal
+        isOpen={isApplianceModalOpen}
+        onClose={() => setIsApplianceModalOpen(false)}
       />
-
     </div>
   );
 }

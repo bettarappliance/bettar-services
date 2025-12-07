@@ -3,11 +3,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+type BettarAppliance = {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  imageUrl: string;
+  priceFrom: number;
+  priceOld?: number;
+  discountPercent?: number;
+  shortDescription?: string;
+  modelNumber?: string;
+  inStock?: boolean;
+  images?: string[];
+};
 
 export default function Home() {
   // Carousel state
@@ -15,6 +32,39 @@ export default function Home() {
   
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Firestore state for appliances
+  const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
+  const [loadingAppliances, setLoadingAppliances] = useState(true);
+
+  // Fetch appliances from Firestore
+  useEffect(() => {
+    const fetchAppliances = async () => {
+      try {
+        const ref = collection(db, "appliances");
+        const snap = await getDocs(ref);
+        const items: BettarAppliance[] = snap.docs.map((doc) => {
+          const data = doc.data() as Omit<BettarAppliance, "id">;
+          return { id: doc.id, ...data };
+        });
+        
+        // Sort by discount percentage (highest first), then limit to 5 items
+        const sortedByDiscount = items.sort((a, b) => {
+          const discountA = a.discountPercent || 0;
+          const discountB = b.discountPercent || 0;
+          return discountB - discountA; // Descending order
+        });
+        
+        setAppliances(sortedByDiscount.slice(0, 5));
+      } catch (error) {
+        console.error("Error loading appliances from Firestore", error);
+      } finally {
+        setLoadingAppliances(false);
+      }
+    };
+
+    fetchAppliances();
+  }, []);
 
   // Structured data for SEO
   const structuredData = {
@@ -673,7 +723,7 @@ export default function Home() {
               <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
-                    src="/appliances-images/dryer/maytag1.jpg"
+                    src="/appliances-images/dryer/maytag1.png"
                     alt="Clothes Dryer"
                     width={96}
                     height={96}
@@ -686,7 +736,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Best Deals on Appliances Section */}
+      {/* Best Deals on Appliances Section - Firebase Powered */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
@@ -701,138 +751,84 @@ export default function Home() {
             </Link>
           </div>
           
-          {/* Deals Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {/* Deal 1 - Refrigerator */}
-            <Link href="/appliances#refrigerators" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-              <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  10% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/ref/fri2.jpg"
-                    alt="Refrigerator Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">Frigidaire® Garage Ready Top Freezer Refrigerator-18 cu.ft </h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$809</span>
-                  <span className="text-gray-500 line-through text-sm">$899</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $90</p>
-              </div>
-            </Link>
-
-            {/* Deal 2 - Dishwasher */}
-            <Link href="/appliances#dishwasher" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  13% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/dishwasher/kitchenaid1.jpg"
-                    alt="Dishwasher Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">KitchenAid® Third Level Utensil Rack Dishwasher with 30+ Total Wash Jets in PrintShield™ Finish, 47 dBA</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$912</span>
-                  <span className="text-gray-500 line-through text-sm">$1,049</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $137</p>
-              </div>
-            </Link>
-
-            {/* Deal 3 - Range */}
-            <Link href="/appliances#range" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  26% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/range/kitchenaid1.jpg"
-                    alt="Range Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">KitchenAid® Smart Slide-in Gas Range with Convection Cooking Modes and 2-in-1 Burner- 5.0 Cu. Ft. </h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$2,105</span>
-                  <span className="text-gray-500 line-through text-sm">$2,849</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $744</p>
-              </div>
-            </Link>
-
-            {/* Deal 4 - Washer */}
-            <Link href="/appliances#washers" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-              <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  15% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/washers/GTW385ASWWS-1.png"
-                    alt="Washer Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">GE® ENERGY STAR 4.8 cu. ft. Capacity Smart Front Load ® Washer with UltraFresh Vent System with OdorBlock™ and Sanitize w/Oxi</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$639</span>
-                  <span className="text-gray-500 line-through text-sm">$749</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $110</p>
-              </div>
-            </Link>
-
-            {/* Deal 5 - Dryer */}
-            <Link href="/appliances#clothes-dryer" className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group">
-              <div className="relative">
-                <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-sm font-bold">
-                  24% OFF
-                </div>
-                <div className="h-48 bg-gray-100 flex items-center justify-center p-4">
-                  <Image
-                    src="/appliances-images/dryer/maytag1.png"
-                    alt="Dryer Deal"
-                    width={200}
-                    height={192}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-gray-800 font-semibold mb-2">Maytag® Smart Top Load Electric Dryer with Extra Power - 7.4 cu. ft.</h3>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-2xl font-bold text-[#002D72]">$874</span>
-                  <span className="text-gray-500 line-through text-sm">$1,149</span>
-                </div>
-                <p className="text-green-600 font-medium text-sm">Save - $275</p>
-              </div>
-            </Link>
-          </div>
+          {/* Deals Grid - Firebase Powered */}
+          {loadingAppliances ? (
+            <p className="text-gray-600 text-center py-8">Loading appliances…</p>
+          ) : appliances.length === 0 ? (
+            <p className="text-gray-600 text-center py-8">
+              No appliances available at the moment.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {appliances.map((item) => (
+                <Link 
+                  key={item.id}
+                  href="/appliances" 
+                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                >
+                  <div className="relative">
+                    {item.discountPercent && (
+                      <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-xs font-semibold">
+                        {item.discountPercent}% OFF
+                      </div>
+                    )}
+                    <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        width={220}
+                        height={192}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {item.images && item.images.length > 0 && (
+                        <div className="absolute bottom-2 right-2 bg-[#002D72] text-white text-xs px-2 py-1 rounded-full font-semibold">
+                          +{item.images.length} more
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    {item.modelNumber && (
+                      <p className="text-xs text-gray-400 mb-1">
+                        {item.modelNumber}
+                      </p>
+                    )}
+                    <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mb-1">
+                      {item.brand} • {item.category}
+                    </p>
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="text-2xl font-bold text-[#002D72]">
+                        ${item.priceFrom.toLocaleString()}
+                      </span>
+                      {item.priceOld && (
+                        <span className="text-gray-500 line-through text-sm">
+                          ${item.priceOld.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    {item.discountPercent && (
+                      <p className="text-green-600 font-medium text-xs">
+                        Save {item.discountPercent}% on this model
+                      </p>
+                    )}
+                    {item.shortDescription && (
+                      <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                        {item.shortDescription}
+                      </p>
+                    )}
+                    {item.inStock === false && (
+                      <p className="text-red-600 font-medium text-xs mt-1">
+                        Out of Stock
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

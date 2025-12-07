@@ -158,12 +158,9 @@ const nextConfig: NextConfig = {
       // Note: Next.js redirects are case-insensitive, so we can't use :path+ here
       // Instead, handle specific old /Services/* paths individually
       
-      // Only redirect if there's a subpath after Appliances (like /Appliances/About)
-      {
-        source: '/Appliances/:path+',
-        destination: '/appliances',
-        permanent: true,
-      },
+      // Note: /Appliances/* redirects are handled in middleware.ts
+      // to allow /appliances/admin and other new routes to work properly
+      // Old capitalized paths like /Appliances/About will redirect via middleware
       
       
       // Redirect old UserAccount paths (old registration/login pages)
