@@ -45,7 +45,7 @@ export default function Plumbing() {
         "name": "What areas do your plumbers serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our plumbing and heating services cover Kensington, MD, Bethesda, Chevy Chase, Silver Spring, and throughout Montgomery County. We also serve Northwest Washington DC and surrounding communities in the greater DC metropolitan area."
+          "text": "Our plumbing and heating services cover Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, Germantown, and throughout Montgomery County. We also serve surrounding communities in the greater DC metropolitan area."
         }
       },
       {
@@ -76,10 +76,10 @@ export default function Plumbing() {
               Plumbing & Heating
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Water Heater Service & <span className="text-[#002D72]">Heating Services</span> in Kensington MD
+              Water Heater Service & <span className="text-[#002D72]">Heating Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional water heater service and heating services in Kensington, MD. Expert plumbing and heating solutions to keep your home comfortable and your systems running efficiently.
+              Professional water heater service and heating services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Expert plumbing and heating solutions to keep your home comfortable and your systems running efficiently.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Plumbing() {
                 Water Heater Service & Heating Services in Kensington
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                From emergency repairs to complete system installations, our licensed plumbers provide reliable water heater service and heating services throughout Kensington, MD, Bethesda, and the surrounding areas.
+                From emergency repairs to complete system installations, our licensed plumbers provide reliable water heater service and heating services throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD.
               </p>
               
               <div className="space-y-4">
@@ -159,10 +159,10 @@ export default function Plumbing() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Plumbing & Heating Services in Kensington, MD
+              Plumbing & Heating Services
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Trusted plumbing company serving Kensington, MD with expert water heater service, heating services, and plumbing repairs.
+              Trusted plumbing company serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD with expert water heater service, heating services, and plumbing repairs.
             </p>
           </div>
           

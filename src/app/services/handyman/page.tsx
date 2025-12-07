@@ -45,7 +45,7 @@ export default function Handyman() {
         "name": "What areas do you serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We provide handyman services throughout Kensington, MD, Bethesda, Chevy Chase, Silver Spring, and Northwest Washington DC. Our service area extends to surrounding communities in Montgomery County and the greater DC metropolitan area."
+          "text": "We provide handyman services throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, Germantown, and surrounding communities in Montgomery County and the greater DC metropolitan area."
         }
       },
       {
@@ -76,10 +76,10 @@ export default function Handyman() {
               Handyman Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Handyman <span className="text-[#002D72]">Kensington MD</span> | <span className="text-[#002D72]">Bethesda Handyman</span> | Same-Day Service
+              Handyman Services | <span className="text-[#002D72]">Bethesda, Chevy Chase, Rockville, Kensington</span> | Same-Day Service
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional handyman in Kensington, MD and Bethesda. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Local handyman near you. Licensed & insured. Call 301-949-2500.
+              Professional handyman services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Licensed & insured. Call 301-949-2500.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Handyman() {
                 Local Handyman Services in Bethesda & Kensington
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                No job too big or too small. Our experienced handymen provide reliable service for all your home repair and maintenance needs throughout Kensington, MD, Bethesda, Chevy Chase, and Northwest DC.
+                No job too big or too small. Our experienced handymen provide reliable service for all your home repair and maintenance needs throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD.
               </p>
               
               <div className="space-y-4">

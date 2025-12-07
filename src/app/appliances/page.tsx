@@ -122,10 +122,10 @@ export default function Appliances() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Do you provide appliance sales and repair in Kensington, MD?",
+        name: "What areas do you serve for appliance sales and repair?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Bettar Appliance provides appliance sales, delivery, installation, and repair in Kensington and surrounding Maryland suburbs.",
+          text: "Bettar Appliance provides appliance sales, delivery, installation, and repair throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, Maryland.",
         },
       },
       {
@@ -150,9 +150,9 @@ export default function Appliances() {
   // Simple FAQ content for the accordion
   const faqs = [
     {
-      question: "Do you provide appliance sales and repair in Kensington, MD?",
+      question: "What areas do you serve for appliance sales and repair?",
       answer:
-        "Yes. Bettar Appliance serves homeowners in Kensington and nearby areas with sales, installation, and repair for most major household appliances.",
+        "Bettar Appliance serves homeowners throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown with sales, installation, and repair for most major household appliances.",
     },
     {
       question: "Which appliance brands do you install?",
@@ -171,6 +171,73 @@ export default function Appliances() {
     },
   ];
 
+  // Local Business Schema for SEO
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Bettar Appliances",
+    "description": "Professional appliance sales, repair, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, Maryland.",
+    "telephone": "301-949-2500",
+    "url": "https://bettarservices.com/appliances",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kensington",
+      "addressRegion": "MD",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Upper Northwest DC"
+      },
+      {
+        "@type": "City",
+        "name": "Bethesda"
+      },
+      {
+        "@type": "City",
+        "name": "Chevy Chase"
+      },
+      {
+        "@type": "City",
+        "name": "Rockville"
+      },
+      {
+        "@type": "City",
+        "name": "Kensington"
+      },
+      {
+        "@type": "City",
+        "name": "Potomac"
+      },
+      {
+        "@type": "City",
+        "name": "Olney"
+      },
+      {
+        "@type": "City",
+        "name": "Brookville"
+      },
+      {
+        "@type": "City",
+        "name": "Gaithersburg"
+      },
+      {
+        "@type": "City",
+        "name": "Germantown"
+      }
+    ],
+    "serviceType": [
+      "Appliance Sales",
+      "Appliance Repair",
+      "Appliance Installation",
+      "Refrigerator Repair",
+      "Washer Repair",
+      "Dryer Repair",
+      "Dishwasher Repair"
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* FAQ schema for SEO */}
@@ -178,6 +245,12 @@ export default function Appliances() {
         id="appliances-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      {/* Local Business schema for SEO */}
+      <Script
+        id="appliances-local-business-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       <Header />
@@ -188,13 +261,11 @@ export default function Appliances() {
           <div className="text-center mb-0">
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
               <span className="text-[#002D72]">
-                Appliance Sales, Repair & Installation Kensington MD
+                Appliance Sales, Repair & Installation
               </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Reliable appliance sales, installation, and repair for Kensington
-              homeowners. From fridges and dishwashers to washers and dryers,
-              Bettar Appliance keeps your home running smoothly.
+              Reliable appliance sales, installation, and repair serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. From fridges and dishwashers to washers and dryers, Bettar Appliance keeps your home running smoothly.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -217,7 +288,7 @@ export default function Appliances() {
               </button>
             </div>
             <p className="mt-4 text-sm text-gray-500">
-              Serving Kensington and surrounding suburbs. Licensed and insured.
+              Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. Licensed and insured.
             </p>
 
 
@@ -477,7 +548,7 @@ export default function Appliances() {
               </div>
               <div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                  Why Kensington homeowners choose Bettar Appliance
+                  Why homeowners in Bethesda, Chevy Chase, Rockville, and surrounding areas choose Bettar Appliance
                 </h2>
                 <p className="text-gray-600 mb-4">
                   We’re a local team that treats your home like our own. From
@@ -501,7 +572,7 @@ export default function Appliances() {
             </h2>
             <p className="text-gray-600 mb-6">
               Have questions about appliance installations, repairs, or
-              warranties in Kensington? Start here.
+              warranties in Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, Germantown, or Upper Northwest DC? Start here.
             </p>
 
             <div className="space-y-3">
@@ -547,12 +618,9 @@ export default function Appliances() {
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
                 Sales, Installations & Repairs – All in One Place
               </h2>
-              <p className="text-gray-600">
-                Bettar Appliance is your one-stop shop for appliances in
-                Kensington, MD. We help you choose the right unit, deliver it to
-                your home, professionally install it, and keep it maintained for
-                years.
-              </p>
+               <p className="text-gray-600">
+                 Bettar Appliance is your one-stop shop for appliances throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. We help you choose the right unit, deliver it to your home, professionally install it, and keep it maintained for years.
+               </p>
               <ul className="space-y-2 text-gray-700">
                 <li>• New appliance sales with honest recommendations</li>
                 <li>• Professional installation and removal of old units</li>

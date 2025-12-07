@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Appliance Repair Kensington MD | Appliance Store | Same-Day Service | Bettar Appliances",
-  description: "Appliance repair in Kensington, MD. Same-day appliance repair service for refrigerators, washers, dryers, dishwashers. Professional appliance store with sales, installation & repair. Licensed technicians. Call 301-949-2500 for immediate service.",
-  keywords: "appliance store kensington md, appliance sales kensington md, appliance repair kensington md, appliance installation kensington md, bettar appliance, bettar appliances, appliance store bethesda, appliance repair bethesda, refrigerator repair kensington md, washer repair kensington md, dishwasher repair kensington md, appliance service kensington md, Kensington Maryland, Bethesda Maryland, Chevy Chase",
+  title: "Appliance Store & Repair | Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, Germantown MD | Bettar Appliances",
+  description: "Professional appliance sales, repair, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. Same-day appliance repair service for refrigerators, washers, dryers, dishwashers. Licensed technicians. Call 301-949-2500.",
+  keywords: "appliance store bethesda md, appliance repair bethesda, appliance store chevy chase, appliance repair rockville, appliance store kensington, appliance repair potomac, appliance store olney, appliance repair gaithersburg, appliance store germantown, appliance repair upper northwest dc, appliance sales bethesda, appliance installation chevy chase, refrigerator repair rockville, washer repair kensington, dishwasher repair potomac, appliance service olney, bettar appliances, appliance store maryland, appliance repair washington dc",
   alternates: {
     canonical: "https://bettarservices.com/appliances",
   },
   openGraph: {
-    title: "Appliance Store Kensington MD | Appliance Sales & Repair | Bettar Appliances",
-    description: "Professional appliance store in Kensington, MD. Expert appliance sales, repair, and installation services. Same-day service available.",
+    title: "Appliance Store & Repair | Bethesda, Chevy Chase, Rockville, Kensington MD | Bettar Appliances",
+    description: "Professional appliance sales, repair, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, and Germantown. Same-day service available.",
     url: "https://bettarservices.com/appliances",
     siteName: "Bettar Services",
     locale: "en_US",

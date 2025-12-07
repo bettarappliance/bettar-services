@@ -71,7 +71,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Bettar Services",
-    "description": "Professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945.",
+    "description": "Professional home improvement, renovation, plumbing, handyman, and appliance services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
     "url": "https://bettarservices.com",
     "telephone": "301-949-2500",
     "email": "Info@bettarappliance.com",
@@ -91,11 +91,82 @@ export default function Home() {
     "openingHours": "Mo-Fr 08:00-17:00",
     "foundingDate": "1945",
     "areaServed": [
-      "Kensington, MD",
-      "Bethesda, MD", 
-      "Chevy Chase, MD",
-      "Washington, DC",
-      "Northwest DC"
+      {
+        "@type": "City",
+        "name": "Upper Northwest DC"
+      },
+      {
+        "@type": "City",
+        "name": "Bethesda",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Chevy Chase",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Rockville",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Kensington",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Potomac",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Olney",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Brookville",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Gaithersburg",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Germantown",
+        "containedIn": {
+          "@type": "State",
+          "name": "Maryland"
+        }
+      }
     ],
     "alternateName": "Bettar Appliance",
     "serviceArea": {
@@ -972,7 +1043,7 @@ export default function Home() {
               <div className="p-6 pt-10 flex flex-col flex-grow">
                 <h2 className="text-xl font-bold text-[#002D72] mb-3">Handyman Repair and Services</h2>
                 <p className="text-gray-600 mb-4 flex-grow">
-                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Kensington, Bethesda, Chevy Chase, and Northwest DC with professional and commercial handyman services. Local handyman in Kensington MD and Bethesda handyman services available.
+                  From small repairs to major installations, our skilled handyman services handle all your home maintenance needs. Trust our experienced team to get the job done right the first time. Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown with professional and commercial handyman services.
                 </p>
                 <Link href="/services/handyman" className="text-[#002D72] font-bold hover:underline inline-block mt-auto">Handyman Services Kensington MD →</Link>
               </div>
@@ -1107,7 +1178,7 @@ export default function Home() {
               <div className="w-16 h-px bg-gray-300 mb-6"></div>
               
               <p className="text-[#333] text-lg leading-relaxed mb-8">
-                At Bettar, our story is woven into the fabric of the Kensington, Maryland, community. Since our humble beginnings in 1945, our family has dedicated itself to providing the highest quality home services for our neighbors across Bethesda, Chevy Chase, and Northwest D.C. What started as a commitment to honest appliance repair has blossomed into a comprehensive suite of solutions designed to make your home life easier and more comfortable.
+                At Bettar, our story is woven into the fabric of the Maryland and DC communities. Since our humble beginnings in 1945, our family has dedicated itself to providing the highest quality home services for our neighbors across Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. What started as a commitment to honest appliance repair has blossomed into a comprehensive suite of solutions designed to make your home life easier and more comfortable.
               </p>
               
               <div className="space-y-4 mb-8">
@@ -1334,7 +1405,7 @@ export default function Home() {
                 Better Services - Professional Home Solutions
               </h3>
               <p className="text-gray-600 mb-4">
-                When you need better services for your home, Bettar Services provides professional home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD. Family-owned since 1945, we deliver better service through experience, expertise, and commitment to quality.
+                When you need better services for your home, Bettar Services provides professional home improvement, renovation, plumbing, handyman, and appliance services throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945, we deliver better service through experience, expertise, and commitment to quality.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li>• Better home repair services</li>
@@ -1349,7 +1420,7 @@ export default function Home() {
                 Better Appliances - Quality & Service
               </h3>
               <p className="text-gray-600 mb-4">
-                Looking for better appliances? Bettar Appliances offers quality appliances from top brands with professional installation, repair, and maintenance. Better appliance near me? We&apos;re your local appliance store in Kensington, MD, providing better appliance sales and service since 1945.
+                Looking for better appliances? Bettar Appliances offers quality appliances from top brands with professional installation, repair, and maintenance. Better appliance near me? We&apos;re your local appliance store serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD, providing better appliance sales and service since 1945.
               </p>
               <ul className="space-y-2 text-gray-700">
                 <li>• Better appliance sales and selection</li>
@@ -1585,7 +1656,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="text-[#6B7280] leading-relaxed transition-all duration-300 overflow-hidden max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100">
-                  We proudly serve Kensington, Bethesda, Chevy Chase, and the surrounding Maryland areas.
+                  We proudly serve Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, Germantown, and surrounding Maryland areas.
                 </div>
               </div>
 
