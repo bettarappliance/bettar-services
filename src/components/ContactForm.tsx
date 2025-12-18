@@ -21,7 +21,6 @@ const isRandomString = (str: string): boolean => {
   
   // Check for suspicious patterns
   const hasSpaces = /\s/.test(trimmed);
-  const hasVowels = /[aeiouAEIOU]/.test(trimmed);
   const consonantRatio = (trimmed.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length / trimmed.length;
   
   // Random strings typically have:

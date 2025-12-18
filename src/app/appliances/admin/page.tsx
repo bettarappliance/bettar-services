@@ -35,9 +35,35 @@ type ImageInput = {
   url: string;
 };
 
+type BettarAppliance = {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  imageUrl: string;
+  priceFrom?: number;
+  priceOld?: number;
+  discountPercent?: number;
+  shortDescription?: string;
+  capacityKw?: number;
+  inStock?: boolean;
+  roomSize?: string;
+  supplyType?: string;
+  type?: string;
+  modelNumber?: string;
+  color?: string;
+  energyRating?: string;
+  warranty?: string;
+  features?: string[];
+  fullDescription?: string;
+  images?: string[];
+  categorySlug?: string;
+  [key: string]: unknown; // Allow additional Firestore fields
+};
+
 function AdminPageContent() {
   const [activeTab, setActiveTab] = useState<"add" | "manage">("add");
-  const [appliances, setAppliances] = useState<any[]>([]);
+  const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -102,10 +128,13 @@ function AdminPageContent() {
       const ref = collection(db, "appliances");
       const q = query(ref, orderBy("name"));
       const snap = await getDocs(q);
-      const items = snap.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const items = snap.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          ...data,
+        } as BettarAppliance;
+      });
       setAppliances(items);
     } catch (error) {
       console.error("Error fetching appliances:", error);
@@ -116,7 +145,7 @@ function AdminPageContent() {
   };
 
   // Load appliance data into form for editing
-  const handleEdit = (appliance: any) => {
+  const handleEdit = (appliance: BettarAppliance) => {
     setEditingId(appliance.id);
     setActiveTab("add");
     setFormData({
@@ -187,7 +216,7 @@ function AdminPageContent() {
     }
 
     try {
-      const applianceData: Record<string, any> = {
+      const applianceData: Partial<BettarAppliance> & { name: string; brand: string; category: string; imageUrl: string } = {
         name: formData.name.trim(),
         brand: formData.brand.trim(),
         category: formData.category.trim(),
@@ -285,7 +314,6 @@ function AdminPageContent() {
     if (activeTab === "manage") {
       fetchAppliances();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   const handleSubmit = async (e: React.FormEvent) => {

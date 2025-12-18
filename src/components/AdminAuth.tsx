@@ -1,14 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     // Check if already authenticated in session
@@ -42,7 +40,7 @@ export default function AdminAuth({ children }: { children: React.ReactNode }) {
         setError(data.error || "Invalid password");
         setPassword("");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred. Please try again.");
       setPassword("");
     }
