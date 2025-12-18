@@ -1253,7 +1253,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/gallery/Windows & Doors 1.jpg"
+                  src="/projects/Windows & Doors 1.jpg"
                   alt="Windows & Doors Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1269,7 +1269,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/gallery/Windows & Doors 6.jpg"
+                  src="/projects/Windows & Doors 6.jpg"
                   alt="Windows & Doors Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1285,7 +1285,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/gallery/Kitchen remodelling 3.jpg"
+                  src="/projects/Kitchen remodelling 3.jpg"
                   alt="Kitchen Remodeling Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1301,7 +1301,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/gallery/Landscaping & Lawn Maint 1.jpg"
+                  src="/projects/Landscaping & Lawn Maint 1.jpg"
                   alt="Landscaping & Lawn Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1317,7 +1317,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/gallery/Cabinet installation 2.jpg"
+                  src="/projects/Cabinet installation 2.jpg"
                   alt="Cabinet Installation Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1333,7 +1333,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/gallery/Concrete work 3.jpg"
+                  src="/projects/Concrete work 3.jpg"
                   alt="Concrete Work Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1349,7 +1349,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/gallery/Deck 7.jpg"
+                  src="/projects/Deck 7.jpg"
                   alt="Deck Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1365,7 +1365,7 @@ export default function Home() {
             <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/gallery/Windows & Doors 7.jpg"
+                  src="/projects/Windows & Doors 7.jpg"
                   alt="Windows Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
