@@ -1243,17 +1243,17 @@ export default function Home() {
                 Explore Our Recent Projects
               </h2>
             </div>
-            <Link href="/projects" className="text-[#002D72] hover:underline text-lg font-semibold mt-4 md:mt-0">
+            <Link href="/gallery" className="text-[#002D72] hover:underline text-lg font-semibold mt-4 md:mt-0">
               View More →
             </Link>
         </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Project 1 - Windows & Doors */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/projects/Windows & Doors 1.jpg"
+                  src="/gallery/Windows & Doors 1.jpg"
                   alt="Windows & Doors Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1266,10 +1266,10 @@ export default function Home() {
             </Link>
             
             {/* Project 2 - Windows & Doors */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/projects/Windows & Doors 6.jpg"
+                  src="/gallery/Windows & Doors 6.jpg"
                   alt="Windows & Doors Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1282,10 +1282,10 @@ export default function Home() {
             </Link>
             
             {/* Project 3 - Kitchen Remodeling */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
-                  src="/projects/Kitchen remodelling 3.jpg"
+                  src="/gallery/Kitchen remodelling 3.jpg"
                   alt="Kitchen Remodeling Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1298,10 +1298,10 @@ export default function Home() {
             </Link>
             
             {/* Project 4 - Landscaping & Lawn */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/projects/Landscaping & Lawn Maint 1.jpg"
+                  src="/gallery/Landscaping & Lawn Maint 1.jpg"
                   alt="Landscaping & Lawn Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1314,10 +1314,10 @@ export default function Home() {
             </Link>
             
             {/* Project 5 - Cabinet Installation */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/projects/Cabinet installation 2.jpg"
+                  src="/gallery/Cabinet installation 2.jpg"
                   alt="Cabinet Installation Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1330,10 +1330,10 @@ export default function Home() {
             </Link>
             
             {/* Project 6 - Concrete Work */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/projects/Concrete work 3.jpg"
+                  src="/gallery/Concrete work 3.jpg"
                   alt="Concrete Work Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1346,10 +1346,10 @@ export default function Home() {
             </Link>
             
             {/* Project 7 - Deck */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/projects/Deck 7.jpg"
+                  src="/gallery/Deck 7.jpg"
                   alt="Deck Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -1362,10 +1362,10 @@ export default function Home() {
             </Link>
             
             {/* Project 8 - Windows */}
-            <Link href="/projects" className="group cursor-pointer block">
+            <Link href="/gallery" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
-                  src="/projects/Windows & Doors 7.jpg"
+                  src="/gallery/Windows & Doors 7.jpg"
                   alt="Windows Project"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
