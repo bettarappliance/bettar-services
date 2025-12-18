@@ -296,7 +296,7 @@ export default function Home() {
           priority
         />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/90 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/70 to-transparent z-10"></div>
         
         {/* Hero Content */}
         <div className="relative z-20 h-full flex items-center">
@@ -355,7 +355,7 @@ export default function Home() {
               <div className="text-center">
                 <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">70K+</div>
                 <div className="text-gray-700 font-medium">PROJECTS FINISHED</div>
-                <div className="text-[#1e3a8a] text-sm mt-2 cursor-pointer hover:underline">View Projects →</div>
+                <Link href="/gallery" className="text-[#1e3a8a] text-sm mt-2 cursor-pointer hover:underline">View Projects →</Link>
               </div>
               
               {/* Stat 4 */}
@@ -707,7 +707,7 @@ export default function Home() {
           {/* Categories Grid - Responsive Grid */}
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-6">
               {/* Refrigerators */}
-              <Link href="/appliances#refrigerators" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/refrigerators" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/ref/fri2.jpg"
@@ -721,7 +721,7 @@ export default function Home() {
               </Link>
 
               {/* Dishwasher */}
-              <Link href="/appliances#dishwasher" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/dishwasher" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/dishwasher/kitchenaid1.jpg"
@@ -735,7 +735,7 @@ export default function Home() {
               </Link>
 
               {/* Range */}
-              <Link href="/appliances#range" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/range" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/range/kitchenaid1.jpg"
@@ -749,7 +749,7 @@ export default function Home() {
               </Link>
 
               {/* Cooktops */}
-              <Link href="/appliances#cooktops" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/cooktops" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/cooktop/maytag1.jpg"
@@ -763,7 +763,7 @@ export default function Home() {
               </Link>
 
               {/* Microwave */}
-              <Link href="/appliances#microwave" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/microwave" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/microwave/ge1.jpg"
@@ -777,7 +777,7 @@ export default function Home() {
               </Link>
 
               {/* Washers */}
-              <Link href="/appliances#washers" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/washers" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/washers/ge1.jpg"
@@ -791,7 +791,7 @@ export default function Home() {
               </Link>
 
               {/* Clothes Dryer */}
-              <Link href="/appliances#clothes-dryer" className="flex flex-col items-center group cursor-pointer">
+              <Link href="/appliances/dryer" className="flex flex-col items-center group cursor-pointer">
                 <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/dryer/maytag1.png"
@@ -1232,7 +1232,7 @@ export default function Home() {
       </section>
 
       {/* Recent Projects Section */}
-      <section className="py-20 bg-white">
+      <section id="projects" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-12">
             <div>
@@ -1243,14 +1243,14 @@ export default function Home() {
                 Explore Our Recent Projects
               </h2>
             </div>
-            <a href="#" className="text-[#002D72] hover:underline text-lg font-semibold mt-4 md:mt-0">
+            <Link href="/projects" className="text-[#002D72] hover:underline text-lg font-semibold mt-4 md:mt-0">
               View More →
-          </a>
+            </Link>
         </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Project 1 - Windows & Doors */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
                   src="/projects/Windows & Doors 1.jpg"
@@ -1263,10 +1263,10 @@ export default function Home() {
                   Windows & Doors
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 2 - Windows & Doors */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
                   src="/projects/Windows & Doors 6.jpg"
@@ -1279,10 +1279,10 @@ export default function Home() {
                   Windows & Doors
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 3 - Kitchen Remodeling */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
           <Image
                   src="/projects/Kitchen remodelling 3.jpg"
@@ -1295,10 +1295,10 @@ export default function Home() {
                   Kitchen Remodeling
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 4 - Landscaping & Lawn */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
                   src="/projects/Landscaping & Lawn Maint 1.jpg"
@@ -1311,10 +1311,10 @@ export default function Home() {
                   Landscaping & Lawn
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 5 - Cabinet Installation */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
                   src="/projects/Cabinet installation 2.jpg"
@@ -1327,10 +1327,10 @@ export default function Home() {
                   Cabinet Installation
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 6 - Concrete Work */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
                   src="/projects/Concrete work 3.jpg"
@@ -1343,10 +1343,10 @@ export default function Home() {
                   Concrete Work
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 7 - Deck */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
                   src="/projects/Deck 7.jpg"
@@ -1359,10 +1359,10 @@ export default function Home() {
                   Deck
                 </div>
               </div>
-            </div>
+            </Link>
             
             {/* Project 8 - Windows */}
-            <div className="group cursor-pointer">
+            <Link href="/projects" className="group cursor-pointer block">
               <div className="relative h-70 rounded-2xl overflow-hidden">
                 <Image
                   src="/projects/Windows & Doors 7.jpg"
@@ -1375,7 +1375,7 @@ export default function Home() {
                   Windows
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
           
           {/* Pagination Dots */}

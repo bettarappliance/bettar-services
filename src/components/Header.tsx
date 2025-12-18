@@ -103,6 +103,7 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <Link href="/gallery" className="text-white hover:text-gray-300 transition-colors">Gallery</Link>
           <Link href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</Link>
           <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">Contact Us</Link>
         </nav>
@@ -142,6 +143,7 @@ export default function Header() {
             <Link href="/about" className="text-white hover:text-gray-300 transition-colors">About Us</Link>
             <Link href="/services" className="text-white hover:text-gray-300 transition-colors">Services</Link>
             <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors">Appliances</Link>
+            <Link href="/projects" className="text-white hover:text-gray-300 transition-colors">Projects</Link>
             <Link href="/contact" className="text-white hover:text-gray-300 transition-colors">Contact Us</Link>
             <div className="pt-4 border-t border-gray-600">
               <div className="flex items-center space-x-2 mb-2">

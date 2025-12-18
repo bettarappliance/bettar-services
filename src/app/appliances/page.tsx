@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Script from "next/script";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -45,6 +45,18 @@ export default function Appliances() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
 
+  // Filter state
+  const [selectedFilters, setSelectedFilters] = useState<{
+    brand: string[];
+    energy: string[];
+    features: string[];
+  }>({
+    brand: [],
+    energy: [],
+    features: [],
+  });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
+
   // Firestore state
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(true);
@@ -55,8 +67,12 @@ export default function Appliances() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // nothing extra needed – grid below already reacts to searchQuery
-    console.log("Searching for:", searchQuery);
+    // Filtering happens automatically via filteredAppliances
+    // Scroll to results if on mobile or if results are below the fold
+    const resultsSection = document.getElementById("appliances-results");
+    if (resultsSection) {
+      resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   // Fetch appliances from Firestore
@@ -88,32 +104,114 @@ export default function Appliances() {
     fetchAppliances();
   }, []);
 
-  const filteredAppliances =
-    searchQuery.trim().length === 0
-      ? appliances
-      : appliances
-          .filter((item) => {
-            const q = searchQuery.toLowerCase().trim();
-            const name = item.name?.toLowerCase() || "";
-            const brand = item.brand?.toLowerCase() || "";
-            const category = item.category?.toLowerCase() || "";
-            const description = item.shortDescription?.toLowerCase() || "";
-            const type = item.type?.toLowerCase() || "";
-            
-            return (
-              name.includes(q) ||
-              brand.includes(q) ||
-              category.includes(q) ||
-              description.includes(q) ||
-              type.includes(q)
-            );
-          })
-          .sort((a, b) => {
-            // Maintain discount sorting even after filtering
-            const discountA = a.discountPercent || 0;
-            const discountB = b.discountPercent || 0;
-            return discountB - discountA;
-          });
+  const handleFilterChange = (filterType: "brand" | "energy" | "features", value: string) => {
+    setSelectedFilters(prev => {
+      const current = prev[filterType] || [];
+      if (current.includes(value)) {
+        return {
+          ...prev,
+          [filterType]: current.filter(v => v !== value)
+        };
+      } else {
+        return {
+          ...prev,
+          [filterType]: [...current, value]
+        };
+      }
+    });
+  };
+
+  const handleClearAllFilters = () => {
+    setSelectedFilters({ brand: [], energy: [], features: [] });
+    setPriceRange({ min: 0, max: 5000 });
+  };
+
+  const filteredAppliances: BettarAppliance[] = useMemo(() => {
+    return appliances.filter((item) => {
+      // Search query filter
+      if (searchQuery.trim().length > 0) {
+        const q = searchQuery.toLowerCase().trim();
+        const name = item.name?.toLowerCase() || "";
+        const brand = item.brand?.toLowerCase() || "";
+        const category = item.category?.toLowerCase() || "";
+        const description = item.shortDescription?.toLowerCase() || "";
+        const type = item.type?.toLowerCase() || "";
+        
+        if (!(
+          name.includes(q) ||
+          brand.includes(q) ||
+          category.includes(q) ||
+          description.includes(q) ||
+          type.includes(q)
+        )) {
+          return false;
+        }
+      }
+
+      // Brand filter
+      if (selectedFilters.brand.length > 0) {
+        const itemBrand = item.brand?.toLowerCase() || "";
+        if (!selectedFilters.brand.some(filterBrand => 
+          itemBrand.includes(filterBrand.toLowerCase())
+        )) {
+          return false;
+        }
+      }
+
+      // Price filter
+      if (item.priceFrom < priceRange.min || item.priceFrom > priceRange.max) {
+        return false;
+      }
+
+      // Energy rating filter
+      if (selectedFilters.energy.length > 0) {
+        const itemEnergy = item.energyRating?.toLowerCase() || "";
+        const energyMatches = selectedFilters.energy.some(filterEnergy => {
+          if (filterEnergy === "energy-star") {
+            return itemEnergy.includes("energy star") || itemEnergy.includes("energystar");
+          }
+          return itemEnergy.includes(filterEnergy.toLowerCase());
+        });
+        if (!energyMatches) {
+          return false;
+        }
+      }
+
+      // Features filter
+      if (selectedFilters.features.length > 0) {
+        const itemFeatures = item.features || [];
+        const itemFeaturesLower = itemFeatures.map(f => f.toLowerCase());
+        const itemName = item.name?.toLowerCase() || "";
+        const itemDesc = item.shortDescription?.toLowerCase() || "";
+        
+        const featureMatches = selectedFilters.features.some(filterFeature => {
+          // Check if feature is in features array
+          if (itemFeaturesLower.some(f => f.includes(filterFeature.toLowerCase()))) {
+            return true;
+          }
+          // Also check name and description for common feature keywords
+          const combinedText = `${itemName} ${itemDesc}`;
+          if (filterFeature === "smart" && combinedText.includes("smart")) return true;
+          if (filterFeature === "wifi" && (combinedText.includes("wifi") || combinedText.includes("wi-fi"))) return true;
+          if (filterFeature === "stainless" && combinedText.includes("stainless")) return true;
+          if (filterFeature === "quiet" && combinedText.includes("quiet")) return true;
+          return false;
+        });
+        
+        if (!featureMatches) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .sort((a, b) => {
+      // Maintain discount sorting even after filtering
+      const discountA = a.discountPercent || 0;
+      const discountB = b.discountPercent || 0;
+      return discountB - discountA;
+    });
+  }, [appliances, searchQuery, selectedFilters, priceRange]);
 
   // FAQ Schema for SEO
   const faqSchema = {
@@ -300,7 +398,13 @@ export default function Appliances() {
       <main className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">
         {/* Sidebar */}
         <aside className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-          <ApplianceSidebar />
+          <ApplianceSidebar
+            selectedFilters={selectedFilters}
+            priceRange={priceRange}
+            onFilterChange={handleFilterChange}
+            onPriceRangeChange={setPriceRange}
+            onClearAll={handleClearAllFilters}
+          />
         </aside>
 
         {/* Right column */}
@@ -343,7 +447,7 @@ export default function Appliances() {
                   placeholder="Search appliances..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-grow px-2 py-3 text-sm outline-none placeholder:text-gray-500"
+                  className="flex-grow px-2 py-3 text-sm text-black outline-none placeholder:text-gray-500"
                 />
                 {searchQuery && (
                   <button
@@ -377,91 +481,38 @@ export default function Appliances() {
             </div>
           </section>
 
-          {/* Top Categories (static – link anchors) */}
-          <section>
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Shop by Appliance Category
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[
-                {
-                  label: "Refrigerators",
-                  href: "/appliances#refrigerators",
-                  image: "/appliances-images/ref/fri2.jpg",
-                },
-                {
-                  label: "Dishwashers",
-                  href: "/appliances#dishwasher",
-                  image: "/appliances-images/dishwasher/kitchenaid1.jpg",
-                },
-                {
-                  label: "Ranges",
-                  href: "/appliances#range",
-                  image: "/appliances-images/range/kitchenaid1.jpg",
-                },
-                {
-                  label: "Washers",
-                  href: "/appliances#clothes-washer",
-                  image: "/appliances-images/washers/GTW385ASWWS-1.png",
-                },
-                {
-                  label: "Dryers",
-                  href: "/appliances#clothes-dryer",
-                  image: "/appliances-images/dryer/maytag1.png",
-                },
-                {
-                  label: "Microwaves",
-                  href: "/appliances#microwave",
-                  image: "/appliances-images/microwave/ge1.jpg",
-                },
-                {
-                  label: "Cooktops",
-                  href: "/appliances#cooktop",
-                  image: "/appliances-images/cooktop/maytag1.jpg",
-                },
-                {
-                  label: "Wall Ovens",
-                  href: "/appliances#wall-oven",
-                  image: "/appliances-images/microwave/ge1.jpg",
-                },
-              ].map((cat) => (
-                <Link
-                  key={cat.label}
-                  href={cat.href}
-                  className="group bg-white border border-gray-200 rounded-xl p-3 flex flex-col items-center gap-3 hover:shadow-md transition"
-                >
-                  <div className="relative w-24 h-24">
-                    <Image
-                      src={cat.image}
-                      alt={cat.label}
-                      fill
-                      className="object-contain group-hover:scale-105 transition-transform duration-200"
-                    />
-                  </div>
-                  <span className="text-sm font-medium text-gray-800 group-hover:text-[#002D72] text-center">
-                    {cat.label}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </section>
-
           {/* Best Deals on Appliances Section (Firestore powered) */}
-          <section className="py-4">
+          <section id="appliances-results" className="py-4">
             <div className="w-full">
               <div className="mb-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-                  Grab the best deal on{" "}
-                  <span className="text-[#002D72]">Appliances</span>
+                  {searchQuery.trim() ? (
+                    <>
+                      Search Results for &quot;{searchQuery}&quot;{" "}
+                      <span className="text-gray-500 text-lg">
+                        ({filteredAppliances.length} {filteredAppliances.length === 1 ? "result" : "results"})
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      Grab the best deal on{" "}
+                      <span className="text-[#002D72]">Appliances</span>
+                    </>
+                  )}
                 </h2>
               </div>
 
               {loadingAppliances ? (
                 <p className="text-gray-600">Loading appliances…</p>
               ) : filteredAppliances.length === 0 ? (
-                <p className="text-gray-600">
-                  No appliances match your search right now.
-                </p>
+                <div className="text-center py-12">
+                  <p className="text-gray-600 text-lg mb-2">
+                    No appliances match your search for &quot;{searchQuery}&quot;
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    Try adjusting your search terms or browse all appliances.
+                  </p>
+                </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
                   {filteredAppliances.map((item) => (
@@ -476,13 +527,31 @@ export default function Appliances() {
                           </div>
                         )}
                         <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
-                          <Image
-                            src={item.imageUrl}
-                            alt={item.name}
-                            width={220}
-                            height={192}
-                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                          />
+                          {item.imageUrl ? (
+                            <Image
+                              src={item.imageUrl}
+                              alt={item.name}
+                              width={220}
+                              height={192}
+                              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const parent = target.parentElement;
+                                if (parent && !parent.querySelector('.placeholder-icon')) {
+                                  const placeholder = document.createElement('div');
+                                  placeholder.className = 'placeholder-icon text-gray-400 text-center';
+                                  placeholder.innerHTML = '<div class="text-4xl mb-2">📦</div><div class="text-sm">No Image Available</div>';
+                                  parent.appendChild(placeholder);
+                                }
+                              }}
+                            />
+                          ) : (
+                            <div className="text-gray-400 text-center">
+                              <div className="text-4xl mb-2">📦</div>
+                              <div className="text-sm">No Image Available</div>
+                            </div>
+                          )}
                           {item.images && item.images.length > 0 && (
                             <div className="absolute bottom-2 right-2 bg-[#002D72] text-white text-xs px-2 py-1 rounded-full font-semibold">
                               +{item.images.length} more

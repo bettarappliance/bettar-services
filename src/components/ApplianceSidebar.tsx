@@ -3,7 +3,32 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function ApplianceSidebar() {
+type FilterState = {
+  brand: string[];
+  energy: string[];
+  features: string[];
+};
+
+type PriceRange = {
+  min: number;
+  max: number;
+};
+
+type ApplianceSidebarProps = {
+  selectedFilters?: FilterState;
+  priceRange?: PriceRange;
+  onFilterChange?: (filterType: keyof FilterState, value: string) => void;
+  onPriceRangeChange?: (range: PriceRange) => void;
+  onClearAll?: () => void;
+};
+
+export default function ApplianceSidebar({
+  selectedFilters: externalFilters,
+  priceRange: externalPriceRange,
+  onFilterChange,
+  onPriceRangeChange,
+  onClearAll,
+}: ApplianceSidebarProps = {}) {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [expandedFilters, setExpandedFilters] = useState<Record<string, boolean>>({
     categories: true,
@@ -12,12 +37,17 @@ export default function ApplianceSidebar() {
     energy: true,
     features: true,
   });
-  const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({
+  
+  // Use external filters if provided, otherwise use internal state
+  const [internalFilters, setInternalFilters] = useState<FilterState>({
     brand: [],
     energy: [],
     features: [],
   });
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
+  const [internalPriceRange, setInternalPriceRange] = useState<PriceRange>({ min: 0, max: 5000 });
+  
+  const selectedFilters = externalFilters || internalFilters;
+  const priceRange = externalPriceRange || internalPriceRange;
 
   const toggleCategory = (category: string) => {
     setExpandedCategory(expandedCategory === category ? null : category);
@@ -30,27 +60,78 @@ export default function ApplianceSidebar() {
     }));
   };
 
-  const handleFilterChange = (filterType: string, value: string) => {
-    setSelectedFilters(prev => {
-      const current = prev[filterType] || [];
-      if (current.includes(value)) {
-        return {
-          ...prev,
-          [filterType]: current.filter(v => v !== value)
-        };
+  const handleFilterChange = (filterType: keyof FilterState, value: string) => {
+    if (onFilterChange) {
+      // Use external callback if provided
+      onFilterChange(filterType, value);
+    } else {
+      // Use internal state
+      setInternalFilters(prev => {
+        const current = prev[filterType] || [];
+        if (current.includes(value)) {
+          return {
+            ...prev,
+            [filterType]: current.filter(v => v !== value)
+          };
+        } else {
+          return {
+            ...prev,
+            [filterType]: [...current, value]
+          };
+        }
+      });
+    }
+  };
+
+  const handlePriceRangeChange = (newRange: PriceRange) => {
+    if (onPriceRangeChange) {
+      onPriceRangeChange(newRange);
+    } else {
+      setInternalPriceRange(newRange);
+    }
+  };
+
+  const hasActiveFilters = 
+    (selectedFilters.brand.length > 0) ||
+    (selectedFilters.energy.length > 0) ||
+    (selectedFilters.features.length > 0) ||
+    (priceRange.min > 0 || priceRange.max < 5000);
+
+  const clearAllFilters = () => {
+    if (onClearAll) {
+      onClearAll();
+    } else {
+      // Toggle off all selected filters
+      if (onFilterChange) {
+        [...selectedFilters.brand].forEach(brand => onFilterChange('brand', brand));
+        [...selectedFilters.energy].forEach(energy => onFilterChange('energy', energy));
+        [...selectedFilters.features].forEach(feature => onFilterChange('features', feature));
       } else {
-        return {
-          ...prev,
-          [filterType]: [...current, value]
-        };
+        setInternalFilters({ brand: [], energy: [], features: [] });
       }
-    });
+      
+      if (onPriceRangeChange) {
+        onPriceRangeChange({ min: 0, max: 5000 });
+      } else {
+        setInternalPriceRange({ min: 0, max: 5000 });
+      }
+    }
   };
 
   return (
     <div className="bg-white sticky top-24">
       <div className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">Categories</h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold text-gray-900">Categories</h2>
+          {hasActiveFilters && (
+            <button
+              onClick={clearAllFilters}
+              className="text-sm text-[#002D72] hover:text-[#001F5C] font-medium"
+            >
+              Clear All
+            </button>
+          )}
+        </div>
         <nav className="space-y-0">
           <button
             onClick={() => toggleCategory('appliances')}
@@ -67,115 +148,134 @@ export default function ApplianceSidebar() {
             </svg>
           </button>
           
-          <Link
-            href="/appliances#refrigerators"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Refrigerators <span className="text-gray-500 font-normal">(85)</span></span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances#dishwasher"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Dishwashers <span className="text-gray-500 font-normal">(64)</span></span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances#range"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Ranges <span className="text-gray-500 font-normal">(52)</span></span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances#washers"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Washers & Dryers <span className="text-gray-500 font-normal">(78)</span></span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Savings</span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Brands</span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
-          
-          <Link
-            href="/appliances"
-            className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
-          >
-            <span className="font-medium">Trending</span>
-            <svg
-              className="w-5 h-5 text-gray-500"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
+          {expandedCategory === 'appliances' && (
+            <div className="pl-4 space-y-0">
+              <Link
+                href="/appliances/refrigerators"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Refrigerators</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/dishwasher"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Dishwashers</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/range"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Ranges</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/washers"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Washers</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/dryer"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Dryers</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/microwave"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Microwaves</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/cooktops"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Cooktops</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+              
+              <Link
+                href="/appliances/wall-oven"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium text-sm">Wall Ovens</span>
+                <svg
+                  className="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          )}
         </nav>
       </div>
 
       {/* Brand Filter */}
-      <div className="pt-6 mt-6 px-6">
+      <div className="pt-1 px-6">
         <button
           onClick={() => toggleFilter('brand')}
           className="w-full flex items-center justify-between text-left mb-4"
@@ -269,7 +369,7 @@ export default function ApplianceSidebar() {
               <input
                 type="number"
                 value={priceRange.min}
-                onChange={(e) => setPriceRange({ ...priceRange, min: Number(e.target.value) })}
+                onChange={(e) => handlePriceRangeChange({ ...priceRange, min: Number(e.target.value) })}
                 className="w-20 px-3 py-2 border border-gray-300 rounded text-sm text-black"
                 placeholder="0"
               />
@@ -277,15 +377,10 @@ export default function ApplianceSidebar() {
               <input
                 type="number"
                 value={priceRange.max}
-                onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })}
+                onChange={(e) => handlePriceRangeChange({ ...priceRange, max: Number(e.target.value) })}
                 className="w-20 px-3 py-2 border border-gray-300 rounded text-sm text-black"
                 placeholder="5000"
               />
-              <button className="bg-[#002D72] text-white px-3 py-2 rounded hover:bg-[#001f4d] transition-colors">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
             <div className="relative">
               <input
@@ -293,7 +388,7 @@ export default function ApplianceSidebar() {
                 min="0"
                 max="5000"
                 value={priceRange.max}
-                onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })}
+                onChange={(e) => handlePriceRangeChange({ ...priceRange, max: Number(e.target.value) })}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#002D72]"
               />
             </div>
