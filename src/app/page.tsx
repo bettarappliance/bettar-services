@@ -844,13 +844,31 @@ export default function Home() {
                       </div>
                     )}
                     <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
-                      <Image
-                        src={item.imageUrl}
-                        alt={item.name}
-                        width={220}
-                        height={192}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                      />
+                      {item.imageUrl ? (
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.name}
+                          width={220}
+                          height={192}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            const parent = target.parentElement;
+                            if (parent && !parent.querySelector('.placeholder-icon')) {
+                              const placeholder = document.createElement('div');
+                              placeholder.className = 'placeholder-icon text-gray-400 text-center';
+                              placeholder.innerHTML = '<div class="text-4xl mb-2">📦</div><div class="text-sm">No Image Available</div>';
+                              parent.appendChild(placeholder);
+                            }
+                          }}
+                        />
+                      ) : (
+                        <div className="text-gray-400 text-center">
+                          <div className="text-4xl mb-2">📦</div>
+                          <div className="text-sm">No Image Available</div>
+                        </div>
+                      )}
                       {item.images && item.images.length > 0 && (
                         <div className="absolute bottom-2 right-2 bg-[#002D72] text-white text-xs px-2 py-1 rounded-full font-semibold">
                           +{item.images.length} more
