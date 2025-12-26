@@ -310,5 +310,13 @@ function getStaticGallery(): Gallery[] {
       category: "Windows & Doors",
       imageUrl: "/projects/Windows & Doors 7.jpg",
     },
+    {
+      id: "9",
+      title: "Sub-Zero Refrigerator Repair",
+      category: "Appliance Repair",
+      imageUrl: "/projects/subzero.jpg",
+      description: "A client reported that her Sub-Zero refrigerator was making a loud, intermittent noise. Upon inspection, we found that the issue was caused by a faulty ice maker and a worn-out freezer door gasket, both of which needed replacement.",
+      images: ["/projects/subzero.jpg", "/projects/subzero1.jpg"],
+    },
   ];
 }

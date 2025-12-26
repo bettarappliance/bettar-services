@@ -1394,6 +1394,22 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+            
+            {/* Project 9 - Sub-Zero Refrigerator Repair */}
+            <Link href="/gallery" className="group cursor-pointer block">
+              <div className="relative h-70 rounded-2xl overflow-hidden">
+                <Image
+                  src="/projects/subzero.jpg"
+                  alt="Sub-Zero Refrigerator Repair"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-[rgba(0,45,114,0.2)]"></div>
+                <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
+                  Sub-Zero Repair
+                </div>
+              </div>
+            </Link>
           </div>
           
           {/* Pagination Dots */}
