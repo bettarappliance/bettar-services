@@ -845,12 +845,12 @@ export default function Home() {
                     )}
                     <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
                       {item.imageUrl ? (
-                        <Image
-                          src={item.imageUrl}
-                          alt={item.name}
-                          width={220}
-                          height={192}
-                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        width={220}
+                        height={192}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
@@ -1407,7 +1407,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-[rgba(0,45,114,0.2)]"></div>
                 <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
                   Sub-Zero Repair
-                </div>
+            </div>
               </div>
             </Link>
           </div>

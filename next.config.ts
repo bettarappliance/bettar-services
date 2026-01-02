@@ -69,6 +69,26 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        // Prevent indexing of admin pages
+        source: '/appliances/admin/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        // Prevent indexing of admin page
+        source: '/appliances/admin',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
     ];
   },
   async redirects() {

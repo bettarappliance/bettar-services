@@ -3,7 +3,11 @@ module.exports = {
   siteUrl: 'https://bettarservices.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/api/*'],
+  exclude: [
+    '/api/*',
+    '/appliances/admin',
+    '/appliances/admin/*',
+  ],
   changefreq: 'weekly',
   priority: 0.7,
   sitemapSize: 5000,
@@ -46,6 +50,30 @@ module.exports = {
       customConfig.changefreq = 'monthly';
     }
 
+    // Gallery page
+    if (path === '/gallery') {
+      customConfig.priority = 0.7;
+      customConfig.changefreq = 'weekly';
+    }
+
+    // Appliance category pages
+    if (path.startsWith('/appliances/') && path !== '/appliances/admin') {
+      customConfig.priority = 0.7;
+      customConfig.changefreq = 'weekly';
+    }
+
     return customConfig;
+  },
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/appliances/admin'],
+      },
+    ],
+    additionalSitemaps: [
+      'https://bettarservices.com/sitemap.xml',
+    ],
   },
 };

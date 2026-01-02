@@ -508,15 +508,15 @@ function AdminPageContent() {
         </div>
 
         {activeTab === "add" ? (
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {editingId ? "Edit Appliance" : "Add New Appliance"}
-            </h1>
-            <p className="text-gray-600 mb-8">
+          </h1>
+          <p className="text-gray-600 mb-8">
               {editingId
                 ? "Update the appliance information below."
                 : "Fill out the form below to add a new appliance to the catalog."}
-            </p>
+          </p>
 
           {errorMessage && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">

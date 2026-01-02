@@ -129,19 +129,19 @@ export default function Appliances() {
     return appliances.filter((item) => {
       // Search query filter
       if (searchQuery.trim().length > 0) {
-        const q = searchQuery.toLowerCase().trim();
-        const name = item.name?.toLowerCase() || "";
-        const brand = item.brand?.toLowerCase() || "";
-        const category = item.category?.toLowerCase() || "";
-        const description = item.shortDescription?.toLowerCase() || "";
-        const type = item.type?.toLowerCase() || "";
-        
+            const q = searchQuery.toLowerCase().trim();
+            const name = item.name?.toLowerCase() || "";
+            const brand = item.brand?.toLowerCase() || "";
+            const category = item.category?.toLowerCase() || "";
+            const description = item.shortDescription?.toLowerCase() || "";
+            const type = item.type?.toLowerCase() || "";
+            
         if (!(
-          name.includes(q) ||
-          brand.includes(q) ||
-          category.includes(q) ||
-          description.includes(q) ||
-          type.includes(q)
+              name.includes(q) ||
+              brand.includes(q) ||
+              category.includes(q) ||
+              description.includes(q) ||
+              type.includes(q)
         )) {
           return false;
         }
@@ -203,13 +203,13 @@ export default function Appliances() {
       }
 
       return true;
-    })
-    .sort((a, b) => {
-      // Maintain discount sorting even after filtering
-      const discountA = a.discountPercent || 0;
-      const discountB = b.discountPercent || 0;
-      return discountB - discountA;
-    });
+          })
+          .sort((a, b) => {
+            // Maintain discount sorting even after filtering
+            const discountA = a.discountPercent || 0;
+            const discountB = b.discountPercent || 0;
+            return discountB - discountA;
+          });
   }, [appliances, searchQuery, selectedFilters, priceRange]);
 
   // FAQ Schema for SEO
@@ -494,8 +494,8 @@ export default function Appliances() {
                     </>
                   ) : (
                     <>
-                      Grab the best deal on{" "}
-                      <span className="text-[#002D72]">Appliances</span>
+                  Grab the best deal on{" "}
+                  <span className="text-[#002D72]">Appliances</span>
                     </>
                   )}
                 </h2>
@@ -510,7 +510,7 @@ export default function Appliances() {
                   </p>
                   <p className="text-gray-500 text-sm">
                     Try adjusting your search terms or browse all appliances.
-                  </p>
+                </p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
@@ -527,12 +527,12 @@ export default function Appliances() {
                         )}
                         <div className="h-48 bg-gray-100 flex items-center justify-center p-4 relative">
                           {item.imageUrl ? (
-                            <Image
-                              src={item.imageUrl}
-                              alt={item.name}
-                              width={220}
-                              height={192}
-                              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                          <Image
+                            src={item.imageUrl}
+                            alt={item.name}
+                            width={220}
+                            height={192}
+                            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                               onError={(e) => {
                                 const target = e.target as HTMLImageElement;
                                 target.style.display = 'none';
