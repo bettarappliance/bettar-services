@@ -194,7 +194,18 @@ function AdminPageContent() {
       setDeletingId(null);
     } catch (error) {
       console.error("Error deleting appliance:", error);
-      setErrorMessage("Failed to delete appliance");
+      const errorMessage = error instanceof Error ? error.message : "Failed to delete appliance";
+      
+      // Provide helpful error message for Firestore permissions
+      if (errorMessage.includes("permission") || errorMessage.includes("Permission")) {
+        setErrorMessage(
+          "Missing or insufficient permissions. Please check your Firestore security rules. " +
+          "The 'appliances' collection needs write access. " +
+          "Go to Firebase Console > Firestore Database > Rules and ensure write access is allowed."
+        );
+      } else {
+        setErrorMessage(errorMessage);
+      }
       setDeletingId(null);
     }
   };
@@ -303,7 +314,18 @@ function AdminPageContent() {
     } catch (error) {
       console.error("Error updating appliance:", error);
       setSubmitStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Failed to update appliance");
+      const errorMessage = error instanceof Error ? error.message : "Failed to update appliance";
+      
+      // Provide helpful error message for Firestore permissions
+      if (errorMessage.includes("permission") || errorMessage.includes("Permission")) {
+        setErrorMessage(
+          "Missing or insufficient permissions. Please check your Firestore security rules. " +
+          "The 'appliances' collection needs write access. " +
+          "Go to Firebase Console > Firestore Database > Rules and ensure write access is allowed."
+        );
+      } else {
+        setErrorMessage(errorMessage);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -442,9 +464,18 @@ function AdminPageContent() {
     } catch (error) {
       console.error("Error adding appliance:", error);
       setSubmitStatus("error");
-      setErrorMessage(
-        error instanceof Error ? error.message : "Failed to add appliance"
-      );
+      const errorMessage = error instanceof Error ? error.message : "Failed to add appliance";
+      
+      // Provide helpful error message for Firestore permissions
+      if (errorMessage.includes("permission") || errorMessage.includes("Permission")) {
+        setErrorMessage(
+          "Missing or insufficient permissions. Please check your Firestore security rules. " +
+          "The 'appliances' collection needs write access. " +
+          "Go to Firebase Console > Firestore Database > Rules and ensure write access is allowed."
+        );
+      } else {
+        setErrorMessage(errorMessage);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -982,7 +1013,9 @@ function AdminPageContent() {
                 disabled={isSubmitting}
                 className="flex-1 bg-[#002D72] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#001a45] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? "Adding..." : "Add Appliance"}
+                {isSubmitting 
+                  ? (editingId ? "Saving..." : "Adding...") 
+                  : (editingId ? "Save Changes" : "Add Appliance")}
               </button>
               <button
                 type="button"

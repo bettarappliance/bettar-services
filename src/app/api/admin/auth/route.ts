@@ -10,7 +10,10 @@ export async function POST(request: NextRequest) {
     if (!adminPassword) {
       console.error("ADMIN_PASSWORD environment variable is not set");
       return NextResponse.json(
-        { success: false, error: "Server configuration error" },
+        { 
+          success: false, 
+          error: "Server configuration error: ADMIN_PASSWORD environment variable is not set. Please add ADMIN_PASSWORD=your_password to your .env file and restart the server." 
+        },
         { status: 500 }
       );
     }
