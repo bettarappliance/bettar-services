@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
 import Script from "next/script";
 import Header from "../../components/Header";
@@ -43,6 +44,8 @@ export default function Appliances() {
   const [searchQuery, setSearchQuery] = useState("");
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
+  const [selectedApplianceName, setSelectedApplianceName] = useState<string>("");
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
   // Filter state
   const [selectedFilters, setSelectedFilters] = useState<{
@@ -135,13 +138,15 @@ export default function Appliances() {
             const category = item.category?.toLowerCase() || "";
             const description = item.shortDescription?.toLowerCase() || "";
             const type = item.type?.toLowerCase() || "";
+            const modelNumber = item.modelNumber?.toLowerCase() || "";
             
         if (!(
               name.includes(q) ||
               brand.includes(q) ||
               category.includes(q) ||
               description.includes(q) ||
-              type.includes(q)
+              type.includes(q) ||
+              modelNumber.includes(q)
         )) {
           return false;
         }
@@ -353,22 +358,20 @@ export default function Appliances() {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-12 bg-[#F4F7FF]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-6 sm:py-8 md:py-12 bg-[#F4F7FF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-0">
-            <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              <span className="text-[#002D72]">
-                Appliance Sales, Repair & Installation
-              </span>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-3 sm:mb-4 leading-tight">
+              <span className="text-[#002D72]">Bettar Appliance</span> - Best Appliance Store Near Me
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Reliable appliance sales, installation, and repair serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. From fridges and dishwashers to washers and dryers, Bettar Appliance keeps your home running smoothly.
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
+              <strong>Bettar Appliance Kensington</strong> - Your trusted local appliance store. Looking for the <strong>best appliance stores near me</strong>? <strong>Better appliance near me</strong>? <strong>Where to buy washing machine near me</strong>? Bettar Appliance provides <strong>bettar appliance repair</strong>, sales, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. From fridges and dishwashers to washers and dryers, Bettar Appliance keeps your home running smoothly.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
               <button
                 onClick={() => setIsApplianceModalOpen(true)}
-                className="px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition shadow-lg hover:shadow-xl"
               >
                 Buy Now
               </button>
@@ -379,12 +382,12 @@ export default function Appliances() {
                     faqSection.scrollIntoView({ behavior: "smooth", block: "start" });
                   }
                 }}
-                className="px-8 py-3 rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] border-2 border-[#002D72] transition shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] border-2 border-[#002D72] transition shadow-lg hover:shadow-xl"
               >
                 View FAQs
               </button>
             </div>
-            <p className="mt-4 text-sm text-gray-500">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 px-2 sm:px-0">
               Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. Licensed and insured.
             </p>
 
@@ -395,19 +398,38 @@ export default function Appliances() {
 
       {/* Main content with sidebar */}
       <main className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">
-        {/* Sidebar */}
-        <aside className="w-full lg:w-64 xl:w-72 flex-shrink-0">
+        {/* Mobile Filter Button */}
+        <div className="lg:hidden mb-4">
+          <button
+            onClick={() => setIsFilterModalOpen(true)}
+            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#002D72] text-white rounded-lg font-semibold hover:bg-[#001F5C] transition-colors shadow-md"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            Filters
+            {(selectedFilters.brand.length > 0 || selectedFilters.energy.length > 0 || selectedFilters.features.length > 0 || priceRange.min > 0 || priceRange.max < 5000) && (
+              <span className="bg-white text-[#002D72] px-2 py-0.5 rounded-full text-xs font-bold">
+                {selectedFilters.brand.length + selectedFilters.energy.length + selectedFilters.features.length + (priceRange.min > 0 || priceRange.max < 5000 ? 1 : 0)}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {/* Sidebar - Hidden on mobile, visible on desktop */}
+        <aside className="hidden lg:block w-full lg:w-64 xl:w-72 flex-shrink-0">
           <ApplianceSidebar
             selectedFilters={selectedFilters}
             priceRange={priceRange}
             onFilterChange={handleFilterChange}
             onPriceRangeChange={setPriceRange}
             onClearAll={handleClearAllFilters}
+            appliances={appliances}
           />
         </aside>
 
-        {/* Right column */}
-        <div className="w-full flex-1 space-y-16">
+          {/* Right column */}
+        <div className="w-full flex-1 space-y-8 lg:space-y-16">
           {/* Search + intro */}
           <section>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
@@ -513,11 +535,11 @@ export default function Appliances() {
                 </p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
                   {filteredAppliances.map((item) => (
                     <article
                       key={item.id}
-                      className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                      className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
                     >
                       <div className="relative">
                         {item.discountPercent && (
@@ -558,7 +580,7 @@ export default function Appliances() {
                           )}
                         </div>
                       </div>
-                      <div className="p-4">
+                      <div className="p-4 flex flex-col flex-grow">
                         {item.modelNumber && (
                           <p className="text-xs text-gray-400 mb-1">
                             {item.modelNumber}
@@ -586,15 +608,24 @@ export default function Appliances() {
                           </p>
                         )}
                         {item.shortDescription && (
-                          <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                          <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
                             {item.shortDescription}
                           </p>
                         )}
                         {item.inStock === false && (
-                          <p className="text-red-600 font-medium text-xs mt-1">
+                          <p className="text-red-600 font-medium text-xs mt-1 mb-2">
                             Out of Stock
                           </p>
                         )}
+                        <button
+                          onClick={() => {
+                            setSelectedApplianceName(item.name);
+                            setIsApplianceModalOpen(true);
+                          }}
+                          className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+                        >
+                          Buy Now
+                        </button>
                       </div>
                     </article>
                   ))}
@@ -673,30 +704,156 @@ export default function Appliances() {
         </div>
       </main>
           {/* Hero Illustration */}
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="relative h-80 md:h-96">
-              <Image
-                src="/appliances.jpg"
-                alt="Technician installing a kitchen appliance"
-                fill
-                className="object-cover rounded-3xl shadow-xl"
-              />
+          <div className="px-4 sm:px-6 py-8 md:py-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
+              <div className="relative h-64 sm:h-80 md:h-96 w-full">
+                <Image
+                  src="/appliances.jpg"
+                  alt="Technician installing a kitchen appliance"
+                  fill
+                  className="object-cover rounded-2xl md:rounded-3xl shadow-xl"
+                />
+              </div>
+              <div className="space-y-3 md:space-y-4">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
+                  Sales, Installations & Repairs – All in One Place
+                </h2>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Bettar Appliance is your one-stop shop for appliances throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. We help you choose the right unit, deliver it to your home, professionally install it, and keep it maintained for years.
+                </p>
+                <ul className="space-y-1.5 md:space-y-2 text-sm sm:text-base text-gray-700">
+                  <li>• New appliance sales with honest recommendations</li>
+                  <li>• Professional installation and removal of old units</li>
+                  <li>• Same-day and next-day repair options</li>
+                  <li>• Local team that respects your home and time</li>
+                </ul>
+              </div>
             </div>
-            <div className="space-y-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Sales, Installations & Repairs – All in One Place
-              </h2>
-               <p className="text-gray-600">
-                 Bettar Appliance is your one-stop shop for appliances throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. We help you choose the right unit, deliver it to your home, professionally install it, and keep it maintained for years.
-               </p>
+          </div>
+
+      {/* Best Appliance Stores Near Me Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              Best Appliance Stores Near Me? <span className="text-[#002D72]">Bettar Appliance in Kensington, MD</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Looking for the best appliance stores near me? Bettar Appliance in Kensington, MD is your trusted local appliance store serving Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, and Germantown. Family-owned since 1945, we offer quality appliances, expert installation, and reliable repair services.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="bg-[#F4F7FF] p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                Why Choose Bettar Appliance - Best Appliance Store Near Me
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start">
+                  <span className="text-[#002D72] mr-2">✓</span>
+                  <span><strong>Local Expertise:</strong> Serving Kensington and surrounding areas since 1945</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#002D72] mr-2">✓</span>
+                  <span><strong>Top Brands:</strong> Refrigerators, washers, dryers, dishwashers, ranges, and more</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#002D72] mr-2">✓</span>
+                  <span><strong>Professional Installation:</strong> Licensed technicians install your appliances correctly</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#002D72] mr-2">✓</span>
+                  <span><strong>Same-Day Service:</strong> Fast appliance repair and installation when you need it</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#002D72] mr-2">✓</span>
+                  <span><strong>Competitive Prices:</strong> Best deals on quality appliances in the area</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-[#F4F7FF] p-6 rounded-lg">
+              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                Bettar Appliance Kensington - Your Local Appliance Store
+              </h3>
+              <p className="text-gray-600 mb-4">
+                <strong>Bettar Appliance Kensington</strong> is conveniently located to serve homeowners throughout Montgomery County, MD. Whether you&apos;re searching for &quot;bettar appliance kensington&quot; or &quot;appliance store near me,&quot; we&apos;re here to help with:
+              </p>
               <ul className="space-y-2 text-gray-700">
-                <li>• New appliance sales with honest recommendations</li>
-                <li>• Professional installation and removal of old units</li>
-                <li>• Same-day and next-day repair options</li>
-                <li>• Local team that respects your home and time</li>
+                <li>• <strong>Bettar Appliance Repair:</strong> Expert repair for all major brands</li>
+                <li>• <strong>Bettar Appliance Sales:</strong> New and quality appliances</li>
+                <li>• <strong>Bettar Appliance Installation:</strong> Professional setup and delivery</li>
+                <li>• <strong>Better Appliance Near Me:</strong> Local service you can trust</li>
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Where to Buy Washing Machine Near Me Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              Where to Buy a Washing Machine Near Me? <span className="text-[#002D72]">Bettar Appliance</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Searching for &quot;where to buy a washing machine near me&quot;? Bettar Appliance offers top-quality washers from leading brands like GE, Whirlpool, Maytag, Samsung, and LG. We provide expert guidance, professional installation, and ongoing support.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Top-Loading Washers
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Energy-efficient top-loading washers perfect for families. Available in various capacities to suit your needs.
+              </p>
+              <Link href="/appliances/washers" className="text-[#002D72] font-semibold hover:underline">
+                Shop Top-Loading Washers →
+              </Link>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Front-Loading Washers
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Space-saving front-loading washers with advanced features. Great for modern homes and apartments.
+              </p>
+              <Link href="/appliances/washers" className="text-[#002D72] font-semibold hover:underline">
+                Shop Front-Loading Washers →
+              </Link>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Washer-Dryer Combos
+              </h3>
+              <p className="text-gray-600 mb-4">
+                All-in-one washer-dryer units perfect for small spaces. Wash and dry in one convenient machine.
+              </p>
+              <Link href="/appliances" className="text-[#002D72] font-semibold hover:underline">
+                Shop Washer-Dryer Combos →
+              </Link>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 mb-4">
+              <strong>Better Appliance Near Me?</strong> Yes! Bettar Appliance provides better appliance repair, better appliance sales, and better appliance service. Visit our showroom or call <strong>301-949-2500</strong> to speak with our appliance experts.
+            </p>
+            <button
+              onClick={() => setIsApplianceModalOpen(true)}
+              className="px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition"
+            >
+              Find Your Perfect Washing Machine
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="bg-[#002D72] text-white py-10 mt-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -723,8 +880,60 @@ export default function Appliances() {
       {/* Appliance Request Modal */}
       <ApplianceRequestModal
         isOpen={isApplianceModalOpen}
-        onClose={() => setIsApplianceModalOpen(false)}
+        onClose={() => {
+          setIsApplianceModalOpen(false);
+          setSelectedApplianceName("");
+        }}
+        applianceName={selectedApplianceName}
       />
+
+      {/* Mobile Filter Modal */}
+      {isFilterModalOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setIsFilterModalOpen(false)}
+          />
+          
+          {/* Modal Content */}
+          <div className="absolute inset-y-0 left-0 w-full max-w-sm bg-white shadow-xl overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between z-10">
+              <h2 className="text-xl font-bold text-gray-900">Filters</h2>
+              <button
+                onClick={() => setIsFilterModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700 transition-colors"
+                aria-label="Close filters"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <ApplianceSidebar
+                selectedFilters={selectedFilters}
+                priceRange={priceRange}
+                onFilterChange={handleFilterChange}
+                onPriceRangeChange={setPriceRange}
+                onClearAll={handleClearAllFilters}
+                appliances={appliances}
+              />
+            </div>
+            
+            {/* Apply Button */}
+            <div className="sticky bottom-0 bg-white border-t border-gray-200 px-6 py-4">
+              <button
+                onClick={() => setIsFilterModalOpen(false)}
+                className="w-full bg-[#002D72] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#001F5C] transition-colors"
+              >
+                Apply Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

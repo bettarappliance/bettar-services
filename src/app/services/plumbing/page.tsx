@@ -42,6 +42,22 @@ export default function Plumbing() {
       },
       {
         "@type": "Question",
+        "name": "Do you provide water heater repair in Gaithersburg, MD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide water heater repair in Gaithersburg, MD. Our licensed plumbers offer same-day water heater repair service for Gaithersburg residents. We fix all types of water heater issues including no hot water, leaks, strange noises, and temperature problems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide water heater replacement in Gaithersburg, MD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, we provide water heater replacement in Gaithersburg, MD. Our expert plumbers help you choose the right water heater (tank or tankless) and handle complete installation including removal of your old unit. We serve Gaithersburg, Germantown, Rockville, and throughout Montgomery County, MD."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What areas do your plumbers serve?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -203,7 +219,7 @@ export default function Plumbing() {
       {/* Water Heater Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="relative">
               <Image
                 src="/plumbing.jpeg"
@@ -259,6 +275,114 @@ export default function Plumbing() {
               </div>
             </div>
           </div>
+
+          {/* Gaithersburg Water Heater Services Section */}
+          <div className="bg-[#F4F7FF] rounded-2xl p-8 md:p-12 mt-12">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+                Water Heater Repair & Replacement in <span className="text-[#002D72]">Gaithersburg, MD</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Need <strong>water heater repair Gaithersburg MD</strong>? Looking for <strong>water heater replacement Gaithersburg MD</strong>? Bettar Services provides expert water heater repair and replacement services in Gaithersburg and throughout Montgomery County, MD.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mt-8">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                  Water Heater Repair Gaithersburg MD
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Is your water heater not working properly? Our licensed plumbers provide fast and reliable <strong>water heater repair in Gaithersburg, MD</strong>. We diagnose and fix common issues including:
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>No hot water or insufficient hot water</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Water heater leaking or dripping</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Strange noises from water heater</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Pilot light won&apos;t stay lit</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Water temperature issues</span>
+                  </li>
+                </ul>
+                <p className="text-gray-600 mt-4">
+                  Same-day <strong>water heater repair Gaithersburg MD</strong> service available. Call <strong>301-949-2500</strong> for immediate assistance.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="text-2xl font-bold text-[#002D72] mb-4">
+                  Water Heater Replacement Gaithersburg MD
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Is your water heater over 10 years old or beyond repair? We provide professional <strong>water heater replacement in Gaithersburg, MD</strong>. Our expert plumbers help you choose the right water heater and handle the complete installation:
+                </p>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Traditional tank water heaters (40-80 gallons)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Energy-efficient tankless water heaters</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>High-efficiency condensing water heaters</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Gas and electric water heater installation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#002D72] mr-2">•</span>
+                    <span>Old water heater removal and disposal</span>
+                  </li>
+                </ul>
+                <p className="text-gray-600 mt-4">
+                  Professional <strong>water heater replacement Gaithersburg MD</strong> service with warranty. Serving Gaithersburg, Germantown, Rockville, and surrounding areas.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <p className="text-lg text-gray-700 mb-6">
+                <strong>Why Choose Bettar Services for Water Heater Repair & Replacement in Gaithersburg?</strong>
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 text-left">
+                <div className="bg-white p-4 rounded-lg">
+                  <h4 className="font-bold text-[#002D72] mb-2">Licensed & Insured</h4>
+                  <p className="text-sm text-gray-600">Fully licensed plumbers with insurance coverage for your protection</p>
+                </div>
+                <div className="bg-white p-4 rounded-lg">
+                  <h4 className="font-bold text-[#002D72] mb-2">Same-Day Service</h4>
+                  <p className="text-sm text-gray-600">Fast response for water heater emergencies in Gaithersburg, MD</p>
+                </div>
+                <div className="bg-white p-4 rounded-lg">
+                  <h4 className="font-bold text-[#002D72] mb-2">Quality Brands</h4>
+                  <p className="text-sm text-gray-600">We install and repair top water heater brands with warranty</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="mt-8 px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition"
+              >
+                Schedule Water Heater Service in Gaithersburg
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -293,6 +417,24 @@ export default function Plumbing() {
               </h3>
               <p className="text-gray-600">
                 Yes, we provide professional water heater service in Kensington, MD including water heater repair, installation, and maintenance. Our experienced plumbers can help with both traditional and tankless water heater systems. Same-day service available.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Do you provide water heater repair in Gaithersburg, MD?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we provide <strong>water heater repair in Gaithersburg, MD</strong>. Our licensed plumbers offer same-day water heater repair service for Gaithersburg residents. We fix all types of water heater issues including no hot water, leaks, strange noises, and temperature problems. Call <strong>301-949-2500</strong> for immediate service.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-bold text-[#002D72] mb-3">
+                Do you provide water heater replacement in Gaithersburg, MD?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we provide <strong>water heater replacement in Gaithersburg, MD</strong>. Our expert plumbers help you choose the right water heater (tank or tankless) and handle complete installation including removal of your old unit. We serve Gaithersburg, Germantown, Rockville, and throughout Montgomery County, MD with professional water heater replacement services.
               </p>
             </div>
             

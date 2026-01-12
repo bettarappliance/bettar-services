@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 type FilterState = {
   brand: string[];
@@ -14,12 +14,19 @@ type PriceRange = {
   max: number;
 };
 
+type Appliance = {
+  id: string;
+  brand?: string;
+  [key: string]: unknown;
+};
+
 type ApplianceSidebarProps = {
   selectedFilters?: FilterState;
   priceRange?: PriceRange;
   onFilterChange?: (filterType: keyof FilterState, value: string) => void;
   onPriceRangeChange?: (range: PriceRange) => void;
   onClearAll?: () => void;
+  appliances?: Appliance[];
 };
 
 export default function ApplianceSidebar({
@@ -28,6 +35,7 @@ export default function ApplianceSidebar({
   onFilterChange,
   onPriceRangeChange,
   onClearAll,
+  appliances = [],
 }: ApplianceSidebarProps = {}) {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [expandedFilters, setExpandedFilters] = useState<Record<string, boolean>>({
@@ -37,6 +45,7 @@ export default function ApplianceSidebar({
     energy: true,
     features: true,
   });
+  const [showAllBrands, setShowAllBrands] = useState(false);
   
   // Use external filters if provided, otherwise use internal state
   const [internalFilters, setInternalFilters] = useState<FilterState>({
@@ -118,8 +127,34 @@ export default function ApplianceSidebar({
     }
   };
 
+  // Extract unique brands from appliances with counts
+  const brandList = useMemo(() => {
+    const brandCounts: Record<string, number> = {};
+    
+    appliances.forEach((appliance) => {
+      if (appliance.brand) {
+        const brand = appliance.brand.trim();
+        if (brand) {
+          brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+        }
+      }
+    });
+
+    // Sort by count (descending), then alphabetically
+    return Object.entries(brandCounts)
+      .map(([brand, count]) => ({ brand, count }))
+      .sort((a, b) => {
+        if (b.count !== a.count) {
+          return b.count - a.count;
+        }
+        return a.brand.localeCompare(b.brand);
+      });
+  }, [appliances]);
+
+  const displayedBrands = showAllBrands ? brandList : brandList.slice(0, 5);
+
   return (
-    <div className="bg-white sticky top-24">
+    <div className="bg-white lg:sticky lg:top-24">
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-gray-900">Categories</h2>
@@ -292,57 +327,48 @@ export default function ApplianceSidebar({
         </button>
         {expandedFilters.brand && (
           <div className="space-y-3">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.brand.includes('whirlpool')}
-                onChange={() => handleFilterChange('brand', 'whirlpool')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Whirlpool (45)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.brand.includes('kitchenaid')}
-                onChange={() => handleFilterChange('brand', 'kitchenaid')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">KitchenAid (38)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.brand.includes('ge')}
-                onChange={() => handleFilterChange('brand', 'ge')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">GE (32)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.brand.includes('maytag')}
-                onChange={() => handleFilterChange('brand', 'maytag')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Maytag (28)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.brand.includes('samsung')}
-                onChange={() => handleFilterChange('brand', 'samsung')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Samsung (24)</span>
-            </label>
-            <Link href="/appliances" className="text-[#002D72] text-sm font-medium flex items-center mt-2">
-              More
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </Link>
+            {displayedBrands.length > 0 ? (
+              <>
+                {displayedBrands.map(({ brand, count }) => {
+                  const brandLower = brand.toLowerCase();
+                  const isChecked = selectedFilters.brand.some(b => {
+                    const filterBrandLower = b.toLowerCase();
+                    return brandLower === filterBrandLower || 
+                           brandLower.includes(filterBrandLower) || 
+                           filterBrandLower.includes(brandLower);
+                  });
+                  return (
+                    <label key={brand} className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => handleFilterChange('brand', brandLower)}
+                        className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
+                      />
+                      <span className="ml-3 text-gray-700">{brand} ({count})</span>
+                    </label>
+                  );
+                })}
+                {brandList.length > 5 && (
+                  <button
+                    onClick={() => setShowAllBrands(!showAllBrands)}
+                    className="text-[#002D72] text-sm font-medium flex items-center mt-2 hover:text-[#001F5C] transition-colors"
+                  >
+                    {showAllBrands ? 'Show Less' : `Show More (${brandList.length - 5} more)`}
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform ${showAllBrands ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="text-gray-500 text-sm">No brands available</p>
+            )}
           </div>
         )}
       </div>

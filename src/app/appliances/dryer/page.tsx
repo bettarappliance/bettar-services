@@ -29,6 +29,7 @@ export default function DryerPage() {
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(true);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
+  const [selectedApplianceName, setSelectedApplianceName] = useState<string>("");
 
   useEffect(() => {
     const fetchAppliances = async () => {
@@ -119,11 +120,11 @@ export default function DryerPage() {
               No dryers available at the moment.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
               {appliances.map((item) => (
                 <article
                   key={item.id}
-                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
                 >
                   <div className="relative">
                     {item.discountPercent && (
@@ -164,7 +165,7 @@ export default function DryerPage() {
                       )}
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-grow">
                     {item.modelNumber && (
                       <p className="text-xs text-gray-400 mb-1">
                         {item.modelNumber}
@@ -192,15 +193,24 @@ export default function DryerPage() {
                       </p>
                     )}
                     {item.shortDescription && (
-                      <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                      <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
                         {item.shortDescription}
                       </p>
                     )}
                     {item.inStock === false && (
-                      <p className="text-red-600 font-medium text-xs mt-1">
+                      <p className="text-red-600 font-medium text-xs mt-1 mb-2">
                         Out of Stock
                       </p>
                     )}
+                    <button
+                      onClick={() => {
+                        setSelectedApplianceName(item.name);
+                        setIsApplianceModalOpen(true);
+                      }}
+                      className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+                    >
+                      Buy Now
+                    </button>
                   </div>
                 </article>
               ))}
@@ -232,7 +242,11 @@ export default function DryerPage() {
 
       <ApplianceRequestModal
         isOpen={isApplianceModalOpen}
-        onClose={() => setIsApplianceModalOpen(false)}
+        onClose={() => {
+          setIsApplianceModalOpen(false);
+          setSelectedApplianceName("");
+        }}
+        applianceName={selectedApplianceName}
       />
     </div>
   );

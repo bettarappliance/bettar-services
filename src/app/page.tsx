@@ -347,7 +347,7 @@ export default function Home() {
               
               {/* Stat 2 */}
               <div className="text-center">
-                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">30k+</div>
+                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">30K+</div>
                 <div className="text-gray-700 font-medium">HAPPY CLIENTS</div>
               </div>
               
@@ -708,7 +708,7 @@ export default function Home() {
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-6">
               {/* Refrigerators */}
               <Link href="/appliances/refrigerators" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/ref/fri2.jpg"
                     alt="Refrigerators"
@@ -717,12 +717,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Refrigerators</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Refrigerators</span>
               </Link>
 
               {/* Dishwasher */}
               <Link href="/appliances/dishwasher" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/dishwasher/kitchenaid1.jpg"
                     alt="Dishwasher"
@@ -731,12 +731,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Dishwasher</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Dishwasher</span>
               </Link>
 
               {/* Range */}
               <Link href="/appliances/range" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/range/kitchenaid1.jpg"
                     alt="Range"
@@ -745,12 +745,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Range</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Range</span>
               </Link>
 
               {/* Cooktops */}
               <Link href="/appliances/cooktops" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/cooktop/maytag1.jpg"
                     alt="Cooktops"
@@ -759,12 +759,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Cooktops</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Cooktops</span>
               </Link>
 
               {/* Microwave */}
               <Link href="/appliances/microwave" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/microwave/ge1.jpg"
                     alt="Microwave"
@@ -773,12 +773,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Microwave</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Microwave</span>
               </Link>
 
               {/* Washers */}
               <Link href="/appliances/washers" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/washers/ge1.jpg"
                     alt="Washers"
@@ -787,12 +787,12 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Washers</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Washers</span>
               </Link>
 
               {/* Clothes Dryer */}
               <Link href="/appliances/dryer" className="flex flex-col items-center group cursor-pointer">
-                <div className="w-32 h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-white-100 border-2 border-gray-300 group-hover:border-[#002D72] flex items-center justify-center overflow-hidden mb-3 group-hover:scale-110 transition-all duration-300 shadow-md">
                   <Image
                     src="/appliances-images/dryer/maytag1.png"
                     alt="Clothes Dryer"
@@ -801,7 +801,7 @@ export default function Home() {
                     className="w-3/4 h-3/4 object-contain object-center"
                   />
                 </div>
-                <span className="text-gray-800 font-medium text-center text-sm">Clothes Dryer</span>
+                <span className="text-gray-800 font-medium text-center text-xs sm:text-sm">Clothes Dryer</span>
               </Link>
           </div>
         </div>
@@ -830,7 +830,7 @@ export default function Home() {
               No appliances available at the moment.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
               {appliances.map((item) => (
                 <Link 
                   key={item.id}
@@ -1429,7 +1429,7 @@ export default function Home() {
               Looking for <span className="text-[#002D72]">Better Services</span>? You Found <span className="text-[#002D72]">Bettar</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              When you search for &quot;better services&quot; or &quot;better appliances,&quot; you&apos;re looking for quality, reliability, and expertise. That&apos;s exactly what Bettar Services delivers. Better services, better appliances, better results - that&apos;s the Bettar difference.
+              When you search for &quot;better services&quot; or &quot;better appliances,&quot; you&apos;re looking for quality, reliability, and expertise. That&apos;s exactly what Bettar Services delivers. <strong>Better services</strong> for your home, <strong>better appliances</strong> for your family, and <strong>better results</strong> you can trust. Better services, better appliances, better results - that&apos;s the Bettar difference. Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD since 1945.
             </p>
           </div>
           

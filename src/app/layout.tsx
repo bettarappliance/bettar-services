@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import BackToTop from "../components/BackToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bettar Appliance | Bettar Services - Appliance Sales & Repair | Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, Germantown MD",
-  description: "Bettar Services - Better services, better appliances. Professional appliance sales, repair, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Home improvement, plumbing, handyman, and renovation services. Family-owned since 1945. Call 301-949-2500.",
-  keywords: "bettar appliance, bettar appliances, bettar inc, bettar services, better services, better appliances, better appliance, better appliance near me, appliance sales, appliance repair, appliance installation, home improvement, renovation, plumbing, heating, handyman, kitchen remodeling, bathroom renovation, Bethesda MD, Chevy Chase MD, Rockville MD, Kensington MD, Potomac MD, Olney MD, Brookville MD, Gaithersburg MD, Germantown MD, Upper Northwest DC, Washington DC",
+  title: "Bettar Appliance | Better Services & Better Appliances | Kensington, Bethesda, Rockville MD",
+  description: "Bettar Services - Better services, better appliances. Bettar appliance repair, sales, and installation. Better appliance near me. Best appliance stores near me. Bettar appliance Kensington. Where to buy washing machine near me. Professional appliance services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945. Call 301-949-2500.",
+  keywords: "bettar appliance, bettar appliances, bettar appliance kensington, bettar appliance repair, better services, better appliances, better appliance, better appliance near me, better appliance repair, best appliance stores near me, appliance store near me, where to buy washing machine near me, bettar, bettar inc, bettar services, appliance sales, appliance repair, appliance installation, home improvement, renovation, plumbing, heating, handyman, kitchen remodeling, bathroom renovation, Bethesda MD, Chevy Chase MD, Rockville MD, Kensington MD, Potomac MD, Olney MD, Brookville MD, Gaithersburg MD, Germantown MD, Upper Northwest DC, Washington DC",
   authors: [{ name: "Bettar Services" }],
   creator: "Bettar Services",
   publisher: "Bettar Services",
@@ -83,6 +84,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         {children}
+        <BackToTop />
         <Analytics />
         <SpeedInsights />
       </body>

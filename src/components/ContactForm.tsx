@@ -189,14 +189,20 @@ export default function ContactForm() {
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
 
-      console.log('EmailJS Config:', { serviceId, templateId, publicKey });
+      console.log('EmailJS Config:', { 
+        serviceId: serviceId ? `${serviceId.substring(0, 5)}...` : 'missing',
+        templateId: templateId ? `${templateId.substring(0, 5)}...` : 'missing',
+        publicKey: publicKey ? `${publicKey.substring(0, 5)}...` : 'missing'
+      });
 
-      if (!serviceId || !templateId || !publicKey) {
+      if (!serviceId || serviceId === 'your_service_id_here' || 
+          !templateId || templateId === 'your_template_id_here' || 
+          !publicKey || publicKey === 'your_public_key_here') {
         console.error('Missing EmailJS environment variables');
         throw new Error('EmailJS configuration is missing. Please check your environment variables.');
       }
 
-      const templateParams = {
+      const templateParams: Record<string, string> = {
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
@@ -205,11 +211,22 @@ export default function ContactForm() {
         to_email: 'info@bettarappliance.com'
       };
 
-      console.log('Sending email with params:', templateParams);
+      // Add reCAPTCHA token if available
+      if (recaptchaToken) {
+        templateParams['g-recaptcha-response'] = recaptchaToken;
+      }
+
+      console.log('Sending email with params:', { ...templateParams, message: templateParams.message.substring(0, 50) + '...' });
+      
+      // Initialize EmailJS if needed
+      if (typeof window !== 'undefined' && typeof emailjs.init === 'function') {
+        emailjs.init(publicKey);
+      }
+
       const result = await emailjs.send(serviceId, templateId, templateParams, publicKey);
       console.log('EmailJS result:', result);
 
-      if (result.status === 200) {
+      if (result.status === 200 || result.text === 'OK') {
         setSubmitStatus('success');
         setFormData({
           name: '',
@@ -228,11 +245,37 @@ export default function ContactForm() {
         lastSubmitTime.current = Date.now();
         submitCount.current += 1;
       } else {
-        throw new Error('Email sending failed');
+        throw new Error(`Email sending failed with status: ${result.status}`);
       }
     } catch (error) {
       console.error('EmailJS error:', error);
+      
+      // Provide more detailed error information
+      let errorMessage = 'Sorry, there was an error sending your message.';
+      
+      if (error instanceof Error) {
+        errorMessage = error.message;
+        console.error('Error details:', {
+          message: error.message,
+          stack: error.stack,
+          name: error.name
+        });
+      } else if (typeof error === 'object' && error !== null) {
+        // Handle EmailJS specific error format
+        const emailjsError = error as { status?: number; text?: string; [key: string]: unknown };
+        if (emailjsError.status) {
+          errorMessage = `Email service error (${emailjsError.status}): ${emailjsError.text || 'Unknown error'}`;
+        }
+        console.error('EmailJS error object:', JSON.stringify(error, null, 2));
+      } else {
+        console.error('Unknown error type:', typeof error, error);
+      }
+      
       setSubmitStatus('error');
+      // Optionally show alert with more details in development
+      if (process.env.NODE_ENV === 'development') {
+        alert(`Error: ${errorMessage}`);
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -468,11 +468,11 @@ function AdminPageContent() {
       
       // Provide helpful error message for Firestore permissions
       if (errorMessage.includes("permission") || errorMessage.includes("Permission")) {
-        setErrorMessage(
+      setErrorMessage(
           "Missing or insufficient permissions. Please check your Firestore security rules. " +
           "The 'appliances' collection needs write access. " +
           "Go to Firebase Console > Firestore Database > Rules and ensure write access is allowed."
-        );
+      );
       } else {
         setErrorMessage(errorMessage);
       }

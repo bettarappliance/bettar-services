@@ -29,6 +29,7 @@ export default function RefrigeratorsPage() {
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(true);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
+  const [selectedApplianceName, setSelectedApplianceName] = useState<string>("");
 
   useEffect(() => {
     const fetchAppliances = async () => {
@@ -123,7 +124,7 @@ export default function RefrigeratorsPage() {
               {appliances.map((item) => (
                 <article
                   key={item.id}
-                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
                 >
                   <div className="relative">
                     {item.discountPercent && (
@@ -164,7 +165,7 @@ export default function RefrigeratorsPage() {
                       )}
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 flex flex-col flex-grow">
                     {item.modelNumber && (
                       <p className="text-xs text-gray-400 mb-1">
                         {item.modelNumber}
@@ -192,15 +193,24 @@ export default function RefrigeratorsPage() {
                       </p>
                     )}
                     {item.shortDescription && (
-                      <p className="text-gray-600 text-sm line-clamp-2 mt-1">
+                      <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
                         {item.shortDescription}
                       </p>
                     )}
                     {item.inStock === false && (
-                      <p className="text-red-600 font-medium text-xs mt-1">
+                      <p className="text-red-600 font-medium text-xs mt-1 mb-2">
                         Out of Stock
                       </p>
                     )}
+                    <button
+                      onClick={() => {
+                        setSelectedApplianceName(item.name);
+                        setIsApplianceModalOpen(true);
+                      }}
+                      className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+                    >
+                      Buy Now
+                    </button>
                   </div>
                 </article>
               ))}
@@ -232,7 +242,11 @@ export default function RefrigeratorsPage() {
 
       <ApplianceRequestModal
         isOpen={isApplianceModalOpen}
-        onClose={() => setIsApplianceModalOpen(false)}
+        onClose={() => {
+          setIsApplianceModalOpen(false);
+          setSelectedApplianceName("");
+        }}
+        applianceName={selectedApplianceName}
       />
     </div>
   );
