@@ -50,12 +50,8 @@ export default function Appliances() {
   // Filter state
   const [selectedFilters, setSelectedFilters] = useState<{
     brand: string[];
-    energy: string[];
-    features: string[];
   }>({
     brand: [],
-    energy: [],
-    features: [],
   });
   const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
 
@@ -106,7 +102,7 @@ export default function Appliances() {
     fetchAppliances();
   }, []);
 
-  const handleFilterChange = (filterType: "brand" | "energy" | "features", value: string) => {
+  const handleFilterChange = (filterType: "brand", value: string) => {
     setSelectedFilters(prev => {
       const current = prev[filterType] || [];
       if (current.includes(value)) {
@@ -124,7 +120,7 @@ export default function Appliances() {
   };
 
   const handleClearAllFilters = () => {
-    setSelectedFilters({ brand: [], energy: [], features: [] });
+    setSelectedFilters({ brand: [] });
     setPriceRange({ min: 0, max: 5000 });
   };
 
@@ -167,54 +163,14 @@ export default function Appliances() {
         return false;
       }
 
-      // Energy rating filter
-      if (selectedFilters.energy.length > 0) {
-        const itemEnergy = item.energyRating?.toLowerCase() || "";
-        const energyMatches = selectedFilters.energy.some(filterEnergy => {
-          if (filterEnergy === "energy-star") {
-            return itemEnergy.includes("energy star") || itemEnergy.includes("energystar");
-          }
-          return itemEnergy.includes(filterEnergy.toLowerCase());
-        });
-        if (!energyMatches) {
-          return false;
-        }
-      }
-
-      // Features filter
-      if (selectedFilters.features.length > 0) {
-        const itemFeatures = item.features || [];
-        const itemFeaturesLower = itemFeatures.map(f => f.toLowerCase());
-        const itemName = item.name?.toLowerCase() || "";
-        const itemDesc = item.shortDescription?.toLowerCase() || "";
-        
-        const featureMatches = selectedFilters.features.some(filterFeature => {
-          // Check if feature is in features array
-          if (itemFeaturesLower.some(f => f.includes(filterFeature.toLowerCase()))) {
-            return true;
-          }
-          // Also check name and description for common feature keywords
-          const combinedText = `${itemName} ${itemDesc}`;
-          if (filterFeature === "smart" && combinedText.includes("smart")) return true;
-          if (filterFeature === "wifi" && (combinedText.includes("wifi") || combinedText.includes("wi-fi"))) return true;
-          if (filterFeature === "stainless" && combinedText.includes("stainless")) return true;
-          if (filterFeature === "quiet" && combinedText.includes("quiet")) return true;
-          return false;
-        });
-        
-        if (!featureMatches) {
-          return false;
-        }
-      }
-
       return true;
-          })
-          .sort((a, b) => {
-            // Maintain discount sorting even after filtering
-            const discountA = a.discountPercent || 0;
-            const discountB = b.discountPercent || 0;
-            return discountB - discountA;
-          });
+    })
+    .sort((a, b) => {
+      // Maintain discount sorting even after filtering
+      const discountA = a.discountPercent || 0;
+      const discountB = b.discountPercent || 0;
+      return discountB - discountA;
+    });
   }, [appliances, searchQuery, selectedFilters, priceRange]);
 
   // FAQ Schema for SEO
@@ -408,9 +364,9 @@ export default function Appliances() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
             Filters
-            {(selectedFilters.brand.length > 0 || selectedFilters.energy.length > 0 || selectedFilters.features.length > 0 || priceRange.min > 0 || priceRange.max < 5000) && (
+            {(selectedFilters.brand.length > 0 || priceRange.min > 0 || priceRange.max < 5000) && (
               <span className="bg-white text-[#002D72] px-2 py-0.5 rounded-full text-xs font-bold">
-                {selectedFilters.brand.length + selectedFilters.energy.length + selectedFilters.features.length + (priceRange.min > 0 || priceRange.max < 5000 ? 1 : 0)}
+                {selectedFilters.brand.length + (priceRange.min > 0 || priceRange.max < 5000 ? 1 : 0)}
               </span>
             )}
           </button>

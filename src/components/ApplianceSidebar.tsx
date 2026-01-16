@@ -5,8 +5,6 @@ import { useState, useMemo } from "react";
 
 type FilterState = {
   brand: string[];
-  energy: string[];
-  features: string[];
 };
 
 type PriceRange = {
@@ -42,16 +40,12 @@ export default function ApplianceSidebar({
     categories: true,
     brand: true,
     price: true,
-    energy: true,
-    features: true,
   });
   const [showAllBrands, setShowAllBrands] = useState(false);
   
   // Use external filters if provided, otherwise use internal state
   const [internalFilters, setInternalFilters] = useState<FilterState>({
     brand: [],
-    energy: [],
-    features: [],
   });
   const [internalPriceRange, setInternalPriceRange] = useState<PriceRange>({ min: 0, max: 5000 });
   
@@ -102,8 +96,6 @@ export default function ApplianceSidebar({
 
   const hasActiveFilters = 
     (selectedFilters.brand.length > 0) ||
-    (selectedFilters.energy.length > 0) ||
-    (selectedFilters.features.length > 0) ||
     (priceRange.min > 0 || priceRange.max < 5000);
 
   const clearAllFilters = () => {
@@ -113,10 +105,8 @@ export default function ApplianceSidebar({
       // Toggle off all selected filters
       if (onFilterChange) {
         [...selectedFilters.brand].forEach(brand => onFilterChange('brand', brand));
-        [...selectedFilters.energy].forEach(energy => onFilterChange('energy', energy));
-        [...selectedFilters.features].forEach(feature => onFilterChange('features', feature));
       } else {
-        setInternalFilters({ brand: [], energy: [], features: [] });
+        setInternalFilters({ brand: [] });
       }
       
       if (onPriceRangeChange) {
@@ -374,7 +364,7 @@ export default function ApplianceSidebar({
       </div>
 
       {/* Price Filter */}
-      <div className="pt-6 mt-6 px-6">
+      <div className="pt-6 mt-6 px-6 pb-6">
         <button
           onClick={() => toggleFilter('price')}
           className="w-full flex items-center justify-between text-left mb-4"
@@ -418,113 +408,6 @@ export default function ApplianceSidebar({
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#002D72]"
               />
             </div>
-          </div>
-        )}
-      </div>
-
-      {/* Energy Rating Filter */}
-      <div className="pt-6 mt-6 px-6">
-        <button
-          onClick={() => toggleFilter('energy')}
-          className="w-full flex items-center justify-between text-left mb-4"
-        >
-          <h3 className="text-lg font-bold text-gray-900">Energy Rating</h3>
-          <svg
-            className={`w-5 h-5 text-gray-500 transition-transform ${expandedFilters.energy ? 'rotate-180' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {expandedFilters.energy && (
-          <div className="space-y-3">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.energy.includes('energy-star')}
-                onChange={() => handleFilterChange('energy', 'energy-star')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">ENERGY STAR (156)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.energy.includes('high-efficiency')}
-                onChange={() => handleFilterChange('energy', 'high-efficiency')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">High Efficiency (89)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.energy.includes('standard')}
-                onChange={() => handleFilterChange('energy', 'standard')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Standard (67)</span>
-            </label>
-          </div>
-        )}
-      </div>
-
-      {/* Features Filter */}
-      <div className="pt-6 mt-6 px-6 pb-6">
-        <button
-          onClick={() => toggleFilter('features')}
-          className="w-full flex items-center justify-between text-left mb-4"
-        >
-          <h3 className="text-lg font-bold text-gray-900">Features</h3>
-          <svg
-            className={`w-5 h-5 text-gray-500 transition-transform ${expandedFilters.features ? 'rotate-180' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {expandedFilters.features && (
-          <div className="space-y-3">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.features.includes('smart')}
-                onChange={() => handleFilterChange('features', 'smart')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Smart Features (78)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.features.includes('wifi')}
-                onChange={() => handleFilterChange('features', 'wifi')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Wi-Fi Enabled (54)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.features.includes('stainless')}
-                onChange={() => handleFilterChange('features', 'stainless')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Stainless Steel (142)</span>
-            </label>
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={selectedFilters.features.includes('quiet')}
-                onChange={() => handleFilterChange('features', 'quiet')}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-              <span className="ml-3 text-gray-700">Quiet Operation (91)</span>
-            </label>
           </div>
         )}
       </div>
