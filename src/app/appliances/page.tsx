@@ -545,44 +545,48 @@ export default function Appliances() {
                         <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2">
                           {item.name}
                         </h3>
-                        <p className="text-xs text-gray-500 mb-1">
-                          {item.brand} • {item.category}
-                        </p>
-                        <div className="flex items-baseline gap-2 mb-1">
-                          <span className="text-2xl font-bold text-[#002D72]">
-                            ${item.priceFrom.toLocaleString()}
-                          </span>
-                          {item.priceOld && (
-                            <span className="text-gray-500 line-through text-sm">
-                              ${item.priceOld.toLocaleString()}
+                          <p className="text-xs text-gray-500 mb-1">
+                            {item.brand} • {item.category}
+                          </p>
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <span className="text-2xl font-bold text-[#002D72]">
+                              ${item.priceFrom.toLocaleString()}
                             </span>
+                            {item.priceOld && (
+                              <span className="text-gray-500 line-through text-sm">
+                                ${item.priceOld.toLocaleString()}
+                              </span>
+                            )}
+                          </div>
+                          {item.discountPercent && (
+                            <p className="text-green-600 font-medium text-xs">
+                              Save {item.discountPercent}% on this model
+                            </p>
+                          )}
+                          {item.shortDescription && (
+                            <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
+                              {item.shortDescription}
+                            </p>
+                          )}
+                          {item.inStock === false && (
+                            <p className="text-red-600 font-medium text-xs mt-1 mb-2">
+                              Out of Stock
+                            </p>
                           )}
                         </div>
-                        {item.discountPercent && (
-                          <p className="text-green-600 font-medium text-xs">
-                            Save {item.discountPercent}% on this model
-                          </p>
-                        )}
-                        {item.shortDescription && (
-                          <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
-                            {item.shortDescription}
-                          </p>
-                        )}
-                        {item.inStock === false && (
-                          <p className="text-red-600 font-medium text-xs mt-1 mb-2">
-                            Out of Stock
-                          </p>
-                        )}
-                        <button
-                          onClick={() => {
-                            setSelectedApplianceName(item.name);
-                            setIsApplianceModalOpen(true);
-                          }}
-                          className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
-                        >
-                          Buy Now
-                        </button>
-                      </div>
+                        <div className="px-4 pb-4">
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setSelectedApplianceName(item.name);
+                              setIsApplianceModalOpen(true);
+                            }}
+                            className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+                          >
+                            Buy Now
+                          </button>
+                        </div>
                     </article>
                   ))}
                 </div>

@@ -834,7 +834,7 @@ export default function Home() {
               {appliances.map((item) => (
                 <Link 
                   key={item.id}
-                  href="/appliances" 
+                  href={`/appliances/${item.id}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
                   <div className="relative">

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import Script from "next/script";
 import Header from "../../../components/Header";
@@ -122,8 +123,9 @@ export default function RefrigeratorsPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
               {appliances.map((item) => (
-                <article
+                <Link
                   key={item.id}
+                  href={`/appliances/${item.id}`}
                   className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
                 >
                   <div className="relative">
@@ -171,7 +173,7 @@ export default function RefrigeratorsPage() {
                         {item.modelNumber}
                       </p>
                     )}
-                    <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2">
+                    <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2 group-hover:text-[#002D72] transition-colors">
                       {item.name}
                     </h3>
                     <p className="text-xs text-gray-500 mb-1">
@@ -202,17 +204,19 @@ export default function RefrigeratorsPage() {
                         Out of Stock
                       </p>
                     )}
-                    <button
-                      onClick={() => {
-                        setSelectedApplianceName(item.name);
-                        setIsApplianceModalOpen(true);
-                      }}
-                      className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
-                    >
-                      Buy Now
-                    </button>
-                  </div>
-                </article>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedApplianceName(item.name);
+                            setIsApplianceModalOpen(true);
+                          }}
+                          className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+                        >
+                          Buy Now
+                        </button>
+                      </div>
+                    </Link>
               ))}
             </div>
           )}
