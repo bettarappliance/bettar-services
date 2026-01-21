@@ -964,9 +964,9 @@ export default function Home() {
                   </div>
                   
                   <div className="flex justify-end md:justify-end">
-                    <a href="/appliances" className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-bold text-lg">
+                    <Link href="/appliances" className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-bold text-lg">
                       Shop Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
