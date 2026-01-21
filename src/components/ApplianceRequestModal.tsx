@@ -7,7 +7,7 @@ interface ApplianceRequestModalProps {
   applianceName?: string;
 }
 
-export default function ApplianceRequestModal({ isOpen, onClose, applianceName }: ApplianceRequestModalProps) {
+export default function ApplianceRequestModal({ isOpen, onClose }: ApplianceRequestModalProps) {
   const containerId = "0f5093bd-8f11-4a84-b7b1-c71eecb81317-2104262";
 
   useEffect(() => {
