@@ -1,33 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "bettarservices.com"
-        }
-      ],
-      "destination": "https://www.bettarservices.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.bettarservices.com"
-        }
-      ],
-      "missing": [
-        {
-          "type": "header",
-          "key": "x-forwarded-proto",
-          "value": "https"
-        }
-      ],
-      "destination": "https://www.bettarservices.com/:path*",
-      "permanent": true
-    }
-  ]
+  "redirects": []
 }
