@@ -131,7 +131,7 @@ export default function Services() {
                 <p className="text-gray-600 mb-4">
                   Expert appliance repair, sales, and maintenance services. We service all major brands and offer same-day service.
                 </p>
-                <Link href="/appliances" className="text-[#002D72] font-bold hover:underline inline-block">Learn More →</Link>
+                <Link href="/services/appliances" className="text-[#002D72] font-bold hover:underline inline-block">Learn More →</Link>
               </div>
             </div>
           </div>

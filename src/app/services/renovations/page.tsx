@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import RequestServiceModal from "../../../components/RequestServiceModal";
 import Header from "../../../components/Header";
@@ -14,10 +15,10 @@ export default function Renovations() {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 bg-[#F4F7FF]">
+      <section className="py-10 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-sm font-medium px-4 py-1.5 rounded-full mb-1">
               Renovations & Remodeling
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
@@ -141,6 +142,99 @@ export default function Renovations() {
                 Our skilled craftsmen bring your vision to life with quality materials and expert workmanship. We keep you informed throughout the entire process.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-20 bg-[#F4F7FF]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+              Our Work
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              See Our <span className="text-[#002D72]">Renovation Projects</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Browse our gallery to see the quality craftsmanship and beautiful transformations we&apos;ve completed for homeowners throughout Bethesda, Kensington, Rockville, and surrounding areas.
+            </p>
+          </div>
+          
+          {/* Gallery Preview Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <Link href="/gallery" className="group relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Image
+                src="/projects/Kitchen remodelling 3.jpg"
+                alt="Kitchen Remodeling Project"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white font-semibold text-sm md:text-base">
+                Kitchen Remodeling
+              </div>
+            </Link>
+            
+            <Link href="/gallery" className="group relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Image
+                src="/projects/Cabinet installation 2.jpg"
+                alt="Cabinet Installation Project"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white font-semibold text-sm md:text-base">
+                Cabinet Installation
+              </div>
+            </Link>
+            
+            <Link href="/gallery" className="group relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Image
+                src="/projects/Windows & Doors 1.jpg"
+                alt="Windows & Doors Project"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white font-semibold text-sm md:text-base">
+                Windows & Doors
+              </div>
+            </Link>
+            
+            <Link href="/gallery" className="group relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
+              <Image
+                src="/projects/Deck 7.jpg"
+                alt="Deck Project"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 text-white font-semibold text-sm md:text-base">
+                Deck Construction
+              </div>
+            </Link>
+          </div>
+          
+          {/* View Gallery Button */}
+          <div className="text-center">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 bg-[#002D72] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#001F5C] transition-colors shadow-lg hover:shadow-xl"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              View Full Gallery
+            </Link>
           </div>
         </div>
       </section>

@@ -5,6 +5,24 @@ import type { NextRequest } from 'next/server';
 export function middleware(req: NextRequest) {
   const { pathname, searchParams } = req.nextUrl;
   const url = req.nextUrl.clone();
+  const hostname = req.headers.get('host') || '';
+  
+  // Canonical domain redirect: Redirect all variations to https://www.bettarservices.com
+  // This handles: http://bettarservices.com, https://bettarservices.com, http://www.bettarservices.com
+  // Only apply in production (not localhost or preview deployments)
+  const canonicalDomain = 'www.bettarservices.com';
+  const isProduction = hostname.includes('bettarservices.com') && !hostname.includes('localhost') && !hostname.includes('127.0.0.1');
+  
+  if (isProduction) {
+    const isHttps = req.nextUrl.protocol === 'https:';
+    const isWww = hostname.startsWith('www.');
+    
+    // If not using canonical domain or not HTTPS, redirect to canonical
+    if (hostname !== canonicalDomain || !isHttps) {
+      const canonicalUrl = new URL(`https://${canonicalDomain}${pathname}${req.nextUrl.search}`, req.url);
+      return NextResponse.redirect(canonicalUrl, 301);
+    }
+  }
 
   // Strip old tracking query parameters (CountryISONumericCode, LanguageISOAlpha2Code, E, T)
   const trackingParams = ['CountryISONumericCode', 'LanguageISOAlpha2Code', 'E', 'T'];

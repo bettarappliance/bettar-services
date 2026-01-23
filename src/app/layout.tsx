@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   publisher: "Bettar Services",
   robots: "index, follow",
   alternates: {
-    canonical: "https://bettarservices.com",
+    canonical: "https://www.bettarservices.com",
   },
   openGraph: {
     title: "Bettar Services - Home Improvement & Appliance Services",
     description: "Professional home improvement, renovation, plumbing, handyman, and appliance services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
-    url: "https://bettarservices.com",
+    url: "https://www.bettarservices.com",
     siteName: "Bettar Services",
     locale: "en_US",
     type: "website",
