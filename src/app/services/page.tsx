@@ -54,7 +54,7 @@ export default function Services() {
               <div className="p-6 pt-10">
                 <h3 className="text-xl font-bold text-[#002D72] mb-3">Renovations and Remodeling</h3>
                 <p className="text-gray-600 mb-4">
-                  Transform your space with our expert renovation and remodeling services. From kitchen makeovers to complete home transformations.
+                  Transform your home with our expert renovation and remodeling services. From kitchen makeovers to complete home transformations.
                 </p>
                 <a href="/services/renovations" className="text-[#002D72] font-bold hover:underline inline-block">Learn More →</a>
               </div>
