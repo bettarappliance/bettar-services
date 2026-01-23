@@ -15,7 +15,6 @@ export function middleware(req: NextRequest) {
   
   if (isProduction) {
     const isHttps = req.nextUrl.protocol === 'https:';
-    const isWww = hostname.startsWith('www.');
     
     // If not using canonical domain or not HTTPS, redirect to canonical
     if (hostname !== canonicalDomain || !isHttps) {
