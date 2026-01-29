@@ -285,50 +285,50 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-        <Image
-            src="/bettarlandingpage.JPG"
-            alt="Bettar Service Van"
-            fill
-            className="object-cover"
-          priority
-        />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/70 to-transparent z-10"></div>
-        
-        {/* Hero Content */}
-        <div className="relative z-20 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-6 w-full">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-6xl font-bold text-black mb-4 leading-tight">
-                From <span className="text-[#dc2626]">Appliances </span> to <span className="text-[#dc2626]">Repairs</span> — Better call <span className="text-[#1e3a8a]">Bettar</span>!
-              </h1>
+      <section className="relative pt-6 pb-20 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #EFEFEF, #DBE7FA)' }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-4xl font-bold text-black leading-tight">
+                From Appliances to Repairs<br />
+                Better call <span className="text-[#1e3a8a]">Bettar</span>!
+              </h1> 
               
-              <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
-                <div className="flex items-center">
-                  <svg className="w-6 h-6 text-[#1e3a8a] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="flex flex-wrap items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  <span className="text-[#1e3a8a] text-xl font-semibold">Call 301-949-2500</span>
+                  <span className="text-black text-xl font-semibold">301-949-2500</span>
                 </div>
                 
-                <div className="flex items-center">
-                  <svg className="w-5 h-5 text-[#1e3a8a] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3">
+                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span className="text-[#1e3a8a] text-lg font-medium">Kensington, MD</span>
+                  <span className="text-black text-xl font-medium">Kensington, MD</span>
                 </div>
-                
-                <a 
-                  href="/request-service"
-                  className="bg-[#dc2626] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-semibold text-lg"
-                >
-                  Request Service
-                </a>
               </div>
+              
+              <a 
+                href="/request-service"
+                className="inline-block bg-[#dc2626] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-semibold text-lg"
+              >
+                Request Service
+              </a>
+            </div>
+            
+            {/* Right Image */}
+            <div className="relative w-full h-[350px] lg:h-[450px]">
+              <Image
+                src="/bettar car.png"
+                alt="Bettar Service Van"
+                fill
+                className="object-contain scale-140"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -1422,45 +1422,93 @@ export default function Home() {
       </section>
 
       {/* Better Services & Better Appliances Section - Targeting Typo Queries */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Looking for <span className="text-[#002D72]">Better Services</span>? You Found <span className="text-[#002D72]">Bettar</span>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
+              Looking for <span className="text-[#1e3a8a]">Better Services</span>? You Found <span className="text-[#1e3a8a]">Bettar</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              When you search for &quot;better services&quot; or &quot;better appliances,&quot; you&apos;re looking for quality, reliability, and expertise. That&apos;s exactly what Bettar Services delivers. <strong>Better services</strong> for your home, <strong>better appliances</strong> for your family, and <strong>better results</strong> you can trust. Better services, better appliances, better results - that&apos;s the Bettar difference. Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD since 1945.
-            </p>
+            <div className="max-w-5xl mx-auto space-y-6">
+              {/* <p className="text-lg text-[#333] leading-relaxed">
+                When you search for &quot;better services&quot; or &quot;better appliances,&quot; you&apos;re looking for quality, reliability, and expertise. That&apos;s exactly what Bettar Services delivers.
+              </p> */}
+              <p className="text-xl font-semibold text-gray-800">
+                <span className="text-[#1e3a8a]">Better services</span> for your home, <span className="text-[#1e3a8a]">better appliances</span> for your family, and <span className="text-[#1e3a8a]">better results</span> you can trust.
+                <br />
+                Better services, better appliances, better results — that&apos;s the <span className="text-[#dc2626]">Bettar difference</span>.
+              </p>
+              <p className="text-lg text-[#333] leading-relaxed">
+                Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD since 1945.
+              </p>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-[#F4F7FF] p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
-                Better Services - Professional Home Solutions
-              </h3>
-              <p className="text-gray-600 mb-4">
-                When you need better services for your home, Bettar Services provides professional home improvement, renovation, plumbing, handyman, and appliance services throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945, we deliver better service through experience, expertise, and commitment to quality.
+            <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-[#1e3a8a] rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-[#1e3a8a]">
+                  Better Services - Professional Home Solutions
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Family-owned since 1945, Bettar Services delivers professional home improvement, renovation, plumbing, handyman, and appliance repair services. With decades of experience serving the DC and Maryland area, we provide quality workmanship and reliable service you can trust.
               </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Better home repair services</li>
-                <li>• Better plumbing and heating services</li>
-                <li>• Better handyman services</li>
-                <li>• Better renovation and remodeling</li>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better home repair services</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better plumbing and heating services</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better handyman services</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better renovation and remodeling</span>
+                </li>
               </ul>
             </div>
             
-            <div className="bg-[#F4F7FF] p-8 rounded-lg">
-              <h3 className="text-2xl font-bold text-[#002D72] mb-4">
-                Better Appliances - Quality & Service
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Looking for better appliances? Bettar Appliances offers quality appliances from top brands with professional installation, repair, and maintenance. Better appliance near me? We&apos;re your local appliance store serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD, providing better appliance sales and service since 1945.
+            <div className="bg-white p-10 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-[#1e3a8a] rounded-lg flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-[#1e3a8a]">
+                  Better Appliances - Quality & Service
+                </h3>
+              </div>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Bettar Appliances offers quality products from top brands with professional installation, repair, and maintenance. As your local appliance store since 1945, we provide expert service and trusted solutions for all your home appliance needs.
               </p>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Better appliance sales and selection</li>
-                <li>• Better appliance repair service</li>
-                <li>• Better appliance installation</li>
-                <li>• Better appliance near me - local service</li>
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better appliance sales and selection</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better appliance repair service</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better appliance installation</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 bg-[#dc2626] rounded-full"></div>
+                  <span className="font-semibold">Better appliance near me - local service</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -1586,55 +1634,58 @@ export default function Home() {
       </section>
 
       {/* Awards & Recognition Section */}
-      <section className="py-20 bg-[#F4F7FF]">
+      <section className="py-24 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
               Awards & <span className="text-[#002D72]">Recognition</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto whitespace-nowrap">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our commitment to excellence has been recognized by industry leaders and our valued customers
             </p>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
             {/* Angi Award Badge */}
-            <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <div className="bg-white rounded-3xl shadow-2xl p-12 border-2 border-[#002D72]/10 max-w-lg relative overflow-hidden">
               <div className="flex flex-col items-center">
-                <Image
-                  src="/angi.png"
-                  alt="Angi Super Service Award 2025"
-                  width={220}
-                  height={220}
-                  className="object-contain mb-4"
-                />
-                <h3 className="text-xl font-bold text-[#002D72] mb-2">
+                <div className="mb-6 relative">
+                  <div className="absolute -inset-6 bg-gradient-to-r from-[#002D72]/20 to-[#1e3a8a]/20 rounded-full blur-2xl"></div>
+                  <Image
+                    src="/angi.png"
+                    alt="Angi Super Service Award 2025"
+                    width={260}
+                    height={260}
+                    className="object-contain relative z-10"
+                  />
+                </div>
+                <h3 className="text-3xl font-bold text-[#002D72] mb-4">
                   2025 Super Service Award
                 </h3>
-                <p className="text-center text-gray-600 text-sm max-w-xs">
+                <p className="text-center text-gray-600 text-lg leading-relaxed">
                   Recognized by Angi for outstanding customer service and quality workmanship
                 </p>
               </div>
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-col gap-6">
-              <div className="bg-white rounded-lg shadow-md p-6 text-center">
-                <div className="text-4xl font-bold text-[#002D72] mb-2">80+</div>
-                <p className="text-gray-700 font-medium">Years of Excellence</p>
-                <p className="text-gray-500 text-sm mt-1">Family-owned since 1945</p>
+            <div className="grid grid-cols-1 gap-6 w-full lg:w-auto">
+              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
+                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">80+</div>
+                <p className="text-gray-800 font-semibold text-lg mb-1">Years of Excellence</p>
+                <p className="text-gray-500">Family-owned since 1945</p>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6 text-center">
-                <div className="text-4xl font-bold text-[#002D72] mb-2">30K+</div>
-                <p className="text-gray-700 font-medium">Satisfied Customers</p>
-                <p className="text-gray-500 text-sm mt-1">Trusted by the community</p>
+              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
+                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">30K+</div>
+                <p className="text-gray-800 font-semibold text-lg mb-1">Satisfied Customers</p>
+                <p className="text-gray-500">Trusted by the community</p>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6 text-center">
-                <div className="text-4xl font-bold text-[#002D72] mb-2">100%</div>
-                <p className="text-gray-700 font-medium">Fully Insured</p>
-                <p className="text-gray-500 text-sm mt-1">Licensed & bonded</p>
+              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
+                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">100%</div>
+                <p className="text-gray-800 font-semibold text-lg mb-1">Fully Insured</p>
+                <p className="text-gray-500">Licensed & bonded</p>
               </div>
             </div>
           </div>
