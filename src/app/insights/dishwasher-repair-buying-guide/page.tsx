@@ -168,7 +168,7 @@ export default function DishwasherRepairBuyingGuide() {
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-xl text-gray-700 leading-relaxed">
-              As your local appliance technician serving Bethesda, Gaithersburg, Rockville, and surrounding Maryland areas since 1945, Bettar Services has seen it all when it comes to dishwashers. Whether you're troubleshooting a problem, deciding between repair or replacement, or shopping for a new model, this comprehensive guide has you covered.
+              As your local appliance technician serving Bethesda, Gaithersburg, Rockville, and surrounding Maryland areas since 1945, Bettar Services has seen it all when it comes to dishwashers. Whether you&apos;re troubleshooting a problem, deciding between repair or replacement, or shopping for a new model, this comprehensive guide has you covered.
             </p>
           </div>
 
@@ -210,7 +210,7 @@ export default function DishwasherRepairBuyingGuide() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-[#D32F2F] mr-2">✓</span>
-                    <span><strong>Ensure door is latched:</strong> Dishwashers won't start if the door isn't fully closed</span>
+                    <span><strong>Ensure door is latched:</strong> Dishwashers won&apos;t start if the door isn&apos;t fully closed</span>
                   </li>
                 </ul>
               </div>
@@ -218,7 +218,7 @@ export default function DishwasherRepairBuyingGuide() {
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-xl font-bold text-[#002D72] mb-3">2. Door Latch Problems</h3>
                 <p className="text-gray-700 mb-3">
-                  The door latch must be fully engaged for the dishwasher to start. If the latch is broken, misaligned, or the door switch is faulty, the control board won't receive the signal to begin the cycle.
+                  The door latch must be fully engaged for the dishwasher to start. If the latch is broken, misaligned, or the door switch is faulty, the control board won&apos;t receive the signal to begin the cycle.
                 </p>
                 <p className="text-sm text-gray-600">
                   <strong>DIY Fix:</strong> Check for obstructions preventing the door from closing completely. If the latch mechanism is damaged, contact a local appliance technician.
@@ -231,7 +231,7 @@ export default function DishwasherRepairBuyingGuide() {
                   If buttons are unresponsive or the display is blank, the control panel may need resetting or replacing. Sometimes, a simple power cycle resolves the issue.
                 </p>
                 <p className="text-sm text-gray-600">
-                  <strong>Try this:</strong> Turn off the breaker for 5 minutes, then restore power. If this doesn't help, the control board likely needs professional repair.
+                  <strong>Try this:</strong> Turn off the breaker for 5 minutes, then restore power. If this doesn&apos;t help, the control board likely needs professional repair.
                 </p>
               </div>
 
@@ -330,9 +330,9 @@ export default function DishwasherRepairBuyingGuide() {
                 <ul className="space-y-2 text-gray-700">
                   <li>• Dishwasher is less than 7 years old</li>
                   <li>• Repair cost is under $300</li>
-                  <li>• It's a simple fix (pump, heating element)</li>
-                  <li>• You're satisfied with its performance</li>
-                  <li>• It's an energy-efficient model</li>
+                  <li>• It&apos;s a simple fix (pump, heating element)</li>
+                  <li>• You&apos;re satisfied with its performance</li>
+                  <li>• It&apos;s an energy-efficient model</li>
                 </ul>
               </div>
 
@@ -342,7 +342,7 @@ export default function DishwasherRepairBuyingGuide() {
                   <li>• Dishwasher is over 10 years old</li>
                   <li>• Repair cost exceeds 50% of replacement</li>
                   <li>• Multiple components are failing</li>
-                  <li>• It's not Energy Star certified</li>
+                  <li>• It&apos;s not Energy Star certified</li>
                   <li>• Cleaning performance has declined</li>
                 </ul>
               </div>
@@ -351,7 +351,7 @@ export default function DishwasherRepairBuyingGuide() {
             <div className="bg-white p-6 rounded-xl">
               <h3 className="text-lg font-bold text-gray-900 mb-3">The 50% Rule</h3>
               <p className="text-gray-700">
-                If the repair cost is more than 50% of a new dishwasher's price AND your unit is over 7 years old, replacement is usually the smarter investment. Our local appliance technicians will provide honest advice tailored to your situation.
+                If the repair cost is more than 50% of a new dishwasher&apos;s price AND your unit is over 7 years old, replacement is usually the smarter investment. Our local appliance technicians will provide honest advice tailored to your situation.
               </p>
             </div>
           </section>
@@ -365,11 +365,11 @@ export default function DishwasherRepairBuyingGuide() {
                 <h3 className="text-2xl font-bold text-[#002D72] mb-4">1. Size & Capacity</h3>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-bold text-gray-900 mb-2">Standard (24")</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">Standard (24&quot;)</h4>
                     <p className="text-sm text-gray-700">Most common size. Fits 12-16 place settings. Perfect for families.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
-                    <h4 className="font-bold text-gray-900 mb-2">Compact (18")</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">Compact (18&quot;)</h4>
                     <p className="text-sm text-gray-700">Space-saving option. Fits 8-10 place settings. Ideal for small kitchens.</p>
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
@@ -388,7 +388,7 @@ export default function DishwasherRepairBuyingGuide() {
                   <ul className="space-y-2 text-gray-700">
                     <li className="flex items-center">
                       <span className="font-bold text-green-600 mr-3">38-44 dB</span>
-                      <span>Very quiet - you'll barely notice it running</span>
+                      <span>Very quiet - you&apos;ll barely notice it running</span>
                     </li>
                     <li className="flex items-center">
                       <span className="font-bold text-blue-600 mr-3">45-49 dB</span>
@@ -396,7 +396,7 @@ export default function DishwasherRepairBuyingGuide() {
                     </li>
                     <li className="flex items-center">
                       <span className="font-bold text-yellow-600 mr-3">50-54 dB</span>
-                      <span>Moderate - you'll hear it clearly</span>
+                      <span>Moderate - you&apos;ll hear it clearly</span>
                     </li>
                     <li className="flex items-center">
                       <span className="font-bold text-red-600 mr-3">55+ dB</span>
@@ -485,7 +485,7 @@ export default function DishwasherRepairBuyingGuide() {
           <section className="mb-16 bg-[#002D72] text-white p-10 rounded-2xl">
             <h2 className="text-3xl font-bold mb-4">Your Local Appliance Technician Since 1945</h2>
             <p className="text-lg mb-6">
-              Bettar Services has been helping homeowners in Bethesda, Gaithersburg, Rockville, and throughout Montgomery County with all their appliance needs for nearly 80 years. From expert repairs to professional installation of new dishwashers, we're your trusted local appliance technician.
+              Bettar Services has been helping homeowners in Bethesda, Gaithersburg, Rockville, and throughout Montgomery County with all their appliance needs for nearly 80 years. From expert repairs to professional installation of new dishwashers, we&apos;re your trusted local appliance technician.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="text-center rounded-lg p-6 border border-white/20">
@@ -560,7 +560,7 @@ export default function DishwasherRepairBuyingGuide() {
               </div>
 
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">What's the average lifespan of a dishwasher?</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">What&apos;s the average lifespan of a dishwasher?</h3>
                 <p className="text-gray-700">Most dishwashers last 9-12 years with proper maintenance. Premium brands like Miele can last 20+ years.</p>
               </div>
 

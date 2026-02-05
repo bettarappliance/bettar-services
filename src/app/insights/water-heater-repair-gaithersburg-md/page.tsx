@@ -168,7 +168,7 @@ export default function WaterHeaterRepairGaithersburg() {
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-xl text-gray-700 leading-relaxed">
-              When your water heater fails in Gaithersburg, MD, you need fast, reliable service from experienced professionals. At Bettar Services, we've been providing expert water heater repair and replacement services since 1945, serving homeowners throughout Gaithersburg, Rockville, Germantown, North Bethesda, and Potomac.
+              When your water heater fails in Gaithersburg, MD, you need fast, reliable service from experienced professionals. At Bettar Services, we&apos;ve been providing expert water heater repair and replacement services since 1945, serving homeowners throughout Gaithersburg, Rockville, Germantown, North Bethesda, and Potomac.
             </p>
           </div>
 
@@ -196,7 +196,7 @@ export default function WaterHeaterRepairGaithersburg() {
               <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-[#002D72]">
                 <h3 className="text-xl font-bold text-[#002D72] mb-3">Water Not Hot Enough</h3>
                 <p className="text-gray-700">
-                  Insufficient hot water can indicate sediment buildup, undersized tank, or thermostat issues. We'll assess your needs and recommend solutions.
+                  Insufficient hot water can indicate sediment buildup, undersized tank, or thermostat issues. We&apos;ll assess your needs and recommend solutions.
                 </p>
               </div>
               <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-[#002D72]">
@@ -348,11 +348,11 @@ export default function WaterHeaterRepairGaithersburg() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">Consider Replacement If:</h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• Your water heater is over 10 years old</li>
-                <li>• You've had multiple repairs in the past year</li>
-                <li>• There's significant rust or corrosion</li>
+                <li>• You&apos;ve had multiple repairs in the past year</li>
+                <li>• There&apos;s significant rust or corrosion</li>
                 <li>• Your energy bills are consistently high</li>
-                <li>• You're experiencing frequent leaks</li>
-                <li>• Your family's hot water needs have increased</li>
+                <li>• You&apos;re experiencing frequent leaks</li>
+                <li>• Your family&apos;s hot water needs have increased</li>
               </ul>
             </div>
             <div className="bg-green-50 border-l-4 border-green-400 p-6">
@@ -360,13 +360,13 @@ export default function WaterHeaterRepairGaithersburg() {
               <ul className="space-y-2 text-gray-700">
                 <li>• Your unit is less than 7 years old</li>
                 <li>• The issue is minor (thermostat, heating element)</li>
-                <li>• There's no sign of major corrosion</li>
+                <li>• There&apos;s no sign of major corrosion</li>
                 <li>• Repair cost is less than 50% of replacement</li>
                 <li>• The tank itself is still in good condition</li>
               </ul>
             </div>
             <p className="mt-6 text-gray-700">
-              Our experienced technicians will provide honest recommendations based on your specific situation. We'll never push for an unnecessary replacement.
+              Our experienced technicians will provide honest recommendations based on your specific situation. We&apos;ll never push for an unnecessary replacement.
             </p>
           </section>
 
@@ -374,7 +374,7 @@ export default function WaterHeaterRepairGaithersburg() {
           <section className="mb-16 bg-[#002D72] text-white p-8 rounded-2xl">
             <h2 className="text-3xl font-bold mb-4">Emergency Water Heater Repair in Gaithersburg</h2>
             <p className="text-lg mb-6">
-              Water heater emergencies don't wait for business hours. That's why Bettar Services offers same-day emergency water heater repair throughout Gaithersburg and surrounding areas.
+              Water heater emergencies don&apos;t wait for business hours. That&apos;s why Bettar Services offers same-day emergency water heater repair throughout Gaithersburg and surrounding areas.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
@@ -470,7 +470,7 @@ export default function WaterHeaterRepairGaithersburg() {
           <section className="bg-[#002D72] text-white p-10 rounded-2xl text-center">
             <h2 className="text-3xl font-bold mb-4">Need Water Heater Repair in Gaithersburg?</h2>
             <p className="text-lg mb-6">
-              Don't wait for a complete breakdown. Contact Bettar Services today for fast, reliable water heater repair and replacement services.
+              Don&apos;t wait for a complete breakdown. Contact Bettar Services today for fast, reliable water heater repair and replacement services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 

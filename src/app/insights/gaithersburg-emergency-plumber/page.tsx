@@ -162,7 +162,7 @@ export default function EmergencyPlumberGaithersburg() {
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-xl text-gray-700 leading-relaxed">
-              Plumbing emergencies don't wait for convenient times. Whether it's a burst pipe flooding your basement at 2 AM or a backed-up sewer line on a holiday weekend, Bettar Services is here to help. Since 1945, we've been Gaithersburg's trusted emergency plumber, providing fast, reliable service when you need it most.
+              Plumbing emergencies don&apos;t wait for convenient times. Whether it&apos;s a burst pipe flooding your basement at 2 AM or a backed-up sewer line on a holiday weekend, Bettar Services is here to help. Since 1945, we&apos;ve been Gaithersburg&apos;s trusted emergency plumber, providing fast, reliable service when you need it most.
             </p>
           </div>
 
@@ -419,7 +419,7 @@ export default function EmergencyPlumberGaithersburg() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">Fast Response Times</h3>
-                  <p className="text-white/90">We understand emergencies can't wait. Our team typically arrives within 1-2 hours of your call.</p>
+                  <p className="text-white/90">We understand emergencies can&apos;t wait. Our team typically arrives within 1-2 hours of your call.</p>
                 </div>
               </div>
 
@@ -429,7 +429,7 @@ export default function EmergencyPlumberGaithersburg() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">Available 24/7/365</h3>
-                  <p className="text-white/90">Day or night, weekends and holidays - we're always ready to help with your plumbing emergency.</p>
+                  <p className="text-white/90">Day or night, weekends and holidays - we&apos;re always ready to help with your plumbing emergency.</p>
                 </div>
               </div>
 
@@ -469,7 +469,7 @@ export default function EmergencyPlumberGaithersburg() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2">80 Years Experience</h3>
-                  <p className="text-white/90">Since 1945, we've been Gaithersburg's trusted plumbing experts, handling thousands of emergencies.</p>
+                  <p className="text-white/90">Since 1945, we&apos;ve been Gaithersburg&apos;s trusted plumbing experts, handling thousands of emergencies.</p>
                 </div>
               </div>
             </div>
@@ -479,7 +479,7 @@ export default function EmergencyPlumberGaithersburg() {
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-black mb-6">Prevent Plumbing Emergencies</h2>
             <p className="text-gray-700 mb-6">
-              While we're always here for emergencies, prevention is the best approach. Here are tips to avoid common plumbing disasters:
+              While we&apos;re always here for emergencies, prevention is the best approach. Here are tips to avoid common plumbing disasters:
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-green-50 p-6 rounded-xl">
@@ -557,9 +557,9 @@ export default function EmergencyPlumberGaithersburg() {
 
           {/* Emergency CTA */}
           <section className="bg-[#002D72] text-white p-10 rounded-2xl text-center">
-            <h2 className="text-4xl font-bold mb-4">Plumbing Emergency? We're Here 24/7</h2>
+            <h2 className="text-4xl font-bold mb-4">Plumbing Emergency? We&apos;re Here 24/7</h2>
             <p className="text-xl mb-6">
-              Don't let a plumbing emergency cause extensive damage to your Gaithersburg home. Call now for immediate assistance.
+              Don&apos;t let a plumbing emergency cause extensive damage to your Gaithersburg home. Call now for immediate assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <a
