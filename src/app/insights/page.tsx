@@ -124,7 +124,7 @@ export default function Insights() {
               <div className="w-12 h-12 bg-[#002D72] rounded-full flex items-center justify-center mb-4">
                 <span className="text-white text-2xl font-bold">3</span>
               </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">Don't Overload</h3>
+              <h3 className="text-lg font-bold text-gray-800 mb-2">Don&apos;t Overload</h3>
               <p className="text-gray-600 text-sm">
                 Avoid overloading washers and dryers to extend their lifespan and maintain performance.
               </p>

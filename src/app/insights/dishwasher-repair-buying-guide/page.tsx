@@ -185,7 +185,7 @@ export default function DishwasherRepairBuyingGuide() {
 
           {/* Dishwasher Not Starting */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold text-black mb-6">Dishwasher Does Not Start? Here's Why</h2>
+            <h2 className="text-3xl font-bold text-black mb-6">Dishwasher Does Not Start? Here&apos;s Why</h2>
             <div className="mb-6">
               <p className="text-gray-700 mb-4">
                 <strong>Before calling for service, check these common issues:</strong>
@@ -238,7 +238,7 @@ export default function DishwasherRepairBuyingGuide() {
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-xl font-bold text-[#002D72] mb-3">4. Thermal Fuse Blown</h3>
                 <p className="text-gray-700 mb-3">
-                  The thermal fuse protects your dishwasher from overheating. If it blows, the dishwasher won't start at all. This requires professional diagnosis and replacement.
+                  The thermal fuse protects your dishwasher from overheating. If it blows, the dishwasher won&apos;t start at all. This requires professional diagnosis and replacement.
                 </p>
                 <p className="text-sm text-gray-600">
                   <strong>Professional service needed:</strong> Testing and replacing thermal fuses requires technical expertise and proper tools.
@@ -535,7 +535,7 @@ export default function DishwasherRepairBuyingGuide() {
               <div className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-bold text-gray-900 mb-3">Best Practices</h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>✓ Scrape (don't rinse) dishes before loading</li>
+                  <li>✓ Scrape (don&apos;t rinse) dishes before loading</li>
                   <li>✓ Load dishes properly for best cleaning</li>
                   <li>✓ Use the right amount of detergent</li>
                   <li>✓ Run hot water at sink before starting</li>

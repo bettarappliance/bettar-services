@@ -324,7 +324,7 @@ export default function EmergencyPlumberGaithersburg() {
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Minimize Water Damage</h3>
                   <p className="text-gray-700">
-                    Move valuables away from water, use towels to soak up standing water, and turn off electricity in affected areas if it's safe to do so.
+                    Move valuables away from water, use towels to soak up standing water, and turn off electricity in affected areas if it&apos;s safe to do so.
                   </p>
                 </div>
               </div>
@@ -540,7 +540,7 @@ export default function EmergencyPlumberGaithersburg() {
 
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">What should I do if I have a gas leak?</h3>
-                <p className="text-gray-700">Evacuate immediately, call 911 from outside, and don't use any electrical switches or open flames. Call us once the area is secured for repair.</p>
+                <p className="text-gray-700">Evacuate immediately, call 911 from outside, and don&apos;t use any electrical switches or open flames. Call us once the area is secured for repair.</p>
               </div>
 
               <div className="bg-white border border-gray-200 rounded-lg p-6">

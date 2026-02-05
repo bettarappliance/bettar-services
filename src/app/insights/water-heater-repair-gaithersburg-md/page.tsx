@@ -214,7 +214,7 @@ export default function WaterHeaterRepairGaithersburg() {
               <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-[#002D72]">
                 <h3 className="text-xl font-bold text-[#002D72] mb-3">Rusty or Discolored Water</h3>
                 <p className="text-gray-700">
-                  Brown or rusty water suggests internal corrosion. Our experts determine if your anode rod needs replacement or if it's time for a new unit.
+                  Brown or rusty water suggests internal corrosion. Our experts determine if your anode rod needs replacement or if it&apos;s time for a new unit.
                 </p>
               </div>
               <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-[#002D72]">
@@ -449,7 +449,7 @@ export default function WaterHeaterRepairGaithersburg() {
             <div className="space-y-4">
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">How long does a water heater repair take?</h3>
-                <p className="text-gray-700">Most repairs can be completed in 1-2 hours. More complex issues may take longer, but we'll provide a time estimate upfront.</p>
+                <p className="text-gray-700">Most repairs can be completed in 1-2 hours. More complex issues may take longer, but we&apos;ll provide a time estimate upfront.</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">What is the average cost of water heater repair in Gaithersburg?</h3>
@@ -461,7 +461,7 @@ export default function WaterHeaterRepairGaithersburg() {
               </div>
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Do you offer water heater maintenance services?</h3>
-                <p className="text-gray-700">Yes! Regular maintenance extends your water heater's lifespan and prevents costly breakdowns. We recommend annual service.</p>
+                <p className="text-gray-700">Yes! Regular maintenance extends your water heater&apos;s lifespan and prevents costly breakdowns. We recommend annual service.</p>
               </div>
             </div>
           </section>
