@@ -13,6 +13,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  // 1b) Global lowercase normalization (prevents /Appliances vs /appliances issues)
+  if (pathname !== lowerPath) {
+    url.pathname = lowerPath;
+    return NextResponse.redirect(url, 301);
+  }
   // 2) Strip old tracking / locale query params (keep this tight)
   const removableParams = [
     "CountryISONumericCode",

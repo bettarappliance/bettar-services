@@ -304,7 +304,7 @@ export default function ContactForm() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
         {/* Honeypot field - hidden from users but visible to bots */}
         <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }}>
           <label htmlFor="website" style={{ display: 'none' }}>
@@ -319,6 +319,7 @@ export default function ContactForm() {
             autoComplete="off"
             tabIndex={-1}
             aria-hidden="true"
+            suppressHydrationWarning
           />
         </div>
 
@@ -336,6 +337,7 @@ export default function ContactForm() {
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent text-gray-900"
               placeholder="Your full name"
+              suppressHydrationWarning
             />
           </div>
 
@@ -352,6 +354,7 @@ export default function ContactForm() {
               required
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent text-gray-900"
               placeholder="your.email@example.com"
+              suppressHydrationWarning
             />
           </div>
         </div>
@@ -369,6 +372,7 @@ export default function ContactForm() {
               onChange={handleChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent text-gray-900"
               placeholder="(301) 123-4567"
+              suppressHydrationWarning
             />
           </div>
 
@@ -382,6 +386,7 @@ export default function ContactForm() {
               value={formData.service}
               onChange={handleChange}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent text-gray-900"
+              suppressHydrationWarning
             >
               <option value="">Select a service</option>
               <option value="Renovations and Remodeling">Renovations and Remodeling</option>
@@ -407,6 +412,7 @@ export default function ContactForm() {
             rows={5}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent text-gray-900"
             placeholder="Tell us about your project, timeline, and any specific requirements..."
+            suppressHydrationWarning
           />
         </div>
 

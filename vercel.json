@@ -1,3 +1,16 @@
 {
-  "redirects": []
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "bettarservices.com" }],
+      "destination": "https://www.bettarservices.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.bettarservices.com" }],
+      "destination": "https://www.bettarservices.com/$1",
+      "permanent": true
+    }
+  ]
 }

@@ -402,14 +402,15 @@ export default function Appliances() {
               {/* Search bar */}
               <form
                 onSubmit={handleSearch}
-                className="w-full md:w-96 flex items-center bg-white border-2 border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow focus-within:border-[#002D72]"
+                className="w-full min-w-0 md:w-96 flex items-center bg-white border-2 border-gray-300 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow focus-within:border-[#002D72]"
               >
-                <div className="flex items-center px-4 text-gray-400">
+                <div className="flex items-center flex-shrink-0 pl-3 pr-1 md:px-4 text-gray-400">
                   <svg
                     className="w-5 h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden
                   >
                     <path
                       strokeLinecap="round"
@@ -424,13 +425,14 @@ export default function Appliances() {
                   placeholder="Search appliances..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="flex-grow px-2 py-3 text-sm text-black outline-none placeholder:text-gray-500"
+                  className="min-w-0 flex-1 px-2 py-3 text-sm text-black outline-none placeholder:text-gray-500 bg-transparent"
+                  aria-label="Search appliances by brand, category, or model"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="px-3 text-gray-400 hover:text-gray-600 transition"
+                    className="flex-shrink-0 p-2 text-gray-400 hover:text-gray-600 transition"
                     aria-label="Clear search"
                   >
                     <svg
@@ -450,7 +452,7 @@ export default function Appliances() {
                 )}
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-[#002D72] text-white text-sm font-semibold hover:bg-[#001a45] transition-colors"
+                  className="flex-shrink-0 px-4 md:px-6 py-3 bg-[#002D72] text-white text-sm font-semibold hover:bg-[#001a45] transition-colors"
                 >
                   Search
                 </button>
@@ -591,6 +593,24 @@ export default function Appliances() {
                   ))}
                 </div>
               )}
+            </div>
+          </section>
+
+          {/* Request an appliance - didn't find what you want */}
+          <section className="py-8 border-t border-gray-200">
+            <div className="bg-[#F4F7FF] rounded-xl p-6 md:p-8 text-center">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                Didn&apos;t find what you&apos;re looking for?
+              </h2>
+              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Tell us the exact appliance you want—brand, model, or type—and we&apos;ll get back to you with availability and pricing.
+              </p>
+              <button
+                onClick={() => setIsApplianceModalOpen(true)}
+                className="px-6 py-3 rounded-lg bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+              >
+                Request an appliance
+              </button>
             </div>
           </section>
 
