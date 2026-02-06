@@ -1642,8 +1642,8 @@ export default function Home() {
       </section>
 
       {/* What Our Customers Say Section */}
-      <section className="bg-[#F0F5FF]">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-[#F0F5FF] overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-6 overflow-x-hidden">
           <GoogleReviews />
         </div>
       </section>

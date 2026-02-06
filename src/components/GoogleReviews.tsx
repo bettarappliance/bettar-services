@@ -120,11 +120,11 @@ function GoogleReviewsContent() {
           What Our Customers Say
         </h2>
         
-        <div className="relative">
-          <div className="flex items-center justify-center space-x-8">
+        <div className="relative overflow-x-hidden w-full">
+          <div className="flex items-center justify-center gap-4 md:gap-8 overflow-x-auto overflow-y-visible pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent" style={{ scrollbarWidth: 'thin' }}>
             {/* Show three reviews at a time */}
             {highRatedReviews.slice(currentReviewIndex, currentReviewIndex + 3).map((review, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-lg w-96 h-96 flex flex-col">
+              <div key={index} className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-[280px] min-w-[280px] sm:w-72 sm:min-w-[18rem] md:w-80 md:min-w-[20rem] lg:w-96 lg:min-w-[24rem] h-80 md:h-96 flex flex-col flex-shrink-0">
                 <div className="flex items-center mb-4">
                   <div className="flex text-yellow-500">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" /></svg>
@@ -140,7 +140,7 @@ function GoogleReviewsContent() {
                       <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                     </svg>
                 </div>
-                <p className="text-gray-700 mb-4 flex-grow overflow-hidden">
+                <p className="text-gray-700 mb-4 flex-grow overflow-y-auto text-sm md:text-base line-clamp-5">
                   {review.text}
                 </p>
                 <div className="mt-auto flex items-center">
@@ -168,7 +168,7 @@ function GoogleReviewsContent() {
             ))}
             
             {/* Google Review Card - Always show */}
-            <div className="bg-white p-8 rounded-lg shadow-lg w-96 h-96 flex flex-col">
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-[280px] min-w-[280px] sm:w-72 sm:min-w-[18rem] md:w-80 md:min-w-[20rem] lg:w-96 lg:min-w-[24rem] h-80 md:h-96 flex flex-col flex-shrink-0">
               <div className="text-center flex-1 flex flex-col justify-between">
                 {/* Business Icon */}
                 <div className="w-16 h-16 bg-[#002D72] rounded-lg flex items-center justify-center mx-auto mb-4">
