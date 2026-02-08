@@ -335,33 +335,33 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="relative -mt-20 z-30">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-white rounded-lg shadow-2xl p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="relative -mt-12 sm:-mt-16 md:-mt-20 z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               {/* Stat 1 */}
               <div className="text-center">
-                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">80</div>
-                <div className="text-gray-700 font-medium">YEARS EXPERIENCE</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">80</div>
+                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">YEARS EXPERIENCE</div>
               </div>
               
               {/* Stat 2 */}
               <div className="text-center">
-                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">30K+</div>
-                <div className="text-gray-700 font-medium">HAPPY CLIENTS</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">30K+</div>
+                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">HAPPY CLIENTS</div>
               </div>
               
               {/* Stat 3 */}
               <div className="text-center">
-                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">70K+</div>
-                <div className="text-gray-700 font-medium">PROJECTS FINISHED</div>
-                <Link href="/gallery" className="text-[#1e3a8a] text-sm mt-2 cursor-pointer hover:underline">View Projects →</Link>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">70K+</div>
+                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">PROJECTS FINISHED</div>
+                <Link href="/gallery" className="text-[#1e3a8a] text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 cursor-pointer hover:underline inline-block">View Projects →</Link>
               </div>
               
               {/* Stat 4 */}
               <div className="text-center">
-                <div className="text-6xl md:text-7xl font-bold text-[#1e3a8a] mb-2">100%</div>
-                <div className="text-gray-700 font-medium">GUARANTEED</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">100%</div>
+                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">GUARANTEED</div>
               </div>
             </div>
           </div>
@@ -1634,58 +1634,58 @@ export default function Home() {
       </section>
 
       {/* Awards & Recognition Section */}
-      <section className="py-24 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-3 sm:mb-4">
               Awards & <span className="text-[#002D72]">Recognition</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-1">
               Our commitment to excellence has been recognized by industry leaders and our valued customers
             </p>
           </div>
           
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12">
             {/* Angi Award Badge */}
-            <div className="bg-white rounded-3xl shadow-2xl p-12 border-2 border-[#002D72]/10 max-w-lg relative overflow-hidden">
+            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 border-2 border-[#002D72]/10 max-w-lg w-full relative overflow-hidden">
               <div className="flex flex-col items-center">
-                <div className="mb-6 relative">
-                  <div className="absolute -inset-6 bg-gradient-to-r from-[#002D72]/20 to-[#1e3a8a]/20 rounded-full blur-2xl"></div>
+                <div className="mb-4 sm:mb-6 relative">
+                  <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-[#002D72]/20 to-[#1e3a8a]/20 rounded-full blur-2xl"></div>
                   <Image
                     src="/angi.png"
                     alt="Angi Super Service Award 2025"
                     width={260}
                     height={260}
-                    className="object-contain relative z-10"
+                    className="object-contain relative z-10 w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-[260px] lg:h-[260px]"
                   />
                 </div>
-                <h3 className="text-3xl font-bold text-[#002D72] mb-4">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#002D72] mb-2 sm:mb-4">
                   2025 Super Service Award
                 </h3>
-                <p className="text-center text-gray-600 text-lg leading-relaxed">
+                <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
                   Recognized by Angi for outstanding customer service and quality workmanship
                 </p>
               </div>
             </div>
 
             {/* Trust Indicators */}
-            <div className="grid grid-cols-1 gap-6 w-full lg:w-auto">
-              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
-                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">80+</div>
-                <p className="text-gray-800 font-semibold text-lg mb-1">Years of Excellence</p>
-                <p className="text-gray-500">Family-owned since 1945</p>
+            <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6 w-full lg:w-auto max-w-lg lg:max-w-none">
+              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">80+</div>
+                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Years of Excellence</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Family-owned since 1945</p>
               </div>
               
-              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
-                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">30K+</div>
-                <p className="text-gray-800 font-semibold text-lg mb-1">Satisfied Customers</p>
-                <p className="text-gray-500">Trusted by the community</p>
+              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">30K+</div>
+                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Satisfied Customers</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Trusted by the community</p>
               </div>
               
-              <div className="bg-white rounded-2xl shadow-lg p-8 text-center border border-gray-100 min-w-[280px]">
-                <div className="text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-3">100%</div>
-                <p className="text-gray-800 font-semibold text-lg mb-1">Fully Insured</p>
-                <p className="text-gray-500">Licensed & bonded</p>
+              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">100%</div>
+                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Fully Insured</p>
+                <p className="text-gray-500 text-xs sm:text-sm">Licensed & bonded</p>
               </div>
             </div>
           </div>
