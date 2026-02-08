@@ -164,13 +164,13 @@ export default function Appliances() {
       }
 
       return true;
-    })
-    .sort((a, b) => {
-      // Maintain discount sorting even after filtering
-      const discountA = a.discountPercent || 0;
-      const discountB = b.discountPercent || 0;
-      return discountB - discountA;
-    });
+          })
+          .sort((a, b) => {
+            // Maintain discount sorting even after filtering
+            const discountA = a.discountPercent || 0;
+            const discountB = b.discountPercent || 0;
+            return discountB - discountA;
+          });
   }, [appliances, searchQuery, selectedFilters, priceRange]);
 
   // FAQ Schema for SEO
@@ -384,7 +384,7 @@ export default function Appliances() {
           />
         </aside>
 
-          {/* Right column */}
+        {/* Right column */}
         <div className="w-full flex-1 space-y-8 lg:space-y-16">
           {/* Search + intro */}
           <section>
@@ -501,7 +501,7 @@ export default function Appliances() {
                     >
                       <div className="relative">
                         {item.discountPercent && (
-                          <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-xs font-semibold">
+                          <div className="absolute top-2 right-2 z-10 bg-red-600 text-white px-3 py-1 rounded-lg text-xs font-semibold">
                             {item.discountPercent}% OFF
                           </div>
                         )}
@@ -547,35 +547,35 @@ export default function Appliances() {
                         <h3 className="text-gray-800 font-semibold mb-2 line-clamp-2">
                           {item.name}
                         </h3>
-                          <p className="text-xs text-gray-500 mb-1">
-                            {item.brand} • {item.category}
-                          </p>
-                          <div className="flex items-baseline gap-2 mb-1">
-                            <span className="text-2xl font-bold text-[#002D72]">
-                              ${item.priceFrom.toLocaleString()}
+                        <p className="text-xs text-gray-500 mb-1">
+                          {item.brand} • {item.category}
+                        </p>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-2xl font-bold text-[#002D72]">
+                            ${item.priceFrom.toLocaleString()}
+                          </span>
+                          {item.priceOld && (
+                            <span className="text-gray-500 line-through text-sm">
+                              ${item.priceOld.toLocaleString()}
                             </span>
-                            {item.priceOld && (
-                              <span className="text-gray-500 line-through text-sm">
-                                ${item.priceOld.toLocaleString()}
-                              </span>
-                            )}
-                          </div>
-                          {item.discountPercent && (
-                            <p className="text-green-600 font-medium text-xs">
-                              Save {item.discountPercent}% on this model
-                            </p>
-                          )}
-                          {item.shortDescription && (
-                            <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
-                              {item.shortDescription}
-                            </p>
-                          )}
-                          {item.inStock === false && (
-                            <p className="text-red-600 font-medium text-xs mt-1 mb-2">
-                              Out of Stock
-                            </p>
                           )}
                         </div>
+                        {item.discountPercent && (
+                          <p className="text-green-600 font-medium text-xs">
+                            Save {item.discountPercent}% on this model
+                          </p>
+                        )}
+                        {item.shortDescription && (
+                            <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">
+                            {item.shortDescription}
+                          </p>
+                        )}
+                        {item.inStock === false && (
+                            <p className="text-red-600 font-medium text-xs mt-1 mb-2">
+                            Out of Stock
+                          </p>
+                        )}
+                      </div>
                         <div className="px-4 pb-4">
                           <button
                             onClick={(e) => {
@@ -687,28 +687,28 @@ export default function Appliances() {
           <div className="px-4 sm:px-6 py-8 md:py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
               <div className="relative h-64 sm:h-80 md:h-96 w-full">
-                <Image
-                  src="/appliances.jpg"
-                  alt="Technician installing a kitchen appliance"
-                  fill
+              <Image
+                src="/appliances.jpg"
+                alt="Technician installing a kitchen appliance"
+                fill
                   className="object-cover rounded-2xl md:rounded-3xl shadow-xl"
-                />
-              </div>
+              />
+            </div>
               <div className="space-y-3 md:space-y-4">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
-                  Sales, Installations & Repairs – All in One Place
-                </h2>
+                Sales, Installations & Repairs – All in One Place
+              </h2>
                 <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  Bettar Appliance is your one-stop shop for appliances throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. We help you choose the right unit, deliver it to your home, professionally install it, and keep it maintained for years.
-                </p>
+                 Bettar Appliance is your one-stop shop for appliances throughout Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. We help you choose the right unit, deliver it to your home, professionally install it, and keep it maintained for years.
+               </p>
                 <ul className="space-y-1.5 md:space-y-2 text-sm sm:text-base text-gray-700">
-                  <li>• New appliance sales with honest recommendations</li>
-                  <li>• Professional installation and removal of old units</li>
-                  <li>• Same-day and next-day repair options</li>
-                  <li>• Local team that respects your home and time</li>
-                </ul>
-              </div>
+                <li>• New appliance sales with honest recommendations</li>
+                <li>• Professional installation and removal of old units</li>
+                <li>• Same-day and next-day repair options</li>
+                <li>• Local team that respects your home and time</li>
+              </ul>
             </div>
+          </div>
           </div>
 
       {/* Best Appliance Stores Near Me Section */}

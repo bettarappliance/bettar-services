@@ -128,7 +128,7 @@ export default function CooktopsPage() {
                 >
                   <div className="relative">
                     {item.discountPercent && (
-                      <div className="absolute top-2 right-2 z-10 bg-[#002D72] text-white px-3 py-1 rounded-lg text-xs font-semibold">
+                      <div className="absolute top-2 right-2 z-10 bg-red-600 text-white px-3 py-1 rounded-lg text-xs font-semibold">
                         {item.discountPercent}% OFF
                       </div>
                     )}

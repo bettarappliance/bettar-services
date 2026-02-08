@@ -150,7 +150,7 @@ export default function ApplianceDetailPage() {
                 priority
               />
               {appliance.discountPercent && (
-                <div className="absolute top-4 left-4 bg-[#002D72] text-white px-4 py-2 rounded-lg text-sm font-semibold z-10">
+                <div className="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold z-10">
                   {appliance.discountPercent}% OFF
                 </div>
               )}
