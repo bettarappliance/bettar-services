@@ -300,7 +300,7 @@ export default function ContactForm() {
 
       {submitStatus === 'error' && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-          ❌ Sorry, there was an error sending your message. Please try again or call us at 301-949-2500.
+          ❌ Sorry, there was an error sending your message. Please try again or call us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
         </div>
       )}
 

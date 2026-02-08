@@ -296,12 +296,12 @@ export default function Home() {
               </h1> 
               
               <div className="flex flex-wrap items-center gap-6">
-                <div className="flex items-center gap-3">
-                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="tel:301-949-2500" className="flex items-center gap-3 text-black hover:opacity-80 transition-opacity">
+                  <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  <span className="text-black text-xl font-semibold">301-949-2500</span>
-                </div>
+                  <span className="text-xl font-semibold">301-949-2500</span>
+                </a>
                 
                 <div className="flex items-center gap-3">
                   <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1092,7 +1092,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4 text-[#002D72]">Request service and consultation</h3>
               <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Tell us what you need — You can fill out our <a href="/request-service" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <span className="text-[#002D72] font-bold">301-949-2500</span>, and we&apos;ll take care of the rest.
+                Tell us what you need — You can fill out our <a href="/request-service" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <a href="tel:301-949-2500" className="text-[#002D72] font-bold hover:underline">301-949-2500</a>, and we&apos;ll take care of the rest.
               </p>
               
               {/* Connecting line to next step */}
@@ -1822,17 +1822,17 @@ export default function Home() {
                 </p>
 
                 {/* Phone Number */}
-                <div className="flex items-center mb-8">
+                <a href="tel:301-949-2500" className="flex items-center mb-8 hover:opacity-90 transition-opacity">
                   <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <span className="text-xl font-bold">Call 301-949-2500</span>
-                </div>
+                </a>
 
                 {/* Contact Button */}
-                <button className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                <Link href="/contact" className="inline-block bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors">
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -1939,12 +1939,12 @@ export default function Home() {
                 
                 <div className="space-y-6">
                   {/* Phone */}
-                  <div className="flex items-center">
+                  <a href="tel:301-949-2500" className="flex items-center hover:opacity-90 transition-opacity">
                     <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span className="text-lg font-bold">301-949-2500</span>
-                  </div>
+                  </a>
                   
                   {/* Email */}
                   <div className="flex items-center">

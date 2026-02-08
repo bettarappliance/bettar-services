@@ -79,7 +79,7 @@ export default function Handyman() {
               Handyman Services | <span className="text-[#002D72]">Bethesda, Chevy Chase, Rockville, Kensington</span> | Same-Day Service
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional handyman services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Licensed & insured. Call 301-949-2500.
+              Professional handyman services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day handyman service for home repairs, furniture assembly, painting, and maintenance. Licensed & insured. Call <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
             </p>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default function Handyman() {
                 How quickly can you provide handyman service?
               </h3>
               <p className="text-gray-600">
-                We offer same-day and next-day handyman service for most projects in Kensington, MD and Bethesda. For emergency repairs, we can often dispatch a handyman within hours. Contact us at 301-949-2500 to schedule your service.
+                We offer same-day and next-day handyman service for most projects in Kensington, MD and Bethesda. For emergency repairs, we can often dispatch a handyman within hours. Contact us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a> to schedule your service.
               </p>
             </div>
             

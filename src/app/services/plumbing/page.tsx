@@ -318,7 +318,7 @@ export default function Plumbing() {
                   </li>
                 </ul>
                 <p className="text-gray-600 mt-4">
-                  Same-day <strong>water heater repair Gaithersburg MD</strong> service available. Call <strong>301-949-2500</strong> for immediate assistance.
+                  Same-day <strong>water heater repair Gaithersburg MD</strong> service available. Call <a href="tel:301-949-2500" className="font-semibold text-[#002D72] hover:underline"><strong>301-949-2500</strong></a> for immediate assistance.
                 </p>
               </div>
 
@@ -425,7 +425,7 @@ export default function Plumbing() {
                 Do you provide water heater repair in Gaithersburg, MD?
               </h3>
               <p className="text-gray-600">
-                Yes, we provide <strong>water heater repair in Gaithersburg, MD</strong>. Our licensed plumbers offer same-day water heater repair service for Gaithersburg residents. We fix all types of water heater issues including no hot water, leaks, strange noises, and temperature problems. Call <strong>301-949-2500</strong> for immediate service.
+                Yes, we provide <strong>water heater repair in Gaithersburg, MD</strong>. Our licensed plumbers offer same-day water heater repair service for Gaithersburg residents. We fix all types of water heater issues including no hot water, leaks, strange noises, and temperature problems. Call <a href="tel:301-949-2500" className="font-semibold text-[#002D72] hover:underline"><strong>301-949-2500</strong></a> for immediate service.
               </p>
             </div>
 

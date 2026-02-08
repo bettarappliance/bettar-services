@@ -822,7 +822,7 @@ export default function Appliances() {
           
           <div className="mt-8 text-center">
             <p className="text-gray-600 mb-4">
-              <strong>Better Appliance Near Me?</strong> Yes! Bettar Appliance provides better appliance repair, better appliance sales, and better appliance service. Visit our showroom or call <strong>301-949-2500</strong> to speak with our appliance experts.
+              <strong>Better Appliance Near Me?</strong> Yes! Bettar Appliance provides better appliance repair, better appliance sales, and better appliance service. Visit our showroom or call <a href="tel:301-949-2500" className="font-semibold text-[#002D72] hover:underline"><strong>301-949-2500</strong></a> to speak with our appliance experts.
             </p>
             <button
               onClick={() => setIsApplianceModalOpen(true)}

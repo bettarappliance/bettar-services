@@ -87,7 +87,7 @@ export default function ApplianceServices() {
               Appliance Repair & Service | <span className="text-[#002D72]">Bethesda, Chevy Chase, Rockville, Kensington</span> | Same-Day Service
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional appliance repair, maintenance, and installation services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day service available. Licensed & insured. Call 301-949-2500.
+              Professional appliance repair, maintenance, and installation services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day service available. Licensed & insured. Call <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
             </p>
           </div>
         </div>
@@ -385,7 +385,7 @@ export default function ApplianceServices() {
                 Do you offer same-day appliance repair service?
               </h3>
               <p className="text-gray-600">
-                Yes, we offer same-day and next-day appliance repair service for most projects in Kensington, MD, Bethesda, and surrounding areas. For emergency repairs, we can often dispatch a technician within hours. Contact us at 301-949-2500 to schedule your service.
+                Yes, we offer same-day and next-day appliance repair service for most projects in Kensington, MD, Bethesda, and surrounding areas. For emergency repairs, we can often dispatch a technician within hours. Contact us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a> to schedule your service.
               </p>
             </div>
             
@@ -421,7 +421,7 @@ export default function ApplianceServices() {
                 How much does appliance repair cost?
               </h3>
               <p className="text-gray-600">
-                Appliance repair costs vary depending on the type of appliance, the issue, and parts needed. We provide upfront pricing and free estimates for most repairs. Contact us at 301-949-2500 for a detailed quote based on your specific appliance and problem.
+                Appliance repair costs vary depending on the type of appliance, the issue, and parts needed. We provide upfront pricing and free estimates for most repairs. Contact us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a> for a detailed quote based on your specific appliance and problem.
               </p>
             </div>
           </div>

@@ -389,8 +389,8 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
                 {/* Emergency Contact Information */}
                 <div className="p-2 bg-[#F4F7FF] rounded">
                   <p className="text-xs text-gray-600 text-center">
-                    <span className="font-semibold text-[#002D72]">For same-day service or emergencies,</span> please call us directly at 
-                    <span className="font-bold text-[#D32F2F]"> 301-949-2500</span>
+                    <span className="font-semibold text-[#002D72]">For same-day service or emergencies,</span> please call us directly at{" "}
+                    <a href="tel:301-949-2500" className="font-bold text-[#D32F2F] hover:underline">301-949-2500</a>
                   </p>
                 </div>
               </div>
