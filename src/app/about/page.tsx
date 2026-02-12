@@ -70,7 +70,7 @@ export default function About() {
               We have worked for you since <span className="text-[#D32F2F]">1945</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              For nearly 80 years, Bettar has been the trusted name in home services across Kensington, Maryland, and the surrounding communities.
+              For nearly 81 years, Bettar has been the trusted name in home services across Kensington, Maryland, and the surrounding communities.
             </p>
           </div>
         </div>

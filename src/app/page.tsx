@@ -341,7 +341,7 @@ export default function Home() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
               {/* Stat 1 */}
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">80</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">81</div>
                 <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">YEARS EXPERIENCE</div>
               </div>
               
@@ -1671,7 +1671,7 @@ export default function Home() {
             {/* Trust Indicators */}
             <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6 w-full lg:w-auto max-w-lg lg:max-w-none">
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">80+</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">81</div>
                 <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Years of Excellence</p>
                 <p className="text-gray-500 text-xs sm:text-sm">Family-owned since 1945</p>
               </div>

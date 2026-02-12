@@ -386,7 +386,7 @@ export default function WaterHeaterRepairGaithersburg() {
                 <div className="text-sm">Emergency Response</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">80 Years</div>
+                <div className="text-4xl font-bold mb-2">81 Years</div>
                 <div className="text-sm">Experience Since 1945</div>
               </div>
             </div>
@@ -410,7 +410,7 @@ export default function WaterHeaterRepairGaithersburg() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Family-Owned Since 1945</h3>
-                  <p className="text-gray-700">Nearly 80 years of trusted service in the Gaithersburg community.</p>
+                  <p className="text-gray-700">Nearly 81 years of trusted service in the Gaithersburg community.</p>
                 </div>
               </div>
               <div className="flex items-start">

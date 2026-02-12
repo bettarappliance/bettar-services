@@ -157,7 +157,7 @@ export default function Services() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-black mb-4">80 Years Experience</h3>
+              <h3 className="text-xl font-bold text-black mb-4">81 Years Experience</h3>
               <p className="text-gray-600">
                 Nearly eight decades of trusted service in the Kensington community.
               </p>
