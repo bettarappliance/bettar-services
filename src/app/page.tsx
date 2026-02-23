@@ -948,7 +948,7 @@ export default function Home() {
                           height={40}
                           className="w-10 h-10"
                         />
-                        <span className="text-[#E0E0E0] text-1xl font-medium tracking-[2px] uppercase">BETTAR APPLIANCE</span>
+                        <span className="text-[#E0E0E0] text-1xl font-medium tracking-[2px] uppercase">BETTAR APPLIANCE MASTER</span>
                       </div>
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">
                       Sales and Services
