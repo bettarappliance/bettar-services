@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import RequestServiceModal from "../../components/RequestServiceModal";
+import GoogleReviews from "../../components/GoogleReviews";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -72,6 +73,57 @@ export default function About() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               For nearly 81 years, Bettar has been the trusted name in home services across Kensington, Maryland, and the surrounding communities.
             </p>
+            {/* Trust credentials strip */}
+            <div className="mt-10 flex flex-wrap justify-center gap-6 sm:gap-8 text-sm font-semibold text-[#002D72]">
+              <span className="inline-flex items-center gap-2">
+                <svg className="w-5 h-5 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Licensed
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <svg className="w-5 h-5 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Bonded
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <svg className="w-5 h-5 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Insured
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <svg className="w-5 h-5 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Family-owned since 1945
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* By the numbers */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">81+</p>
+              <p className="text-gray-600 font-medium">Years in business</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">1</p>
+              <p className="text-gray-600 font-medium">Family. One standard.</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">DMV</p>
+              <p className="text-gray-600 font-medium">Communities we serve</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">100%</p>
+              <p className="text-gray-600 font-medium">Committed to your satisfaction</p>
+            </div>
           </div>
         </div>
       </section>
@@ -234,6 +286,70 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Meet the team */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+              Meet the <span className="text-[#002D72]">team</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real people, real expertise. Our team is here to help with repairs, appliances, and home services you can count on.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <div className="relative aspect-[4/3] bg-gray-100">
+                <Image
+                  src="/IMG_0274.png"
+                  alt="Bettar team in the office with Whirlpool and KitchenAid branding"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-4 bg-[#F4F7FF] text-center">
+                <p className="text-sm font-medium text-gray-700">Our team at the office</p>
+                <p className="text-xs text-gray-500 mt-1">Proud to work with top appliance brands</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <div className="relative aspect-[4/3] bg-gray-100">
+                <Image
+                  src="/IMG_1380.png"
+                  alt="Bettar team members with Whirlpool and KitchenAid"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-4 bg-[#F4F7FF] text-center">
+                <p className="text-sm font-medium text-gray-700">The Bettar crew</p>
+                <p className="text-xs text-gray-500 mt-1">Ready to serve our community</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <div className="relative aspect-[4/3] bg-gray-100">
+                <Image
+                  src="/IMG_0276.png"
+                  alt="Bettar team member with GE Appliances inventory"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+              <div className="p-4 bg-[#F4F7FF] text-center">
+                <p className="text-sm font-medium text-gray-700">Expertise in every brand</p>
+                <p className="text-xs text-gray-500 mt-1">Repair, replacement &amp; installation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What customers say - Google Reviews */}
+      <GoogleReviews />
 
       {/* CTA Section */}
       <section className="py-20 bg-[#002D72]">

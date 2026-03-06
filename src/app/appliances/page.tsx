@@ -314,22 +314,36 @@ export default function Appliances() {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-6 sm:py-8 md:py-12 bg-[#F4F7FF]">
+      <section className="py-8 sm:py-10 md:py-14 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-0">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-3 sm:mb-4 leading-tight">
-              <span className="text-[#002D72]">Bettar Appliance</span> - Best Appliance Store Near Me
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 sm:px-0">
-              <strong>Bettar Appliance Kensington</strong> - Your trusted local appliance store. Looking for the <strong>best appliance stores near me</strong>? <strong>Better appliance near me</strong>? <strong>Where to buy washing machine near me</strong>? Bettar Appliance provides <strong>bettar appliance repair</strong>, sales, and installation serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. From fridges and dishwashers to washers and dryers, Bettar Appliance keeps your home running smoothly.
+          <div className="text-center max-w-4xl mx-auto">
+            <p className="inline-block text-xs sm:text-sm font-semibold text-[#002D72] uppercase tracking-wider mb-3 sm:mb-4 px-3 py-1 rounded-full bg-white/80 border border-[#002D72]/20 shadow-sm">
+              Best appliance store near me · Bettar Appliance Kensington
             </p>
-
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-5 leading-[1.1] tracking-tight">
+              <span className="text-[#002D72] block sm:inline">Your Home Deserves</span>{" "}
+              <span className="bg-gradient-to-r from-[#002D72] to-[#0047AB] bg-clip-text text-transparent">Bettar.</span>
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
+              Top brands. Expert repair & installation. One trusted stop for washers, dryers, fridges & more—so you can shop once and enjoy for years.
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600">
+              <span className="inline-flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Family-owned since 1945
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Expert repair & installation
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Licensed & insured
+              </span>
+            </div>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
               <button
                 onClick={() => setIsApplianceModalOpen(true)}
-                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 text-base sm:text-lg rounded-full bg-[#002D72] text-white font-bold hover:bg-[#001F5C] transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
               >
-                Buy Now
+                Shop Appliances →
               </button>
               <button
                 onClick={() => {
@@ -338,16 +352,14 @@ export default function Appliances() {
                     faqSection.scrollIntoView({ behavior: "smooth", block: "start" });
                   }
                 }}
-                className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] border-2 border-[#002D72] transition shadow-lg hover:shadow-xl"
+                className="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 text-base sm:text-lg rounded-full bg-white text-[#002D72] font-semibold hover:bg-[#E6EDFF] border-2 border-[#002D72] transition-all shadow-md hover:shadow-lg"
               >
                 View FAQs
               </button>
             </div>
-            <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 px-2 sm:px-0">
-              Serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown. Licensed and insured.
+            <p className="mt-4 text-xs sm:text-sm text-gray-500 px-2 sm:px-0">
+              Serving Montgomery County, Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg & Germantown.
             </p>
-
-
           </div>
         </div>
       </section>

@@ -318,5 +318,13 @@ function getStaticGallery(): Gallery[] {
       description: "A client reported that her Sub-Zero refrigerator was making a loud, intermittent noise. Upon inspection, we found that the issue was caused by a faulty ice maker and a worn-out freezer door gasket, both of which needed replacement.",
       images: ["/projects/subzero.jpg", "/projects/subzero1.jpg"],
     },
+    {
+      id: "10",
+      title: "Over-the-Range Microwave Installation",
+      category: "Appliances",
+      imageUrl: "/projects/microwave.jpg",
+      description: "GE over-the-range microwave installation with cabinetry. Clean, professional finish.",
+      images: ["/projects/microwave.jpg", "/projects/microwave (2).jpg"],
+    },
   ];
 }
