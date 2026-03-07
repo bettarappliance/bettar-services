@@ -328,7 +328,7 @@ export default function HandymanServicesArticle() {
             <div className="border-l-4 border-[#002D72] pl-6">
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Quality Workmanship Guaranteed</h3>
               <p className="text-gray-700">
-                We stand behind our work with a satisfaction guarantee. If you're not completely satisfied, we'll make it right.
+                We stand behind our work with a satisfaction guarantee. If you&apos;re not completely satisfied, we&apos;ll make it right.
               </p>
             </div>
           </div>
@@ -392,14 +392,14 @@ export default function HandymanServicesArticle() {
             <div>
               <h3 className="text-xl font-semibold mb-3 text-[#002D72]">2. Deck & Patio Repairs</h3>
               <p className="text-gray-700">
-                With Maryland's varying weather conditions, decks require regular maintenance. We handle board replacement, railing repairs, staining, and complete deck restoration to keep your outdoor space safe and beautiful.
+                With Maryland&apos;s varying weather conditions, decks require regular maintenance. We handle board replacement, railing repairs, staining, and complete deck restoration to keep your outdoor space safe and beautiful.
               </p>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-3 text-[#002D72]">3. Kitchen & Bathroom Updates</h3>
               <p className="text-gray-700">
-                Minor updates can dramatically improve these high-use spaces. We install new faucets, cabinet hardware, backsplashes, towel bars, and lighting fixtures to refresh your home's appearance.
+                Minor updates can dramatically improve these high-use spaces. We install new faucets, cabinet hardware, backsplashes, towel bars, and lighting fixtures to refresh your home&apos;s appearance.
               </p>
             </div>
 
@@ -424,7 +424,7 @@ export default function HandymanServicesArticle() {
           <div className="bg-[#002D72] text-white p-8 rounded-2xl">
             <h2 className="text-3xl font-bold mb-4">Emergency Handyman Services</h2>
             <p className="text-lg mb-6 opacity-90">
-              Some repairs can't wait. We provide emergency handyman services for urgent situations like broken doors, window damage, water intrusion, and safety hazards. Available 7 days a week.
+              Some repairs can&apos;t wait. We provide emergency handyman services for urgent situations like broken doors, window damage, water intrusion, and safety hazards. Available 7 days a week.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -454,7 +454,7 @@ export default function HandymanServicesArticle() {
               <div className="text-3xl font-bold text-[#002D72] mb-3">01</div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Contact Us</h3>
               <p className="text-gray-700">
-                Call, email, or use our online form to describe your project. We'll schedule a convenient time for service.
+                Call, email, or use our online form to describe your project. We&apos;ll schedule a convenient time for service.
               </p>
             </div>
 
@@ -462,7 +462,7 @@ export default function HandymanServicesArticle() {
               <div className="text-3xl font-bold text-[#002D72] mb-3">02</div>
               <h3 className="text-xl font-semibold mb-2 text-gray-900">Get an Estimate</h3>
               <p className="text-gray-700">
-                We provide a detailed, upfront estimate with no hidden fees. You'll know the cost before any work begins.
+                We provide a detailed, upfront estimate with no hidden fees. You&apos;ll know the cost before any work begins.
               </p>
             </div>
 
