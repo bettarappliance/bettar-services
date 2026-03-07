@@ -492,10 +492,6 @@ export default function WaterHeaterRepairGaithersburg() {
           <section className="mt-16">
             <h2 className="text-2xl font-bold text-black mb-6">Related Articles</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/insights/gaithersburg-emergency-plumber" className="block bg-gray-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-[#002D72] mb-2">Emergency Plumber Gaithersburg</h3>
-                <p className="text-sm text-gray-600">24/7 emergency plumbing services when you need them most.</p>
-              </Link>
               <Link href="/insights/dishwasher-repair-buying-guide" className="block bg-gray-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
                 <h3 className="font-bold text-[#002D72] mb-2">Dishwasher Repair Guide</h3>
                 <p className="text-sm text-gray-600">Common dishwasher problems and when to call a pro.</p>
