@@ -601,10 +601,6 @@ export default function DishwasherRepairBuyingGuide() {
                 <h3 className="font-bold text-[#002D72] mb-2">Water Heater Repair Guide</h3>
                 <p className="text-sm text-gray-600">Expert water heater repair and maintenance tips.</p>
               </Link>
-              <Link href="/insights/gaithersburg-emergency-plumber" className="block bg-gray-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
-                <h3 className="font-bold text-[#002D72] mb-2">24/7 Emergency Plumber</h3>
-                <p className="text-sm text-gray-600">Fast plumbing emergency response in Gaithersburg.</p>
-              </Link>
               <Link href="/insights" className="block bg-gray-50 rounded-lg p-4 hover:shadow-lg transition-shadow">
                 <h3 className="font-bold text-[#002D72] mb-2">More Home Tips</h3>
                 <p className="text-sm text-gray-600">Browse all our maintenance and repair guides.</p>
