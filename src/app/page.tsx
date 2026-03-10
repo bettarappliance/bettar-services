@@ -1844,9 +1844,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
             {/* Call to Action Card */}
-            <div className="bg-[#dc2626] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
+            <div className="bg-[#002D72] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
               <h3 className="text-5xl font-bold mb-8">Latest insights & tips</h3>
-              <Link href="/insights" className="bg-[#1e3a8a] text-white font-bold py-3 px-6 rounded-full hover:bg-[#152a63] transition-colors self-start text-center">
+              <Link href="/insights" className="bg-white text-[#002D72] font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition-colors self-start text-center">
                 View All
               </Link>
             </div>
@@ -1875,28 +1875,6 @@ export default function Home() {
 
             {/* Article Card 2 */}
             <Link 
-              href="/insights/gaithersburg-emergency-plumber"
-              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group cursor-pointer block"
-            >
-              <div className="h-48 relative overflow-hidden">
-                <Image
-                  src="/insights/plumbing.jpg"
-                  alt="Emergency Plumber"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-500 text-sm mb-2">Emergency Services</p>
-                <h4 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#002D72] transition-colors">Emergency Plumber Gaithersburg MD - 24/7 Service</h4>
-                <p className="text-gray-600 text-sm mb-4">Fast 24/7 emergency plumbing service in Gaithersburg. Burst pipes, drain clogs, and more.</p>
-                <p className="text-gray-500 text-xs">05 Feb 2026</p>
-              </div>
-            </Link>
-
-            {/* Article Card 3 */}
-            <Link 
               href="/insights/dishwasher-repair-buying-guide"
               className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group cursor-pointer block"
             >
@@ -1914,6 +1892,28 @@ export default function Home() {
                 <h4 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#002D72] transition-colors">Dishwasher Repair & Buying Guide</h4>
                 <p className="text-gray-600 text-sm mb-4">Complete guide to dishwasher problems, repairs, and buying advice from local experts.</p>
                 <p className="text-gray-500 text-xs">05 Feb 2026</p>
+              </div>
+            </Link>
+
+            {/* Article Card 3 */}
+            <Link 
+              href="/insights/handyman-services-gaithersburg-bethesda"
+              className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden group cursor-pointer block"
+            >
+              <div className="h-48 relative overflow-hidden">
+                <Image
+                  src="/insights/handyman.jpg"
+                  alt="Handyman Services"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-500 text-sm mb-2">Home Improvement</p>
+                <h4 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#002D72] transition-colors">Professional Handyman Services</h4>
+                <p className="text-gray-600 text-sm mb-4">Expert home repair and improvement services throughout Montgomery County.</p>
+                <p className="text-gray-500 text-xs">07 Mar 2026</p>
               </div>
             </Link>
           </div>

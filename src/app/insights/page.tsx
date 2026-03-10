@@ -22,21 +22,21 @@ export default function Insights() {
     },
     {
       id: 2,
-      slug: "gaithersburg-emergency-plumber",
-      image: "/insights/plumbing.jpg",
-      category: "Emergency Services",
-      title: "Emergency Plumber Gaithersburg MD - 24/7 Service",
-      description: "Fast 24/7 emergency plumbing service in Gaithersburg. Burst pipes, drain clogs, water heater failures - we respond quickly.",
-      date: "05 Feb 2026"
-    },
-    {
-      id: 3,
       slug: "dishwasher-repair-buying-guide",
       image: "/insights/dishwasher.jpg",
       category: "Appliance Service",
       title: "Dishwasher Repair & Buying Guide",
       description: "Complete guide to dishwasher problems, repairs, and buying advice from your local appliance technician.",
       date: "05 Feb 2026"
+    },
+    {
+      id: 3,
+      slug: "handyman-services-gaithersburg-bethesda",
+      image: "/insights/handyman.jpg",
+      category: "Home Improvement",
+      title: "Professional Handyman Services in Gaithersburg & Bethesda",
+      description: "Expert home repair and improvement services throughout Montgomery County. Skilled, licensed handymen for all your projects.",
+      date: "07 Mar 2026"
     }
   ];
 
@@ -154,7 +154,7 @@ export default function Insights() {
           </p>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-4 px-10 rounded-lg transition-colors text-lg"
+            className="bg-white text-[#002D72] hover:bg-gray-100 font-bold py-4 px-10 rounded-lg transition-colors text-lg"
           >
             Schedule Service Now
           </button>
