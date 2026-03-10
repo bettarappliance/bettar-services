@@ -33,6 +33,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Brand Logos Carousel Animation */

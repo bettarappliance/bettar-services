@@ -274,7 +274,7 @@ export default function Home() {
     setCurrentImageIndex(index);
   };
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white w-full">
       {/* Structured Data for SEO */}
       <script
         type="application/ld+json"
@@ -321,12 +321,12 @@ export default function Home() {
             </div>
             
             {/* Right Image */}
-            <div className="relative w-full h-[350px] lg:h-[450px]">
+            <div className="relative w-full h-[350px] lg:h-[450px] min-w-0 overflow-hidden">
               <Image
                 src="/bettar car.png"
                 alt="Bettar Service Van"
                 fill
-                className="object-contain scale-140"
+                className="object-contain object-right"
                 priority
               />
             </div>
@@ -1694,7 +1694,7 @@ export default function Home() {
 
       {/* What Our Customers Say Section */}
       <section className="bg-[#F0F5FF] overflow-x-hidden overflow-y-hidden">
-        <div className="max-w-12xl mx-auto px-6 overflow-x-hidden overflow-y-hidden">
+        <div className="max-w-7xl mx-auto px-6 overflow-x-hidden">
           <GoogleReviews />
         </div>
       </section>

@@ -91,10 +91,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning={true}
       >
-        {children}
+        <div className="pt-[72px] sm:pt-20">
+          {children}
+        </div>
         <BackToTop />
         <Analytics />
         <SpeedInsights />
