@@ -310,6 +310,12 @@ export default function Home() {
                   </svg>
                   <span className="text-black text-xl font-medium">Kensington, MD</span>
                 </div>
+                <div className="flex items-center gap-3">
+                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="text-black text-lg font-medium">Mon–Fri: 8 AM – 5 PM</span>
+                </div>
               </div>
               
               <a 
@@ -1963,6 +1969,14 @@ export default function Home() {
                     <a href="https://www.google.com/maps/dir/?api=1&destination=10503+Wheatley+St,+Kensington,+MD+20895" target="_blank" rel="noopener noreferrer" className="text-lg hover:underline">
                       10503 Wheatley St, Kensington, MD 20895, United States
                     </a>
+                  </div>
+
+                  {/* Store Hours */}
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-lg">Mon–Fri: 8:00 AM – 5:00 PM</span>
                   </div>
                 </div>
               </div>

@@ -87,6 +87,12 @@ export default function Footer() {
                 </svg>
                 <span className="text-sm">info@bettarservices.com</span>
               </div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm">Mon–Fri: 8:00 AM – 5:00 PM</span>
+              </div>
             </div>
           </div>
         </div>

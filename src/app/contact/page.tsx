@@ -47,6 +47,9 @@ export default function Contact() {
             <p className="text-xl text-gray-600">
               Visit our location in Kensington, Maryland
             </p>
+            <p className="text-base text-gray-500 mt-2">
+              Open Monday – Friday, 8:00 AM – 5:00 PM
+            </p>
           </div>
           
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
