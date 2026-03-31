@@ -1416,7 +1416,24 @@ export default function Home() {
             </div>
               </div>
             </Link>
+
+            {/* Project 10 - Over-the-Range Microwave Installation */}
+            <Link href="/gallery" className="group cursor-pointer block">
+              <div className="relative h-70 rounded-2xl overflow-hidden">
+                <Image
+                  src="/projects/microwave.jpg"
+                  alt="Over-the-Range Microwave Installation"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-[rgba(0,45,114,0.2)]"></div>
+                <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
+                  Microwave Installation
+                </div>
+              </div>
+            </Link>
           </div>
+
           
           {/* Pagination Dots */}
           <div className="flex justify-center mt-12 space-x-2">

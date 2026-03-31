@@ -167,7 +167,7 @@ function GoogleReviewsContent() {
                 
                 {/* Business Name */}
                 <h3 className="text-xl font-bold text-gray-800 mb-2">
-                  {state.business || "Bettar Appliance Service"}
+                  {state.business || "Bettar Appliance Master"}
                 </h3>
                 
                 {/* Powered by Google */}
