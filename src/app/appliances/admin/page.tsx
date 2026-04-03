@@ -1,8 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { useState, useEffect, useRef } from "react";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+  deleteDoc,
+  query,
+  orderBy,
+  db,
+} from "@/lib/firebase";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -93,6 +102,144 @@ function AdminPageContent() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [additionalImages, setAdditionalImages] = useState<ImageInput[]>([]);
+
+  // Manage tab filters
+  const [filterSearch, setFilterSearch] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [filterBrand, setFilterBrand] = useState("");
+  const [filterStock, setFilterStock] = useState<"all" | "inStock" | "outOfStock">("all");
+
+  // Bulk selection
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  // Undo-safe deletion
+  const [pendingDelete, setPendingDelete] = useState<BettarAppliance[]>([]);
+  const [undoCountdown, setUndoCountdown] = useState(0);
+  const pendingDeleteRef = useRef<BettarAppliance[]>([]);
+  const undoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const undoIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Clean up timers on unmount
+  useEffect(() => {
+    return () => {
+      if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
+      if (undoIntervalRef.current) clearInterval(undoIntervalRef.current);
+    };
+  }, []);
+
+  // Derived filter options from loaded data
+  const uniqueCategories = Array.from(new Set(appliances.map((a) => a.category).filter(Boolean))).sort();
+  const uniqueBrands = Array.from(new Set(appliances.map((a) => a.brand).filter(Boolean))).sort();
+
+  // Apply filters
+  const filteredAppliances = appliances.filter((a) => {
+    const searchLower = filterSearch.toLowerCase();
+    const matchesSearch =
+      !filterSearch ||
+      (a.name || "").toLowerCase().includes(searchLower) ||
+      (a.brand || "").toLowerCase().includes(searchLower) ||
+      (a.modelNumber || "").toLowerCase().includes(searchLower) ||
+      (a.category || "").toLowerCase().includes(searchLower);
+    const matchesCategory = !filterCategory || a.category === filterCategory;
+    const matchesBrand = !filterBrand || a.brand === filterBrand;
+    const matchesStock =
+      filterStock === "all" ||
+      (filterStock === "inStock" && a.inStock === true) ||
+      (filterStock === "outOfStock" && a.inStock === false);
+    return matchesSearch && matchesCategory && matchesBrand && matchesStock;
+  });
+
+  const hasActiveFilters = filterSearch || filterCategory || filterBrand || filterStock !== "all";
+
+  const clearFilters = () => {
+    setFilterSearch("");
+    setFilterCategory("");
+    setFilterBrand("");
+    setFilterStock("all");
+  };
+
+  // Bulk selection helpers
+  const allVisibleSelected =
+    filteredAppliances.length > 0 &&
+    filteredAppliances.every((a) => selectedIds.has(a.id));
+  const someVisibleSelected =
+    filteredAppliances.some((a) => selectedIds.has(a.id)) && !allVisibleSelected;
+
+  const toggleSelectAll = (checked: boolean) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      filteredAppliances.forEach((a) => (checked ? next.add(a.id) : next.delete(a.id)));
+      return next;
+    });
+  };
+
+  const toggleSelectOne = (id: string, checked: boolean) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      checked ? next.add(id) : next.delete(id);
+      return next;
+    });
+  };
+
+  // Undo-safe bulk delete
+  const handleBulkDelete = () => {
+    const toDelete = appliances.filter((a) => selectedIds.has(a.id));
+    if (toDelete.length === 0) return;
+
+    // Clear any existing undo window
+    if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
+    if (undoIntervalRef.current) clearInterval(undoIntervalRef.current);
+
+    // Optimistically remove from UI
+    setAppliances((prev) => prev.filter((a) => !selectedIds.has(a.id)));
+    setSelectedIds(new Set());
+    pendingDeleteRef.current = toDelete;
+    setPendingDelete(toDelete);
+    setUndoCountdown(5);
+
+    // Tick the countdown every second
+    undoIntervalRef.current = setInterval(() => {
+      setUndoCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(undoIntervalRef.current!);
+          undoIntervalRef.current = null;
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    // After 5 s, commit deletions to Firestore
+    undoTimerRef.current = setTimeout(async () => {
+      const items = pendingDeleteRef.current;
+      setPendingDelete([]);
+      pendingDeleteRef.current = [];
+      await Promise.all(
+        items.map((item) =>
+          deleteDoc(doc(db, "appliances", item.id)).catch((err) =>
+            console.error("Error deleting appliance:", err)
+          )
+        )
+      );
+    }, 5000);
+  };
+
+  const handleUndo = () => {
+    if (undoTimerRef.current) clearTimeout(undoTimerRef.current);
+    if (undoIntervalRef.current) clearInterval(undoIntervalRef.current);
+    undoTimerRef.current = null;
+    undoIntervalRef.current = null;
+
+    // Restore items to the list
+    setAppliances((prev) =>
+      [...prev, ...pendingDeleteRef.current].sort((a, b) =>
+        (a.name || "").localeCompare(b.name || "")
+      )
+    );
+    setPendingDelete([]);
+    pendingDeleteRef.current = [];
+    setUndoCountdown(0);
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -280,7 +427,10 @@ function AdminPageContent() {
         applianceData.images = imageUrls;
       }
 
-      await updateDoc(doc(db, "appliances", editingId), applianceData);
+      await updateDoc(doc(db, "appliances", editingId), {
+        ...applianceData,
+        idLower: editingId.toLowerCase(),
+      });
       setSubmitStatus("success");
       setEditingId(null);
       fetchAppliances();
@@ -430,6 +580,7 @@ function AdminPageContent() {
 
       // Add to Firestore
       const docRef = await addDoc(collection(db, "appliances"), applianceData);
+      await updateDoc(docRef, { idLower: docRef.id.toLowerCase() });
 
       console.log("Appliance added with ID: ", docRef.id);
       setSubmitStatus("success");
@@ -1070,6 +1221,68 @@ function AdminPageContent() {
               </button>
             </div>
 
+            {/* Filters */}
+            {!loadingAppliances && appliances.length > 0 && (
+              <div className="mb-6 space-y-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {/* Search */}
+                  <input
+                    type="text"
+                    placeholder="Search name, brand, model…"
+                    value={filterSearch}
+                    onChange={(e) => setFilterSearch(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-[#002D72] focus:border-transparent placeholder:text-gray-400"
+                  />
+                  {/* Category */}
+                  <select
+                    value={filterCategory}
+                    onChange={(e) => setFilterCategory(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-[#002D72] focus:border-transparent"
+                  >
+                    <option value="">All Categories</option>
+                    {uniqueCategories.map((cat) => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                  {/* Brand */}
+                  <select
+                    value={filterBrand}
+                    onChange={(e) => setFilterBrand(e.target.value)}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-[#002D72] focus:border-transparent"
+                  >
+                    <option value="">All Brands</option>
+                    {uniqueBrands.map((brand) => (
+                      <option key={brand} value={brand}>{brand}</option>
+                    ))}
+                  </select>
+                  {/* Stock status */}
+                  <select
+                    value={filterStock}
+                    onChange={(e) => setFilterStock(e.target.value as "all" | "inStock" | "outOfStock")}
+                    className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-[#002D72] focus:border-transparent"
+                  >
+                    <option value="all">All Stock</option>
+                    <option value="inStock">In Stock</option>
+                    <option value="outOfStock">Out of Stock</option>
+                  </select>
+                </div>
+                {/* Result count + clear */}
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span>
+                    Showing {filteredAppliances.length} of {appliances.length} appliance{appliances.length !== 1 ? "s" : ""}
+                  </span>
+                  {hasActiveFilters && (
+                    <button
+                      onClick={clearFilters}
+                      className="text-[#002D72] hover:text-[#001F5C] font-medium"
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
             {loadingAppliances ? (
               <div className="text-center py-12">
                 <p className="text-gray-600">Loading appliances...</p>
@@ -1078,11 +1291,54 @@ function AdminPageContent() {
               <div className="text-center py-12">
                 <p className="text-gray-600">No appliances found.</p>
               </div>
+            ) : filteredAppliances.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-gray-600">No appliances match your filters.</p>
+                <button onClick={clearFilters} className="mt-2 text-sm text-[#002D72] hover:underline">
+                  Clear filters
+                </button>
+              </div>
             ) : (
+              <>
+                {/* Bulk-action bar */}
+                {selectedIds.size > 0 && (
+                  <div className="mb-4 flex items-center justify-between bg-[#002D72] text-white px-4 py-3 rounded-lg">
+                    <span className="text-sm font-medium">
+                      {selectedIds.size} item{selectedIds.size !== 1 ? "s" : ""} selected
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={() => setSelectedIds(new Set())}
+                        className="text-sm text-blue-200 hover:text-white transition-colors"
+                      >
+                        Deselect all
+                      </button>
+                      <button
+                        onClick={handleBulkDelete}
+                        className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-1.5 rounded-lg transition-colors"
+                      >
+                        Delete {selectedIds.size} selected
+                      </button>
+                    </div>
+                  </div>
+                )}
+
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
+                      <th className="px-4 py-3 w-10">
+                        <input
+                          type="checkbox"
+                          checked={allVisibleSelected}
+                          ref={(el) => {
+                            if (el) el.indeterminate = someVisibleSelected;
+                          }}
+                          onChange={(e) => toggleSelectAll(e.target.checked)}
+                          className="h-4 w-4 rounded border-gray-300 text-[#002D72] focus:ring-[#002D72]"
+                          aria-label="Select all"
+                        />
+                      </th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Image
                       </th>
@@ -1107,8 +1363,20 @@ function AdminPageContent() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {appliances.map((appliance) => (
-                      <tr key={appliance.id} className="hover:bg-gray-50">
+                    {filteredAppliances.map((appliance) => (
+                      <tr
+                        key={appliance.id}
+                        className={`hover:bg-gray-50 ${selectedIds.has(appliance.id) ? "bg-blue-50" : ""}`}
+                      >
+                        <td className="px-4 py-4 whitespace-nowrap">
+                          <input
+                            type="checkbox"
+                            checked={selectedIds.has(appliance.id)}
+                            onChange={(e) => toggleSelectOne(appliance.id, e.target.checked)}
+                            className="h-4 w-4 rounded border-gray-300 text-[#002D72] focus:ring-[#002D72]"
+                            aria-label={`Select ${appliance.name}`}
+                          />
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="h-16 w-16 relative bg-gray-100 rounded flex items-center justify-center">
                             {appliance.imageUrl ? (
@@ -1191,10 +1459,27 @@ function AdminPageContent() {
                   </tbody>
                 </table>
               </div>
+              </>
             )}
           </div>
         )}
       </main>
+
+      {/* Undo toast */}
+      {pendingDelete.length > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-xl">
+          <span className="text-sm">
+            {pendingDelete.length} appliance{pendingDelete.length !== 1 ? "s" : ""} deleted
+          </span>
+          <button
+            onClick={handleUndo}
+            className="text-sm font-semibold text-yellow-400 hover:text-yellow-300 underline"
+          >
+            Undo
+          </button>
+          <span className="text-xs text-gray-400 tabular-nums w-4 text-center">{undoCountdown}s</span>
+        </div>
+      )}
 
       <Footer />
     </div>

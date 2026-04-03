@@ -1,6 +1,21 @@
-import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
-import { getFirestore, Firestore } from 'firebase/firestore';
-import { collection, getDocs, QuerySnapshot, DocumentData } from 'firebase/firestore';
+import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
+import {
+  getFirestore,
+  type Firestore,
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  addDoc,
+  doc,
+  getDoc,
+  limit,
+  updateDoc,
+  deleteDoc,
+  type QuerySnapshot,
+  type DocumentData,
+} from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -12,7 +27,6 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
 let app: FirebaseApp;
 if (getApps().length === 0) {
   app = initializeApp(firebaseConfig);
@@ -20,29 +34,47 @@ if (getApps().length === 0) {
   app = getApps()[0];
 }
 
-// Initialize Firestore
 export const db: Firestore = getFirestore(app);
 
-// Function to get all appliances from Firestore
+/**
+ * Re-export Firestore helpers from this module only (do not import `collection` / `getDocs`
+ * directly from `firebase/firestore` elsewhere). Next/Turbopack can otherwise bundle two
+ * copies of the SDK and `collection(db, …)` throws: first argument must be Firestore.
+ */
+export {
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  addDoc,
+  doc,
+  getDoc,
+  limit,
+  updateDoc,
+  deleteDoc,
+};
+
+export type { QuerySnapshot, DocumentData };
+
 export async function getAppliances(): Promise<DocumentData[]> {
   try {
-    const appliancesCollection = collection(db, 'bettarAppliances');
+    const appliancesCollection = collection(db, "bettarAppliances");
     const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(appliancesCollection);
-    
+
     const appliances: DocumentData[] = [];
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((d) => {
       appliances.push({
-        id: doc.id,
-        ...doc.data(),
+        id: d.id,
+        ...d.data(),
       });
     });
-    
+
     return appliances;
   } catch (error) {
-    console.error('Error fetching appliances from Firestore:', error);
+    console.error("Error fetching appliances from Firestore:", error);
     throw error;
   }
 }
 
 export default app;
-

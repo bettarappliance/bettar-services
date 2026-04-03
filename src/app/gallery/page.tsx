@@ -6,8 +6,7 @@ import { useState, useEffect } from "react";
 import Script from "next/script";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "../../lib/firebase";
+import { collection, getDocs, query, orderBy, db } from "@/lib/firebase";
 
 type Gallery = {
   id: string;

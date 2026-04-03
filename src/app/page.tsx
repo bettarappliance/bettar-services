@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { collection, getDocs, db } from "@/lib/firebase";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
@@ -285,89 +284,170 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-6 pb-20 overflow-hidden" style={{ background: 'linear-gradient(to bottom, #EFEFEF, #DBE7FA)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
-            {/* Left Content */}
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-4xl font-bold text-black leading-tight">
-                From Appliances to Repairs<br />
-                Better call <span className="text-[#1e3a8a]">Bettar</span>!
-              </h1> 
-              
-              <div className="flex flex-wrap items-center gap-6">
-                <a href="tel:301-949-2500" className="flex items-center gap-3 text-black hover:opacity-80 transition-opacity">
-                  <svg className="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span className="text-xl font-semibold">301-949-2500</span>
+      <section className="relative min-h-[88vh] flex items-center overflow-hidden bg-white">
+        {/* Subtle light-blue gradient wash */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#EEF4FF] via-white to-white" />
+        {/* Soft radial glow — top right */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#002D72] opacity-[0.07] rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#1e3a8a] opacity-[0.04] rounded-full blur-3xl pointer-events-none" />
+        {/* Dot-grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(circle, #002D72 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-8 py-16 sm:py-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+
+            {/* ── Left: copy ── */}
+            <div className="space-y-7">
+
+              {/* Overline pill */}
+              <div className="inline-flex items-center gap-2 bg-[#EEF4FF] border border-[#002D72]/15 text-[#002D72] text-sm font-semibold px-4 py-2 rounded-full">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                Serving Greater DC &amp; Montgomery County since 1945
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                From Appliances<br />
+                to Repairs —<br />
+                <span className="relative inline-block">
+                  Better call{" "}
+                  <span className="text-[#002D72]">Bettar</span>
+                  <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#002D72] rounded-full opacity-60" />
+                </span>
+              </h1>
+
+              {/* Tagline */}
+              <p className="text-gray-500 text-base sm:text-lg max-w-md leading-relaxed">
+                Your trusted, family-owned home services team — appliance sales, repairs, renovations, plumbing &amp; more.
+              </p>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap gap-3">
+                <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full text-sm">
+                  <span className="text-amber-500 tracking-tight">★★★★★</span>
+                  <span className="font-semibold text-gray-800">4.9</span>
+                  <span className="text-gray-500">on Angi</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-[#EEF4FF] border border-[#002D72]/15 px-3 py-1.5 rounded-full text-sm text-[#002D72] font-medium">
+                  🏆 2025 Super Service Award
+                </span>
+              </div>
+
+              {/* CTA buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="/request-service"
+                  className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5"
+                >
+                  Request Service
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
-                
-                <div className="flex items-center gap-3">
-                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <span className="text-black text-xl font-medium">Kensington, MD</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <svg className="w-6 h-6 text-black flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-black text-lg font-medium">Mon–Fri: 8 AM – 5 PM</span>
+                <a
+                  href="tel:301-949-2500"
+                  className="inline-flex items-center gap-2 border-2 border-[#002D72] text-[#002D72] hover:bg-[#002D72] hover:text-white font-semibold px-6 py-4 rounded-xl text-lg transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  301-949-2500
+                </a>
+              </div>
+
+              {/* Location + hours */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  Kensington, MD
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  Mon–Fri: 8 AM – 5 PM
+                </span>
+              </div>
+            </div>
+
+            {/* ── Right: hero appliances + floating elements ── */}
+            <div className="relative flex justify-center lg:justify-end">
+              {/* Soft blue glow behind hero image */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#002D72]/8 to-transparent rounded-3xl blur-2xl pointer-events-none" />
+
+              {/* Appliance hero image — taller box = larger object-contain render */}
+              <div className="relative w-full max-w-2xl lg:max-w-full h-[420px] sm:h-[460px] lg:h-[580px]">
+                <Image
+                  src="/appliancehero.png"
+                  alt="Stainless steel refrigerators, ranges, washers, and microwaves"
+                  fill
+                  className="object-contain object-center lg:object-right drop-shadow-xl"
+                  priority
+                />
+              </div>
+
+              {/* ── Floating: Rating badges (top right) ── */}
+              <div className="absolute top-4 right-0 sm:right-2 flex flex-col gap-2">
+                {/* Google */}
+                <div className="bg-[#002D72] border border-gray-200 rounded-2xl px-8 py-3 shadow-md">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <span className="text-amber-500 text-sm font-bold tracking-tight">★★★★★</span>
+                  </div>
+                  <div className="text-white text-xs font-semibold">4.1 / 5 on Google</div>
+                  <div className="text-white text-[10px] mt-0.5">75 Google reviews</div>
                 </div>
               </div>
-              
-              <a 
-                href="/request-service"
-                className="inline-block bg-[#dc2626] text-white px-8 py-3 rounded-lg hover:bg-[#b91c1c] transition-colors font-semibold text-lg"
-              >
-                Request Service
-              </a>
             </div>
-            
-            {/* Right Image */}
-            <div className="relative w-full h-[350px] lg:h-[450px] min-w-0 overflow-hidden">
-              <Image
-                src="/bettar car.png"
-                alt="Bettar Service Van"
-                fill
-                className="object-contain object-right"
-                priority
-              />
-            </div>
+          </div>
+
+          {/* Scroll nudge */}
+          <div className="flex justify-center mt-12">
+            <a
+              href="#stats"
+              className="flex flex-col items-center gap-1 text-gray-400 hover:text-[#002D72] transition-colors"
+              aria-label="Scroll down"
+            >
+              <span className="text-[10px] font-semibold tracking-widest uppercase">Scroll</span>
+              <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Statistics Section */}
-      <section className="relative -mt-12 sm:-mt-16 md:-mt-20 z-30">
+      <section id="stats" className="relative -mt-12 sm:-mt-16 md:-mt-20 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-white rounded-lg shadow-2xl p-4 sm:p-6 md:p-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-              {/* Stat 1 */}
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">81</div>
-                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">YEARS EXPERIENCE</div>
-              </div>
-              
-              {/* Stat 2 */}
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">30K+</div>
-                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">HAPPY CLIENTS</div>
-              </div>
-              
-              {/* Stat 3 */}
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">70K+</div>
-                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">PROJECTS FINISHED</div>
-                <Link href="/gallery" className="text-[#1e3a8a] text-[10px] sm:text-xs md:text-sm mt-1 sm:mt-2 cursor-pointer hover:underline inline-block">View Projects →</Link>
-              </div>
-              
-              {/* Stat 4 */}
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-[#1e3a8a] mb-0.5 sm:mb-1 md:mb-2">100%</div>
-                <div className="text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm">GUARANTEED</div>
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            {/* Gradient accent bar */}
+            <div className="h-1.5 bg-gradient-to-r from-[#002D72] via-[#1e3a8a] to-[#dc2626]" />
+            <div className="p-4 sm:p-6 md:p-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
+                {/* Stat 1 */}
+                <div className="text-center px-3 sm:px-4">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">81</div>
+                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Years Experience</div>
+                </div>
+                {/* Stat 2 */}
+                <div className="text-center px-3 sm:px-4">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">30K+</div>
+                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Happy Clients</div>
+                </div>
+                {/* Stat 3 */}
+                <div className="text-center px-3 sm:px-4">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">70K+</div>
+                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Projects Finished</div>
+                  <Link href="/gallery" className="text-[#dc2626] text-[10px] sm:text-xs mt-1 hover:underline inline-block font-semibold">View Projects →</Link>
+                </div>
+                {/* Stat 4 */}
+                <div className="text-center px-3 sm:px-4">
+                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">100%</div>
+                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Guaranteed</div>
+                </div>
               </div>
             </div>
           </div>
@@ -375,7 +455,10 @@ export default function Home() {
       </section>
 
       {/* Brand Logos Carousel Section */}
-      <section className="py-10 bg-white overflow-hidden">
+      <section className="py-12 bg-[#F8FAFF] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
+          <p className="text-xs font-bold tracking-widest uppercase text-gray-400">Brands We Carry &amp; Service</p>
+        </div>
         <div className="relative">
           {/* Two-row carousel container */}
           <div className="flex flex-col space-y-6">
@@ -695,16 +778,17 @@ export default function Home() {
       {/* Shop From Top Categories Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+              <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Appliances</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                 Shop From <span className="text-[#002D72]">Top Categories</span>
               </h2>
-              <div className="h-1 w-32 bg-[#002D72] mt-2"></div>
+              <div className="h-1 w-16 bg-[#002D72] mt-3 rounded-full" />
             </div>
-            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-lg mt-4 md:mt-0 flex items-center group">
+            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-base mt-5 md:mt-0 flex items-center gap-1 group">
               View All
-              <svg className="w-5 h-5 ml-2 text-[#002D72] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -814,15 +898,19 @@ export default function Home() {
       </section>
 
       {/* Best Deals on Appliances Section - Firebase Powered */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-[#F8FAFF]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-              Grab the best deal on <span className="text-[#002D72]">Appliances</span>
-            </h2>
-            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-lg mt-4 md:mt-0 flex items-center group">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+            <div>
+              <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Featured Deals</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Grab the Best Deal on <span className="text-[#002D72]">Appliances</span>
+              </h2>
+              <div className="h-1 w-16 bg-[#002D72] mt-3 rounded-full" />
+            </div>
+            <Link href="/appliances" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-base mt-5 md:mt-0 flex items-center gap-1 group">
               View All
-              <svg className="w-5 h-5 ml-2 text-[#002D72] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -982,15 +1070,15 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-[#FFFFFF]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-black">
-              Services That Fit
-            </h1>
-            <h1 className="text-5xl md:text-6xl font-bold text-[#1e3a8a]">
-              Your Needs
-            </h1>
+          <div className="text-center mb-14">
+            <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">What We Do</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+              Services That Fit<br />
+              <span className="text-[#002D72]">Your Needs</span>
+            </h2>
+            <div className="h-1 w-16 bg-[#002D72] mx-auto mt-4 rounded-full" />
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -1079,54 +1167,50 @@ export default function Home() {
       {/* How BETTAR Works Section */}
       <section className="py-20 bg-[#F4F7FF]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            {/* Capsule Label */}
-            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
               Everything For Your Home
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
-              How <span className="text-[#002D72]">BETTAR</span> works?
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+              How <span className="text-[#002D72]">BETTAR</span> Works
             </h2>
+            <div className="h-1 w-16 bg-[#002D72] mx-auto mt-4 rounded-full" />
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Dashed connector line — desktop only */}
+            <div className="hidden md:block absolute top-10 left-[calc(33.33%+1rem)] right-[calc(33.33%+1rem)] h-px border-t-2 border-dashed border-[#002D72]/20" />
+
             {/* Step 1 */}
-            <div className="text-center relative">
-              <div className="text-6xl md:text-7xl font-bold text-transparent mb-6" style={{WebkitTextStroke: '2px black'}}>
-                01
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200 text-center relative">
+              <div className="w-16 h-16 bg-[#002D72] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#002D72]/20">
+                <span className="text-xl font-extrabold text-white">01</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-[#002D72]">Request service and consultation</h3>
-              <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Tell us what you need — You can fill out our <a href="/request-service" className="text-[#002D72] font-semibold hover:text-[#1e3a8a] transition-colors">request service form</a> or give us a quick call at <a href="tel:301-949-2500" className="text-[#002D72] font-bold hover:underline">301-949-2500</a>, and we&apos;ll take care of the rest.
+              <h3 className="text-lg font-bold mb-3 text-gray-900">Request Service &amp; Consultation</h3>
+              <p className="text-gray-500 leading-relaxed text-sm">
+                Fill out our <a href="/request-service" className="text-[#002D72] font-semibold hover:underline">request service form</a> or call us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>, and we&apos;ll take care of the rest.
               </p>
-              
-              {/* Connecting line to next step */}
-              <div className="hidden md:block absolute top-8 right-0 w-3/4 h-px bg-[#CFCFCF] transform translate-x-1/2"></div>
             </div>
-            
+
             {/* Step 2 */}
-            <div className="text-center relative">
-              <div className="text-6xl md:text-7xl font-bold text-transparent mb-6" style={{WebkitTextStroke: '2px black'}}>
-                02
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200 text-center relative">
+              <div className="w-16 h-16 bg-[#002D72] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#002D72]/20">
+                <span className="text-xl font-extrabold text-white">02</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-[#002D72]">We Schedule & Assess</h3>
-              <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Our team will get in touch to confirm your request and schedule a convenient time for a site visit. We&apos;ll assess the work, discuss your needs, and provide a clear and transparent quote.
+              <h3 className="text-lg font-bold mb-3 text-gray-900">We Schedule &amp; Assess</h3>
+              <p className="text-gray-500 leading-relaxed text-sm">
+                Our team confirms your request, schedules a convenient visit, assesses the work, and provides a clear, transparent quote.
               </p>
-              
-              {/* Connecting line to next step */}
-              <div className="hidden md:block absolute top-8 right-0 w-3/4 h-px bg-[#CFCFCF] transform translate-x-1/2"></div>
             </div>
-            
+
             {/* Step 3 */}
-            <div className="text-center">
-              <div className="text-6xl md:text-7xl font-bold text-transparent mb-6" style={{WebkitTextStroke: '2px black'}}>
-                03
+            <div className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-200 text-center">
+              <div className="w-16 h-16 bg-[#dc2626] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-red-700/20">
+                <span className="text-xl font-extrabold text-white">03</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-[#002D72]">We Get the Job Done the Bettar Way</h3>
-              <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                Our skilled team completes the job safely, efficiently, and the Bettar way.
+              <h3 className="text-lg font-bold mb-3 text-gray-900">We Get the Job Done the Bettar Way</h3>
+              <p className="text-gray-500 leading-relaxed text-sm">
+                Our skilled team completes the job safely, efficiently, and to the highest standard — the Bettar way.
               </p>
             </div>
           </div>
@@ -1134,7 +1218,7 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left Side - Image Carousel */}
@@ -1256,21 +1340,25 @@ export default function Home() {
       </section>
 
       {/* Recent Projects Section */}
-      <section id="projects" className="py-20 bg-white">
+      <section id="projects" className="py-20 bg-[#F8FAFF]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-12">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12">
             <div>
-              <div className="inline-block bg-[#E6EDFF] text-[#002D72] px-4 py-1.5 rounded-full text-sm font-medium mb-4">
+              <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
                 Gallery
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black">
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
                 Explore Our Recent Projects
               </h2>
+              <div className="h-1 w-16 bg-[#002D72] mt-3 rounded-full" />
             </div>
-            <Link href="/gallery" className="text-[#002D72] hover:underline text-lg font-semibold mt-4 md:mt-0">
-              View More →
+            <Link href="/gallery" className="text-[#002D72] hover:text-[#1e3a8a] font-semibold text-base mt-5 md:mt-0 flex items-center gap-1 group">
+              View More
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </Link>
-        </div>
+          </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Project 1 - Windows & Doors */}
@@ -1445,12 +1533,14 @@ export default function Home() {
       </section>
 
       {/* Better Services & Better Appliances Section - Targeting Typo Queries */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-8">
-              Looking for <span className="text-[#1e3a8a]">Better Services</span>? You Found <span className="text-[#1e3a8a]">Bettar</span>
+          <div className="text-center mb-14">
+            <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">Why Bettar</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+              Looking for <span className="text-[#002D72]">Better Services</span>?<br className="hidden sm:block" /> You Found <span className="text-[#dc2626]">Bettar</span>
             </h2>
+            <div className="h-1 w-16 bg-[#002D72] mx-auto rounded-full mb-8" />
             <div className="max-w-5xl mx-auto space-y-6">
               {/* <p className="text-lg text-[#333] leading-relaxed">
                 When you search for &quot;better services&quot; or &quot;better appliances,&quot; you&apos;re looking for quality, reliability, and expertise. That&apos;s exactly what Bettar Services delivers.
@@ -1657,59 +1747,64 @@ export default function Home() {
       </section>
 
       {/* Awards & Recognition Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#F8FAFF] to-[#EEF3FF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-3 sm:mb-4">
-              Awards & <span className="text-[#002D72]">Recognition</span>
+      <section className="py-16 sm:py-20 md:py-24 lg:py-28 bg-[#001233] relative overflow-hidden">
+        {/* Decorative background glows */}
+        <div className="absolute top-0 left-1/4 w-[28rem] h-[28rem] bg-[#002D72] opacity-25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#1e3a8a] opacity-20 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+          {/* Header */}
+          <div className="text-center mb-10 sm:mb-14 lg:mb-16">
+            <span className="inline-block text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#FFB800] mb-3 sm:mb-4">
+              Industry Recognition
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Awards &amp; <span className="text-[#FFB800]">Recognition</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto px-1">
+            <p className="text-blue-200 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
               Our commitment to excellence has been recognized by industry leaders and our valued customers
             </p>
           </div>
-          
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12">
-            {/* Angi Award Badge */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 border-2 border-[#002D72]/10 max-w-lg w-full relative overflow-hidden">
-              <div className="flex flex-col items-center">
-                <div className="mb-4 sm:mb-6 relative">
-                  <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-r from-[#002D72]/20 to-[#1e3a8a]/20 rounded-full blur-2xl"></div>
-                  <Image
-                    src="/angi.png"
-                    alt="Angi Super Service Award 2025"
-                    width={260}
-                    height={260}
-                    className="object-contain relative z-10 w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-[260px] lg:h-[260px]"
-                  />
-                </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#002D72] mb-2 sm:mb-4">
+
+          {/* Award Badge — centered hero card */}
+          <div className="flex justify-center mb-12 sm:mb-16">
+            <div className="relative">
+              <div className="absolute -inset-6 sm:-inset-10 bg-gradient-to-r from-[#FFB800]/20 to-[#002D72]/30 rounded-full blur-3xl" />
+              <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 sm:p-10 md:p-12 text-center w-72 sm:w-80 md:w-96 shadow-2xl">
+                <div className="w-16 h-1 bg-gradient-to-r from-[#FFB800] to-[#FFF0A0] rounded-full mx-auto mb-6" />
+                <Image
+                  src="/angi.png"
+                  alt="Angi Super Service Award 2025"
+                  width={220}
+                  height={220}
+                  className="object-contain mx-auto w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52"
+                />
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-6 mb-2">
                   2025 Super Service Award
                 </h3>
-                <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                <p className="text-blue-200 text-sm sm:text-base leading-relaxed">
                   Recognized by Angi for outstanding customer service and quality workmanship
                 </p>
               </div>
             </div>
+          </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-1 gap-3 sm:gap-4 md:gap-6 w-full lg:w-auto max-w-lg lg:max-w-none">
-              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">81</div>
-                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Years of Excellence</p>
-                <p className="text-gray-500 text-xs sm:text-sm">Family-owned since 1945</p>
-              </div>
-              
-              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">30K+</div>
-                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Satisfied Customers</p>
-                <p className="text-gray-500 text-xs sm:text-sm">Trusted by the community</p>
-              </div>
-              
-              <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-5 md:p-6 lg:p-8 text-center border border-gray-100 min-w-0">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#002D72] to-[#1e3a8a] bg-clip-text text-transparent mb-1 sm:mb-2 md:mb-3">100%</div>
-                <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">Fully Insured</p>
-                <p className="text-gray-500 text-xs sm:text-sm">Licensed & bonded</p>
-              </div>
+          {/* Stats row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
+            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
+              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">81</div>
+              <p className="text-white font-semibold text-sm sm:text-base mb-1">Years of Excellence</p>
+              <p className="text-blue-300 text-xs sm:text-sm">Family-owned since 1945</p>
+            </div>
+            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
+              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">30K+</div>
+              <p className="text-white font-semibold text-sm sm:text-base mb-1">Satisfied Customers</p>
+              <p className="text-blue-300 text-xs sm:text-sm">Trusted by the community</p>
+            </div>
+            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
+              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">100%</div>
+              <p className="text-white font-semibold text-sm sm:text-base mb-1">Fully Insured</p>
+              <p className="text-blue-300 text-xs sm:text-sm">Licensed &amp; bonded</p>
             </div>
           </div>
         </div>
@@ -1723,17 +1818,21 @@ export default function Home() {
       </section>
 
       {/* Frequently Asked Questions Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-[#D32F2F] mb-12">
-            Frequently Asked Questions
-          </h2>
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider mb-4">FAQs</span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+              Frequently Asked <span className="text-[#002D72]">Questions</span>
+            </h2>
+            <div className="h-1 w-16 bg-[#002D72] mx-auto mt-4 rounded-full" />
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left Column - FAQ Accordion */}
             <div className="space-y-4">
               {/* FAQ Item 1 */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200 group">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md hover:border-l-4 hover:border-l-[#002D72] transition-all duration-200 group">
                 <div className="flex justify-between items-center w-full text-left font-bold text-lg text-[#111827] group-hover:text-[#002D72] transition-colors duration-200 mb-3">
                   What type of appliances do you service?
                   <svg 
@@ -1751,7 +1850,7 @@ export default function Home() {
               </div>
 
               {/* FAQ Item 2 */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200 group">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md hover:border-l-4 hover:border-l-[#002D72] transition-all duration-200 group">
                 <div className="flex justify-between items-center w-full text-left font-bold text-lg text-[#111827] group-hover:text-[#002D72] transition-colors duration-200">
                   What areas do you cover?
                   <svg 
@@ -1769,7 +1868,7 @@ export default function Home() {
               </div>
 
               {/* FAQ Item 3 */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200 group">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md hover:border-l-4 hover:border-l-[#002D72] transition-all duration-200 group">
                 <div className="flex justify-between items-center w-full text-left font-bold text-lg text-[#111827] group-hover:text-[#002D72] transition-colors duration-200">
                   Why should I choose Bettar Services?
                   <svg 
@@ -1787,7 +1886,7 @@ export default function Home() {
               </div>
 
               {/* FAQ Item 4 */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200 group">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md hover:border-l-4 hover:border-l-[#002D72] transition-all duration-200 group">
                 <div className="flex justify-between items-center w-full text-left font-bold text-lg text-[#111827] group-hover:text-[#002D72] transition-colors duration-200">
                   Do you offer same-day appointments?
                   <svg 
@@ -1805,7 +1904,7 @@ export default function Home() {
               </div>
 
               {/* FAQ Item 5 */}
-              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-shadow duration-200 group">
+              <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md hover:border-l-4 hover:border-l-[#002D72] transition-all duration-200 group">
                 <div className="flex justify-between items-center w-full text-left font-bold text-lg text-[#111827] group-hover:text-[#002D72] transition-colors duration-200">
                   Are your services insured and guaranteed?
                   <svg 
