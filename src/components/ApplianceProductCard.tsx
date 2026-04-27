@@ -91,7 +91,7 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
             e.stopPropagation();
             onBuyNow(item.name);
           }}
-          className="w-full mt-auto pt-4 px-4 py-2 rounded-lg bg-[#002D72] text-white font-semibold text-sm hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
+          className="w-full py-2.5 rounded-lg bg-[#002D72] text-white font-semibold text-sm text-center hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
         >
           Buy Now
         </button>

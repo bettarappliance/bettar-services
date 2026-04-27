@@ -94,7 +94,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning={true}
       >
-        <div className="pt-[72px] sm:pt-20">
+        <div className="pt-[60px] sm:pt-16">
           {children}
         </div>
         <BackToTop />

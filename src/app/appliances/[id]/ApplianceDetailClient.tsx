@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ApplianceRequestModal from "@/components/ApplianceRequestModal";
+import RelatedAppliances from "@/components/RelatedAppliances";
 import { resolveCategoryListingPath } from "@/lib/appliance-category-slugs";
 import { applianceFromFirestoreDoc } from "@/lib/appliance-from-firestore";
 import { parseApplianceDocIdFromPathname } from "@/lib/appliance-doc-id";
@@ -377,6 +378,8 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
             </div>
           ) : null}
         </div>
+
+        <RelatedAppliances current={appliance} />
 
         <div className="bg-[#002D72] rounded-3xl p-8 sm:p-10 text-white mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
