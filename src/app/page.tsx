@@ -397,7 +397,7 @@ export default function Home() {
                     <span className="text-amber-500 text-sm font-bold tracking-tight">★★★★★</span>
                   </div>
                   <div className="text-white text-xs font-semibold">4.3 / 5 on Google</div>
-                  <div className="text-white text-[10px] mt-0.5">91 Google reviews</div>
+                  <div className="text-white text-[10px] mt-0.5">97 Google reviews</div>
                 </div>
               </div>
             </div>
