@@ -37,7 +37,10 @@ export default function Header() {
             height={40}
             className="w-9 h-9 2xl:w-10 2xl:h-10"
           />
-          <span className="text-white font-semibold text-lg sm:text-xl xl:text-lg 2xl:text-xl truncate">BETTAR SERVICES</span>
+          <div className="flex flex-col leading-none">
+            <span className="text-white font-bold text-xl sm:text-2xl xl:text-xl 2xl:text-2xl tracking-[0.28em] mr-[-0.28em]">BETTAR</span>
+            <span className="text-white/90 font-medium text-[9px] sm:text-[10px] tracking-[0.18em] mt-0.5 whitespace-nowrap">APPLIANCE MASTER</span>
+          </div>
         </Link>
 
         {/* Navigation — centered, only on xl+ */}

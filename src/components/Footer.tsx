@@ -18,7 +18,10 @@ export default function Footer() {
                 height={40}
                 className="w-10 h-10"
               />
-              <span className="text-white font-semibold text-xl">BETTAR SERVICES</span>
+              <div className="flex flex-col leading-none">
+                <span className="text-white font-bold text-2xl tracking-[0.15em] mr-[-0.15em]">BETTAR</span>
+                <span className="text-white/90 font-medium text-[10px] tracking-[0.18em] mt-0.5 whitespace-nowrap">APPLIANCE MASTER</span>
+              </div>
             </div>
             <p className="text-gray-300 mb-4">
               Your trusted partner for home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD since 1945.
@@ -101,7 +104,7 @@ export default function Footer() {
         <div className="border-t border-gray-600 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-300 text-sm">
-              © 2024 Bettar Services. All rights reserved.
+              © {new Date().getFullYear()} Bettar Appliance Master. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-gray-300 hover:text-white transition-colors text-sm">Privacy Policy</Link>
