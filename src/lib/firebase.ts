@@ -16,6 +16,14 @@ import {
   type QuerySnapshot,
   type DocumentData,
 } from "firebase/firestore";
+import {
+  getAuth,
+  type Auth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  type User,
+} from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -35,11 +43,14 @@ if (getApps().length === 0) {
 }
 
 export const db: Firestore = getFirestore(app);
+export const auth: Auth = getAuth(app);
 
 /**
  * Re-export Firestore helpers from this module only (do not import `collection` / `getDocs`
  * directly from `firebase/firestore` elsewhere). Next/Turbopack can otherwise bundle two
  * copies of the SDK and `collection(db, …)` throws: first argument must be Firestore.
+ *
+ * Same rule applies to Auth helpers below — re-export here, import from "@/lib/firebase".
  */
 export {
   collection,
@@ -53,9 +64,12 @@ export {
   limit,
   updateDoc,
   deleteDoc,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 };
 
-export type { QuerySnapshot, DocumentData };
+export type { QuerySnapshot, DocumentData, User };
 
 export async function getAppliances(): Promise<DocumentData[]> {
   try {

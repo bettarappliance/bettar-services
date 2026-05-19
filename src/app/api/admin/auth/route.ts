@@ -1,37 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
-  try {
-    const { password } = await request.json();
-
-    // Get admin password from environment variable
-    const adminPassword = process.env.ADMIN_PASSWORD;
-
-    if (!adminPassword) {
-      console.error("ADMIN_PASSWORD environment variable is not set");
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: "Server configuration error: ADMIN_PASSWORD environment variable is not set. Please add ADMIN_PASSWORD=your_password to your .env file and restart the server." 
-        },
-        { status: 500 }
-      );
-    }
-
-    // Compare passwords (in production, use proper password hashing)
-    if (password === adminPassword) {
-      return NextResponse.json({ success: true });
-    } else {
-      return NextResponse.json(
-        { success: false, error: "Invalid password" },
-        { status: 401 }
-      );
-    }
-  } catch (error) {
-    console.error("Auth error:", error);
-    return NextResponse.json(
-      { success: false, error: "An error occurred" },
-      { status: 500 }
-    );
-  }
+// Deprecated. The admin password route has been replaced by Firebase Auth
+// (email/password sign-in) via src/components/AdminAuth.tsx.
+//
+// This stub remains only so that any stale client (cached old AdminAuth) hitting
+// this endpoint receives a clear error rather than a 404. Safe to delete entirely
+// once you've confirmed no clients are still calling it.
+export async function POST() {
+  return NextResponse.json(
+    {
+      success: false,
+      error:
+        "This endpoint is deprecated. Admin authentication now uses Firebase Auth.",
+    },
+    { status: 410 }
+  );
 }
