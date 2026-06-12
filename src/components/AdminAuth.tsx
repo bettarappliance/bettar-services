@@ -13,7 +13,7 @@ import {
 // UID of the authorized admin account. Signed-in users with any other UID are
 // rejected — they can't write to Firestore anyway (rules enforce it), but
 // rejecting them at the UI layer prevents confusion.
-const ADMIN_UID = "rodGiea6jScnNzE5yzzw9tjYGaw2";
+const ADMIN_UID = "oEGMV2QVurfSHEBnr2po3N9H80L2";
 
 export default function AdminAuth({ children }: { children: React.ReactNode }) {
   const [email, setEmail] = useState("");
