@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!appliance) {
     const canonical = `${SITE_URL}/appliances/${canonicalId}`;
     return {
-      title: "Appliance Details | Bettar Services",
+      title: "Appliance Details | Bettar Appliance Master",
       description:
-        "Shop appliances with delivery and installation in Greater DC and Maryland. Contact Bettar Services for pricing and availability.",
+        "Shop appliances with delivery and installation in Greater DC and Maryland. Contact Bettar Appliance Master for pricing and availability.",
       alternates: { canonical },
     };
   }
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url: canonical,
-      siteName: "Bettar Services",
+      siteName: "Bettar Appliance Master",
       locale: "en_US",
       type: "website",
       images: appliance.imageUrl ? [{ url: appliance.imageUrl, alt: appliance.name }] : undefined,

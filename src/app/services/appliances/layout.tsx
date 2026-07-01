@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Appliance Repair Services | Same-Day Service | 301-949-2500",
     description: "⚡ Fast Same-Day Appliance Repair! Expert repair for refrigerators, washers, dryers, dishwashers & more. Licensed & insured. Serving Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, Germantown. All major brands. Call now!",
     url: "https://www.bettarservices.com/services/appliances",
-    siteName: "Bettar Services",
+    siteName: "Bettar Appliance Master",
     locale: "en_US",
     type: "website",
   },

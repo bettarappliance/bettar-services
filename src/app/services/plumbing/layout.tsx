@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Water Heater Service | Bethesda, Chevy Chase, Rockville, Kensington MD | Plumbing Repair",
     description: "Professional water heater service and heating services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Expert plumbing repairs, water heater installation, heating system maintenance.",
     url: "https://www.bettarservices.com/services/plumbing",
-    siteName: "Bettar Services",
+    siteName: "Bettar Appliance Master",
     locale: "en_US",
     type: "website",
   },

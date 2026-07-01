@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Same-Day Handyman Near Me | Licensed & Insured | 301-949-2500",
     description: "⚡ Fast Same-Day Handyman Service! Home repairs, furniture assembly, painting & more. Licensed & insured. Serving Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, Germantown. Free estimates. Call now for immediate service!",
     url: "https://www.bettarservices.com/services/handyman",
-    siteName: "Bettar Services",
+    siteName: "Bettar Appliance Master",
     locale: "en_US",
     type: "website",
   },

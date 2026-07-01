@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Professional Handyman Services in Gaithersburg & Bethesda | Bettar Services',
+  title: 'Professional Handyman Services in Gaithersburg & Bethesda | Bettar Appliance Master',
   description: 'Expert handyman services in Gaithersburg, Bethesda, and surrounding areas. Skilled repairs, installations, and home improvements. Same-day service available. Licensed & insured.',
   keywords: 'handyman services Gaithersburg, handyman Bethesda, skilled handyman repairs, professional handyman services, handyman Montgomery County, handyman Silver Spring, emergency handyman',
   openGraph: {

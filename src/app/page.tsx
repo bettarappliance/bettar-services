@@ -69,8 +69,8 @@ export default function Home() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Bettar Services",
-    "description": "Professional home improvement, renovation, plumbing, handyman, and appliance services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
+    "name": "Bettar Appliance Master",
+    "description": "Shop appliances at Bettar Appliance Master in Kensington, MD — sales, delivery and installation on refrigerators, washers, dryers and more. Expert appliance repair, plus plumbing, handyman, renovation and home services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
     "url": "https://bettarservices.com",
     "telephone": "301-949-2500",
     "email": "Info@bettarappliance.com",
@@ -179,8 +179,24 @@ export default function Home() {
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Home Services",
+      "name": "Appliance Sales & Home Services",
       "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Appliance Sales and Installation",
+            "description": "Shop quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional delivery and installation."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Appliance Repair",
+            "description": "Expert same-day appliance repair for all major brands. Licensed technicians fix refrigerators, washers, dryers, dishwashers, ovens and more."
+          }
+        },
         {
           "@type": "Offer",
           "itemOffered": {
@@ -211,14 +227,6 @@ export default function Home() {
             "@type": "Service",
             "name": "Commercial Handyman Services",
             "description": "Professional commercial handyman services for businesses in Bethesda, Kensington, and surrounding areas. Commercial maintenance, repairs, and installations."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Appliance Sales and Services", 
-            "description": "Discover our wide selection of quality appliances for your home. From refrigerators and washers to ovens and dishwashers, we offer top brands at competitive prices with professional installation and warranty coverage."
           }
         }
       ]
@@ -310,10 +318,10 @@ export default function Home() {
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                From Appliances<br />
-                to Repairs —<br />
+                Shop Appliances<br />
+                First — Sales,<br />
                 <span className="relative inline-block">
-                  Better call{" "}
+                  Repair &amp; More —{" "}
                   <span className="text-[#002D72]">Bettar</span>
                   <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#002D72] rounded-full opacity-60" />
                 </span>
@@ -321,7 +329,7 @@ export default function Home() {
 
               {/* Tagline */}
               <p className="text-gray-500 text-base sm:text-lg max-w-md leading-relaxed">
-                Your trusted, family-owned home services team — appliance sales, repairs, renovations, plumbing &amp; more.
+                Your trusted local appliance store since 1945 — shop top brands with delivery &amp; installation, expert repair when you need it, plus plumbing, renovations &amp; handyman services.
               </p>
 
               {/* Trust badges */}
@@ -338,16 +346,22 @@ export default function Home() {
 
               {/* CTA buttons */}
               <div className="flex flex-wrap items-center gap-4">
-                <a
-                  href="/request-service"
+                <Link
+                  href="/appliances"
                   className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:-translate-y-0.5"
                 >
-                  Request Service
+                  Shop Appliances
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </Link>
+                <a
+                  href="/request-service"
+                  className="inline-flex items-center gap-2 border-2 border-[#002D72] text-[#002D72] hover:bg-[#002D72] hover:text-white font-semibold px-6 py-4 rounded-xl text-lg transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Request Service
                 </a>
                 <a
                   href="tel:301-949-2500"
-                  className="inline-flex items-center gap-2 border-2 border-[#002D72] text-[#002D72] hover:bg-[#002D72] hover:text-white font-semibold px-6 py-4 rounded-xl text-lg transition-all duration-200 hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 text-[#002D72] hover:text-[#001F5C] font-semibold px-2 py-4 text-lg transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                   301-949-2500
