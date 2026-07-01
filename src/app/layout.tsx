@@ -16,7 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bettar Appliance Master | Appliance Sales, Repair & Installation | Kensington, Bethesda, Rockville MD",
+  metadataBase: new URL("https://www.bettarservices.com"),
+  title: {
+    default: "Appliance Sales & Store | Bettar Appliance Master | Kensington, Bethesda & Rockville MD",
+    template: "%s | Bettar Appliance Master",
+  },
+  applicationName: "Bettar Appliance Master",
   description: "Bettar Appliance Master — shop appliances first at our Kensington, MD store. Refrigerators, washers, dryers, dishwashers & more with delivery and installation. Expert appliance repair when you need it. Also serving Bethesda, Chevy Chase, Rockville, Potomac, Olney, Gaithersburg, Germantown & Upper Northwest DC with plumbing, handyman & renovation services. Family-owned since 1945. Call 301-949-2500.",
   keywords: "bettar appliance, bettar appliances, bettar appliance kensington, bettar appliance repair, better services, better appliances, better appliance, better appliance near me, better appliance repair, best appliance stores near me, appliance store near me, where to buy washing machine near me, bettar, bettar inc, bettar services, appliance sales, appliance repair, appliance installation, home improvement, renovation, plumbing, heating, handyman, kitchen remodeling, bathroom renovation, Bethesda MD, Chevy Chase MD, Rockville MD, Kensington MD, Potomac MD, Olney MD, Brookville MD, Gaithersburg MD, Germantown MD, Upper Northwest DC, Washington DC",
   authors: [{ name: "Bettar Appliance Master" }],
@@ -27,7 +32,7 @@ export const metadata: Metadata = {
     canonical: "https://www.bettarservices.com",
   },
   openGraph: {
-    title: "Bettar Appliance Master - Appliance Sales, Repair & Home Services",
+    title: "Appliance Sales & Store | Bettar Appliance Master",
     description: "Shop appliances at Bettar Appliance Master in Kensington, MD — sales, delivery & installation on top brands. Expert appliance repair, plus plumbing, handyman & renovation services serving Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, Germantown & Upper Northwest DC. Family-owned since 1945.",
     url: "https://www.bettarservices.com",
     siteName: "Bettar Appliance Master",
@@ -36,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bettar Appliance Master - Appliance Sales, Repair & Home Services",
+    title: "Appliance Sales & Store | Bettar Appliance Master",
     description: "Shop appliances at Bettar Appliance Master in Kensington, MD — sales, delivery & installation on top brands. Expert appliance repair, plus plumbing, handyman & renovation services serving Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, Germantown & Upper Northwest DC. Family-owned since 1945.",
   },
   icons: {
@@ -54,6 +59,34 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.bettarservices.com/#organization",
+                  name: "Bettar Appliance Master",
+                  url: "https://www.bettarservices.com",
+                  logo: "https://www.bettarservices.com/bettarlogo.png",
+                  sameAs: [],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.bettarservices.com/#website",
+                  name: "Bettar Appliance Master",
+                  url: "https://www.bettarservices.com",
+                  description: "Appliance sales, delivery, installation and repair in Kensington, MD and surrounding Montgomery County.",
+                  publisher: {
+                    "@id": "https://www.bettarservices.com/#organization",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-TMB62XRVQJ"

@@ -68,10 +68,10 @@ export default function Home() {
   // Structured data for SEO
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "Store"],
     "name": "Bettar Appliance Master",
-    "description": "Shop appliances at Bettar Appliance Master in Kensington, MD — sales, delivery and installation on refrigerators, washers, dryers and more. Expert appliance repair, plus plumbing, handyman, renovation and home services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
-    "url": "https://bettarservices.com",
+    "description": "Shop appliances at Bettar Appliance Master in Kensington, MD — appliance sales, delivery and installation on refrigerators, washers, dryers and more. Expert appliance repair, plus plumbing, handyman, renovation and home services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
+    "url": "https://www.bettarservices.com",
     "telephone": "301-949-2500",
     "email": "Info@bettarappliance.com",
     "address": {
@@ -167,7 +167,7 @@ export default function Home() {
         }
       }
     ],
-    "alternateName": "Bettar Appliance",
+    "alternateName": ["Bettar Appliance", "Bettar Appliance Store"],
     "serviceArea": {
       "@type": "GeoCircle",
       "geoMidpoint": {

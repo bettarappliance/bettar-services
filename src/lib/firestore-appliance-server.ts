@@ -263,7 +263,7 @@ export function buildProductJsonLd(appliance: BettarAppliance, id: string) {
     description:
       appliance.shortDescription ||
       appliance.fullDescription ||
-      `${appliance.brand} ${appliance.category}. Sold and installed in Greater DC & Maryland by Bettar Services.`,
+      `${appliance.brand} ${appliance.category}. Sold and installed in Greater DC & Maryland by Bettar Appliance Master.`,
     image: images.length ? images : undefined,
     sku: appliance.modelNumber || undefined,
     brand: {
@@ -279,7 +279,7 @@ export function buildProductJsonLd(appliance: BettarAppliance, id: string) {
       itemCondition: "https://schema.org/NewCondition",
       seller: {
         "@type": "LocalBusiness",
-        name: "Bettar Services",
+        name: "Bettar Appliance Master",
         telephone: "+1-301-949-2500",
         url: SITE_URL,
       },
