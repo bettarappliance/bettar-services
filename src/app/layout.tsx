@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bettarservices.com"),
   title: {
-    default: "Appliance Sales & Store | Bettar Appliance Master | Kensington, Bethesda & Rockville MD",
+    default: "Bettar Appliance Master | Bettar Appliance Sales and Services | Kensington, Bethesda & Rockville MD",
     template: "%s | Bettar Appliance Master",
   },
   applicationName: "Bettar Appliance Master",
