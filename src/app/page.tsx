@@ -318,10 +318,10 @@ export default function Home() {
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                Shop Appliances<br />
-                First — Sales,<br />
+                From Appliances<br />
+                to Repairs —<br />
                 <span className="relative inline-block">
-                  Repair &amp; More —{" "}
+                  Better call{" "}
                   <span className="text-[#002D72]">Bettar</span>
                   <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#002D72] rounded-full opacity-60" />
                 </span>
