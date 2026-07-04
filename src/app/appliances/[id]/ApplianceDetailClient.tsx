@@ -110,9 +110,12 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
                 </div>
               ) : null}
               {appliance.inStock === false ? (
-                <div className="absolute top-4 right-4 bg-gray-700 text-white text-xs font-semibold px-3 py-1.5 rounded-xl">
-                  Out of Stock
-                </div>
+                <a
+                  href="tel:301-949-2500"
+                  className="absolute top-4 right-4 bg-[#002D72] text-white text-xs font-semibold px-3 py-1.5 rounded-xl hover:bg-[#001F5C] transition-colors"
+                >
+                  Call for Availability
+                </a>
               ) : null}
               {allImages.length > 1 ? (
                 <div className="absolute bottom-4 right-4 bg-black/50 text-white text-xs px-2.5 py-1 rounded-full">
@@ -186,13 +189,16 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
             </div>
 
             {appliance.inStock === false ? (
-              <div className="flex items-center gap-3 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0" />
+              <a
+                href="tel:301-949-2500"
+                className="flex items-center gap-3 bg-[#EEF4FF] border border-[#002D72]/15 rounded-xl px-4 py-3 hover:bg-[#E0EBFF] transition-colors"
+              >
+                <div className="w-2.5 h-2.5 rounded-full bg-[#002D72] flex-shrink-0" />
                 <div>
-                  <p className="text-sm font-semibold text-red-700">Out of Stock</p>
-                  <p className="text-xs text-red-500">Contact us for estimated availability</p>
+                  <p className="text-sm font-semibold text-[#002D72]">Call for Availability</p>
+                  <p className="text-xs text-gray-600">Call 301-949-2500 — we&apos;ll check stock and delivery options for you</p>
                 </div>
-              </div>
+              </a>
             ) : (
               <div className="flex items-center gap-3 bg-green-50 border border-green-100 rounded-xl px-4 py-3">
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 flex-shrink-0 animate-pulse" />

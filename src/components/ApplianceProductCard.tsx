@@ -80,7 +80,17 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
           <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">{item.shortDescription}</p>
         ) : null}
         {item.inStock === false ? (
-          <p className="text-red-600 font-medium text-xs mt-1 mb-2">Out of Stock</p>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.location.href = "tel:301-949-2500";
+            }}
+            className="text-[#002D72] font-medium text-xs mt-1 mb-2 underline underline-offset-2 hover:text-[#001F5C] text-left"
+          >
+            Call for Availability
+          </button>
         ) : null}
       </div>
       <div className="px-4 pb-4">

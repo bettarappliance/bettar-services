@@ -117,9 +117,17 @@ export default function RelatedAppliances({ current }: { current: BettarApplianc
                 </div>
               ) : null}
               {item.inStock === false ? (
-                <div className="absolute top-2 right-2 bg-gray-600 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
-                  Out of Stock
-                </div>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = "tel:301-949-2500";
+                  }}
+                  className="absolute top-2 right-2 bg-[#002D72] text-white text-[10px] font-semibold px-2 py-0.5 rounded-full hover:bg-[#001F5C] transition-colors"
+                >
+                  Call for Availability
+                </button>
               ) : null}
             </div>
 

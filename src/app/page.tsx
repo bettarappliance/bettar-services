@@ -1017,9 +1017,17 @@ export default function Home() {
                       </p>
                     )}
                     {item.inStock === false && (
-                      <p className="text-red-600 font-medium text-xs mt-1">
-                        Out of Stock
-                      </p>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          window.location.href = "tel:301-949-2500";
+                        }}
+                        className="text-[#002D72] font-medium text-xs mt-1 underline underline-offset-2 hover:text-[#001F5C] text-left"
+                      >
+                        Call for Availability
+                      </button>
                     )}
                   </div>
                 </Link>
