@@ -103,7 +103,7 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
           }}
           className="w-full py-2.5 rounded-lg bg-[#002D72] text-white font-semibold text-sm text-center hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
         >
-          Buy Now
+          Request to Order
         </button>
       </div>
     </Link>
