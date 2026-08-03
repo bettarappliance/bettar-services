@@ -183,6 +183,15 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
                   ) : null}
                 </div>
               ) : null}
+              {appliance.inStock === false ? (
+                <a
+                  href="tel:301-949-2500"
+                  className="block text-sm font-medium text-[#002D72]"
+                >
+                  <span className="text-gray-500">Price may vary — </span>
+                  <span className="underline underline-offset-2 hover:text-[#001F5C]">Call for Pricing</span>
+                </a>
+              ) : null}
               <p className="text-xs text-gray-400">
                 * Starting price. Final quote subject to installation and delivery.
               </p>

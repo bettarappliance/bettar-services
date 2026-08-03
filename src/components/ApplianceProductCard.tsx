@@ -73,12 +73,6 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
             </span>
           ) : null}
         </div>
-        {item.discountPercent ? (
-          <p className="text-green-600 font-medium text-xs">Save {item.discountPercent}% on this model</p>
-        ) : null}
-        {item.shortDescription ? (
-          <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">{item.shortDescription}</p>
-        ) : null}
         {item.inStock === false ? (
           <button
             type="button"
@@ -87,10 +81,17 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
               e.stopPropagation();
               window.location.href = "tel:301-949-2500";
             }}
-            className="text-[#002D72] font-medium text-xs mt-1 mb-2 underline underline-offset-2 hover:text-[#001F5C] text-left"
+            className="block text-[#002D72] font-medium text-xs mb-1 text-left"
           >
-            Call for Availability
+            <span className="text-gray-500">Price may vary — </span>
+            <span className="underline underline-offset-2 hover:text-[#001F5C]">Call for Pricing</span>
           </button>
+        ) : null}
+        {item.discountPercent ? (
+          <p className="text-green-600 font-medium text-xs">Save {item.discountPercent}% on this model</p>
+        ) : null}
+        {item.shortDescription ? (
+          <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">{item.shortDescription}</p>
         ) : null}
       </div>
       <div className="px-4 pb-4">
