@@ -47,12 +47,14 @@ export default function Home() {
           return { id: doc.id, ...data };
         });
         
-        // Sort by discount percentage (highest first), then limit to 5 items
-        const sortedByDiscount = items.sort((a, b) => {
-          const discountA = a.discountPercent || 0;
-          const discountB = b.discountPercent || 0;
-          return discountB - discountA; // Descending order
-        });
+        // Exclude out-of-stock items, sort by discount (highest first), then limit to 5
+        const sortedByDiscount = items
+          .filter((item) => item.inStock !== false)
+          .sort((a, b) => {
+            const discountA = a.discountPercent || 0;
+            const discountB = b.discountPercent || 0;
+            return discountB - discountA; // Descending order
+          });
         
         setAppliances(sortedByDiscount.slice(0, 5));
       } catch (error) {
@@ -411,7 +413,7 @@ export default function Home() {
                     <span className="text-amber-500 text-sm font-bold tracking-tight">★★★★★</span>
                   </div>
                   <div className="text-white text-xs font-semibold">4.4 / 5 on Google</div>
-                  <div className="text-white text-[10px] mt-0.5">118 Google reviews</div>
+                  <div className="text-white text-[10px] mt-0.5">121 Google reviews</div>
                 </div>
               </div>
             </div>
