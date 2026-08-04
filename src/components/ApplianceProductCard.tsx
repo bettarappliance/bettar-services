@@ -16,7 +16,7 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
       className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col"
     >
       <div className="relative">
-        {item.discountPercent ? (
+        {item.discountPercent && item.inStock !== false ? (
           <div className="absolute top-2 right-2 z-10 bg-red-600 text-white px-3 py-1 rounded-lg text-xs font-semibold">
             {item.discountPercent}% OFF
           </div>
@@ -63,16 +63,6 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
         <p className="text-xs text-gray-500 mb-1">
           {item.brand} • {item.category}
         </p>
-        <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-2xl font-bold text-[#002D72]">
-            ${item.priceFrom.toLocaleString()}
-          </span>
-          {item.priceOld ? (
-            <span className="text-gray-500 line-through text-sm">
-              ${item.priceOld.toLocaleString()}
-            </span>
-          ) : null}
-        </div>
         {item.inStock === false ? (
           <button
             type="button"
@@ -86,10 +76,23 @@ export default function ApplianceProductCard({ item, onBuyNow }: Props) {
             <span className="text-gray-500">Price may vary — </span>
             <span className="underline underline-offset-2 hover:text-[#001F5C]">Call for Pricing</span>
           </button>
-        ) : null}
-        {item.discountPercent ? (
-          <p className="text-green-600 font-medium text-xs">Save {item.discountPercent}% on this model</p>
-        ) : null}
+        ) : (
+          <>
+            <div className="flex items-baseline gap-2 mb-1">
+              <span className="text-2xl font-bold text-[#002D72]">
+                ${item.priceFrom.toLocaleString()}
+              </span>
+              {item.priceOld ? (
+                <span className="text-gray-500 line-through text-sm">
+                  ${item.priceOld.toLocaleString()}
+                </span>
+              ) : null}
+            </div>
+            {item.discountPercent ? (
+              <p className="text-green-600 font-medium text-xs">Save {item.discountPercent}% on this model</p>
+            ) : null}
+          </>
+        )}
         {item.shortDescription ? (
           <p className="text-gray-600 text-sm line-clamp-2 mt-1 mb-2">{item.shortDescription}</p>
         ) : null}

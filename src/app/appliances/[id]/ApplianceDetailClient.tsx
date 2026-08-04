@@ -104,7 +104,7 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
                   No product image available
                 </div>
               )}
-              {appliance.discountPercent ? (
+              {appliance.discountPercent && appliance.inStock !== false ? (
                 <div className="absolute top-4 left-4 bg-red-600 text-white text-sm font-bold px-3 py-1.5 rounded-xl shadow">
                   {appliance.discountPercent}% OFF
                 </div>
@@ -163,26 +163,6 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
             <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-snug">{appliance.name}</h1>
 
             <div className="bg-[#F8FAFF] rounded-2xl p-5 border border-gray-100 space-y-2">
-              <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-3xl sm:text-4xl font-extrabold text-[#002D72]">
-                  ${appliance.priceFrom.toLocaleString()}
-                </span>
-                {appliance.priceOld ? (
-                  <span className="text-lg text-gray-400 line-through">
-                    ${appliance.priceOld.toLocaleString()}
-                  </span>
-                ) : null}
-              </div>
-              {savings && savings > 0 ? (
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="bg-green-100 text-green-700 text-sm font-semibold px-2.5 py-0.5 rounded-full">
-                    Save ${savings.toLocaleString()}
-                  </span>
-                  {appliance.discountPercent ? (
-                    <span className="text-green-600 text-sm font-medium">({appliance.discountPercent}% off)</span>
-                  ) : null}
-                </div>
-              ) : null}
               {appliance.inStock === false ? (
                 <a
                   href="tel:301-949-2500"
@@ -191,10 +171,33 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
                   <span className="text-gray-500">Price may vary — </span>
                   <span className="underline underline-offset-2 hover:text-[#001F5C]">Call for Pricing</span>
                 </a>
-              ) : null}
-              <p className="text-xs text-gray-400">
-                * Starting price. Final quote subject to installation and delivery.
-              </p>
+              ) : (
+                <>
+                  <div className="flex items-baseline gap-3 flex-wrap">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[#002D72]">
+                      ${appliance.priceFrom.toLocaleString()}
+                    </span>
+                    {appliance.priceOld ? (
+                      <span className="text-lg text-gray-400 line-through">
+                        ${appliance.priceOld.toLocaleString()}
+                      </span>
+                    ) : null}
+                  </div>
+                  {savings && savings > 0 ? (
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="bg-green-100 text-green-700 text-sm font-semibold px-2.5 py-0.5 rounded-full">
+                        Save ${savings.toLocaleString()}
+                      </span>
+                      {appliance.discountPercent ? (
+                        <span className="text-green-600 text-sm font-medium">({appliance.discountPercent}% off)</span>
+                      ) : null}
+                    </div>
+                  ) : null}
+                  <p className="text-xs text-gray-400">
+                    * Starting price. Final quote subject to installation and delivery.
+                  </p>
+                </>
+              )}
             </div>
 
             {appliance.inStock === false ? (
