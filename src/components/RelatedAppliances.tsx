@@ -111,7 +111,7 @@ export default function RelatedAppliances({ current }: { current: BettarApplianc
                   No image
                 </div>
               )}
-              {item.discountPercent ? (
+              {item.discountPercent && item.inStock !== false ? (
                 <div className="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                   {item.discountPercent}% OFF
                 </div>
@@ -140,12 +140,29 @@ export default function RelatedAppliances({ current }: { current: BettarApplianc
                 {item.name}
               </p>
               <div className="flex items-center justify-between mt-2">
-                <p className="text-base font-extrabold text-[#002D72]">
-                  ${item.priceFrom.toLocaleString()}
-                </p>
-                <span className="text-xs text-[#002D72] font-semibold group-hover:underline">
-                  View →
-                </span>
+                {item.inStock === false ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.location.href = "tel:301-949-2500";
+                    }}
+                    className="text-xs font-medium text-left"
+                  >
+                    <span className="text-gray-500">Price may vary — </span>
+                    <span className="text-[#002D72] underline underline-offset-2 hover:text-[#001F5C]">Call for Pricing</span>
+                  </button>
+                ) : (
+                  <>
+                    <p className="text-base font-extrabold text-[#002D72]">
+                      ${item.priceFrom.toLocaleString()}
+                    </p>
+                    <span className="text-xs text-[#002D72] font-semibold group-hover:underline">
+                      View →
+                    </span>
+                  </>
+                )}
               </div>
             </div>
           </Link>
