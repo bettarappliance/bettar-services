@@ -313,12 +313,6 @@ export default function Home() {
             {/* ── Left: copy ── */}
             <div className="space-y-7">
 
-              {/* Overline pill */}
-              <div className="inline-flex items-center gap-2 bg-[#EEF4FF] border border-[#002D72]/15 text-[#002D72] text-sm font-semibold px-4 py-2 rounded-full">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                Serving Greater DC &amp; Montgomery County since 1945
-              </div>
-
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
                 From Appliances<br />
@@ -365,7 +359,7 @@ export default function Home() {
               </div>
 
               {/* Location + hours */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2 text-gray-400 text-sm">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-black-400 text-sm">
                 <span className="flex items-center gap-1.5">
                   <svg className="w-4 h-4 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                   10503 Wheatley St, Kensington, MD 20895, United States
