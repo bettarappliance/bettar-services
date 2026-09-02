@@ -43,6 +43,7 @@ export function applianceFromFirestoreDoc(id: string, data: Record<string, unkno
     supplyType: data.supplyType ? str(data.supplyType) : undefined,
     type: data.type ? str(data.type) : undefined,
     modelNumber: data.modelNumber ? str(data.modelNumber) : undefined,
+    matchingModel: data.matchingModel ? str(data.matchingModel) : undefined,
     color: data.color ? str(data.color) : undefined,
     energyRating: data.energyRating ? str(data.energyRating) : undefined,
     warranty: data.warranty ? str(data.warranty) : undefined,

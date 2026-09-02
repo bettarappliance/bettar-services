@@ -91,7 +91,7 @@ export default function Header() {
             </div>
           </div>
           <Link href="/gallery" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Gallery</Link>
-          <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Partnerships</Link>
+          <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Promotions</Link>
           <Link href="/about" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">About Us</Link>
           <Link href="/contact" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Contact Us</Link>
         </nav>
@@ -142,7 +142,7 @@ export default function Header() {
             <Link href="/services" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Services</Link>
             <Link href="/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliances</Link>
             <Link href="/gallery" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Gallery</Link>
-            <Link href="/partnerships" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Partnerships</Link>
+            <Link href="/promotions" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Promotions</Link>
             <Link href="/contact" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Contact Us</Link>
             <div className="pt-4 mt-2 border-t border-white/20 space-y-3">
               <a href="tel:301-949-2500" className="flex items-center gap-2 py-3 px-3 text-white hover:bg-white/10 rounded-lg transition-colors" onClick={closeMobileMenu}>

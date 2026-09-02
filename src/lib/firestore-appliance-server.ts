@@ -83,6 +83,7 @@ export function normalizeApplianceDoc(
     supplyType: raw.supplyType ? asString(raw.supplyType) : undefined,
     type: raw.type ? asString(raw.type) : undefined,
     modelNumber: raw.modelNumber ? asString(raw.modelNumber) : undefined,
+    matchingModel: raw.matchingModel ? asString(raw.matchingModel) : undefined,
     color: raw.color ? asString(raw.color) : undefined,
     energyRating: raw.energyRating ? asString(raw.energyRating) : undefined,
     warranty: raw.warranty ? asString(raw.warranty) : undefined,

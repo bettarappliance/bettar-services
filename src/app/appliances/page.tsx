@@ -7,6 +7,7 @@ import Script from "next/script";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ApplianceSidebar from "../../components/ApplianceSidebar";
+import PromotionsTeaser from "../../components/PromotionsTeaser";
 
 import { collection, getDocs, db } from "@/lib/firebase";
 import ApplianceRequestModal from "../../components/ApplianceRequestModal";
@@ -338,6 +339,8 @@ export default function Appliances() {
           </div>
         </div>
       </section>
+
+      <PromotionsTeaser />
 
       {/* Main content with sidebar */}
       <main className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">

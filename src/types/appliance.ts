@@ -16,6 +16,7 @@ export type BettarAppliance = {
   supplyType?: string;
   type?: string;
   modelNumber?: string;
+  matchingModel?: string;
   color?: string;
   energyRating?: string;
   warranty?: string;

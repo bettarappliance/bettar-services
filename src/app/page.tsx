@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { collection, getDocs, db } from "@/lib/firebase";
+import PromotionsTeaser from "../components/PromotionsTeaser";
 import RequestServiceModal from "../components/RequestServiceModal";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
@@ -469,6 +470,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PromotionsTeaser />
 
       {/* Brand Logos Carousel Section */}
       <section className="py-12 bg-[#F8FAFF] overflow-hidden">
@@ -1512,38 +1515,6 @@ export default function Home() {
                 </div>
               </div>
             </Link>
-            
-            {/* Project 9 - Sub-Zero Refrigerator Repair */}
-            <Link href="/gallery" className="group cursor-pointer block">
-              <div className="relative h-70 rounded-2xl overflow-hidden">
-                <Image
-                  src="/projects/subzero.jpg"
-                  alt="Sub-Zero Refrigerator Repair"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-[rgba(0,45,114,0.2)]"></div>
-                <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
-                  Sub-Zero Repair
-            </div>
-              </div>
-            </Link>
-
-            {/* Project 10 - Over-the-Range Microwave Installation */}
-            <Link href="/gallery" className="group cursor-pointer block">
-              <div className="relative h-70 rounded-2xl overflow-hidden">
-                <Image
-                  src="/projects/microwave.jpg"
-                  alt="Over-the-Range Microwave Installation"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-[rgba(0,45,114,0.2)]"></div>
-                <div className="absolute bottom-4 left-4 text-white font-bold text-lg">
-                  Microwave Installation
-                </div>
-              </div>
-            </Link>
           </div>
 
           
@@ -1830,6 +1801,79 @@ export default function Home() {
               <p className="text-white font-semibold text-sm sm:text-base mb-1">Fully Insured</p>
               <p className="text-blue-300 text-xs sm:text-sm">Licensed &amp; bonded</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Partnerships Section */}
+      <section className="py-16 md:py-20 bg-white border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+            <div className="inline-block bg-[#E6EDFF] text-[#002D72] text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-4">
+              Bettar Partner Network
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+              Our Partnerships
+            </h2>
+            <p className="text-gray-600">
+              We work alongside property managers, landlords, realtors, condo associations, and local businesses across the DMV — one trusted team for appliance repair, replacement, and installation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 mb-10">
+            {[
+              {
+                label: "Property Managers",
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                ),
+              },
+              {
+                label: "Landlords",
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                ),
+              },
+              {
+                label: "Realtors",
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                ),
+              },
+              {
+                label: "Condo Associations",
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21V7a2 2 0 012-2h6a2 2 0 012 2v14M4 21V11a2 2 0 012-2h2a2 2 0 012 2v10M3 21h18M9 9h.01M9 13h.01M9 17h.01M16 9h.01M16 13h.01M16 17h.01" />
+                ),
+              },
+              {
+                label: "Local Businesses",
+                icon: (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                ),
+              },
+            ].map((partner) => (
+              <div
+                key={partner.label}
+                className="flex flex-col items-center text-center gap-3 bg-[#F8FAFF] rounded-2xl border border-gray-100 py-6 px-3 hover:border-[#002D72]/30 hover:shadow-md transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-full bg-[#E6EDFF] flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#002D72]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {partner.icon}
+                  </svg>
+                </div>
+                <span className="text-sm font-semibold text-gray-800">{partner.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/partnerships"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#D32F2F] text-white font-semibold hover:bg-[#B71C1C] transition-colors shadow-md"
+            >
+              Explore Partnerships
+            </Link>
           </div>
         </div>
       </section>

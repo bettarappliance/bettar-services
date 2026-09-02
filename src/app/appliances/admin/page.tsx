@@ -33,6 +33,7 @@ type ApplianceFormData = {
   type: string;
   // Optional fields
   modelNumber: string;
+  matchingModel: string;
   color: string;
   energyRating: string;
   warranty: string;
@@ -60,6 +61,7 @@ type BettarAppliance = {
   supplyType?: string;
   type?: string;
   modelNumber?: string;
+  matchingModel?: string;
   color?: string;
   energyRating?: string;
   warranty?: string;
@@ -92,6 +94,7 @@ function AdminPageContent() {
     supplyType: "",
     type: "",
     modelNumber: "",
+    matchingModel: "",
     color: "",
     energyRating: "",
     warranty: "",
@@ -310,6 +313,7 @@ function AdminPageContent() {
       supplyType: appliance.supplyType || "",
       type: appliance.type || "",
       modelNumber: appliance.modelNumber || "",
+      matchingModel: appliance.matchingModel || "",
       color: appliance.color || "",
       energyRating: appliance.energyRating || "",
       warranty: appliance.warranty || "",
@@ -407,6 +411,9 @@ function AdminPageContent() {
       if (formData.modelNumber.trim()) {
         applianceData.modelNumber = formData.modelNumber.trim();
       }
+      if (formData.matchingModel.trim()) {
+        applianceData.matchingModel = formData.matchingModel.trim();
+      }
       if (formData.color.trim()) {
         applianceData.color = formData.color.trim();
       }
@@ -451,6 +458,7 @@ function AdminPageContent() {
         supplyType: "",
         type: "",
         modelNumber: "",
+        matchingModel: "",
         color: "",
         energyRating: "",
         warranty: "",
@@ -557,6 +565,9 @@ function AdminPageContent() {
       if (formData.modelNumber.trim()) {
         applianceData.modelNumber = formData.modelNumber.trim();
       }
+      if (formData.matchingModel.trim()) {
+        applianceData.matchingModel = formData.matchingModel.trim();
+      }
       if (formData.color.trim()) {
         applianceData.color = formData.color.trim();
       }
@@ -601,6 +612,7 @@ function AdminPageContent() {
         supplyType: "",
         type: "",
         modelNumber: "",
+        matchingModel: "",
         color: "",
         energyRating: "",
         warranty: "",
@@ -660,6 +672,7 @@ function AdminPageContent() {
                     supplyType: "",
                     type: "",
                     modelNumber: "",
+                    matchingModel: "",
                     color: "",
                     energyRating: "",
                     warranty: "",
@@ -1154,6 +1167,30 @@ function AdminPageContent() {
                     placeholder="e.g., refrigerators"
                   />
                 </div>
+
+                <div className="md:col-span-2">
+                  <label
+                    htmlFor="matchingModel"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Matching Model Number (for pair recommendations)
+                  </label>
+                  <input
+                    type="text"
+                    id="matchingModel"
+                    name="matchingModel"
+                    value={formData.matchingModel}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002D72] focus:border-transparent placeholder:text-gray-600 text-gray-900"
+                    placeholder="e.g., ELFE7437AW"
+                  />
+                  <p className="mt-1 text-xs text-gray-500">
+                    If this appliance is one half of a manufacturer-designated pair (e.g. a washer and its
+                    matching dryer), enter the other appliance&apos;s Model Number here. When both appliances
+                    are in the catalog, the product page will show a &quot;Complete Your Pair&quot; recommendation.
+                    Leave blank if there is no designated match.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -1186,6 +1223,7 @@ function AdminPageContent() {
                     supplyType: "",
                     type: "",
                     modelNumber: "",
+                    matchingModel: "",
                     color: "",
                     energyRating: "",
                     warranty: "",

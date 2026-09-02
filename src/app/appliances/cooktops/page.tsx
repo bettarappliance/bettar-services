@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
+import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import ApplianceSidebar from "../../../components/ApplianceSidebar";
@@ -70,6 +71,11 @@ export default function CooktopsPage() {
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Find the perfect cooktop for your kitchen. From gas to induction models, we offer quality cooktops from top brands with professional installation and repair services.
+            </p>
+            <p className="mt-3">
+              <Link href="/promotions" className="text-[#002D72] font-semibold hover:underline">
+                View Current Appliance Promotions
+              </Link>
             </p>
             <div className="mt-8">
               <button

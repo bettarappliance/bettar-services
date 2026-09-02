@@ -61,9 +61,9 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
               <Link href="/" className="block hover:text-gray-300 transition-colors">Home</Link>
-              <Link href="/services" className="block hover:text-gray-300 transition-colors">Services</Link>
               <Link href="/appliances" className="block hover:text-gray-300 transition-colors">Appliances</Link>
-              <Link href="/request-service" className="block hover:text-gray-300 transition-colors">Request Service</Link>
+              <Link href="/partnerships" className="block hover:text-gray-300 transition-colors">Partnerships</Link>
+              <Link href="/promotions" className="block hover:text-gray-300 transition-colors">Promotions</Link>
             </div>
           </div>
 

@@ -50,6 +50,12 @@ module.exports = {
       customConfig.changefreq = 'monthly';
     }
 
+    // Promotions page — primary nav item, content changes frequently
+    if (path === '/promotions') {
+      customConfig.priority = 0.9;
+      customConfig.changefreq = 'weekly';
+    }
+
     // Gallery page
     if (path === '/gallery') {
       customConfig.priority = 0.7;
