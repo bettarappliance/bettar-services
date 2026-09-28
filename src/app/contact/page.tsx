@@ -24,7 +24,7 @@ export default function Contact() {
               Get In <span className="text-[#002D72]">Touch</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ready to get started? Contact us today for a free consultation and let us help you with all your home service needs.
+              Ready to get started? Contact us today and let us help you with all your home service needs.
             </p>
           </div>
         </div>

@@ -302,7 +302,7 @@ export default function Renovations() {
               href="/request-service"
               className="bg-[#D32F2F] text-white px-8 py-4 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold text-lg"
             >
-              Get Free Estimate
+              Request an Estimate
             </a>
             <a 
               href="tel:301-949-2500"

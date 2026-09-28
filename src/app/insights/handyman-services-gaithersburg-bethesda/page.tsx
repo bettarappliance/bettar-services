@@ -157,7 +157,7 @@ export default function HandymanServicesArticle() {
                 href="/contact"
                 className="border-2 border-[#002D72] text-[#002D72] font-bold py-3 px-8 rounded-lg hover:bg-[#002D72] hover:text-white transition-colors"
               >
-                Get Free Estimate
+                Request an Estimate
               </Link>
             </div>
           </div>

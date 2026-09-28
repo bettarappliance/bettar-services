@@ -234,7 +234,7 @@ export default function ProjectsPage() {
             Ready to Start Your Service?
           </h2>
           <p className="text-xl text-[#E0E7FF] mb-8 max-w-2xl mx-auto">
-            Let us bring the same quality and attention to detail to your next project. Contact us today for a free consultation.
+            Let us bring the same quality and attention to detail to your next project. Contact us today to discuss your project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

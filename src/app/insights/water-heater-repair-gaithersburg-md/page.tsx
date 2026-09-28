@@ -53,7 +53,7 @@ export default function WaterHeaterRepairGaithersburg() {
         "name": "What is the average cost of water heater repair in Gaithersburg?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Repair costs vary depending on the issue, but typically range from $200-$600. We provide free estimates before any work begins."
+          "text": "Repair costs vary depending on the issue, but typically range from $200-$600. You receive an estimate before any work begins."
         }
       },
       {
@@ -453,7 +453,7 @@ export default function WaterHeaterRepairGaithersburg() {
               </div>
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">What is the average cost of water heater repair in Gaithersburg?</h3>
-                <p className="text-gray-700">Repair costs vary depending on the issue, but typically range from $200-$600. We provide free estimates before any work begins.</p>
+                <p className="text-gray-700">Repair costs vary depending on the issue, but typically range from $200-$600. You receive an estimate before any work begins.</p>
               </div>
               <div className="bg-white border border-gray-200 rounded-lg p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">How long does a water heater last?</h3>
