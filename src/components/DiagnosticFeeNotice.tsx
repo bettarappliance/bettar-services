@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { DIAGNOSTIC_FEE_LABEL } from "@/lib/pricing";
+import {
+  DIAGNOSTIC_FEE_LABEL,
+  ADDITIONAL_APPLIANCE_FEE_LABEL,
+  QUOTE_VALID_DAYS,
+} from "@/lib/pricing";
 
 type Props = {
   /** "compact": one-line notice (hero, forms). "full": explainer card with steps. */
@@ -78,6 +82,18 @@ export default function DiagnosticFeeNotice({
           </li>
         ))}
       </ol>
+
+      <ul className="mt-5 space-y-2 text-sm leading-relaxed text-gray-700">
+        <li>
+          <span className="font-semibold text-gray-900">More than one appliance?</span> Each additional appliance diagnosed on the same visit is {ADDITIONAL_APPLIANCE_FEE_LABEL}. If you approve repairs on both, {DIAGNOSTIC_FEE_LABEL} is credited toward the higher-priced repair and {ADDITIONAL_APPLIANCE_FEE_LABEL} toward the other. If you repair only one, {DIAGNOSTIC_FEE_LABEL} is credited toward that repair.
+        </li>
+        <li>
+          <span className="font-semibold text-gray-900">{QUOTE_VALID_DAYS}-day window.</span> The {DIAGNOSTIC_FEE_LABEL} credit applies to repairs of the diagnosed issue approved within {QUOTE_VALID_DAYS} days of your diagnostic visit. Repair quotes are valid for {QUOTE_VALID_DAYS} days.
+        </li>
+        <li>
+          <span className="font-semibold text-gray-900">Example:</span> if a repair&apos;s labor is $269, you pay {DIAGNOSTIC_FEE_LABEL} at the diagnostic visit and $90 in labor plus parts when the repair is done.
+        </li>
+      </ul>
 
       <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-gray-700">
         <p>
