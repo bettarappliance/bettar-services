@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import Script from "next/script";
 import RequestServiceModal from "../../../components/RequestServiceModal";
+import DiagnosticFeeNotice from "../../../components/DiagnosticFeeNotice";
+import { DIAGNOSTIC_FEE_LABEL } from "@/lib/pricing";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
@@ -61,7 +63,7 @@ export default function ApplianceServices() {
         "name": "How much does appliance repair cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Appliance repair costs vary depending on the type of appliance, the issue, and parts needed. We provide upfront pricing and free estimates for most repairs. Contact us at 301-949-2500 for a detailed quote based on your specific appliance and problem."
+          "text": `Our appliance repair diagnostic visit is ${DIAGNOSTIC_FEE_LABEL}. After diagnosing the problem, the technician gives you a repair estimate before any repair work begins. If you approve the repair, the ${DIAGNOSTIC_FEE_LABEL} is credited toward your repair cost. The ${DIAGNOSTIC_FEE_LABEL} is not applied toward the purchase of a new appliance. Contact us at 301-949-2500 to schedule a visit.`
         }
       }
     ]
@@ -90,6 +92,13 @@ export default function ApplianceServices() {
               Professional appliance repair, maintenance, and installation services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day service available. Licensed & insured. Call <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Diagnostic Fee */}
+      <section className="pt-16 pb-4 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <DiagnosticFeeNotice variant="full" />
         </div>
       </section>
 
@@ -342,7 +351,7 @@ export default function ApplianceServices() {
                 <li>• Same-day appliance repair in Kensington</li>
                 <li>• All major appliance brands serviced</li>
                 <li>• Licensed & insured technicians</li>
-                <li>• Upfront pricing & free estimates</li>
+                <li>• Upfront pricing: repair estimate before any work begins</li>
               </ul>
             </div>
             
@@ -421,7 +430,7 @@ export default function ApplianceServices() {
                 How much does appliance repair cost?
               </h3>
               <p className="text-gray-600">
-                Appliance repair costs vary depending on the type of appliance, the issue, and parts needed. We provide upfront pricing and free estimates for most repairs. Contact us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a> for a detailed quote based on your specific appliance and problem.
+                Our appliance repair diagnostic visit is {DIAGNOSTIC_FEE_LABEL}. After diagnosing the problem, the technician gives you a repair estimate before any repair work begins. If you approve the repair, the {DIAGNOSTIC_FEE_LABEL} is credited toward your repair cost. The {DIAGNOSTIC_FEE_LABEL} is not applied toward the purchase of a new appliance. Contact us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a> to schedule a visit.
               </p>
             </div>
           </div>

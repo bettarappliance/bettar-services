@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { collection, getDocs, db } from "@/lib/firebase";
 import PromotionsTeaser from "../components/PromotionsTeaser";
 import RequestServiceModal from "../components/RequestServiceModal";
+import DiagnosticFeeNotice from "../components/DiagnosticFeeNotice";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
 import Header from "../components/Header";
@@ -357,6 +358,9 @@ export default function Home() {
                   Request Service
                 </a>
               </div>
+
+              {/* Diagnostic fee */}
+              <DiagnosticFeeNotice className="max-w-xl" />
 
               {/* Location + hours */}
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-black-400 text-sm">

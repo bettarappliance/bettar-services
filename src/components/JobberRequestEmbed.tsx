@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import DiagnosticFeeNotice from "./DiagnosticFeeNotice";
 
 const JOBBER_SCRIPT_SRC =
   "https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js";
@@ -37,6 +38,7 @@ export default function JobberRequestEmbed() {
             Fill out the form below and our team will reach out to confirm your
             booking. We&apos;re here to help with all your home service needs.
           </p>
+          <DiagnosticFeeNotice className="max-w-2xl mx-auto text-left" />
         </div>
       </section>
 

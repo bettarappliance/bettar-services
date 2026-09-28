@@ -87,6 +87,7 @@ export default function Header() {
                 <Link href="/services/plumbing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Plumbing and Heating</Link>
                 <Link href="/services/handyman" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Handyman Repair and Services</Link>
                 <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliances Services</Link>
+                <Link href="/service-pricing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Service Pricing</Link>
               </div>
             </div>
           </div>
@@ -140,6 +141,7 @@ export default function Header() {
             <Link href="/" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Home</Link>
             <Link href="/about" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>About Us</Link>
             <Link href="/services" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Services</Link>
+            <Link href="/service-pricing" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Service Pricing</Link>
             <Link href="/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliances</Link>
             <Link href="/gallery" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Gallery</Link>
             <Link href="/promotions" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Promotions</Link>

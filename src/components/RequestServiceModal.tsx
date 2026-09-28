@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ProgressStepper from "./ProgressStepper";
+import DiagnosticFeeNotice from "./DiagnosticFeeNotice";
 
 interface RequestServiceModalProps {
   isOpen: boolean;
@@ -235,6 +236,7 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
               <div className="max-w-2xl mx-auto px-6">
                 <h3 className="text-lg font-bold text-gray-800 mb-2 text-center">SERVICE DETAILS</h3>
                 <p className="text-gray-600 mb-2 text-center">Tell us about the services you provide or need.</p>
+                <DiagnosticFeeNotice className="mb-6 mt-4" />
                 
                 <div className="mb-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">Service Category</label>
