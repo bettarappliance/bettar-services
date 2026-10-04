@@ -9,6 +9,7 @@ import RequestServiceModal from "../components/RequestServiceModal";
 import DiagnosticFeeNotice from "../components/DiagnosticFeeNotice";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
+import CustomerPaths from "../components/CustomerPaths";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -350,7 +351,7 @@ export default function Home() {
               {/* Diagnostic fee */}
               <DiagnosticFeeNotice className="max-w-xl" />
 
-              <p className="font-semibold text-[#002D72]">Visit our Kensington showroom</p>
+              <Link href="/showroom" className="inline-block font-semibold text-[#002D72] underline underline-offset-4">Plan your Kensington showroom visit →</Link>
               {/* Location + hours */}
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-black-400 text-sm">
                 <a
@@ -429,6 +430,7 @@ export default function Home() {
         </div>
       </section>
 
+      <CustomerPaths />
       <section className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold text-gray-900">Major appliance brands we sell</h2>
         <p className="mt-3 text-lg text-[#002D72] font-semibold">Whirlpool · Maytag · KitchenAid · GE Appliances</p>

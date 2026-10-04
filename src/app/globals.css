@@ -67,7 +67,7 @@ html {
   .animate-scroll {
     animation: scroll 30s linear infinite;
   }
-  
+
   .animate-scroll-reverse {
     animation: scroll-reverse 30s linear infinite;
   }
@@ -77,4 +77,18 @@ html {
 .shadow-3xl {
   box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
 }
-  
+
+/* Keep keyboard navigation visible and honor motion preferences. */
+:focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 4px;
+}
+[id] { scroll-margin-top: 6rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

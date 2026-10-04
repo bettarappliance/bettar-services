@@ -2,10 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isMobileMenuOpen]);
 
   // Close mobile menu on resize to desktop (2xl = 1536px)
   useEffect(() => {
@@ -26,7 +40,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#002D72] text-white shadow-lg">
-      <div className="max-w-7xl mx-auto relative flex items-center justify-between px-4 sm:px-6 xl:px-6 2xl:px-8 py-3 sm:py-4 xl:py-3 2xl:py-4 flex-nowrap min-h-[56px] sm:min-h-[64px]">
+      <div className="max-w-[1600px] mx-auto relative flex items-center justify-between px-4 sm:px-6 xl:px-6 2xl:px-8 py-3 sm:py-4 xl:py-3 2xl:py-4 flex-nowrap min-h-[56px] sm:min-h-[64px]">
 
         {/* Logo — always left */}
         <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity shrink-0" onClick={closeMobileMenu}>
@@ -44,7 +58,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation — centered, only on xl+ */}
-        <nav className="hidden 2xl:flex items-center gap-0.5 2xl:gap-1 flex-nowrap text-sm 2xl:text-base mx-4 2xl:mx-8">
+        <nav className="hidden 2xl:flex items-center gap-0.5 2xl:gap-1 flex-nowrap text-sm 2xl:text-sm mx-4 2xl:mx-4">
           <div className="relative group">
             <div className="flex items-center">
               <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">
@@ -54,7 +68,7 @@ export default function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
-            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
               <div className="bg-white rounded-lg shadow-lg py-2">
                 <Link href="/appliances/refrigerators" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Refrigerators</Link>
                 <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Ice Maker</Link>
@@ -81,17 +95,19 @@ export default function Header() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </div>
-            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
               <div className="bg-white rounded-lg shadow-lg py-2">
                 <Link href="/services/renovations" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Renovations and Remodeling</Link>
                 <Link href="/services/plumbing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Plumbing and Heating</Link>
                 <Link href="/services/handyman" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Handyman Repair and Services</Link>
-                <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
+                <Link href="/showroom" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Visit the Showroom</Link>
+            <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
                 <Link href="/service-pricing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Service Pricing</Link>
               </div>
             </div>
           </div>
           <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Property Managers</Link>
+          <Link href="/showroom" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Showroom</Link>
           <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Promotions</Link>
           <div className="relative group">
             <Link href="/commercial-institutional" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">Commercial</Link>
@@ -117,12 +133,15 @@ export default function Header() {
           </Link>
         </div>
 
+        <a href="tel:301-949-2500" className="2xl:hidden ml-auto mr-5 rounded-lg border border-white/40 px-3 py-2 text-sm font-semibold">Call us</a>
+
         {/* Mobile Menu Button */}
         <button
           type="button"
           className="2xl:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors shrink-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
+          ref={menuButtonRef}
           aria-controls="mobile-menu"
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
