@@ -43,9 +43,9 @@ export default function DiagnosticFeeNotice({
         </svg>
         <p>
           <span className="font-semibold text-[#002D72]">
-            Appliance repair diagnostic visit: {DIAGNOSTIC_FEE_LABEL}.
+            {DIAGNOSTIC_FEE_LABEL} Appliance Diagnostic Visit
           </span>{" "}
-          Credited toward total repair cost, if approved. Not applicable toward new appliance purchases.
+          100% credited toward your approved repair. Not applicable toward new appliance purchases.
           {showLink && (
             <>
               {" "}

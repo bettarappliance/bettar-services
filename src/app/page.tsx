@@ -198,7 +198,7 @@ export default function Home() {
           "itemOffered": {
             "@type": "Service",
             "name": "Appliance Repair",
-            "description": "Expert same-day appliance repair for all major brands. Licensed technicians fix refrigerators, washers, dryers, dishwashers, ovens and more."
+            "description": "Appliance diagnosis and repair for refrigerators, washers, dryers, dishwashers, ovens and more. Appointment availability varies."
           }
         },
         {
@@ -234,11 +234,6 @@ export default function Home() {
           }
         }
       ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1448"
     }
   };
   const historyImages = [
@@ -314,20 +309,13 @@ export default function Home() {
             {/* ── Left: copy ── */}
             <div className="space-y-7">
 
-              {/* Headline */}
+              <p className="text-sm font-bold uppercase tracking-widest text-[#002D72]">Bettar Appliance Master</p>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                From Appliances<br />
-                to Repairs —<br />
-                <span className="relative inline-block">
-                  Better call{" "}
-                  <span className="text-[#002D72]">Bettar</span>
-                  <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-[#002D72] rounded-full opacity-60" />
-                </span>
+                Appliance Sales<br />
+                <span className="text-[#002D72]">Repair, Delivery<br />&amp; Installation</span>
               </h1>
-
-              {/* Tagline */}
-              <p className="text-gray-500 text-base sm:text-lg max-w-md leading-relaxed">
-                Your trusted local appliance store since 1945 — shop top brands with delivery &amp; installation, expert repair when you need it, plus plumbing, renovations &amp; handyman services.
+              <p className="text-gray-600 text-base sm:text-lg max-w-xl leading-relaxed">
+                Your local appliance company since 1945. Shop leading brands, get professional delivery and installation, and count on Bettar when your appliances need service.
               </p>
 
               {/* Trust badges */}
@@ -355,13 +343,14 @@ export default function Home() {
                   href="/request-service"
                   className="inline-flex items-center gap-2 border-2 border-[#002D72] text-[#002D72] hover:bg-[#002D72] hover:text-white font-semibold px-6 py-4 rounded-xl text-lg transition-all duration-200 hover:-translate-y-0.5"
                 >
-                  Request Service
+                  Schedule Repair
                 </a>
               </div>
 
               {/* Diagnostic fee */}
               <DiagnosticFeeNotice className="max-w-xl" />
 
+              <p className="font-semibold text-[#002D72]">Visit our Kensington showroom</p>
               {/* Location + hours */}
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-black-400 text-sm">
                 <a
@@ -409,8 +398,8 @@ export default function Home() {
                     </svg>
                     <span className="text-amber-500 text-sm font-bold tracking-tight">★★★★★</span>
                   </div>
-                  <div className="text-white text-xs font-semibold">4.4 / 5 on Google</div>
-                  <div className="text-white text-[10px] mt-0.5">131 Google reviews</div>
+                  <div className="text-white text-xs font-semibold">Local appliance sales &amp; service</div>
+                  <div className="text-white text-[10px] mt-0.5">Kensington · Since 1945</div>
                 </div>
               </div>
             </div>
@@ -432,47 +421,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section id="stats" className="relative -mt-12 sm:-mt-16 md:-mt-20 z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-            {/* Gradient accent bar */}
-            <div className="h-1.5 bg-gradient-to-r from-[#002D72] via-[#1e3a8a] to-[#dc2626]" />
-            <div className="p-4 sm:p-6 md:p-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
-                {/* Stat 1 */}
-                <div className="text-center px-3 sm:px-4">
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">81</div>
-                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Years Experience</div>
-                </div>
-                {/* Stat 2 */}
-                <div className="text-center px-3 sm:px-4">
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">30K+</div>
-                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Happy Clients</div>
-                </div>
-                {/* Stat 3 */}
-                <div className="text-center px-3 sm:px-4">
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">70K+</div>
-                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Projects Finished</div>
-                  <Link href="/gallery" className="text-[#dc2626] text-[10px] sm:text-xs mt-1 hover:underline inline-block font-semibold">View Projects →</Link>
-                </div>
-                {/* Stat 4 */}
-                <div className="text-center px-3 sm:px-4">
-                  <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-[#002D72] mb-1">100%</div>
-                  <div className="text-gray-500 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Guaranteed</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section id="stats" className="relative z-30 bg-[#002D72] text-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6 py-8 text-center">
+          {['Local since 1945', 'Sales + service', 'Delivery & installation', 'Kensington showroom'].map((benefit) => (
+            <p key={benefit} className="text-sm sm:text-base font-bold">{benefit}</p>
+          ))}
         </div>
       </section>
 
+      <section className="max-w-7xl mx-auto px-6 py-10">
+        <h2 className="text-2xl font-bold text-gray-900">Major appliance brands we sell</h2>
+        <p className="mt-3 text-lg text-[#002D72] font-semibold">Whirlpool · Maytag · KitchenAid · GE Appliances</p>
+        <p className="mt-3 text-gray-600">Shopping for your home or replacing appliances across several properties? Ask us about models, availability, delivery and installation.</p>
+        <Link href="/appliances" className="mt-4 inline-block font-bold text-[#002D72] underline underline-offset-4">Shop appliances</Link>
+        <div className="mt-8 rounded-2xl bg-[#EEF4FF] p-6 sm:p-8">
+          <h2 className="text-2xl font-bold text-gray-900">Property managers: one call to repair or replace</h2>
+          <p className="mt-3 text-gray-600 max-w-3xl">Keep appliance problems moving toward a solution. Bettar can diagnose, repair or quote a replacement, coordinate access, deliver, install and remove the old appliance.</p>
+          <Link href="/partnerships" className="mt-4 inline-block font-bold text-[#002D72] underline underline-offset-4">Start with one property or one appliance problem</Link>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 pb-12"><div className="grid gap-6 md:grid-cols-2"><Link href="/commercial-institutional" className="rounded-2xl border border-[#002D72]/20 p-7 hover:bg-[#EEF4FF]"><h2 className="text-2xl font-bold text-[#002D72]">Commercial &amp; institutional supply</h2><p className="mt-3 text-gray-600">Have an appliance requirement or RFQ? Ask about quantities, delivery, installation and ongoing service.</p><p className="mt-4 font-semibold text-[#002D72]">Explore project support →</p></Link><Link href="/commercial-laundry" className="rounded-2xl border border-[#002D72]/20 p-7 hover:bg-[#EEF4FF]"><h2 className="text-2xl font-bold text-[#002D72]">Commercial laundry</h2><p className="mt-3 text-gray-600">Shared laundry rooms and institutional equipment selected around your application and workload.</p><p className="mt-4 font-semibold text-[#002D72]">Discuss your laundry needs →</p></Link></div></section>
       <PromotionsTeaser />
 
       {/* Brand Logos Carousel Section */}
       <section className="py-12 bg-[#F8FAFF] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
-          <p className="text-xs font-bold tracking-widest uppercase text-gray-400">Brands We Carry &amp; Service</p>
+          <p className="text-xs font-bold tracking-widest uppercase text-gray-400">Brands We Service</p>
         </div>
         <div className="relative">
           {/* Two-row carousel container */}
@@ -1780,23 +1755,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Stats row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-3xl mx-auto">
-            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
-              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">81</div>
-              <p className="text-white font-semibold text-sm sm:text-base mb-1">Years of Excellence</p>
-              <p className="text-blue-300 text-xs sm:text-sm">Family-owned since 1945</p>
-            </div>
-            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
-              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">30K+</div>
-              <p className="text-white font-semibold text-sm sm:text-base mb-1">Satisfied Customers</p>
-              <p className="text-blue-300 text-xs sm:text-sm">Trusted by the community</p>
-            </div>
-            <div className="text-center border-t-2 border-[#FFB800] pt-5 px-4">
-              <div className="text-4xl sm:text-5xl font-bold text-white mb-1">100%</div>
-              <p className="text-white font-semibold text-sm sm:text-base mb-1">Fully Insured</p>
-              <p className="text-blue-300 text-xs sm:text-sm">Licensed &amp; bonded</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-center">
+            {['Local roots since 1945', 'Kensington showroom', 'Sales, installation & service'].map(proof => <p key={proof} className="border-t-2 border-[#FFB800] pt-5 text-lg font-bold text-white">{proof}</p>)}
           </div>
         </div>
       </section>
@@ -1909,7 +1869,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="text-[#6B7280] leading-relaxed transition-all duration-300 overflow-hidden max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100">
-                  We handle all major home appliances — refrigerators, ovens, dishwashers, washers, dryers, and more. Our licensed technicians are trained for most major brands.
+                  We handle all major home appliances — refrigerators, ovens, dishwashers, washers, dryers, and more. Our technicians work on many major brands; contact us about your model.
                 </div>
               </div>
 

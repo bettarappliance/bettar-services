@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import BusinessCapabilities from "@/components/BusinessCapabilities";
 
 export default function Partnerships() {
   return (
@@ -38,7 +39,7 @@ export default function Partnerships() {
               href="/contact"
               className="inline-flex items-center justify-center w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#D32F2F] text-white font-semibold hover:bg-[#B71C1C] transition-colors shadow-md"
             >
-              Become a partner
+              Start with one property
             </Link>
             <a
               href="tel:301-949-2500"
@@ -55,6 +56,8 @@ export default function Partnerships() {
           </p>
         </div>
       </section>
+
+      <BusinessCapabilities title="One call: diagnose, repair, replace and support" intro="Start with one property, one turnover or one appliance problem. Bettar brings local service and replacement together so your team has one place to coordinate the next step." items={[{"title": "Repair or replace", "body": "Diagnose the problem, repair when economical and quote a replacement when that is the better option."}, {"title": "Occupied & vacant units", "body": "Replace refrigerators, ranges, dishwashers, microwaves, washers and dryers while coordinating access with management and residents."}, {"title": "Unit-turn packages", "body": "Ask about standard replacement models and appliance packages with delivery, installation and haul-away."}, {"title": "Portfolio coordination", "body": "Discuss account pricing, consolidated billing, service history and recurring support with our operations team."}, {"title": "Quantity purchases", "body": "Need several appliances? Send the models, quantities, locations and timing for project pricing."}, {"title": "Common laundry rooms", "body": "Shared laundry calls for commercial equipment matched to usage, utilities and payment requirements."}]} action={{ href: "/commercial-laundry", label: "Explore shared and commercial laundry" }} />
 
       {/* Who we partner with */}
       <section className="py-16 md:py-20 bg-white">

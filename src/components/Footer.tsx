@@ -7,6 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#002D72] text-white py-12">
       <div className="max-w-7xl mx-auto px-6">
+        <div className="mb-8 flex flex-wrap gap-5 border-b border-white/20 pb-6"><Link href="/partnerships" className="hover:underline">Property Managers</Link><Link href="/commercial-institutional" className="hover:underline">Commercial &amp; Institutional</Link><Link href="/commercial-laundry" className="hover:underline">Commercial Laundry</Link></div>
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
@@ -23,8 +24,9 @@ export default function Footer() {
                 <span className="text-white/90 font-medium text-[10px] tracking-[0.18em] mt-0.5 whitespace-nowrap">APPLIANCE MASTER</span>
               </div>
             </div>
+            <p className="text-sm text-gray-300 mb-3">Bettar, Inc. DBA Bettar Appliance Master</p>
             <p className="text-gray-300 mb-4">
-              Your trusted partner for home improvement, renovation, plumbing, handyman, and appliance services in Kensington, MD since 1945.
+              Local appliance sales, repair, delivery and installation since 1945. Serving homeowners, property managers and institutional customers from Kensington, Maryland.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61581279980561" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors" aria-label="Facebook">

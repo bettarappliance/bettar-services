@@ -191,7 +191,7 @@ export default function Appliances() {
     {
       question: "Which appliance brands do you install?",
       answer:
-        "We work with a wide range of leading brands including Whirlpool, Maytag, GE, LG, Samsung, Frigidaire, KitchenAid, and more. If you already have a unit, we can install most customer-supplied appliances too.",
+        "Our core sales brands are Whirlpool, Maytag, KitchenAid and GE Appliances. Other brands and models require availability and sourcing confirmation. Ask about installation of customer-supplied appliances.",
     },
     {
       question: "How soon can you come out for a repair or install?",
@@ -294,14 +294,14 @@ export default function Appliances() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-4xl mx-auto">
             <p className="inline-block text-xs sm:text-sm font-semibold text-[#002D72] uppercase tracking-wider mb-3 sm:mb-4 px-3 py-1 rounded-full bg-white/80 border border-[#002D72]/20 shadow-sm">
-              Best appliance store near me · Bettar Appliance Kensington
+              Bettar Appliance Master · Kensington showroom
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-5 leading-[1.1] tracking-tight">
               <span className="text-[#002D72] block sm:inline">Your Home Deserves</span>{" "}
               <span className="bg-gradient-to-r from-[#002D72] to-[#0047AB] bg-clip-text text-transparent">Bettar.</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl mx-auto font-medium leading-relaxed px-2 sm:px-0">
-              Top brands. Expert repair & installation. One trusted stop for washers, dryers, fridges & more—so you can shop once and enjoy for years.
+              Shop refrigerators, cooking appliances, dishwashers and laundry with a local team for delivery, installation and service. Buying for several units or a facility? Ask us for project pricing.
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-600">
               <span className="inline-flex items-center gap-1.5 font-medium">
@@ -701,7 +701,7 @@ export default function Appliances() {
               Where to Buy a Washing Machine Near Me? <span className="text-[#002D72]">Bettar Appliance</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Searching for &quot;where to buy a washing machine near me&quot;? Bettar Appliance offers top-quality washers from leading brands like GE, Whirlpool, Maytag, Samsung, and LG. We provide expert guidance, professional installation, and ongoing support.
+              Searching for &quot;where to buy a washing machine near me&quot;? Bettar Appliance Master offers washers from core sales brands including GE, Whirlpool and Maytag. We provide expert guidance, professional installation, and ongoing support.
             </p>
           </div>
           
@@ -778,6 +778,7 @@ export default function Appliances() {
         </div>
       </section>
 
+      <section className="bg-[#EEF4FF] py-14"><div className="max-w-7xl mx-auto px-6"><h2 className="text-3xl font-bold text-gray-900">Need multiple appliances?</h2><p className="mt-4 max-w-3xl text-gray-600">Request project pricing for property portfolios, unit turns, businesses and institutional requirements. Include your model or category, quantity, location and delivery or installation needs.</p><Link href="/commercial-institutional" className="mt-6 inline-block rounded-xl bg-[#002D72] px-6 py-3 text-white font-semibold">Explore project supply &amp; pricing</Link></div></section>
       <Footer />
 
       {/* Appliance Request Modal */}

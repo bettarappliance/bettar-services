@@ -7,9 +7,9 @@ import { useState, useEffect } from "react";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Close mobile menu on resize to desktop (xl = 1280px)
+  // Close mobile menu on resize to desktop (2xl = 1536px)
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1280px)");
+    const mq = window.matchMedia("(min-width: 1536px)");
     const handler = () => setIsMobileMenuOpen(false);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -44,8 +44,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation — centered, only on xl+ */}
-        <nav className="hidden xl:flex items-center gap-0.5 2xl:gap-1 flex-nowrap text-sm 2xl:text-base mx-4 2xl:mx-8">
-          <Link href="/" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Home</Link>
+        <nav className="hidden 2xl:flex items-center gap-0.5 2xl:gap-1 flex-nowrap text-sm 2xl:text-base mx-4 2xl:mx-8">
           <div className="relative group">
             <div className="flex items-center">
               <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">
@@ -72,10 +71,11 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <Link href="/services/appliances" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Repair</Link>
           <div className="relative group">
             <div className="flex items-center">
               <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">
-                Services
+                Home Services
               </Link>
               <svg className="w-4 h-4 ml-0.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -86,19 +86,23 @@ export default function Header() {
                 <Link href="/services/renovations" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Renovations and Remodeling</Link>
                 <Link href="/services/plumbing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Plumbing and Heating</Link>
                 <Link href="/services/handyman" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Handyman Repair and Services</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliances Services</Link>
+                <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
                 <Link href="/service-pricing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Service Pricing</Link>
               </div>
             </div>
           </div>
-          <Link href="/gallery" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Gallery</Link>
+          <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Property Managers</Link>
           <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Promotions</Link>
+          <div className="relative group">
+            <Link href="/commercial-institutional" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">Commercial</Link>
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50"><div className="bg-white rounded-lg shadow-lg py-2"><Link href="/commercial-institutional" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Institutional supply &amp; RFQs</Link><Link href="/commercial-laundry" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Commercial laundry</Link></div></div>
+          </div>
           <Link href="/about" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">About Us</Link>
           <Link href="/contact" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Contact Us</Link>
         </nav>
 
         {/* CTA — always right, only on xl+ */}
-        <div className="hidden xl:flex items-center gap-2 2xl:gap-3 flex-nowrap shrink-0 pl-2 border-l border-white/30">
+        <div className="hidden 2xl:flex items-center gap-2 2xl:gap-3 flex-nowrap shrink-0 pl-2 border-l border-white/30">
           <a href="tel:301-949-2500" className="flex items-center gap-1.5 text-white hover:text-gray-200 transition-colors whitespace-nowrap text-sm 2xl:text-base">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -109,14 +113,14 @@ export default function Header() {
             href="/request-service"
             className="bg-[#D32F2F] text-white px-3 py-1.5 2xl:px-5 2xl:py-2 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold whitespace-nowrap shrink-0 text-sm 2xl:text-base"
           >
-            Request Service
+            Schedule Repair
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="xl:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors shrink-0"
+          className="2xl:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors shrink-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
@@ -136,13 +140,17 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="xl:hidden px-4 sm:px-6 pb-6 pt-2 border-t border-white/20 bg-[#001a4d]">
+        <div id="mobile-menu" className="2xl:hidden px-4 sm:px-6 pb-6 pt-2 border-t border-white/20 bg-[#001a4d]">
           <nav className="flex flex-col gap-1 max-h-[calc(100vh-8rem)] overflow-y-auto">
             <Link href="/" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Home</Link>
             <Link href="/about" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>About Us</Link>
             <Link href="/services" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Services</Link>
             <Link href="/service-pricing" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Service Pricing</Link>
             <Link href="/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliances</Link>
+            <Link href="/services/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliance Repair</Link>
+            <Link href="/partnerships" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Property Managers</Link>
+            <Link href="/commercial-institutional" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Commercial &amp; Institutional</Link>
+            <Link href="/commercial-laundry" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Commercial Laundry</Link>
             <Link href="/gallery" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Gallery</Link>
             <Link href="/promotions" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Promotions</Link>
             <Link href="/contact" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Contact Us</Link>
@@ -165,7 +173,7 @@ export default function Header() {
                 className="block w-full text-center bg-[#D32F2F] text-white py-3 px-6 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold"
                 onClick={closeMobileMenu}
               >
-                Request Service
+                Schedule Repair
               </Link>
             </div>
           </nav>

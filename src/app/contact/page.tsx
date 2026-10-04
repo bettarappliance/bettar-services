@@ -5,6 +5,7 @@ import RequestServiceModal from "../../components/RequestServiceModal";
 import ContactForm from "../../components/ContactForm";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import Link from "next/link";
 
 export default function Contact() {
   // Modal state
@@ -24,12 +25,18 @@ export default function Contact() {
               Get In <span className="text-[#002D72]">Touch</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ready to get started? Contact us today and let us help you with all your home service needs.
+              Need a repair, a replacement appliance or pricing for a project? Choose the path below or call our Kensington team at 301-949-2500.
             </p>
           </div>
         </div>
       </section>
 
+      <section className="max-w-7xl mx-auto px-6 py-12"><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{[
+        { href: "/request-service", title: "Appliance repair", body: "Request a diagnostic visit through our existing service form." },
+        { href: "/appliances", title: "Appliance sales", body: "Browse appliances or request availability and pricing for a model." },
+        { href: "/partnerships", title: "Property managers", body: "Repair, replacement, unit turns and recurring portfolio support." },
+        { href: "/commercial-institutional", title: "Projects & RFQs", body: "Quantity purchases, institutional requirements and commercial laundry." }
+      ].map(item => <Link key={item.href} href={item.href} className="rounded-2xl border border-[#002D72]/20 p-6 hover:bg-[#EEF4FF]"><h2 className="text-xl font-bold text-[#002D72]">{item.title}</h2><p className="mt-3 text-gray-600">{item.body}</p></Link>)}</div><p className="mt-6 text-gray-600">For project inquiries, include your organization, location, quantity and deadline in the message below. Call us to arrange sending specifications or attachments.</p></section>
       {/* Contact Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-6">

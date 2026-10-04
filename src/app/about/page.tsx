@@ -6,6 +6,7 @@ import RequestServiceModal from "../../components/RequestServiceModal";
 import GoogleReviews from "../../components/GoogleReviews";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import BusinessCapabilities from "@/components/BusinessCapabilities";
 
 export default function About() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -109,8 +110,8 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">81+</p>
-              <p className="text-gray-600 font-medium">Years in business</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">1945</p>
+              <p className="text-gray-600 font-medium">Our local roots</p>
             </div>
             <div>
               <p className="text-3xl md:text-4xl font-bold text-[#002D72] mb-1">1</p>
@@ -128,6 +129,11 @@ export default function About() {
         </div>
       </section>
 
+      <BusinessCapabilities title="One local team for the whole appliance problem" intro="Bettar, Inc. DBA Bettar Appliance Master combines a Kensington showroom with local service, delivery and installation. Our work starts with what the customer needs: a repair, a replacement or a coordinated project." items={[
+        { title: "For your home", body: "Shop core appliance brands, get help with replacement choices and count on Bettar for installation and later service." },
+        { title: "For property managers", body: "Coordinate diagnosis, repair, unit-turn replacements, access and removal with one local operation." },
+        { title: "For institutions", body: "Bring us your appliance or commercial-laundry requirement for a review of equipment, quantities, delivery and installation." }
+      ]} />
       {/* Company History Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
