@@ -1,15 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import RequestServiceModal from "../../components/RequestServiceModal";
 import ContactForm from "../../components/ContactForm";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Link from "next/link";
 
 export default function Contact() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -75,11 +71,6 @@ export default function Contact() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

@@ -1,15 +1,13 @@
 "use client";
 
+import Link from "next/link";
+
 import Image from "next/image";
-import { useState } from "react";
 import Script from "next/script";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 export default function Plumbing() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // FAQ Schema for SEO
   const faqSchema = {
@@ -375,12 +373,12 @@ export default function Plumbing() {
                   <p className="text-sm text-gray-600">We install and repair top water heater brands with warranty</p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="mt-8 px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition"
+              <Link
+                href="/request-service"
+                className="inline-block mt-8 px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition"
               >
                 Schedule Water Heater Service in Gaithersburg
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -487,11 +485,6 @@ export default function Plumbing() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );
