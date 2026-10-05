@@ -10,6 +10,8 @@ interface RequestServiceModalProps {
 }
 
 export default function RequestServiceModal({ isOpen, onClose }: RequestServiceModalProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     // Step 1 - Personal Details
@@ -40,7 +42,7 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
     { id: 4, title: 'Availability' }
   ];
 
-  const handleInputChange = (field: string, value: string | string[]) => {
+  const handleInputChange = (field: string, value: string | string[] | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -56,6 +58,8 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
   const nextStep = (e?: React.FormEvent) => {
     if (e) {
       e.preventDefault();
+      const form = (e.currentTarget as HTMLElement).closest("form");
+      if (form && !form.reportValidity()) return;
     }
     if (currentStep < 4) {
       setCurrentStep(currentStep + 1);
@@ -70,7 +74,9 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setSubmitError("");
     try {
       // Prepare data for Zapier webhook
       const submitData = {
@@ -80,7 +86,7 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
         phone: formData.phone,
         address: formData.address,
         serviceType: formData.serviceCategory,
-        description: formData.serviceDescription,
+        description: [formData.serviceDescription, formData.serviceArea && `Service area: ${formData.serviceArea}`, formData.additionalNotes && `Additional notes: ${formData.additionalNotes}`].filter(Boolean).join("\n"),
         servedInPast: formData.servedInPast !== null ? (formData.servedInPast ? 'Yes' : 'No') : 'Not specified',
         preferredDays: formData.preferredDays.join(', '),
         timeStart: formData.startTime,
@@ -88,47 +94,22 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
         consentToEmails: formData.consentToEmails ? 'Yes' : 'No'
       };
 
-      console.log('Submitting data:', submitData);
 
-      // Try using a form submission approach as fallback
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = 'https://hooks.zapier.com/hooks/catch/25016398/uryq5s4';
-      form.target = '_blank';
-      
-      // Add form data as hidden inputs
-      Object.entries(submitData).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = String(value);
-        form.appendChild(input);
+      const response = await fetch("/api/service-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submitData),
       });
-      
-      document.body.appendChild(form);
-      form.submit();
-      document.body.removeChild(form);
-
-      // Show success message
-      alert('Thank you! Your service request has been submitted successfully.');
+      const result = await response.json();
+      if (!response.ok || !result.accepted) {
+        throw new Error(result.error || "We could not confirm delivery. Please call 301-949-2500.");
+      }
+      alert("Your request has been received. Our team will contact you to confirm an appointment.");
       onClose();
-      
     } catch (error) {
-      console.error('Error submitting form:', error);
-      
-      // Fallback: Show contact information
-      const contactInfo = `
-        Thank you for your interest! Please contact us directly:
-        
-        Phone: 301-949-2500
-        Email: Info@bettarappliance.com
-        Address: 10503 Wheatley St, Kensington, MD 20895
-        
-        We'll be happy to help you with your service request!
-      `;
-      
-      alert(contactInfo);
-      onClose();
+      setSubmitError(error instanceof Error ? error.message : "We could not confirm delivery. Please call 301-949-2500 before submitting again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -378,7 +359,7 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
                     <input
                       type="checkbox"
                       checked={formData.consentToEmails}
-                      onChange={(e) => handleInputChange('consentToEmails', String(e.target.checked))}
+                      onChange={(e) => handleInputChange('consentToEmails', e.target.checked)}
                       className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72] flex-shrink-0"
                       required
                     />
@@ -397,6 +378,8 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
                 </div>
               </div>
             )}
+
+            {submitError && <p role="alert" className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-800">{submitError}</p>}
 
             {/* Navigation Buttons */}
             <div className="flex justify-between pt-3">
@@ -417,11 +400,12 @@ export default function RequestServiceModal({ isOpen, onClose }: RequestServiceM
               </button>
 
               <button 
+                disabled={isSubmitting}
                 type={currentStep === 4 ? 'submit' : 'button'}
                 onClick={currentStep === 4 ? undefined : (e) => nextStep(e)}
                 className="flex items-center px-6 py-3 bg-[#002D72] text-white rounded-lg hover:bg-[#001A5C] transition-colors font-medium"
               >
-                {currentStep === 4 ? 'Submit Request' : 'Next'}
+                {isSubmitting ? 'Sending…' : currentStep === 4 ? 'Submit Request' : 'Next'}
                 {currentStep < 4 && (
                   <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />

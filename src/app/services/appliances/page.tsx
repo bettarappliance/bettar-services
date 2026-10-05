@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import Script from "next/script";
 import RequestServiceModal from "../../../components/RequestServiceModal";
@@ -86,10 +87,10 @@ export default function ApplianceServices() {
               Appliance Services
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              Appliance Repair & Service | <span className="text-[#002D72]">Bethesda, Chevy Chase, Rockville, Kensington</span> | Same-Day Service
+              Appliance repair.<br /><span className="text-[#002D72]">A clear next step.</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional appliance repair, maintenance, and installation services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Same-day service available. Licensed & insured. Call <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
+              From a refrigerator that will not cool to a washer that will not drain, Bettar helps you understand the problem and decide whether to repair or replace. Serving Montgomery County and Upper Northwest DC. Appointment timing is subject to availability. Call <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
             </p>
           </div>
         </div>
@@ -463,6 +464,7 @@ export default function ApplianceServices() {
         </div>
       </section>
 
+      <section className="bg-[#EEF4FF] py-14"><div className="max-w-7xl mx-auto px-6"><h2 className="text-3xl font-bold text-gray-900">Repair it when it makes sense. Replace it when it does not.</h2><p className="mt-4 max-w-3xl text-gray-600">Get a diagnosis and an estimate before authorizing repair work. Bettar uses Appliance Blue Book flat-rate repair pricing. If replacement is the better choice, ask our sales team about an appliance, delivery, installation and haul-away. The diagnostic credit applies to an approved repair, not a new appliance purchase.</p><div className="mt-6 flex flex-wrap gap-4"><Link href="/request-service" className="rounded-xl bg-[#002D72] px-6 py-3 text-white font-bold">Schedule Repair</Link><Link href="/appliances" className="rounded-xl border border-[#002D72] px-6 py-3 text-[#002D72] font-bold">Shop replacements</Link></div></div></section>
       <Footer />
 
       {/* Request Service Modal */}
