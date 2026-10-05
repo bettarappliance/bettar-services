@@ -433,7 +433,7 @@ export default function Home() {
       <CustomerPaths />
       <section className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold text-gray-900">Major appliance brands we sell</h2>
-        <p className="mt-3 text-lg text-[#002D72] font-semibold">Whirlpool · Maytag · KitchenAid · GE Appliances</p>
+        <p className="mt-3 text-lg text-[#002D72] font-semibold">Whirlpool · Maytag · KitchenAid · GE Appliances · Speed Queen · Samsung</p>
         <p className="mt-3 text-gray-600">Shopping for your home or replacing appliances across several properties? Ask us about models, availability, delivery and installation.</p>
         <Link href="/appliances" className="mt-4 inline-block font-bold text-[#002D72] underline underline-offset-4">Shop appliances</Link>
         <div className="mt-8 rounded-2xl bg-[#EEF4FF] p-6 sm:p-8">
