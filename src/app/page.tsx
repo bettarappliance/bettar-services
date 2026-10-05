@@ -430,7 +430,25 @@ export default function Home() {
       <CustomerPaths />
       <section className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold text-gray-900">Major appliance brands we sell</h2>
-        <p className="mt-3 text-lg text-[#002D72] font-semibold">Whirlpool · Maytag · KitchenAid · GE Appliances · Speed Queen · Samsung</p>
+        <ul className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" aria-label="Appliance brands we sell">
+          {[
+            { name: "Whirlpool", logo: "/appliance-logos/Whirlpool_Corporation_Logo.png" },
+            { name: "Maytag", logo: "/appliance-logos/Maytag-Logo.png" },
+            { name: "KitchenAid", logo: "/appliance-logos/Kitchenaid_logo.svg.png" },
+            { name: "GE Appliances", logo: "/appliance-logos/GE_Appliances_logo.svg.png" },
+            // TODO: add the official Speed Queen logo to /public/appliance-logos and set its path here.
+            { name: "Speed Queen", logo: null },
+            { name: "Samsung", logo: "/appliance-logos/samsung.jpg" },
+          ].map((brand) => (
+            <li key={brand.name} className="h-20 flex items-center justify-center rounded-xl border border-gray-200 bg-white p-3">
+              {brand.logo ? (
+                <Image src={brand.logo} alt={brand.name} width={140} height={56} className="max-h-12 w-auto object-contain" />
+              ) : (
+                <span className="text-lg font-bold text-[#002D72]">{brand.name}</span>
+              )}
+            </li>
+          ))}
+        </ul>
         <p className="mt-3 text-gray-600">Shopping for your home or replacing appliances across several properties? Ask us about models, availability, delivery and installation.</p>
         <Link href="/appliances" className="mt-4 inline-block font-bold text-[#002D72] underline underline-offset-4">Shop appliances</Link>
         <div className="mt-8 rounded-2xl bg-[#EEF4FF] p-6 sm:p-8">
