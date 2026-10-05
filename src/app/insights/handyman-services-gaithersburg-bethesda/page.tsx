@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 
 export default function HandymanServicesArticle() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Schema markup for SEO
   const articleSchema = {
@@ -147,12 +144,12 @@ export default function HandymanServicesArticle() {
               Expert home repair and improvement services for Gaithersburg, Bethesda, Rockville, Silver Spring, and all Montgomery County. Skilled craftsmen ready to handle your projects, big or small.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#002D72] hover:bg-[#001f4d] text-white font-bold py-3 px-8 rounded-lg transition-colors"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#002D72] hover:bg-[#001f4d] text-white font-bold py-3 px-8 rounded-lg transition-colors"
               >
                 Schedule Service
-              </button>
+              </Link>
               <Link
                 href="/contact"
                 className="border-2 border-[#002D72] text-[#002D72] font-bold py-3 px-8 rounded-lg hover:bg-[#002D72] hover:text-white transition-colors"
@@ -617,11 +614,6 @@ export default function HandymanServicesArticle() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 }

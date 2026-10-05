@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { collection, getDocs, db } from "@/lib/firebase";
 import PromotionsTeaser from "../components/PromotionsTeaser";
-import RequestServiceModal from "../components/RequestServiceModal";
 import DiagnosticFeeNotice from "../components/DiagnosticFeeNotice";
 import GoogleReviews from "../components/GoogleReviews";
 import ContactForm from "../components/ContactForm";
@@ -32,8 +31,6 @@ export default function Home() {
   // Carousel state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Firestore state for appliances
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
@@ -2134,11 +2131,6 @@ export default function Home() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

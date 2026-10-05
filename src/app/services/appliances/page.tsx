@@ -2,17 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Script from "next/script";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 import DiagnosticFeeNotice from "../../../components/DiagnosticFeeNotice";
 import { DIAGNOSTIC_FEE_LABEL } from "@/lib/pricing";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 export default function ApplianceServices() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // FAQ Schema for SEO
   const faqSchema = {
@@ -448,12 +444,12 @@ export default function ApplianceServices() {
             From emergency repairs to scheduled maintenance, our skilled technicians are ready to help with all your appliance needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-[#D32F2F] text-white px-8 py-4 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold text-lg"
+            <Link
+              href="/request-service"
+              className="inline-block bg-[#D32F2F] text-white px-8 py-4 rounded-lg hover:bg-[#B71C1C] transition-colors font-semibold text-lg"
             >
               Schedule Service
-            </button>
+            </Link>
             <a 
               href="tel:301-949-2500"
               className="bg-white text-[#002D72] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold text-lg"
@@ -467,11 +463,6 @@ export default function ApplianceServices() {
       <section className="bg-[#EEF4FF] py-14"><div className="max-w-7xl mx-auto px-6"><h2 className="text-3xl font-bold text-gray-900">Repair it when it makes sense. Replace it when it does not.</h2><p className="mt-4 max-w-3xl text-gray-600">Get a diagnosis and an estimate before authorizing repair work. Bettar uses Appliance Blue Book flat-rate repair pricing. If replacement is the better choice, ask our sales team about an appliance, delivery, installation and haul-away. The diagnostic credit applies to an approved repair, not a new appliance purchase.</p><div className="mt-6 flex flex-wrap gap-4"><Link href="/request-service" className="rounded-xl bg-[#002D72] px-6 py-3 text-white font-bold">Schedule Repair</Link><Link href="/appliances" className="rounded-xl border border-[#002D72] px-6 py-3 text-[#002D72] font-bold">Shop replacements</Link></div></div></section>
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 
 export default function WaterHeaterRepairGaithersburg() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -145,12 +142,12 @@ export default function WaterHeaterRepairGaithersburg() {
               Expert water heater repair and replacement services in Gaithersburg, Rockville, Germantown, and surrounding Maryland areas. Same-day service available.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors"
               >
                 Schedule Repair Now
-              </button>
+              </Link>
               <a 
                 href="tel:301-949-2500"
                 className="bg-[#002D72] hover:bg-[#001a4d] text-white font-bold py-3 px-8 rounded-lg transition-colors"
@@ -473,12 +470,12 @@ export default function WaterHeaterRepairGaithersburg() {
               Don&apos;t wait for a complete breakdown. Contact Bettar Services today for fast, reliable water heater repair and replacement services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#d32f2f] text-white hover:bg-[#B71C1C] font-bold py-3 px-8 rounded-lg transition-colors mr-4"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#d32f2f] text-white hover:bg-[#B71C1C] font-bold py-3 px-8 rounded-lg transition-colors mr-4"
               >
                 Request Service Online
-              </button>
+              </Link>
               <a 
                 href="tel:301-949-2500"
                 className="bg-white text-[#002D72] font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
@@ -507,11 +504,6 @@ export default function WaterHeaterRepairGaithersburg() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 }

@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import Script from "next/script";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
 export default function Handyman() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // FAQ Schema for SEO
   const faqSchema = {
@@ -345,11 +341,6 @@ export default function Handyman() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

@@ -2,14 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import RequestServiceModal from "../../components/RequestServiceModal";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 export default function Services() {
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -230,11 +226,6 @@ export default function Services() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

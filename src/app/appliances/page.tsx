@@ -191,7 +191,7 @@ export default function Appliances() {
     {
       question: "Which appliance brands do you install?",
       answer:
-        "Our core sales brands are Whirlpool, Maytag, KitchenAid and GE Appliances. Other brands and models require availability and sourcing confirmation. Ask about installation of customer-supplied appliances.",
+        "Our core sales brands are Whirlpool, Maytag, KitchenAid, GE Appliances, Speed Queen and Samsung. Other brands and models require availability and sourcing confirmation. Ask about installation of customer-supplied appliances.",
     },
     {
       question: "How soon can you come out for a repair or install?",

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import RequestServiceModal from "../../components/RequestServiceModal";
 import GoogleReviews from "../../components/GoogleReviews";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -10,8 +9,6 @@ import BusinessCapabilities from "@/components/BusinessCapabilities";
 
 export default function About() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  // Modal state
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const historyImages = [
     "/history/image.jpg",
@@ -385,11 +382,6 @@ export default function About() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
 
     </div>
   );

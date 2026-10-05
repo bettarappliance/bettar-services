@@ -21,9 +21,9 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isMobileMenuOpen]);
 
-  // Close mobile menu on resize to desktop (2xl = 1536px)
+  // Close mobile menu on resize to desktop (xl = 1280px)
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1536px)");
+    const mq = window.matchMedia("(min-width: 1280px)");
     const handler = () => setIsMobileMenuOpen(false);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -57,11 +57,11 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Navigation — centered, only on xl+ */}
-        <nav className="hidden 2xl:flex items-center gap-0.5 2xl:gap-1 flex-nowrap text-sm 2xl:text-sm mx-4 2xl:mx-4">
+        {/* Navigation — centered, only on xl+ (compact until 2xl) */}
+        <nav className="hidden xl:flex items-center gap-0 2xl:gap-1 flex-nowrap text-sm mx-2 2xl:mx-4">
           <div className="relative group">
             <div className="flex items-center">
-              <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">
+              <Link href="/appliances" className="text-white hover:text-gray-300 transition-colors flex items-center px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">
                 Appliances
               </Link>
               <svg className="w-4 h-4 ml-0.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,10 +85,10 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <Link href="/services/appliances" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Repair</Link>
+          <Link href="/services/appliances" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Repair</Link>
           <div className="relative group">
             <div className="flex items-center">
-              <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">
+              <Link href="/services" className="text-white hover:text-gray-300 transition-colors flex items-center px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">
                 Home Services
               </Link>
               <svg className="w-4 h-4 ml-0.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,30 +100,30 @@ export default function Header() {
                 <Link href="/services/renovations" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Renovations and Remodeling</Link>
                 <Link href="/services/plumbing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Plumbing and Heating</Link>
                 <Link href="/services/handyman" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Handyman Repair and Services</Link>
-                <Link href="/showroom" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Visit the Showroom</Link>
-            <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
+                <Link href="/showroom" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Visit the Showroom</Link>
+                <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
                 <Link href="/service-pricing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Service Pricing</Link>
               </div>
             </div>
           </div>
-          <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Property Managers</Link>
-          <Link href="/showroom" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Showroom</Link>
-          <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Promotions</Link>
+          <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Property Managers</Link>
+          <Link href="/showroom" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Showroom</Link>
+          <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Promotions</Link>
           <div className="relative group">
-            <Link href="/commercial-institutional" className="text-white hover:text-gray-300 transition-colors flex items-center px-2 py-1.5 rounded whitespace-nowrap">Commercial</Link>
+            <Link href="/commercial-institutional" className="text-white hover:text-gray-300 transition-colors flex items-center px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Commercial</Link>
             <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50"><div className="bg-white rounded-lg shadow-lg py-2"><Link href="/commercial-institutional" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Institutional supply &amp; RFQs</Link><Link href="/commercial-laundry" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Commercial laundry</Link></div></div>
           </div>
-          <Link href="/about" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">About Us</Link>
-          <Link href="/contact" className="text-white hover:text-gray-300 transition-colors px-2 py-1.5 rounded whitespace-nowrap">Contact Us</Link>
+          <Link href="/about" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">About Us</Link>
+          <Link href="/contact" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Contact Us</Link>
         </nav>
 
         {/* CTA — always right, only on xl+ */}
-        <div className="hidden 2xl:flex items-center gap-2 2xl:gap-3 flex-nowrap shrink-0 pl-2 border-l border-white/30">
-          <a href="tel:301-949-2500" className="flex items-center gap-1.5 text-white hover:text-gray-200 transition-colors whitespace-nowrap text-sm 2xl:text-base">
+        <div className="hidden xl:flex items-center gap-2 2xl:gap-3 flex-nowrap shrink-0 pl-2 border-l border-white/30">
+          <a href="tel:301-949-2500" aria-label="Call 301-949-2500" className="flex items-center gap-1.5 text-white hover:text-gray-200 transition-colors whitespace-nowrap text-sm 2xl:text-base">
             <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            <span>301-949-2500</span>
+            <span className="hidden 2xl:inline">301-949-2500</span>
           </a>
           <Link
             href="/request-service"
@@ -133,12 +133,12 @@ export default function Header() {
           </Link>
         </div>
 
-        <a href="tel:301-949-2500" className="2xl:hidden ml-auto mr-5 rounded-lg border border-white/40 px-3 py-2 text-sm font-semibold">Call us</a>
+        <a href="tel:301-949-2500" className="xl:hidden ml-auto mr-5 rounded-lg border border-white/40 px-3 py-2 text-sm font-semibold">Call us</a>
 
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="2xl:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors shrink-0"
+          className="xl:hidden text-white p-2 -m-2 rounded-lg hover:bg-white/10 transition-colors shrink-0"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           ref={menuButtonRef}
@@ -159,7 +159,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div id="mobile-menu" className="2xl:hidden px-4 sm:px-6 pb-6 pt-2 border-t border-white/20 bg-[#001a4d]">
+        <div id="mobile-menu" className="xl:hidden px-4 sm:px-6 pb-6 pt-2 border-t border-white/20 bg-[#001a4d]">
           <nav className="flex flex-col gap-1 max-h-[calc(100vh-8rem)] overflow-y-auto">
             <Link href="/" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Home</Link>
             <Link href="/about" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>About Us</Link>

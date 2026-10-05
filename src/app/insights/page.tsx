@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import RequestServiceModal from "../../components/RequestServiceModal";
 
 export default function Insights() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const articles = [
     {
@@ -152,22 +149,17 @@ export default function Insights() {
           <p className="text-xl text-gray-200 mb-8">
             Our experienced technicians are ready to help with all your appliance and home service needs.
           </p>
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-white text-[#002D72] hover:bg-gray-100 font-bold py-4 px-10 rounded-lg transition-colors text-lg"
+          <Link 
+            href="/request-service"
+            className="inline-block bg-white text-[#002D72] hover:bg-gray-100 font-bold py-4 px-10 rounded-lg transition-colors text-lg"
           >
             Schedule Service Now
-          </button>
+          </Link>
         </div>
       </section>
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 }

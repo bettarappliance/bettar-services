@@ -2,13 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import RequestServiceModal from "../../../components/RequestServiceModal";
 
 export default function DishwasherRepairBuyingGuide() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -145,12 +142,12 @@ export default function DishwasherRepairBuyingGuide() {
               Everything you need to know about dishwasher problems, repairs, and buying the right model for your Bethesda, Gaithersburg, or Rockville home.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#D32F2F] hover:bg-[#B71C1C] text-white font-bold py-3 px-8 rounded-lg transition-colors"
               >
                 Get Appliance Help
-              </button>
+              </Link>
               <a 
                 href="tel:301-949-2500"
                 className="bg-[#002D72] hover:bg-[#001a4d] text-white font-bold py-3 px-8 rounded-lg transition-colors"
@@ -502,12 +499,12 @@ export default function DishwasherRepairBuyingGuide() {
               </div>
             </div>
             <div className="text-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#d32f2f] text-white hover:bg-[#B71C1C] font-bold py-3 px-8 rounded-lg transition-colors mr-4"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#d32f2f] text-white hover:bg-[#B71C1C] font-bold py-3 px-8 rounded-lg transition-colors mr-4"
               >
                 Schedule Service
-              </button>
+              </Link>
               <a 
                 href="tel:301-949-2500"
                 className="bg-white text-[#002D72] font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
@@ -578,12 +575,12 @@ export default function DishwasherRepairBuyingGuide() {
               Whether you need repair, maintenance, or help choosing a new dishwasher, our local appliance technicians are here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => setIsModalOpen(true)}
-                className="bg-[#d32f2f] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B71C1C] transition-colors"
+              <Link 
+                href="/request-service"
+                className="inline-block bg-[#d32f2f] text-white font-bold py-3 px-8 rounded-lg hover:bg-[#B71C1C] transition-colors"
               >
                 Schedule Service
-              </button>
+              </Link>
               <a 
                 href="tel:301-949-2500"
                 className="bg-white text-[#002D72] font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
@@ -612,11 +609,6 @@ export default function DishwasherRepairBuyingGuide() {
 
       <Footer />
 
-      {/* Request Service Modal */}
-      <RequestServiceModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 }

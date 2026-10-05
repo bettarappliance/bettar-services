@@ -39,7 +39,7 @@ export default function ShowroomPage() {
     <section className="mx-auto max-w-7xl px-6 py-16">
       <p className="text-sm font-bold uppercase tracking-widest text-[#002D72]">Choose with confidence</p>
       <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">Appliances that fit your home.</h2>
-      <p className="mt-4 max-w-3xl text-lg text-gray-600">Ask about Whirlpool, Maytag, KitchenAid, and GE Appliances. Display models and inventory vary; contact us before visiting to see a particular appliance.</p>
+      <p className="mt-4 max-w-3xl text-lg text-gray-600">Ask about Whirlpool, Maytag, KitchenAid, GE Appliances, Speed Queen, and Samsung. Display models and inventory vary; contact us before visiting to see a particular appliance.</p>
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{categories.map(item => <Link key={item.title} href={item.href} className="rounded-2xl border border-gray-200 p-6 transition-colors hover:border-[#002D72] hover:bg-[#F4F7FF]">
         <h3 className="text-xl font-bold text-[#002D72]">{item.title}</h3><p className="mt-3 leading-relaxed text-gray-600">{item.description}</p><p className="mt-5 font-semibold text-[#002D72]">Browse options <span aria-hidden="true">→</span></p>
       </Link>)}</div>
