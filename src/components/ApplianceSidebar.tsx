@@ -25,6 +25,11 @@ type ApplianceSidebarProps = {
   onPriceRangeChange?: (range: PriceRange) => void;
   onClearAll?: () => void;
   appliances?: Appliance[];
+  /**
+   * "full" (default): categories, brand and price filters (main /appliances page).
+   * "category": category pages — collapsible category and brand toggles only, no price filter.
+   */
+  variant?: "full" | "category";
 };
 
 export default function ApplianceSidebar({
@@ -34,8 +39,11 @@ export default function ApplianceSidebar({
   onPriceRangeChange,
   onClearAll,
   appliances = [],
+  variant = "full",
 }: ApplianceSidebarProps = {}) {
+  const isCategoryVariant = variant === "category";
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const [brandListOpen, setBrandListOpen] = useState(false);
   const [expandedFilters, setExpandedFilters] = useState<Record<string, boolean>>({
     categories: true,
     brand: true,
@@ -142,6 +150,51 @@ export default function ApplianceSidebar({
   }, [appliances]);
 
   const displayedBrands = showAllBrands ? brandList : brandList.slice(0, 5);
+
+  const brandOptions = (
+displayedBrands.length > 0 ? (
+              <>
+                {displayedBrands.map(({ brand, count }) => {
+                  const brandLower = brand.toLowerCase();
+                  const isChecked = selectedFilters.brand.some(b => {
+                    const filterBrandLower = b.toLowerCase();
+                    return brandLower === filterBrandLower || 
+                           brandLower.includes(filterBrandLower) || 
+                           filterBrandLower.includes(brandLower);
+                  });
+                  return (
+                    <label key={brand} className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                        checked={isChecked}
+                        onChange={() => handleFilterChange('brand', brandLower)}
+                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
+              />
+                      <span className="ml-3 text-gray-700">{brand} ({count})</span>
+            </label>
+                  );
+                })}
+                {brandList.length > 5 && (
+                  <button
+                    onClick={() => setShowAllBrands(!showAllBrands)}
+                    className="text-[#002D72] text-sm font-medium flex items-center mt-2 hover:text-[#001F5C] transition-colors"
+                  >
+                    {showAllBrands ? 'Show Less' : `Show More (${brandList.length - 5} more)`}
+                    <svg 
+                      className={`w-4 h-4 ml-1 transition-transform ${showAllBrands ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="text-gray-500 text-sm">No brands available</p>
+            )
+  );
 
   return (
     <div className="bg-white lg:sticky lg:top-24">
@@ -309,11 +362,69 @@ export default function ApplianceSidebar({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
+          
+          <Link
+                href="/appliances/ice-makers"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+          >
+                <span className="font-medium text-sm">Ice Makers</span>
+            <svg
+                  className="w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+          
+          <Link
+                href="/appliances/trash-compactors"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+          >
+                <span className="font-medium text-sm">Trash Compactors</span>
+            <svg
+                  className="w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
             </div>
+          )}
+
+          {isCategoryVariant && (
+            <>
+              <button
+                type="button"
+                onClick={() => setBrandListOpen((open) => !open)}
+                aria-expanded={brandListOpen}
+                className="w-full flex items-center justify-between py-4 px-0 text-left text-gray-800 hover:text-[#002D72] transition-colors"
+              >
+                <span className="font-medium">Brand</span>
+                <svg
+                  className={`w-5 h-5 text-gray-500 transition-transform ${brandListOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {brandListOpen && (
+                <div className="pl-4 pb-2 space-y-3">
+                  {brandOptions}
+                </div>
+              )}
+            </>
           )}
         </nav>
       </div>
 
+      {!isCategoryVariant && (
+      <>
       {/* Brand Filter */}
       <div className="pt-1 px-6">
         <button
@@ -332,48 +443,7 @@ export default function ApplianceSidebar({
         </button>
         {expandedFilters.brand && (
           <div className="space-y-3">
-            {displayedBrands.length > 0 ? (
-              <>
-                {displayedBrands.map(({ brand, count }) => {
-                  const brandLower = brand.toLowerCase();
-                  const isChecked = selectedFilters.brand.some(b => {
-                    const filterBrandLower = b.toLowerCase();
-                    return brandLower === filterBrandLower || 
-                           brandLower.includes(filterBrandLower) || 
-                           filterBrandLower.includes(brandLower);
-                  });
-                  return (
-                    <label key={brand} className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                        checked={isChecked}
-                        onChange={() => handleFilterChange('brand', brandLower)}
-                className="w-4 h-4 text-[#002D72] border-gray-300 rounded focus:ring-[#002D72]"
-              />
-                      <span className="ml-3 text-gray-700">{brand} ({count})</span>
-            </label>
-                  );
-                })}
-                {brandList.length > 5 && (
-                  <button
-                    onClick={() => setShowAllBrands(!showAllBrands)}
-                    className="text-[#002D72] text-sm font-medium flex items-center mt-2 hover:text-[#001F5C] transition-colors"
-                  >
-                    {showAllBrands ? 'Show Less' : `Show More (${brandList.length - 5} more)`}
-                    <svg 
-                      className={`w-4 h-4 ml-1 transition-transform ${showAllBrands ? 'rotate-180' : ''}`}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-                  </button>
-                )}
-              </>
-            ) : (
-              <p className="text-gray-500 text-sm">No brands available</p>
-            )}
+            {brandOptions}
           </div>
         )}
       </div>
@@ -426,6 +496,8 @@ export default function ApplianceSidebar({
           </div>
         )}
       </div>
+      </>
+      )}
     </div>
   );
 }

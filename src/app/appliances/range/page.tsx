@@ -5,7 +5,7 @@ import Script from "next/script";
 import Link from "next/link";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import ApplianceSidebar from "../../../components/ApplianceSidebar";
+import CategoryFilterLayout from "../../../components/CategoryFilterLayout";
 import { collection, getDocs, query, where, db } from "@/lib/firebase";
 import ApplianceRequestModal from "../../../components/ApplianceRequestModal";
 import ApplianceProductCard from "../../../components/ApplianceProductCard";
@@ -17,6 +17,7 @@ export default function RangePage() {
   const [loadingAppliances, setLoadingAppliances] = useState(true);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
   const [selectedApplianceName, setSelectedApplianceName] = useState<string>("");
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchAppliances = async () => {
@@ -45,6 +46,16 @@ export default function RangePage() {
 
     fetchAppliances();
   }, []);
+
+  const visibleAppliances = selectedBrands.length
+    ? appliances.filter((a) => selectedBrands.includes((a.brand || "").trim().toLowerCase()))
+    : appliances;
+
+  const toggleBrand = (brand: string) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+    );
+  };
 
   const categorySchema = {
     "@context": "https://schema.org",
@@ -91,17 +102,18 @@ export default function RangePage() {
       </section>
 
       <main className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-8">
-        <aside className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-          <ApplianceSidebar />
-        </aside>
-
-        <div className="w-full flex-1 space-y-8">
+        <CategoryFilterLayout
+          appliances={appliances}
+          selectedBrands={selectedBrands}
+          onToggleBrand={toggleBrand}
+          onClearBrands={() => setSelectedBrands([])}
+        >
           <div className="mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
               All Ranges
             </h2>
             <p className="text-gray-600">
-              Showing {appliances.length} range{appliances.length !== 1 ? 's' : ''}
+              Showing {visibleAppliances.length} range{visibleAppliances.length !== 1 ? 's' : ''}
             </p>
           </div>
 
@@ -109,11 +121,15 @@ export default function RangePage() {
             <p className="text-gray-600 text-center py-8">Loading ranges…</p>
           ) : appliances.length === 0 ? (
             <p className="text-gray-600 text-center py-8">
-              No ranges available at the moment.
+              We don&apos;t have any ranges listed online right now. Call{" "}
+              <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">
+                301-949-2500
+              </a>{" "}
+              to check what&apos;s available. We may have it in our warehouse.
             </p>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6">
-              {appliances.map((item) => (
+              {visibleAppliances.map((item) => (
                 <ApplianceProductCard
                   key={item.id}
                   item={item}
@@ -130,7 +146,7 @@ export default function RangePage() {
             categoryLabel="range"
             onRequest={() => setIsApplianceModalOpen(true)}
           />
-        </div>
+        </CategoryFilterLayout>
       </main>
 
       <section className="bg-[#002D72] text-white py-10 mt-8">

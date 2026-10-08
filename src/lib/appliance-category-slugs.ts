@@ -21,6 +21,11 @@ const CATEGORY_TO_SLUG: Record<string, string> = {
   Cooktops: "cooktops",
   "Garbage Disposer": "garbage-disposers",
   "Garbage Disposers": "garbage-disposers",
+  "Ice Maker": "ice-makers",
+  "Ice Makers": "ice-makers",
+  Compactor: "trash-compactors",
+  "Trash Compactor": "trash-compactors",
+  "Trash Compactors": "trash-compactors",
 };
 
 export function resolveCategoryListingPath(

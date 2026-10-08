@@ -12,7 +12,7 @@ import ApplianceProductCard from "../../../components/ApplianceProductCard";
 import WarehouseAvailabilityNotice from "../../../components/WarehouseAvailabilityNotice";
 import type { BettarAppliance } from "@/types/appliance";
 
-export default function WallOvenPage() {
+export default function IceMakersPage() {
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(true);
   const [isApplianceModalOpen, setIsApplianceModalOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function WallOvenPage() {
     const fetchAppliances = async () => {
       try {
         const ref = collection(db, "appliances");
-        const q = query(ref, where("category", "==", "Wall Oven"));
+        const q = query(ref, where("category", "==", "Ice Maker"));
         const snap = await getDocs(q);
         const items: BettarAppliance[] = snap.docs.map((doc) => {
           const data = doc.data() as Omit<BettarAppliance, "id">;
@@ -38,7 +38,7 @@ export default function WallOvenPage() {
         
         setAppliances(sortedByDiscount);
       } catch (error) {
-        console.error("Error loading wall ovens from Firestore", error);
+        console.error("Error loading ice makers from Firestore", error);
       } finally {
         setLoadingAppliances(false);
       }
@@ -60,15 +60,15 @@ export default function WallOvenPage() {
   const categorySchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Wall Ovens",
-    "description": "Shop quality wall ovens from top brands. Professional wall oven sales, installation, and repair in Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, and Germantown, MD.",
-    "url": "https://bettarservices.com/appliances/wall-oven",
+    "name": "Ice Makers",
+    "description": "Shop ice makers from Bettar Appliance Master. Ice maker sales, installation, and repair in Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Gaithersburg, and Germantown, MD.",
+    "url": "https://bettarservices.com/appliances/ice-makers",
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Script
-        id="wall-oven-schema"
+        id="ice-makers-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }}
       />
@@ -79,14 +79,14 @@ export default function WallOvenPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <h1 className="text-5xl md:text-6xl font-bold text-black mb-4">
-              <span className="text-[#002D72]">Wall Ovens</span>
+              <span className="text-[#002D72]">Ice Makers</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find the perfect wall oven for your kitchen. From single to double wall ovens, we offer quality wall ovens from top brands with professional installation and repair services.
+              Shop ice makers for your kitchen, bar, or basement. Not everything we carry is listed online, so call us to check current models, delivery, and installation.
             </p>
             <p className="mt-3">
               <Link href="/promotions" className="text-[#002D72] font-semibold hover:underline">
-                View Current Appliance Promotions
+                See Current Appliance Deals
               </Link>
             </p>
             <div className="mt-8">
@@ -94,7 +94,7 @@ export default function WallOvenPage() {
                 onClick={() => setIsApplianceModalOpen(true)}
                 className="px-8 py-3 rounded-full bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition shadow-lg hover:shadow-xl"
               >
-                Shop Wall Ovens
+                Shop Ice Makers
               </button>
             </div>
           </div>
@@ -110,18 +110,18 @@ export default function WallOvenPage() {
         >
           <div className="mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-              All Wall Ovens
+              All Ice Makers
             </h2>
             <p className="text-gray-600">
-              Showing {visibleAppliances.length} wall oven{visibleAppliances.length !== 1 ? 's' : ''}
+              Showing {visibleAppliances.length} ice maker{visibleAppliances.length !== 1 ? 's' : ''}
             </p>
           </div>
 
           {loadingAppliances ? (
-            <p className="text-gray-600 text-center py-8">Loading wall ovens…</p>
+            <p className="text-gray-600 text-center py-8">Loading ice makers…</p>
           ) : appliances.length === 0 ? (
             <p className="text-gray-600 text-center py-8">
-              We don&apos;t have any wall ovens listed online right now. Call{" "}
+              We don&apos;t have any ice makers listed online right now. Call{" "}
               <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">
                 301-949-2500
               </a>{" "}
@@ -143,7 +143,7 @@ export default function WallOvenPage() {
           )}
 
           <WarehouseAvailabilityNotice
-            categoryLabel="wall oven"
+            categoryLabel="ice maker"
             onRequest={() => setIsApplianceModalOpen(true)}
           />
         </CategoryFilterLayout>
@@ -153,10 +153,10 @@ export default function WallOvenPage() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              Need help choosing a wall oven?
+              Need help choosing an ice maker?
             </h2>
             <p className="text-sm md:text-base text-[#E0E7FF] max-w-xl">
-              Our team can help you find the perfect wall oven for your kitchen. Contact us today!
+              Our team can help you find the right ice maker for your space. Contact us today!
             </p>
           </div>
           <button

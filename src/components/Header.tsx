@@ -71,10 +71,10 @@ export default function Header() {
             <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
               <div className="bg-white rounded-lg shadow-lg py-2">
                 <Link href="/appliances/refrigerators" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Refrigerators</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Ice Maker</Link>
+                <Link href="/appliances/ice-makers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Ice Maker</Link>
                 <Link href="/appliances/dishwasher" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Dishwasher</Link>
                 <Link href="/appliances/garbage-disposers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Garbage Disposer</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Trash Compactor</Link>
+                <Link href="/appliances/trash-compactors" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Trash Compactor</Link>
                 <Link href="/appliances/range" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Range</Link>
                 <Link href="/appliances/cooktops" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Cooktops</Link>
                 <Link href="/appliances/microwave" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Microwave</Link>
