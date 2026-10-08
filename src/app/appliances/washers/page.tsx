@@ -9,6 +9,7 @@ import ApplianceSidebar from "../../../components/ApplianceSidebar";
 import { collection, getDocs, query, where, db } from "@/lib/firebase";
 import ApplianceRequestModal from "../../../components/ApplianceRequestModal";
 import ApplianceProductCard from "../../../components/ApplianceProductCard";
+import WarehouseAvailabilityNotice from "../../../components/WarehouseAvailabilityNotice";
 import type { BettarAppliance } from "@/types/appliance";
 
 export default function WashersPage() {
@@ -124,6 +125,11 @@ export default function WashersPage() {
               ))}
             </div>
           )}
+
+          <WarehouseAvailabilityNotice
+            categoryLabel="washer"
+            onRequest={() => setIsApplianceModalOpen(true)}
+          />
         </div>
       </main>
 

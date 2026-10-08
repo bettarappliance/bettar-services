@@ -73,7 +73,7 @@ export default function Header() {
                 <Link href="/appliances/refrigerators" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Refrigerators</Link>
                 <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Ice Maker</Link>
                 <Link href="/appliances/dishwasher" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Dishwasher</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Garbage Disposer</Link>
+                <Link href="/appliances/garbage-disposers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Garbage Disposer</Link>
                 <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Trash Compactor</Link>
                 <Link href="/appliances/range" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Range</Link>
                 <Link href="/appliances/cooktops" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Cooktops</Link>
@@ -81,7 +81,6 @@ export default function Header() {
                 <Link href="/appliances/washers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Washers</Link>
                 <Link href="/appliances/dryer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Clothes Dryer</Link>
                 <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Washer-Dryer</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Parts &amp; Accessories</Link>
               </div>
             </div>
           </div>

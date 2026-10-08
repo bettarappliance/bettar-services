@@ -294,6 +294,21 @@ export default function ApplianceSidebar({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
+          
+          <Link
+                href="/appliances/garbage-disposers"
+                className="w-full flex items-center justify-between py-3 px-0 text-left text-gray-700 hover:text-[#002D72] transition-colors"
+          >
+                <span className="font-medium text-sm">Garbage Disposers</span>
+            <svg
+                  className="w-4 h-4 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
             </div>
           )}
         </nav>

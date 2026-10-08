@@ -9,6 +9,7 @@ import ApplianceSidebar from "../../../components/ApplianceSidebar";
 import { collection, getDocs, query, where, db } from "@/lib/firebase";
 import ApplianceRequestModal from "../../../components/ApplianceRequestModal";
 import ApplianceProductCard from "../../../components/ApplianceProductCard";
+import WarehouseAvailabilityNotice from "../../../components/WarehouseAvailabilityNotice";
 import type { BettarAppliance } from "@/types/appliance";
 
 export default function CooktopsPage() {
@@ -124,6 +125,11 @@ export default function CooktopsPage() {
               ))}
             </div>
           )}
+
+          <WarehouseAvailabilityNotice
+            categoryLabel="cooktop"
+            onRequest={() => setIsApplianceModalOpen(true)}
+          />
         </div>
       </main>
 

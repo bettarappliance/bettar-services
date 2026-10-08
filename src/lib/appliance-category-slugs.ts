@@ -19,6 +19,8 @@ const CATEGORY_TO_SLUG: Record<string, string> = {
   "Wall Ovens": "wall-oven",
   Cooktop: "cooktops",
   Cooktops: "cooktops",
+  "Garbage Disposer": "garbage-disposers",
+  "Garbage Disposers": "garbage-disposers",
 };
 
 export function resolveCategoryListingPath(

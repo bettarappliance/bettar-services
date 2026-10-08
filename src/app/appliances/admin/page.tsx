@@ -794,9 +794,10 @@ function AdminPageContent() {
                     <option value="Microwave">Microwave</option>
                     <option value="Washer">Washer</option>
                     <option value="Dryer">Dryer</option>
-                    <option value="Wall Oven">Ice Maker</option>
-                    <option value="Ice Maker">Garbage Disposer</option>
-                    <option value="Wall Oven">Compactor</option>
+                    <option value="Wall Oven">Wall Oven</option>
+                    <option value="Ice Maker">Ice Maker</option>
+                    <option value="Garbage Disposer">Garbage Disposer</option>
+                    <option value="Compactor">Compactor</option>
                   </select>
                 </div>
 

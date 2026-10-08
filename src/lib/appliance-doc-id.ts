@@ -11,6 +11,7 @@ export const STATIC_APPLIANCES_ROUTE_SEGMENTS = new Set([
   "range",
   "wall-oven",
   "cooktops",
+  "garbage-disposers",
   "admin",
 ]);
 

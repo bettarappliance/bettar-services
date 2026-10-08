@@ -7,6 +7,7 @@ import Script from "next/script";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ApplianceSidebar from "../../components/ApplianceSidebar";
+import WarehouseAvailabilityNotice from "../../components/WarehouseAvailabilityNotice";
 import PromotionsTeaser from "../../components/PromotionsTeaser";
 
 import { collection, getDocs, db } from "@/lib/firebase";
@@ -519,23 +520,10 @@ export default function Appliances() {
             </div>
           </section>
 
-          {/* Request an appliance - didn't find what you want */}
-          <section className="py-8 border-t border-gray-200">
-            <div className="bg-[#F4F7FF] rounded-xl p-6 md:p-8 text-center">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                Didn&apos;t find what you&apos;re looking for?
-              </h2>
-              <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                Tell us the exact appliance you want—brand, model, or type—and we&apos;ll get back to you with availability and pricing.
-              </p>
-              <button
-                onClick={() => setIsApplianceModalOpen(true)}
-                className="px-6 py-3 rounded-lg bg-[#002D72] text-white font-semibold hover:bg-[#001F5C] transition-colors shadow-md hover:shadow-lg"
-              >
-                Request an appliance
-              </button>
-            </div>
-          </section>
+          {/* Didn't find what you want - warehouse availability */}
+          <div className="py-8 border-t border-gray-200">
+            <WarehouseAvailabilityNotice onRequest={() => setIsApplianceModalOpen(true)} />
+          </div>
 
           {/* Why choose Bettar */}
           <section>
