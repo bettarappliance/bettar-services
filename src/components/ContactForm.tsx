@@ -208,7 +208,7 @@ export default function ContactForm() {
         phone: formData.phone,
         service: formData.service,
         message: formData.message,
-        to_email: 'info@bettarappliance.com'
+        to_email: 'info@bettarservices.com'
       };
 
       // Add reCAPTCHA token if available

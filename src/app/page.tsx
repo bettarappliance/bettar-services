@@ -75,7 +75,7 @@ export default function Home() {
     "description": "Shop appliances at Bettar Appliance Master in Kensington, MD — appliance sales, delivery and installation on refrigerators, washers, dryers and more. Expert appliance repair, plus plumbing, handyman, renovation and home services serving Upper Northwest DC, Bethesda, Chevy Chase, Rockville, Kensington, Potomac, Olney, Brookville, Gaithersburg, and Germantown, MD. Family-owned since 1945.",
     "url": "https://www.bettarservices.com",
     "telephone": "301-949-2500",
-    "email": "Info@bettarappliance.com",
+    "email": "info@bettarservices.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "10503 Wheatley St",
