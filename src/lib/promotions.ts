@@ -72,6 +72,19 @@ export const MANUFACTURER_REBATES: ManufacturerRebate[] = [
     startDate: "2026-08-10",
     endDate: "2026-09-20",
   },
+  {
+    id: "speed-queen-q4-dryer",
+    brand: "Speed Queen®",
+    brandColor: "bg-[#D32F2F]",
+    title: "Q4 Dryer Rebate",
+    amount: "$150–$200",
+    blurb:
+      "Buy a qualifying Speed Queen® DC5 or DR7 dryer and get a Speed Queen® prepaid Mastercard® rebate: $150 for White, $200 for Matte Black.",
+    eligibility: "Speed Queen DC5004WE/G, DC5004BE/G, DR7004WE/G & DR7004BE/G dryers",
+    footnote: "Residential use only, one rebate per household. Claims must be submitted by December 30, 2026.",
+    startDate: "2026-10-26",
+    endDate: "2026-11-30",
+  },
 ];
 
 export function getRebateStatus(rebate: ManufacturerRebate, today: Date): "upcoming" | "active" | "ended" {
