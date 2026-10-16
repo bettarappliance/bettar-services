@@ -89,6 +89,16 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
+  const noticeRef = useRef<HTMLDivElement>(null);
+
+  // Show a validation message in the site's own style instead of a browser alert
+  const showNotice = (message: string) => {
+    setNotice(message);
+    requestAnimationFrame(() => {
+      noticeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  };
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const pageLoadTime = useRef<number>(Date.now());
   const lastSubmitTime = useRef<number>(0);
@@ -108,6 +118,7 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setNotice(null);
 
     const now = Date.now();
     const timeOnPage = now - pageLoadTime.current;
@@ -125,8 +136,7 @@ export default function ContactForm() {
     if (timeSinceLastSubmit < 10000) { // 10 seconds between submissions
       console.log('Rate limit: Too soon after last submission');
       setIsSubmitting(false);
-      setSubmitStatus('error');
-      alert('Please wait a moment before submitting again.');
+      showNotice('Please wait a moment before submitting again.');
       return;
     }
 
@@ -140,7 +150,7 @@ export default function ContactForm() {
 
     // Basic validation
     if (!formData.name.trim()) {
-      alert('Please enter your full name.');
+      showNotice('Please enter your full name.');
       setIsSubmitting(false);
       return;
     }
@@ -148,20 +158,20 @@ export default function ContactForm() {
     // Enhanced name validation - detect random strings
     if (!isValidName(formData.name)) {
       // A real customer can trip this check, so tell them instead of faking success
-      alert('Please enter your full name (for example, Jane Smith).');
+      showNotice('Please enter your full name (for example, Jane Smith).');
       setIsSubmitting(false);
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
-      alert('Please enter a valid email address.');
+      showNotice('Please enter a valid email address.');
       setIsSubmitting(false);
       return;
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 10) {
-      alert('Please enter a message with at least 10 characters.');
+      showNotice('Please enter a message with at least 10 characters.');
       setIsSubmitting(false);
       return;
     }
@@ -169,7 +179,7 @@ export default function ContactForm() {
     // Enhanced message validation - detect random strings
     if (!isValidMessage(formData.message)) {
       // A real customer can trip this check, so tell them instead of faking success
-      alert('Please describe what you need in a few words so we can help (for example, "My dryer is not heating").');
+      showNotice('Please describe what you need in a few words so we can help (for example, "My dryer is not heating").');
       setIsSubmitting(false);
       return;
     }
@@ -178,7 +188,7 @@ export default function ContactForm() {
     const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
     if (recaptchaSiteKey) {
       if (!recaptchaToken) {
-        alert('Please complete the reCAPTCHA verification.');
+        showNotice('Please complete the reCAPTCHA verification.');
         setIsSubmitting(false);
         return;
       }
@@ -295,6 +305,30 @@ export default function ContactForm() {
       {submitStatus === 'success' && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
           ✅ Thank you! We&apos;ve received your message and will get back to you soon.
+        </div>
+      )}
+
+      {notice && (
+        <div
+          ref={noticeRef}
+          role="alert"
+          aria-live="assertive"
+          className="flex items-start gap-3 bg-[#F4F7FF] border border-[#002D72]/30 border-l-4 border-l-[#D32F2F] text-[#002D72] px-4 py-3 rounded-lg mb-6 shadow-sm"
+        >
+          <svg className="w-5 h-5 mt-0.5 shrink-0 text-[#D32F2F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+          </svg>
+          <p className="flex-1 text-sm font-medium leading-relaxed">{notice}</p>
+          <button
+            type="button"
+            onClick={() => setNotice(null)}
+            className="text-[#002D72]/60 hover:text-[#002D72] focus:outline-none focus:ring-2 focus:ring-[#002D72] rounded"
+            aria-label="Dismiss message"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
