@@ -303,8 +303,28 @@ export default function ContactForm() {
   return (
     <div suppressHydrationWarning={true}>
       {submitStatus === 'success' && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
-          ✅ Thank you! We&apos;ve received your message and will get back to you soon.
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex items-start gap-3 bg-[#F4F7FF] border border-[#002D72]/30 border-l-4 border-l-[#2E7D32] text-[#002D72] px-4 py-3 rounded-lg mb-6 shadow-sm"
+        >
+          <svg className="w-5 h-5 mt-0.5 shrink-0 text-[#2E7D32]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="flex-1 text-sm font-medium leading-relaxed">
+            <span className="font-semibold">Thank you!</span> We&apos;ve received your message and will get back to you soon. For anything urgent, call us at{' '}
+            <a href="tel:301-949-2500" className="font-semibold underline hover:no-underline">301-949-2500</a>.
+          </p>
+          <button
+            type="button"
+            onClick={() => setSubmitStatus('idle')}
+            className="text-[#002D72]/60 hover:text-[#002D72] focus:outline-none focus:ring-2 focus:ring-[#002D72] rounded"
+            aria-label="Dismiss message"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
@@ -333,8 +353,28 @@ export default function ContactForm() {
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-          ❌ Sorry, there was an error sending your message. Please try again or call us at <a href="tel:301-949-2500" className="text-[#002D72] font-semibold hover:underline">301-949-2500</a>.
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="flex items-start gap-3 bg-[#F4F7FF] border border-[#002D72]/30 border-l-4 border-l-[#D32F2F] text-[#002D72] px-4 py-3 rounded-lg mb-6 shadow-sm"
+        >
+          <svg className="w-5 h-5 mt-0.5 shrink-0 text-[#D32F2F]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="flex-1 text-sm font-medium leading-relaxed">
+            Sorry, there was an error sending your message. Please try again or call us at{' '}
+            <a href="tel:301-949-2500" className="font-semibold underline hover:no-underline">301-949-2500</a>.
+          </p>
+          <button
+            type="button"
+            onClick={() => setSubmitStatus('idle')}
+            className="text-[#002D72]/60 hover:text-[#002D72] focus:outline-none focus:ring-2 focus:ring-[#002D72] rounded"
+            aria-label="Dismiss message"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
