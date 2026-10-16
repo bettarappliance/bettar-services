@@ -147,9 +147,9 @@ export default function ContactForm() {
 
     // Enhanced name validation - detect random strings
     if (!isValidName(formData.name)) {
-      console.log('Spam detected: Invalid name pattern');
+      // A real customer can trip this check, so tell them instead of faking success
+      alert('Please enter your full name (for example, Jane Smith).');
       setIsSubmitting(false);
-      setSubmitStatus('success'); // Pretend success to bot
       return;
     }
 
@@ -168,9 +168,9 @@ export default function ContactForm() {
 
     // Enhanced message validation - detect random strings
     if (!isValidMessage(formData.message)) {
-      console.log('Spam detected: Invalid message pattern');
+      // A real customer can trip this check, so tell them instead of faking success
+      alert('Please describe what you need in a few words so we can help (for example, "My dryer is not heating").');
       setIsSubmitting(false);
-      setSubmitStatus('success'); // Pretend success to bot
       return;
     }
 
