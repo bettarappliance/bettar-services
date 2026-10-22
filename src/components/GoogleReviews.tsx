@@ -110,7 +110,7 @@ function GoogleReviewsContent() {
           What Our Customers Say
         </h2>
         
-        <div className="relative overflow-x-hidden overflow-y-hidden w-full">
+        <div className="relative w-full">
           <div className="flex items-stretch justify-center gap-4 md:gap-6 lg:gap-8 overflow-x-auto overflow-y-hidden pb-2 snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {/* Show two reviews at a time + Review us card */}
             {highRatedReviews.slice(currentReviewIndex, currentReviewIndex + 2).map((review, index) => (
@@ -202,38 +202,60 @@ function GoogleReviewsContent() {
             </div>
           </div>
           
-          {/* Navigation Arrows */}
+          {/* Side arrows: only on very wide screens, where there is room beside the cards */}
           {highRatedReviews.length > 2 && (
             <>
-              <button 
+              <button
                 onClick={goToPrevious}
-                className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-300 p-3 rounded-full shadow-md hover:bg-gray-400 transition-colors z-10"
+                aria-label="Previous reviews"
+                className="hidden 2xl:block absolute -left-16 top-1/2 -translate-y-1/2 bg-gray-300 p-3 rounded-full shadow-md hover:bg-gray-400 transition-colors z-10"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               </button>
-              <button 
+              <button
                 onClick={goToNext}
-                className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-300 p-3 rounded-full shadow-md hover:bg-gray-400 transition-colors z-10"
+                aria-label="Next reviews"
+                className="hidden 2xl:block absolute -right-16 top-1/2 -translate-y-1/2 bg-gray-300 p-3 rounded-full shadow-md hover:bg-gray-400 transition-colors z-10"
               >
                 <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </button>
             </>
           )}
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-6 md:mt-8 space-x-2">
-            {Array.from({ length: Math.ceil(highRatedReviews.length / 2) }).map((_, index) => (
+          {/* Dots, with arrows beside them on smaller screens */}
+          <div className="flex items-center justify-center gap-4 mt-6 md:mt-8">
+            {highRatedReviews.length > 2 && (
               <button
-                key={index}
-                onClick={() => setCurrentReviewIndex(index * 2)}
-                className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                  Math.floor(currentReviewIndex / 2) === index
-                    ? 'bg-[#dc2626] scale-125' 
-                    : 'bg-gray-400 hover:bg-gray-600'
-                }`}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
+                onClick={goToPrevious}
+                aria-label="Previous reviews"
+                className="2xl:hidden bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 transition-colors"
+              >
+                <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
+            )}
+            <div className="flex items-center space-x-2">
+              {Array.from({ length: Math.ceil(highRatedReviews.length / 2) }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentReviewIndex(index * 2)}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                    Math.floor(currentReviewIndex / 2) === index
+                      ? 'bg-[#dc2626] scale-125' 
+                      : 'bg-gray-400 hover:bg-gray-600'
+                  }`}
+                  aria-label={`Go to page ${index + 1}`}
+                />
+              ))}
+            </div>
+            {highRatedReviews.length > 2 && (
+              <button
+                onClick={goToNext}
+                aria-label="Next reviews"
+                className="2xl:hidden bg-gray-300 p-2 rounded-full shadow-md hover:bg-gray-400 transition-colors"
+              >
+                <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { tryLeadingUpperDocId } from "@/lib/appliance-doc-id";
 import type { BettarAppliance } from "@/types/appliance";
+import { parseFeatureDetails, parseSpecGroups, parseSpecItems } from "@/lib/appliance-specs";
 import { SITE_URL } from "@/lib/site";
 
 type FirestoreRawValue = Record<string, unknown>;
@@ -90,7 +91,51 @@ export function normalizeApplianceDoc(
     features: asStringArray(raw.features),
     images: asStringArray(raw.images),
     categorySlug: raw.categorySlug ? asString(raw.categorySlug) : undefined,
+    highlights: asStringArray(raw.highlights),
+    quickFacts: parseSpecItems(raw.quickFacts),
+    specGroups: parseSpecGroups(raw.specGroups),
+    featureDetails: parseFeatureDetails(raw.featureDetails),
+    specsSource: raw.specsSource ? asString(raw.specsSource) : undefined,
   };
+}
+
+/**
+ * Result of a server-side appliance lookup.
+ * - `missing`: Firestore answered cleanly and the document does not exist (safe to return a 404).
+ * - `error`: the lookup could not be completed (permissions, rate limit, network, unreadable doc),
+ *   so existence is unknown and the page must not 404.
+ */
+export type ApplianceLookup =
+  | { status: "found"; appliance: BettarAppliance }
+  | { status: "missing" }
+  | { status: "error" };
+
+const LOOKUP_MISSING: ApplianceLookup = { status: "missing" };
+const LOOKUP_ERROR: ApplianceLookup = { status: "error" };
+
+function foundOrError(appliance: BettarAppliance | null): ApplianceLookup {
+  return appliance ? { status: "found", appliance } : LOOKUP_ERROR;
+}
+
+async function lookupApplianceById(id: string): Promise<ApplianceLookup> {
+  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+  if (!projectId || !apiKey || !id) return LOOKUP_ERROR;
+
+  const encodedId = encodeURIComponent(id);
+  const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/appliances/${encodedId}?key=${apiKey}`;
+
+  try {
+    const res = await fetch(url, { next: { revalidate: 120 } });
+    if (res.status === 404) return LOOKUP_MISSING;
+    if (!res.ok) return LOOKUP_ERROR;
+    const json = (await res.json()) as { fields?: Record<string, FirestoreRawValue> };
+    if (!json.fields) return LOOKUP_ERROR;
+    const raw = parseFields(json.fields);
+    return foundOrError(normalizeApplianceDoc(id, raw));
+  } catch {
+    return LOOKUP_ERROR;
+  }
 }
 
 /**
@@ -98,24 +143,8 @@ export function normalizeApplianceDoc(
  * Used for SSR metadata and JSON-LD on product pages.
  */
 export async function getApplianceById(id: string): Promise<BettarAppliance | null> {
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
-  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  if (!projectId || !apiKey || !id) return null;
-
-  const encodedId = encodeURIComponent(id);
-  const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/appliances/${encodedId}?key=${apiKey}`;
-
-  try {
-    const res = await fetch(url, { next: { revalidate: 120 } });
-    if (res.status === 404) return null;
-    if (!res.ok) return null;
-    const json = (await res.json()) as { fields?: Record<string, FirestoreRawValue> };
-    if (!json.fields) return null;
-    const raw = parseFields(json.fields);
-    return normalizeApplianceDoc(id, raw);
-  } catch {
-    return null;
-  }
+  const result = await lookupApplianceById(id);
+  return result.status === "found" ? result.appliance : null;
 }
 
 function applianceDocIdFromFirestoreName(name: string): string {
@@ -128,10 +157,10 @@ function applianceDocIdFromFirestoreName(name: string): string {
 /**
  * When the URL segment is lowercased (Next.js), resolve via `idLower` (set in admin).
  */
-async function getApplianceByIdLower(lowerKey: string): Promise<BettarAppliance | null> {
+async function lookupApplianceByIdLower(lowerKey: string): Promise<ApplianceLookup> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  if (!projectId || !apiKey || !lowerKey) return null;
+  if (!projectId || !apiKey || !lowerKey) return LOOKUP_ERROR;
 
   const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery?key=${apiKey}`;
   const body = {
@@ -155,9 +184,9 @@ async function getApplianceByIdLower(lowerKey: string): Promise<BettarAppliance 
       body: JSON.stringify(body),
       next: { revalidate: 120 },
     });
-    if (!res.ok) return null;
+    if (!res.ok) return LOOKUP_ERROR;
     const rows = (await res.json()) as unknown;
-    if (!Array.isArray(rows)) return null;
+    if (!Array.isArray(rows)) return LOOKUP_ERROR;
     for (const row of rows) {
       if (!row || typeof row !== "object" || !("document" in row)) continue;
       const doc = (row as { document?: { name?: string; fields?: Record<string, FirestoreRawValue> } })
@@ -166,11 +195,11 @@ async function getApplianceByIdLower(lowerKey: string): Promise<BettarAppliance 
       const docId = applianceDocIdFromFirestoreName(doc.name);
       if (!docId) continue;
       const raw = parseFields(doc.fields);
-      return normalizeApplianceDoc(docId, raw);
+      return foundOrError(normalizeApplianceDoc(docId, raw));
     }
-    return null;
+    return LOOKUP_MISSING;
   } catch {
-    return null;
+    return LOOKUP_ERROR;
   }
 }
 
@@ -180,10 +209,10 @@ const LIST_MAX_PAGES = 40;
 /**
  * When `idLower` is missing or wrong, find the doc by comparing lowercase document ids (lists the collection; paginated).
  */
-async function getApplianceByListIdCaseScan(lowerKey: string): Promise<BettarAppliance | null> {
+async function lookupApplianceByListIdCaseScan(lowerKey: string): Promise<ApplianceLookup> {
   const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
   const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  if (!projectId || !apiKey || !lowerKey) return null;
+  if (!projectId || !apiKey || !lowerKey) return LOOKUP_ERROR;
 
   let pageToken: string | undefined;
   for (let page = 0; page < LIST_MAX_PAGES; page++) {
@@ -197,7 +226,7 @@ async function getApplianceByListIdCaseScan(lowerKey: string): Promise<BettarApp
 
     try {
       const res = await fetch(listUrl, { next: { revalidate: 120 } });
-      if (!res.ok) return null;
+      if (!res.ok) return LOOKUP_ERROR;
       const json = (await res.json()) as {
         documents?: { name?: string; fields?: Record<string, FirestoreRawValue> }[];
         nextPageToken?: string;
@@ -209,17 +238,19 @@ async function getApplianceByListIdCaseScan(lowerKey: string): Promise<BettarApp
           const docId = applianceDocIdFromFirestoreName(d.name);
           if (!docId || docId.toLowerCase() !== lowerKey) continue;
           const raw = parseFields(d.fields);
-          return normalizeApplianceDoc(docId, raw);
+          return foundOrError(normalizeApplianceDoc(docId, raw));
         }
       }
       pageToken = json.nextPageToken;
-      if (!pageToken) break;
+      // Scanned the whole collection without a match: the document does not exist.
+      if (!pageToken) return LOOKUP_MISSING;
     } catch {
-      return null;
+      return LOOKUP_ERROR;
     }
   }
 
-  return null;
+  // Hit the page cap before finishing the scan, so existence is unknown.
+  return LOOKUP_ERROR;
 }
 
 /**
@@ -227,23 +258,49 @@ async function getApplianceByListIdCaseScan(lowerKey: string): Promise<BettarApp
  * then a paginated list scan matching `doc.id.toLowerCase()`.
  */
 export async function getApplianceByUrlId(urlId: string): Promise<BettarAppliance | null> {
-  const trimmed = urlId.trim();
-  if (!trimmed) return null;
+  const result = await lookupApplianceByUrlId(urlId);
+  return result.status === "found" ? result.appliance : null;
+}
 
-  let found = await getApplianceById(trimmed);
-  if (found) return found;
+/**
+ * Same resolution order as {@link getApplianceByUrlId}, but reports `missing` only when every step
+ * completed and none matched. Any failed step makes the overall result `error`.
+ */
+export async function lookupApplianceByUrlId(urlId: string): Promise<ApplianceLookup> {
+  const trimmed = urlId.trim();
+  if (!trimmed) return LOOKUP_MISSING;
+
+  let sawError = false;
+  const steps: Array<() => Promise<ApplianceLookup>> = [() => lookupApplianceById(trimmed)];
 
   const alt = tryLeadingUpperDocId(trimmed);
-  if (alt && alt !== trimmed) {
-    found = await getApplianceById(alt);
-    if (found) return found;
-  }
+  if (alt && alt !== trimmed) steps.push(() => lookupApplianceById(alt));
 
   const lowerKey = trimmed.toLowerCase();
-  found = await getApplianceByIdLower(lowerKey);
-  if (found) return found;
+  steps.push(() => lookupApplianceByIdLower(lowerKey));
+  steps.push(() => lookupApplianceByListIdCaseScan(lowerKey));
 
-  return getApplianceByListIdCaseScan(lowerKey);
+  for (const step of steps) {
+    const result = await step();
+    if (result.status === "found") return result;
+    if (result.status === "error") sawError = true;
+  }
+
+  return sawError ? LOOKUP_ERROR : LOOKUP_MISSING;
+}
+
+/** Home > Appliances > Category > Product, for search result breadcrumbs. */
+export function buildBreadcrumbJsonLd(appliance: BettarAppliance, id: string, categoryPath: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Appliances", item: `${SITE_URL}/appliances` },
+      { "@type": "ListItem", position: 3, name: appliance.category, item: `${SITE_URL}${categoryPath}` },
+      { "@type": "ListItem", position: 4, name: appliance.name, item: `${SITE_URL}/appliances/${id}` },
+    ],
+  };
 }
 
 export function buildProductJsonLd(appliance: BettarAppliance, id: string) {
@@ -267,6 +324,15 @@ export function buildProductJsonLd(appliance: BettarAppliance, id: string) {
       `${appliance.brand} ${appliance.category}. Sold and installed in Greater DC & Maryland by Bettar Appliance Master.`,
     image: images.length ? images : undefined,
     sku: appliance.modelNumber || undefined,
+    mpn: appliance.modelNumber || undefined,
+    model: appliance.modelNumber || undefined,
+    color: appliance.color || undefined,
+    category: appliance.category || undefined,
+    additionalProperty: appliance.specGroups?.length
+      ? appliance.specGroups.flatMap((g) =>
+          g.items.map((i) => ({ "@type": "PropertyValue", name: i.label, value: i.value }))
+        )
+      : undefined,
     brand: {
       "@type": "Brand",
       name: appliance.brand,

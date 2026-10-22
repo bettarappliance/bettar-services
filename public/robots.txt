@@ -5,7 +5,7 @@ Disallow: /api/
 Disallow: /appliances/admin
 
 # Host
-Host: https://bettarservices.com
+Host: https://www.bettarservices.com
 
 # Sitemaps
-Sitemap: https://bettarservices.com/sitemap.xml
+Sitemap: https://www.bettarservices.com/sitemap.xml

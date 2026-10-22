@@ -69,6 +69,21 @@ const nextConfig: NextConfig = {
         destination: "/appliances",
         permanent: true,
       },
+      {
+        source: "/appliances/Sales",
+        destination: "/appliances",
+        permanent: true,
+      },
+      {
+        source: "/appliances/sales",
+        destination: "/appliances",
+        permanent: true,
+      },
+      {
+        source: "/Appliances/Sales",
+        destination: "/appliances",
+        permanent: true,
+      },
 
       /* ---------------------------------
          MAINTENANCE (legacy)

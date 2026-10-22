@@ -8,6 +8,10 @@ import Footer from "@/components/Footer";
 import ApplianceRequestModal from "@/components/ApplianceRequestModal";
 import RelatedAppliances from "@/components/RelatedAppliances";
 import MatchingPairAppliance from "@/components/MatchingPairAppliance";
+import ApplianceDetailsSections, {
+  ApplianceHighlights,
+  ApplianceQuickFacts,
+} from "@/components/ApplianceDetailsSections";
 import { resolveCategoryListingPath } from "@/lib/appliance-category-slugs";
 import { applianceFromFirestoreDoc } from "@/lib/appliance-from-firestore";
 import { parseApplianceDocIdFromPathname } from "@/lib/appliance-doc-id";
@@ -88,8 +92,8 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 mb-12">
-          <div className="space-y-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-8 lg:gap-x-14 lg:gap-y-6 mb-12">
+          <div className="space-y-3 lg:col-start-1 lg:row-start-1">
             <div className="relative bg-[#F8FAFF] rounded-2xl overflow-hidden border border-gray-100 aspect-square">
               {mainImageSrc ? (
                 <Image
@@ -146,7 +150,7 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
             ) : null}
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-5 lg:col-start-2 lg:row-start-1 lg:row-span-2">
             <div className="flex flex-wrap gap-2">
               <span className="inline-block bg-[#EEF4FF] text-[#002D72] text-xs font-semibold px-3 py-1 rounded-full">
                 {appliance.brand}
@@ -228,6 +232,8 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
               </p>
             ) : null}
 
+            {appliance.quickFacts?.length ? <ApplianceQuickFacts facts={appliance.quickFacts} /> : null}
+
             {(appliance.color || appliance.supplyType || appliance.energyRating || appliance.type) && (
               <div className="flex flex-wrap gap-2">
                 {appliance.color ? (
@@ -302,8 +308,16 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
               </a>
             </div>
           </div>
+          {appliance.highlights?.length ? (
+            <div className="lg:col-start-1 lg:row-start-2 self-start">
+              <ApplianceHighlights highlights={appliance.highlights} />
+            </div>
+          ) : null}
         </div>
 
+        {appliance.specGroups?.length ? (
+          <ApplianceDetailsSections appliance={appliance} />
+        ) : (
         <div className="mb-12">
           <div className="flex gap-1 border-b border-gray-200 mb-6 overflow-x-auto">
             {visibleTabs.map((tab) => (
@@ -369,6 +383,7 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
             </div>
           ) : null}
         </div>
+        )}
 
         <MatchingPairAppliance current={appliance} />
 
@@ -491,6 +506,29 @@ export default function ApplianceDetailClient({ id, initialAppliance }: Applianc
       cancelled = true;
     };
   }, [id, initialAppliance]);
+
+  // Local preview (next dev only): open any product with ?preview=1 to load details from
+  // product-data/*-details.json before they are imported. It stays on while you click to
+  // other products in the same tab; ?preview=0 turns it off. Does nothing on the live site.
+  const [previewedId, setPreviewedId] = useState<string | null>(null);
+  useEffect(() => {
+    if (process.env.NODE_ENV !== "development" || !appliance || previewedId === appliance.id) return;
+    const param = new URLSearchParams(window.location.search).get("preview");
+    try {
+      if (param === "0") sessionStorage.removeItem("productPreview");
+      else if (param !== null) sessionStorage.setItem("productPreview", "1");
+      if (sessionStorage.getItem("productPreview") !== "1") return;
+    } catch {
+      if (param === null || param === "0") return;
+    }
+    setPreviewedId(appliance.id);
+    fetch(`/api/dev-product-preview?id=${encodeURIComponent(appliance.id)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((set: Record<string, unknown> | null) => {
+        if (set) setAppliance((a) => (a ? applianceFromFirestoreDoc(a.id, { ...a, ...set }) : a));
+      })
+      .catch(() => {});
+  }, [appliance, previewedId]);
 
   if (loading) {
     return (

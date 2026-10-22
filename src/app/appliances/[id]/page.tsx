@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+import { cache } from "react";
 import { APPLIANCE_DOC_ID_HEADER, resolveApplianceDocId } from "@/lib/appliance-doc-id";
-import { buildProductJsonLd, getApplianceByUrlId } from "@/lib/firestore-appliance-server";
+import { buildBreadcrumbJsonLd, buildProductJsonLd, lookupApplianceByUrlId } from "@/lib/firestore-appliance-server";
+import { resolveCategoryListingPath } from "@/lib/appliance-category-slugs";
 import { SITE_URL } from "@/lib/site";
 import ApplianceDetailClient from "./ApplianceDetailClient";
 
@@ -17,9 +20,17 @@ async function applianceDocId(params: Promise<{ id: string }>): Promise<string> 
   return resolveApplianceDocId(paramId, h.get(APPLIANCE_DOC_ID_HEADER));
 }
 
+/** Shared by generateMetadata and the page so each request resolves the appliance once. */
+const loadAppliance = cache(async (id: string) => {
+  const result = await lookupApplianceByUrlId(id);
+  // Only a confirmed miss returns a real 404. If the lookup failed, fall through to the client loader.
+  if (result.status === "missing") notFound();
+  return result.status === "found" ? result.appliance : null;
+});
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const id = await applianceDocId(params);
-  const appliance = await getApplianceByUrlId(id);
+  const appliance = await loadAppliance(id);
   const canonicalId = appliance?.id ?? id;
   if (!appliance) {
     const canonical = `${SITE_URL}/appliances/${canonicalId}`;
@@ -61,17 +72,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ApplianceDetailPage({ params }: PageProps) {
   const id = await applianceDocId(params);
-  const appliance = await getApplianceByUrlId(id);
+  const appliance = await loadAppliance(id);
 
   return (
     <>
       {appliance ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(buildProductJsonLd(appliance, appliance.id)),
-          }}
-        />
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(buildProductJsonLd(appliance, appliance.id)),
+            }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(
+                buildBreadcrumbJsonLd(
+                  appliance,
+                  appliance.id,
+                  resolveCategoryListingPath(appliance.category, appliance.categorySlug)
+                )
+              ),
+            }}
+          />
+        </>
       ) : null}
       {/* Server REST often cannot read Firestore without OAuth; client SDK loads the doc in the browser. */}
       <ApplianceDetailClient id={id} initialAppliance={appliance} />

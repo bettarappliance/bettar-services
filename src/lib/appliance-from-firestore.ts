@@ -1,4 +1,5 @@
 import type { BettarAppliance } from "@/types/appliance";
+import { parseFeatureDetails, parseSpecGroups, parseSpecItems } from "@/lib/appliance-specs";
 
 function num(v: unknown, fallback = 0): number {
   if (typeof v === "number" && !Number.isNaN(v)) return v;
@@ -50,5 +51,10 @@ export function applianceFromFirestoreDoc(id: string, data: Record<string, unkno
     features: strArr(data.features),
     images: strArr(data.images),
     categorySlug: data.categorySlug ? str(data.categorySlug) : undefined,
+    highlights: strArr(data.highlights),
+    quickFacts: parseSpecItems(data.quickFacts),
+    specGroups: parseSpecGroups(data.specGroups),
+    featureDetails: parseFeatureDetails(data.featureDetails),
+    specsSource: data.specsSource ? str(data.specsSource) : undefined,
   };
 }

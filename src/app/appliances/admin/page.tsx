@@ -16,6 +16,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AdminAuth from "@/components/AdminAuth";
+import AdminBulkImport from "@/components/AdminBulkImport";
 
 type ApplianceFormData = {
   name: string;
@@ -73,7 +74,7 @@ type BettarAppliance = {
 };
 
 function AdminPageContent() {
-  const [activeTab, setActiveTab] = useState<"add" | "manage">("add");
+  const [activeTab, setActiveTab] = useState<"add" | "manage" | "import">("add");
   const [appliances, setAppliances] = useState<BettarAppliance[]>([]);
   const [loadingAppliances, setLoadingAppliances] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -698,6 +699,16 @@ function AdminPageContent() {
               >
                 Manage Appliances
               </button>
+              <button
+                onClick={() => setActiveTab("import")}
+                className={`py-4 px-6 text-sm font-medium border-b-2 ${
+                  activeTab === "import"
+                    ? "border-[#002D72] text-[#002D72]"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                }`}
+              >
+                Import Details
+              </button>
             </nav>
           </div>
         </div>
@@ -1241,6 +1252,8 @@ function AdminPageContent() {
             </div>
           </form>
         </div>
+        ) : activeTab === "import" ? (
+          <AdminBulkImport onDone={() => void fetchAppliances()} />
         ) : (
           <div className="bg-white rounded-lg shadow-md p-8">
             <div className="flex justify-between items-center mb-6">

@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://bettarservices.com',
+  siteUrl: 'https://www.bettarservices.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: [
@@ -79,7 +79,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://bettarservices.com/sitemap.xml',
+      'https://www.bettarservices.com/sitemap.xml',
     ],
   },
 };

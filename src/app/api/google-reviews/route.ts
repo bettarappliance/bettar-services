@@ -33,11 +33,11 @@ export async function GET() {
   const url = new URL("https://maps.googleapis.com/maps/api/place/details/json");
   url.searchParams.set("place_id", placeId);
   url.searchParams.set("fields", FIELDS);
+  // Ask for the newest reviews instead of Google's default "most relevant" order.
+  url.searchParams.set("reviews_sort", "newest");
   url.searchParams.set("key", key);
 
-  console.log("Making API request to:", url.toString());
-
-  // Google returns at most ~5 "most relevant" reviews per call.
+  // Google returns at most 5 reviews per call (the 5 newest, given reviews_sort above).
   const res = await fetch(url.toString(), { cache: "no-store" });
   const data = await res.json();
 
@@ -53,10 +53,12 @@ export async function GET() {
           console.log("Raw reviews from API:", all.length);
           console.log("All ratings:", all.map((r: Review) => r.rating));
 
-          // Filter: only 4★ and 5★
-          const filtered = all.filter((r: Review) => Number(r.rating) >= 4);
+          // Filter: only 5★ reviews that have text to show on the card
+          const filtered = all.filter(
+            (r: Review) => Number(r.rating) === 5 && typeof r.text === "string" && r.text.trim() !== ""
+          );
 
-          console.log("Filtered 4-5 star reviews:", filtered.length);
+          console.log("Filtered 5 star reviews:", filtered.length);
           console.log("Filtered ratings:", filtered.map((r: Review) => r.rating));
 
           // Sort by newest first
