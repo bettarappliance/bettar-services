@@ -14,6 +14,8 @@ export type ManufacturerRebate = {
   footnote: string;
   startDate: string; // YYYY-MM-DD
   endDate: string; // YYYY-MM-DD
+  /** Eligible model numbers mapped to the rebate amount, shown on those product pages. */
+  modelAmounts?: Record<string, string>;
 };
 
 // Manufacturer-run rebate programs — amounts, dates and eligible models are
@@ -84,6 +86,16 @@ export const MANUFACTURER_REBATES: ManufacturerRebate[] = [
     footnote: "Residential use only, one rebate per household. Claims must be submitted by December 30, 2026.",
     startDate: "2026-10-26",
     endDate: "2026-11-30",
+    modelAmounts: {
+      DC5004WE: "$150",
+      DC5004WG: "$150",
+      DR7004WE: "$150",
+      DR7004WG: "$150",
+      DC5004BE: "$200",
+      DC5004BG: "$200",
+      DR7004BE: "$200",
+      DR7004BG: "$200",
+    },
   },
 ];
 
@@ -97,6 +109,20 @@ export function getRebateStatus(rebate: ManufacturerRebate, today: Date): "upcom
 
 export function getActiveRebates(today: Date = new Date()): ManufacturerRebate[] {
   return MANUFACTURER_REBATES.filter((r) => getRebateStatus(r, today) === "active");
+}
+
+/** The active manufacturer rebate (and amount) for one model number, if any. */
+export function getActiveRebateForModel(
+  modelNumber: string | undefined,
+  today: Date = new Date()
+): { rebate: ManufacturerRebate; amount: string } | null {
+  const model = (modelNumber ?? "").trim().toUpperCase();
+  if (!model) return null;
+  for (const rebate of getActiveRebates(today)) {
+    const amount = rebate.modelAmounts?.[model];
+    if (amount) return { rebate, amount };
+  }
+  return null;
 }
 
 export function formatDateRange(startDate: string, endDate: string): string {

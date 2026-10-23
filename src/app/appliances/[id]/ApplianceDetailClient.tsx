@@ -13,6 +13,7 @@ import ApplianceDetailsSections, {
   ApplianceQuickFacts,
 } from "@/components/ApplianceDetailsSections";
 import { resolveCategoryListingPath } from "@/lib/appliance-category-slugs";
+import { formatDateRange, getActiveRebateForModel } from "@/lib/promotions";
 import { applianceFromFirestoreDoc } from "@/lib/appliance-from-firestore";
 import { parseApplianceDocIdFromPathname } from "@/lib/appliance-doc-id";
 import { getApplianceSnapshotByUrlId } from "@/lib/appliance-resolve-doc";
@@ -34,6 +35,7 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
   }, [appliance.imageUrl, appliance.images]);
 
   const savings = appliance.priceOld ? appliance.priceOld - appliance.priceFrom : null;
+  const modelRebate = getActiveRebateForModel(appliance.modelNumber);
 
   const specs: { label: string; value: string }[] = [
     { label: "Brand", value: appliance.brand },
@@ -204,6 +206,23 @@ function ApplianceDetailView({ appliance }: { appliance: BettarAppliance }) {
                 </>
               )}
             </div>
+
+            {modelRebate ? (
+              <Link
+                href="/promotions"
+                className="block rounded-xl border border-[#D32F2F]/25 bg-[#FFF5F5] px-4 py-3 hover:bg-[#FFECEC] transition-colors"
+              >
+                <p className="text-sm font-bold text-[#D32F2F]">
+                  {modelRebate.amount} {modelRebate.rebate.brand} {modelRebate.rebate.title}
+                </p>
+                <p className="mt-0.5 text-xs text-gray-700">
+                  Get a {modelRebate.amount} prepaid Mastercard® rebate from {modelRebate.rebate.brand} when you buy this
+                  model. Offer runs {formatDateRange(modelRebate.rebate.startDate, modelRebate.rebate.endDate)}.{" "}
+                  {modelRebate.rebate.footnote}{" "}
+                  <span className="font-semibold text-[#002D72] underline underline-offset-2">See details</span>
+                </p>
+              </Link>
+            ) : null}
 
             {appliance.inStock === false ? (
               <a
