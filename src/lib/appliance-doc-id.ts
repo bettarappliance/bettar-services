@@ -8,6 +8,7 @@ export const STATIC_APPLIANCES_ROUTE_SEGMENTS = new Set([
   "dishwasher",
   "dryer",
   "washers",
+  "washer-dryer",
   "range",
   "wall-oven",
   "cooktops",

@@ -725,7 +725,7 @@ export default function Appliances() {
               <p className="text-gray-600 mb-4">
                 All-in-one washer-dryer units perfect for small spaces. Wash and dry in one convenient machine.
               </p>
-              <Link href="/appliances" className="text-[#002D72] font-semibold hover:underline">
+              <Link href="/appliances/washer-dryer" className="text-[#002D72] font-semibold hover:underline">
                 Shop Washer-Dryer Combos →
               </Link>
             </div>

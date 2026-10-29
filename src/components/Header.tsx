@@ -80,7 +80,7 @@ export default function Header() {
                 <Link href="/appliances/microwave" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Microwave</Link>
                 <Link href="/appliances/washers" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Washers</Link>
                 <Link href="/appliances/dryer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Clothes Dryer</Link>
-                <Link href="/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Washer-Dryer</Link>
+                <Link href="/appliances/washer-dryer" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Washer-Dryer</Link>
               </div>
             </div>
           </div>
