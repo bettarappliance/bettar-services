@@ -376,7 +376,7 @@ export default function Home() {
               <div className="relative w-full max-w-2xl lg:max-w-full h-[420px] sm:h-[460px] lg:h-[580px]">
                 <Image
                   src="/appliancehero.png"
-                  alt="Bettar Appliance Master service van"
+                  alt="Stainless steel refrigerator, range, dishwasher, washer and microwave"
                   fill
                   className="object-contain object-center lg:object-right drop-shadow-xl"
                   priority
