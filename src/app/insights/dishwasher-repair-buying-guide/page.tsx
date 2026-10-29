@@ -173,7 +173,7 @@ export default function DishwasherRepairBuyingGuide() {
           <div className="mb-16 overflow-hidden h-[400px]">
             <Image
               src="/insights/dishwasher.jpg"
-              alt="Professional dishwasher repair technician servicing appliances in Bethesda, Gaithersburg, and Rockville Maryland"
+              alt="Bettar Appliance Master team at our Kensington office, serving Bethesda, Gaithersburg, and Rockville Maryland"
               width={500}
               height={400}
               className="w-full h-full object-cover"

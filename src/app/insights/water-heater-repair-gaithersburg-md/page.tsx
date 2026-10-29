@@ -173,7 +173,7 @@ export default function WaterHeaterRepairGaithersburg() {
           <div className="mb-16 overflow-hidden h-[400px]">
             <Image
               src="/insights/water-heater.jpg"
-              alt="Licensed technician repairing tankless and conventional water heaters in Gaithersburg, Rockville, and Montgomery County Maryland"
+              alt="Bettar Appliance Master team with service vans, serving Gaithersburg, Rockville, and Montgomery County Maryland"
               width={500}
               height={400}
               className="w-full h-full object-cover"

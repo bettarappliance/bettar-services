@@ -1102,7 +1102,7 @@ export default function Home() {
               <div className="h-48 relative">
                 <Image
                   src="/renovations.jpg"
-                  alt="Professional kitchen renovation and remodeling services in Kensington MD - modern kitchen design with island and stainless steel appliances"
+                  alt="Kitchen remodel by Bettar Appliance Master in Montgomery County MD - kitchen island and stainless steel appliances"
                   fill
                   className="object-cover"
                 />
@@ -1129,7 +1129,7 @@ export default function Home() {
               <div className="h-48 relative">
                 <Image
                   src="/plumbing.jpeg"
-                  alt="Professional plumbing and heating repair services in Kensington MD - skilled technician working on pipe installation and maintenance"
+                  alt="Bettar Appliance Master service van for plumbing and heating calls in Kensington MD"
                   fill
                   className="object-cover"
                 />
@@ -1155,7 +1155,7 @@ export default function Home() {
               <div className="h-48 relative">
                 <Image
                   src="/handyman.jpg"
-                  alt="Professional handyman repair and maintenance services in Kensington MD - skilled craftsman with tools and safety equipment"
+                  alt="Bettar Appliance Master team member with a company truck in Kensington MD"
                   fill
                   className="object-cover"
                 />

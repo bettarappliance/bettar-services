@@ -600,7 +600,7 @@ export default function Appliances() {
               <div className="relative h-64 sm:h-80 md:h-96 w-full">
               <Image
                 src="/appliances.jpg"
-                alt="Technician installing a kitchen appliance"
+                alt="Bettar Appliance Master store and service vans in Kensington, MD"
                 fill
                   className="object-cover rounded-2xl md:rounded-3xl shadow-xl"
               />
