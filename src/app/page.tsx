@@ -1038,10 +1038,11 @@ export default function Home() {
               {/* Left Side - Appliances Image */}
               <div className="h-96 md:h-auto relative">
                 <Image
-                  src="/appliances.jpg"
-                  alt="Bettar Appliance Sales and Services"
+                  src="/bettarnew.jpeg"
+                  alt="Bettar Appliance showroom and service vans in Kensington, MD"
                   fill
-                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-center"
                 />
               </div>
 
