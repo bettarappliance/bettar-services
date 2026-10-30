@@ -99,18 +99,29 @@ export default function Header() {
                 <Link href="/services/renovations" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Renovations and Remodeling</Link>
                 <Link href="/services/plumbing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Plumbing and Heating</Link>
                 <Link href="/services/handyman" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Handyman Repair and Services</Link>
-                <Link href="/showroom" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Visit the Showroom</Link>
-                <Link href="/services/appliances" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Appliance Repair</Link>
+                <Link href="/gallery" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Project Gallery</Link>
                 <Link href="/service-pricing" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Service Pricing</Link>
               </div>
             </div>
           </div>
-          <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Property Managers</Link>
           <Link href="/showroom" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Showroom</Link>
           <Link href="/promotions" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Promotions</Link>
           <div className="relative group">
-            <Link href="/commercial-institutional" className="text-white hover:text-gray-300 transition-colors flex items-center px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Commercial</Link>
-            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50"><div className="bg-white rounded-lg shadow-lg py-2"><Link href="/commercial-institutional" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Institutional supply &amp; RFQs</Link><Link href="/commercial-laundry" className="block px-4 py-3 text-gray-700 hover:bg-gray-100">Commercial laundry</Link></div></div>
+            <div className="flex items-center">
+              <Link href="/partnerships" className="text-white hover:text-gray-300 transition-colors flex items-center px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">
+                For Business
+              </Link>
+              <svg className="w-4 h-4 ml-0.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div className="absolute top-full left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
+              <div className="bg-white rounded-lg shadow-lg py-2">
+                <Link href="/partnerships" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Property Managers</Link>
+                <Link href="/commercial-institutional" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Institutional Supply &amp; RFQs</Link>
+                <Link href="/commercial-laundry" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-[#1e3a8a] transition-colors">Commercial Laundry</Link>
+              </div>
+            </div>
           </div>
           <Link href="/about" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">About Us</Link>
           <Link href="/contact" className="text-white hover:text-gray-300 transition-colors px-1.5 py-1.5 rounded whitespace-nowrap 2xl:px-2">Contact Us</Link>
@@ -161,16 +172,17 @@ export default function Header() {
         <div id="mobile-menu" className="xl:hidden px-4 sm:px-6 pb-6 pt-2 border-t border-white/20 bg-[#001a4d]">
           <nav className="flex flex-col gap-1 max-h-[calc(100vh-8rem)] overflow-y-auto">
             <Link href="/" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Home</Link>
-            <Link href="/about" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>About Us</Link>
-            <Link href="/services" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Services</Link>
-            <Link href="/service-pricing" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Service Pricing</Link>
             <Link href="/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliances</Link>
             <Link href="/services/appliances" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Appliance Repair</Link>
-            <Link href="/partnerships" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Property Managers</Link>
-            <Link href="/commercial-institutional" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Commercial &amp; Institutional</Link>
-            <Link href="/commercial-laundry" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Commercial Laundry</Link>
-            <Link href="/gallery" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Gallery</Link>
+            <Link href="/services" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Home Services</Link>
+            <Link href="/service-pricing" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Service Pricing</Link>
+            <Link href="/gallery" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Project Gallery</Link>
+            <Link href="/showroom" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Showroom</Link>
             <Link href="/promotions" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Promotions</Link>
+            <Link href="/partnerships" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Property Managers</Link>
+            <Link href="/commercial-institutional" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Institutional Supply &amp; RFQs</Link>
+            <Link href="/commercial-laundry" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Commercial Laundry</Link>
+            <Link href="/about" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>About Us</Link>
             <Link href="/contact" className="text-white hover:bg-white/10 py-3 px-3 rounded-lg transition-colors" onClick={closeMobileMenu}>Contact Us</Link>
             <div className="pt-4 mt-2 border-t border-white/20 space-y-3">
               <a href="tel:301-949-2500" className="flex items-center gap-2 py-3 px-3 text-white hover:bg-white/10 rounded-lg transition-colors" onClick={closeMobileMenu}>

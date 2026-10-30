@@ -165,11 +165,12 @@ export default function ApplianceServices() {
             
             <div className="relative">
               <Image
-                src="/appliances.jpg"
-                alt="Appliance Repair Services"
+                src="/bettarnew.jpeg"
+                alt="Bettar Appliance showroom and service vans in Kensington, MD"
                 width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
+                height={450}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
           </div>
