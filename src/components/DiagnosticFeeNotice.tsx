@@ -87,8 +87,8 @@ export default function DiagnosticFeeNotice({
         <li>
           <span className="font-semibold text-gray-900">More than one appliance?</span> Each additional appliance diagnosed on the same visit is {ADDITIONAL_APPLIANCE_FEE_LABEL}. If you approve repairs on both, {DIAGNOSTIC_FEE_LABEL} is credited toward the higher-priced repair and {ADDITIONAL_APPLIANCE_FEE_LABEL} toward the other. If you repair only one, {DIAGNOSTIC_FEE_LABEL} is credited toward that repair.
         </li>
-        <li>
-          <span className="font-semibold text-gray-900">{QUOTE_VALID_DAYS}-day window.</span> The {DIAGNOSTIC_FEE_LABEL} credit applies to repairs of the diagnosed issue approved within {QUOTE_VALID_DAYS} days of your diagnostic visit. Repair quotes are valid for {QUOTE_VALID_DAYS} days.
+                <li>
+          <span className="font-semibold text-gray-900">Diagnostic Fee Credit.</span> The {DIAGNOSTIC_FEE_LABEL} diagnostic fee is credited toward an approved appliance repair of the diagnosed issue within {QUOTE_VALID_DAYS} days. The credit does not apply to separate handyman, plumbing, installation, or other services that are not part of the diagnosed appliance repair. These services are quoted separately before work begins.
         </li>
         <li>
           <span className="font-semibold text-gray-900">Example:</span> if a repair&apos;s labor is $269, you pay {DIAGNOSTIC_FEE_LABEL} at the diagnostic visit and $90 in labor plus parts when the repair is done.
